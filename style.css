@@ -8868,3 +8868,9 @@ select:focus,
   color: #58a6ff;
   text-decoration: underline;
 }
+
+/* Permanently eliminate companion suggestions bar */
+.companion-suggestions-bar,
+.companion-suggestion-chip {
+  display: none !important;
+}
