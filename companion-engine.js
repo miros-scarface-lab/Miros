@@ -36,10 +36,10 @@
   })();
 
   const DEFAULT_SETTINGS = {
-    nickname: 'Nova',
+    nickname: 'Miros AI',
     avatar: 'assets/images/avatar-pixel.png',
     model: 'gemini-3.5-flash',
-    personality: 'You are Nova, an ultra-intelligent, sharp, and helpful companion. You specialize in computer science, systems engineering (C, C++, Rust, Linux, Compilers, OS), and academic problem-solving. Be concise, profound, direct, and helpful. Use clean GitHub-flavored markdown with syntax highlighted code blocks.',
+    personality: 'You are Miros AI, an ultra-intelligent, sharp, and helpful companion. You specialize in computer science, systems engineering (C, C++, Rust, Linux, Compilers, OS), and academic problem-solving. Be concise, profound, direct, and helpful. Use clean GitHub-flavored markdown with syntax highlighted code blocks.',
     apiKey: _INITIAL_KEY
   };
 
@@ -213,7 +213,7 @@
     renderHeaderInfo() {
       if (typeof document === 'undefined') return;
       if (this.nicknameEl) {
-        this.nicknameEl.textContent = this.settings.nickname || 'Nova';
+        this.nicknameEl.textContent = this.settings.nickname || 'Miros AI';
       }
       if (this.avatarEl) {
         this.avatarEl.src = this.settings.avatar || 'assets/images/avatar-pixel.png';
@@ -421,7 +421,7 @@
       this.messagesContainer.innerHTML = '';
 
       const avatarSrc = this.settings.avatar || 'assets/images/avatar-pixel.png';
-      const nickname = this.settings.nickname || 'Nova';
+      const nickname = this.settings.nickname || 'Miros AI';
 
       for (const msg of this.messages) {
         const isUser = msg.role === 'user';
@@ -524,7 +524,7 @@
             <!-- Nickname -->
             <div style="display: flex; flex-direction: column; gap: 0.35rem;">
               <label style="font-size: 0.76rem; color: #94a3b8; font-family: var(--font-mono, monospace);">Nickname:</label>
-              <input type="text" id="settingNicknameInput" class="modern-input" placeholder="e.g. Nova, Aria, Miros..." style="width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); color:#fff; padding:0.6rem 0.85rem; border-radius:10px; font-family:inherit;">
+              <input type="text" id="settingNicknameInput" class="modern-input" placeholder="e.g. Miros AI, Aria, Jarvis..." style="width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); color:#fff; padding:0.6rem 0.85rem; border-radius:10px; font-family:inherit;">
             </div>
 
             <!-- Avatar Picture -->
@@ -595,7 +595,7 @@
 
         // Save button
         modal.querySelector('#saveCustomSettingsBtn').addEventListener('click', () => {
-          const nick = modal.querySelector('#settingNicknameInput').value.trim() || 'Nova';
+          const nick = modal.querySelector('#settingNicknameInput').value.trim() || 'Miros AI';
           const avatar = modal.querySelector('#settingAvatarInput').value.trim() || 'assets/images/avatar-pixel.png';
           const model = modal.querySelector('#settingModelInput').value.trim() || 'gemini-3.5-flash';
           const personality = modal.querySelector('#settingPersonalityInput').value.trim() || DEFAULT_SETTINGS.personality;
@@ -613,7 +613,7 @@
       }
 
       // Populate current values
-      modal.querySelector('#settingNicknameInput').value = this.settings.nickname || 'Nova';
+      modal.querySelector('#settingNicknameInput').value = this.settings.nickname || 'Miros AI';
       modal.querySelector('#settingAvatarInput').value = this.settings.avatar || 'assets/images/avatar-pixel.png';
       modal.querySelector('#settingAvatarPreview').src = this.settings.avatar || 'assets/images/avatar-pixel.png';
       modal.querySelector('#settingModelInput').value = this.settings.model || 'gemini-3.5-flash';

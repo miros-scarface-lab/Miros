@@ -2583,7 +2583,7 @@ window.AdminPanel = {
     const apiKeyEl = document.getElementById('adminCompApiKey');
 
     const curModel = comp?.model || 'gemini-3.5-flash';
-    if (nickEl) nickEl.value = comp?.nickname || 'Nova';
+    if (nickEl) nickEl.value = comp?.nickname || 'Miros AI';
     if (modelInput) modelInput.value = curModel;
     if (modelSelect) {
       const matchOpt = Array.from(modelSelect.options).find(o => o.value === curModel);
@@ -2595,11 +2595,11 @@ window.AdminPanel = {
         if (modelInput) modelInput.style.display = 'block';
       }
     }
-    if (greetingEl) greetingEl.value = comp?.greeting || "Greetings! I am Nova, Mir's AI companion. How can I assist you with systems, code, or architecture?";
+    if (greetingEl) greetingEl.value = comp?.greeting || "Greetings! I am Miros AI, Mir's AI companion. How can I assist you with systems, code, or architecture?";
     if (avatarEl) avatarEl.value = comp?.avatar || 'assets/images/avatar-pixel.png';
     if (avatarPrev) avatarPrev.src = comp?.avatar || 'assets/images/avatar-pixel.png';
     if (personalityEl) {
-      personalityEl.value = comp?.personality || 'You are Nova, an ultra-intelligent, sharp, and helpful companion. You specialize in computer science, systems engineering (C, C++, Rust, Linux, Compilers, OS), and academic problem-solving. Be concise, profound, direct, and helpful. Use clean GitHub-flavored markdown with syntax highlighted code blocks.';
+      personalityEl.value = comp?.personality || 'You are Miros AI, an ultra-intelligent, sharp, and helpful companion. You specialize in computer science, systems engineering (C, C++, Rust, Linux, Compilers, OS), and academic problem-solving. Be concise, profound, direct, and helpful. Use clean GitHub-flavored markdown with syntax highlighted code blocks.';
     }
     if (apiKeyEl) apiKeyEl.value = comp?.apiKey || '';
   },
@@ -2645,17 +2645,17 @@ window.AdminPanel = {
 
     if (presetSystems && personalityEl) {
       presetSystems.addEventListener('click', () => {
-        personalityEl.value = 'You are Nova, an elite Systems & Low-Level CSE companion for Mir A K Sajid. You specialize deeply in C, C++, Rust, Linux Kernel internals, POSIX syscalls, Compiler design, Distributed Systems, and CPU cache performance. Always provide crisp, high-performance, memory-safe code.';
+        personalityEl.value = 'You are Miros AI, an elite Systems & Low-Level CSE companion for Mir A K Sajid. You specialize deeply in C, C++, Rust, Linux Kernel internals, POSIX syscalls, Compiler design, Distributed Systems, and CPU cache performance. Always provide crisp, high-performance, memory-safe code.';
       });
     }
     if (presetRecruiter && personalityEl) {
       presetRecruiter.addEventListener('click', () => {
-        personalityEl.value = 'You are Nova, Mir A K Sajid\'s executive technical portfolio guide. Provide concise, professional, impactful summaries of Mir\'s software engineering background, full-stack projects, academic honors, and availability for software engineering roles.';
+        personalityEl.value = 'You are Miros AI, Mir A K Sajid\'s executive technical portfolio guide. Provide concise, professional, impactful summaries of Mir\'s software engineering background, full-stack projects, academic honors, and availability for software engineering roles.';
       });
     }
     if (presetArchitect && personalityEl) {
       presetArchitect.addEventListener('click', () => {
-        personalityEl.value = 'You are Nova, a senior full-stack web and cloud systems architect. You specialize in modern microservices, high-throughput REST APIs, PostgreSQL optimization, React, Docker, and edge cloud deployments.';
+        personalityEl.value = 'You are Miros AI, a senior full-stack web and cloud systems architect. You specialize in modern microservices, high-throughput REST APIs, PostgreSQL optimization, React, Docker, and edge cloud deployments.';
       });
     }
 
@@ -2741,7 +2741,7 @@ window.AdminPanel = {
     if (form) {
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const nickname = document.getElementById('adminCompNickname')?.value.trim() || 'Nova';
+        const nickname = document.getElementById('adminCompNickname')?.value.trim() || 'Miros AI';
         const selModel = document.getElementById('adminCompModelSelect')?.value;
         const model = (selModel === 'custom' ? document.getElementById('adminCompModel')?.value.trim() : selModel) || 'gemini-3.5-flash';
         const greeting = document.getElementById('adminCompGreeting')?.value.trim() || '';
