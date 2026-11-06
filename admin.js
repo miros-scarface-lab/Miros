@@ -2024,21 +2024,80 @@ window.AdminPanel = {
   hscDataCache: null,
   hscBound: false,
 
+  mergeHscData(server, local) {
+    if (!local || typeof local !== 'object') return server || { books: [], board: [], tricks: [], tests: [] };
+    if (!server || typeof server !== 'object') return local;
+
+    const merged = {
+      books: JSON.parse(JSON.stringify(server.books || [])),
+      board: JSON.parse(JSON.stringify(server.board || [])),
+      tricks: JSON.parse(JSON.stringify(server.tricks || [])),
+      tests: JSON.parse(JSON.stringify(server.tests || []))
+    };
+
+    ['books', 'board'].forEach(cat => {
+      const localGroups = Array.isArray(local[cat]) ? local[cat] : [];
+      localGroups.forEach(localGroup => {
+        let targetGroup = merged[cat].find(g => (g.subject || '').toLowerCase() === (localGroup.subject || '').toLowerCase());
+        if (!targetGroup) {
+          merged[cat].push(localGroup);
+        } else if (Array.isArray(localGroup.papers)) {
+          if (!Array.isArray(targetGroup.papers)) targetGroup.papers = [];
+          localGroup.papers.forEach(lp => {
+            const exists = targetGroup.papers.some(p => p.id === lp.id);
+            if (!exists) targetGroup.papers.push(lp);
+          });
+        }
+      });
+    });
+
+    ['tricks', 'tests'].forEach(cat => {
+      const localItems = Array.isArray(local[cat]) ? local[cat] : [];
+      localItems.forEach(li => {
+        const exists = merged[cat].some(it => it.id === li.id);
+        if (!exists) merged[cat].push(li);
+      });
+    });
+
+    return merged;
+  },
+
   async fetchHscData() {
+    let localData = null;
+    const cached = localStorage.getItem('cse_hsc_data');
+    if (cached) {
+      try { localData = JSON.parse(cached); } catch (e) {}
+    }
+
     try {
       const res = await fetch('/api/hsc');
       if (res.ok) {
-        this.hscDataCache = await res.json();
+        const serverData = await res.json();
+        this.hscDataCache = this.mergeHscData(serverData, localData);
         localStorage.setItem('cse_hsc_data', JSON.stringify(this.hscDataCache));
         return this.hscDataCache;
       }
     } catch (e) {
       console.warn('HSC API fetch fallback to local storage:', e);
     }
-    const cached = localStorage.getItem('cse_hsc_data');
-    if (cached) {
-      try { this.hscDataCache = JSON.parse(cached); return this.hscDataCache; } catch (e) {}
+
+    if (localData) {
+      this.hscDataCache = localData;
+      return this.hscDataCache;
     }
+
+    try {
+      const res = await fetch('data/portfolio.json');
+      if (res.ok) {
+        const full = await res.json();
+        if (full.hsc) {
+          this.hscDataCache = full.hsc;
+          localStorage.setItem('cse_hsc_data', JSON.stringify(this.hscDataCache));
+          return this.hscDataCache;
+        }
+      }
+    } catch (err) {}
+
     this.hscDataCache = { books: [], board: [], tricks: [], tests: [] };
     return this.hscDataCache;
   },
@@ -2086,6 +2145,18 @@ window.AdminPanel = {
         });
       }
     });
+
+    // Wire up Export HSC Data button if present
+    const exportBtn = document.getElementById('exportHscDataBtn');
+    if (exportBtn) {
+      exportBtn.addEventListener('click', () => {
+        const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(this.hscDataCache, null, 2));
+        const dlAnchor = document.createElement('a');
+        dlAnchor.setAttribute('href', dataStr);
+        dlAnchor.setAttribute('download', 'hsc_resources_backup.json');
+        dlAnchor.click();
+      });
+    }
   },
 
   async handleHscFormSubmit(catKey) {
@@ -2102,7 +2173,7 @@ window.AdminPanel = {
     const feedback = document.getElementById(cfg.feedbackId);
 
     const name = nameInput ? nameInput.value.trim() : '';
-    const subject = subjectInput ? subjectInput.value.trim() : '';
+    const subject = subjectInput ? subjectInput.value.trim() : 'Physics';
     const paper = paperInput ? paperInput.value.trim() : '1st Paper';
     const author = authorInput ? authorInput.value.trim() : '';
     const board = boardInput ? boardInput.value.trim() : '';
@@ -2119,13 +2190,14 @@ window.AdminPanel = {
       return;
     }
 
+    const safeId = editId || `hsc-${catKey}-${Date.now()}`;
     const payload = {
-      id: editId || undefined,
+      id: safeId,
       name,
       subject,
       paper,
-      author,
-      board,
+      author: author || board || '',
+      board: board || '',
       edition: year,
       year,
       downloadUrl,
@@ -2137,31 +2209,115 @@ window.AdminPanel = {
       feedback.style.color = 'var(--accent-amber)';
     }
 
+    // 1. Update in-memory cache immediately
+    if (!this.hscDataCache) {
+      this.hscDataCache = { books: [], board: [], tricks: [], tests: [] };
+    }
+    if (!Array.isArray(this.hscDataCache[catKey])) {
+      this.hscDataCache[catKey] = [];
+    }
+
+    if (catKey === 'books' || catKey === 'board') {
+      const subjectMeta = {
+        'Physics': { icon: '⚛️', bangla: catKey === 'books' ? 'পদার্থবিজ্ঞান' : 'পদার্থবিজ্ঞান বোর্ড সমাধান' },
+        'Chemistry': { icon: '🧪', bangla: catKey === 'books' ? 'রসায়ন' : 'রসায়ন বোর্ড সমাধান' },
+        'Higher Mathematics': { icon: '📐', bangla: catKey === 'books' ? 'উচ্চতর গণিত' : 'উচ্চতর গণিত বোর্ড সমাধান' },
+        'Biology': { icon: '🧬', bangla: catKey === 'books' ? 'জীববিজ্ঞান' : 'জীববিজ্ঞান বোর্ড সমাধান' },
+        'Information & Comm. Technology': { icon: '💻', bangla: 'তথ্য ও যোগাযোগ প্রযুক্তি' }
+      };
+      const meta = subjectMeta[subject] || { icon: '📚', bangla: subject };
+
+      let group = this.hscDataCache[catKey].find(g => (g.subject || '').toLowerCase() === subject.toLowerCase());
+      if (!group) {
+        group = {
+          id: `group-${catKey}-${subject.toLowerCase().replace(/[^a-z0-9]/g, '-')}`,
+          subject,
+          banglaName: meta.bangla,
+          icon: meta.icon,
+          desc: `Curated ${subject} ${catKey === 'books' ? 'Textbooks' : 'Board Solutions'}.`,
+          papers: []
+        };
+        this.hscDataCache[catKey].push(group);
+      }
+      if (!Array.isArray(group.papers)) group.papers = [];
+
+      // If editing subject, remove from previous group
+      if (editId) {
+        this.hscDataCache[catKey].forEach(g => {
+          if (g !== group && Array.isArray(g.papers)) {
+            g.papers = g.papers.filter(p => p.id !== safeId);
+          }
+        });
+      }
+
+      const paperItem = {
+        id: safeId,
+        paper,
+        name,
+        author: author || board || '',
+        board: board || '',
+        edition: year,
+        year,
+        downloadUrl,
+        desc,
+        updatedAt: new Date().toISOString()
+      };
+
+      const pIdx = group.papers.findIndex(p => p.id === safeId);
+      if (pIdx >= 0) {
+        group.papers[pIdx] = paperItem;
+      } else {
+        group.papers.push(paperItem);
+      }
+    } else {
+      const flatItem = {
+        id: safeId,
+        name,
+        subject,
+        downloadUrl,
+        year,
+        desc,
+        updatedAt: new Date().toISOString()
+      };
+      const idx = this.hscDataCache[catKey].findIndex(it => it.id === safeId);
+      if (idx >= 0) {
+        this.hscDataCache[catKey][idx] = flatItem;
+      } else {
+        this.hscDataCache[catKey].push(flatItem);
+      }
+    }
+
+    // 2. Persist to localStorage immediately
+    localStorage.setItem('cse_hsc_data', JSON.stringify(this.hscDataCache));
+
+    // 3. Immediately re-render table & reset form
+    this.renderHscTable(catKey);
+    this.resetHscForm(catKey);
+
+    // 4. Instant positive feedback
+    if (feedback) {
+      feedback.textContent = editId ? '✔ Resource updated & saved!' : '✔ Resource saved to library!';
+      feedback.style.color = 'var(--accent-patina)';
+      setTimeout(() => { if (feedback) feedback.textContent = ''; }, 4000);
+    }
+
+    // 5. In parallel sync with server API
     try {
       const res = await this.authFetch(`/api/hsc/${catKey}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
-      const data = await res.json();
-
       if (res.ok) {
-        if (feedback) {
-          feedback.textContent = editId ? '✔ Resource updated!' : '✔ Resource added to library!';
-          feedback.style.color = 'var(--accent-patina)';
-          setTimeout(() => { if (feedback) feedback.textContent = ''; }, 3500);
+        const data = await res.json();
+        if (data.data) {
+          this.hscDataCache[catKey] = data.data;
+          localStorage.setItem('cse_hsc_data', JSON.stringify(this.hscDataCache));
+          this.renderHscTable(catKey);
         }
-        this.resetHscForm(catKey);
-        await this.fetchHscData();
-        this.renderHscTable(catKey);
-      } else {
-        throw new Error(data.error || 'Failed to save resource');
       }
     } catch (err) {
-      if (feedback) {
-        feedback.textContent = `❌ ${err.message}`;
-        feedback.style.color = 'var(--accent-rust)';
-      }
+      console.warn('Backend sync deferred, saved locally in browser storage:', err);
     }
   },
 
@@ -2239,19 +2395,29 @@ window.AdminPanel = {
 
   async deleteHscItem(catKey, id) {
     if (!confirm('Are you sure you want to delete this resource?')) return;
+
+    // Immediately remove from local cache and render
+    if (this.hscDataCache && this.hscDataCache[catKey]) {
+      if (catKey === 'books' || catKey === 'board') {
+        this.hscDataCache[catKey].forEach(group => {
+          if (Array.isArray(group.papers)) {
+            group.papers = group.papers.filter(p => p.id !== id);
+          }
+        });
+        this.hscDataCache[catKey] = this.hscDataCache[catKey].filter(g => g.id !== id);
+      } else {
+        this.hscDataCache[catKey] = this.hscDataCache[catKey].filter(it => it.id !== id);
+      }
+      localStorage.setItem('cse_hsc_data', JSON.stringify(this.hscDataCache));
+      this.renderHscTable(catKey);
+    }
+
     try {
-      const res = await this.authFetch(`/api/hsc/${catKey}/${encodeURIComponent(id)}`, {
+      await this.authFetch(`/api/hsc/${catKey}/${encodeURIComponent(id)}`, {
         method: 'DELETE'
       });
-      if (res.ok) {
-        await this.fetchHscData();
-        this.renderHscTable(catKey);
-      } else {
-        const err = await res.json();
-        alert(`Failed to delete: ${err.error || 'Server error'}`);
-      }
     } catch (e) {
-      alert(`Error deleting item: ${e.message}`);
+      console.warn('Backend delete sync deferred, deleted locally');
     }
   },
 

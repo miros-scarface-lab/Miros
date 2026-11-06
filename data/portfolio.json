@@ -635,6 +635,15 @@
         "desc": "Complete HSC Physics 1st Paper & 2nd Paper Board Exam Solutions (CQ + MCQ) with detailed step-by-step answers.",
         "papers": [
           {
+            "id": "board-phys-1st-p18",
+            "paper": "1st Paper",
+            "name": "P-1.8 পর্যায়বৃত্ত গতি",
+            "board": "All Education Boards",
+            "year": "2022",
+            "downloadUrl": "https://drive.google.com/file/d/1Gi_kGbvgr",
+            "desc": "Solved CQ"
+          },
+          {
             "id": "board-phys-1st-all",
             "paper": "1st Paper",
             "name": "HSC Physics 1st Paper All Board Question Solutions (2018–2023)",

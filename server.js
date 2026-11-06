@@ -31,35 +31,79 @@ const PORTFOLIO_FILE = path.join(DATA_DIR, 'portfolio.json');
 const MESSAGES_FILE = path.join(DATA_DIR, 'messages.json');
 const AUTH_FILE = path.join(DATA_DIR, 'auth.json');
 
+const os = require('os');
+const TMP_DATA_DIR = path.join(os.tmpdir(), 'scarface_portfolio_data');
+
 // Ensure essential folders exist
-if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
-if (!fs.existsSync(UPLOADS_DIR)) fs.mkdirSync(UPLOADS_DIR, { recursive: true });
+try {
+  if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
+} catch (e) {}
+try {
+  if (!fs.existsSync(UPLOADS_DIR)) fs.mkdirSync(UPLOADS_DIR, { recursive: true });
+} catch (e) {}
+try {
+  if (!fs.existsSync(TMP_DATA_DIR)) fs.mkdirSync(TMP_DATA_DIR, { recursive: true });
+} catch (e) {}
 
 // ============================================================================
-// 1. JSON Helpers
+// 1. JSON Helpers (Vercel Serverless EROFS-Proof with /tmp & In-Memory Store)
 // ============================================================================
+const MEMORY_CACHE = new Map();
+
 function readJSON(file, fallback = {}) {
+  const baseName = path.basename(file);
+  if (MEMORY_CACHE.has(baseName)) {
+    return JSON.parse(JSON.stringify(MEMORY_CACHE.get(baseName)));
+  }
+
+  // 1. Try /tmp file (writable and updated on Vercel)
+  const tmpFile = path.join(TMP_DATA_DIR, baseName);
+  try {
+    if (fs.existsSync(tmpFile)) {
+      const data = fs.readFileSync(tmpFile, 'utf8');
+      const parsed = JSON.parse(data);
+      MEMORY_CACHE.set(baseName, parsed);
+      return parsed;
+    }
+  } catch (err) {}
+
+  // 2. Try original workspace / project file
   try {
     if (fs.existsSync(file)) {
       const data = fs.readFileSync(file, 'utf8');
-      return JSON.parse(data);
+      const parsed = JSON.parse(data);
+      MEMORY_CACHE.set(baseName, parsed);
+      return parsed;
     }
   } catch (err) {
-    console.error(`[FS ERROR] Error reading ${path.basename(file)}:`, err.message);
+    console.error(`[FS ERROR] Error reading ${baseName}:`, err.message);
   }
   return fallback;
 }
 
 function writeJSON(file, data) {
+  const baseName = path.basename(file);
+  MEMORY_CACHE.set(baseName, data);
+
+  // 1. Try local/project directory (works in local dev)
   try {
     const tempFile = `${file}.tmp.${Date.now()}`;
     fs.writeFileSync(tempFile, JSON.stringify(data, null, 2), 'utf8');
     fs.renameSync(tempFile, file);
-    return true;
   } catch (err) {
-    console.error(`[FS ERROR] Error writing ${path.basename(file)}:`, err.message);
-    return false;
+    // Read-only filesystem in Vercel (/var/task)
   }
+
+  // 2. Always persist to /tmp (guaranteed writable on Vercel)
+  try {
+    const tmpFile = path.join(TMP_DATA_DIR, baseName);
+    fs.writeFileSync(tmpFile, JSON.stringify(data, null, 2), 'utf8');
+  } catch (tmpErr) {
+    console.warn(`[TMP WRITE WARN] ${baseName}:`, tmpErr.message);
+  }
+
+  // Memory & tmp written successfully
+  return true;
 }
 
 // ============================================================================

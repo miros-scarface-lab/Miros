@@ -1012,12 +1012,64 @@
       });
     }
 
+    // Merge server data with local user modifications so nothing is ever lost
+    function mergeHscData(server, local) {
+      if (!local || typeof local !== 'object') return server || { books: [], board: [], tricks: [], tests: [] };
+      if (!server || typeof server !== 'object') return local;
+
+      const merged = {
+        books: JSON.parse(JSON.stringify(server.books || [])),
+        board: JSON.parse(JSON.stringify(server.board || [])),
+        tricks: JSON.parse(JSON.stringify(server.tricks || [])),
+        tests: JSON.parse(JSON.stringify(server.tests || []))
+      };
+
+      ['books', 'board'].forEach(cat => {
+        const localGroups = Array.isArray(local[cat]) ? local[cat] : [];
+        localGroups.forEach(localGroup => {
+          let targetGroup = merged[cat].find(g => (g.subject || '').toLowerCase() === (localGroup.subject || '').toLowerCase());
+          if (!targetGroup) {
+            merged[cat].push(localGroup);
+          } else if (Array.isArray(localGroup.papers)) {
+            if (!Array.isArray(targetGroup.papers)) targetGroup.papers = [];
+            localGroup.papers.forEach(lp => {
+              const exists = targetGroup.papers.some(p => p.id === lp.id);
+              if (!exists) targetGroup.papers.push(lp);
+            });
+          }
+        });
+      });
+
+      ['tricks', 'tests'].forEach(cat => {
+        const localItems = Array.isArray(local[cat]) ? local[cat] : [];
+        localItems.forEach(li => {
+          const exists = merged[cat].some(it => it.id === li.id);
+          if (!exists) merged[cat].push(li);
+        });
+      });
+
+      return merged;
+    }
+
     // ---- Fetch HSC Data ----
     async function loadHscData() {
+      let localCached = null;
+      try {
+        const cachedStr = localStorage.getItem('cse_hsc_data');
+        if (cachedStr) localCached = JSON.parse(cachedStr);
+      } catch (e) {}
+
+      // Immediately render local cache so user sees saved updates without network wait
+      if (localCached && typeof localCached === 'object') {
+        hscLiveState = localCached;
+        renderAll();
+      }
+
       try {
         let res = await fetch('/api/hsc');
         if (res.ok) {
-          hscLiveState = await res.json();
+          const serverData = await res.json();
+          hscLiveState = mergeHscData(serverData, localCached);
           renderAll();
           return;
         }
@@ -1030,7 +1082,7 @@
         if (res.ok) {
           const full = await res.json();
           if (full.hsc) {
-            hscLiveState = full.hsc;
+            hscLiveState = mergeHscData(full.hsc, localCached);
             renderAll();
           }
         }

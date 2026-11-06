@@ -998,9 +998,15 @@
 
           <!-- TAB: HSC ACADEMIC RESOURCES -->
           <div class="admin-tab-pane" id="tab-hsc">
-            <div class="tab-pane-header">
-              <h3 class="pane-title">📚 HSC Academic Resource Hub</h3>
-              <p class="pane-subtitle">Manage books, board solution books, short tricks, and test papers displayed on the public HSC Academic Hub page.</p>
+            <div class="tab-pane-header" style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;">
+              <div>
+                <h3 class="pane-title">📚 HSC Academic Resource Hub</h3>
+                <p class="pane-subtitle">Manage books, board solution books, short tricks, and test papers displayed on the public HSC Academic Hub page.</p>
+              </div>
+              <div style="display:flex;gap:0.5rem;align-items:center;">
+                <button type="button" class="vintage-btn btn-sm btn-outline" id="exportHscDataBtn" title="Download backup JSON of all HSC books and solutions">💾 Export HSC Data (JSON)</button>
+                <a href="hsc.html" target="_blank" class="vintage-btn btn-sm">👁 View Public Hub</a>
+              </div>
             </div>
 
             <!-- HSC Category Tabs -->
