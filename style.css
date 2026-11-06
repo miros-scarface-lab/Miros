@@ -6598,3 +6598,344 @@ h1, h2, h3, h4,
     width: calc(100vw - 24px) !important;
   }
 }
+
+
+/* ==========================================================================
+   ULTRA-MODERN FUTURISTIC DARK DESIGN SYSTEM (2026 EDITION)
+   ========================================================================== */
+
+:root,
+[data-theme="modern-dark"],
+[data-theme="vintage-parchment"],
+[data-theme="terminal-phosphor"],
+[data-theme="blueprint-cyan"],
+[data-theme="amber-crt"],
+[data-theme="cyber-deck"],
+[data-theme="solarized-dark"] {
+  /* Unified Modern Dark Palette */
+  --bg-paper: #090e1c !important;
+  --bg-primary: #030712 !important;
+  --bg-subtle: rgba(15, 23, 42, 0.75) !important;
+  --bg-card: rgba(13, 20, 38, 0.75) !important;
+  --bg-terminal: #02040a !important;
+  
+  --ink-primary: #f8fafc !important;
+  --ink-secondary: #94a3b8 !important;
+  --ink-muted: #64748b !important;
+  --ink-terminal: #00f0ff !important;
+  
+  --border-color: rgba(255, 255, 255, 0.09) !important;
+  --border-subtle: rgba(255, 255, 255, 0.05) !important;
+  --border-focus: #00f0ff !important;
+  
+  --accent-rust: #00f0ff !important;
+  --accent-cyan: #00f0ff !important;
+  --accent-blue: #38bdf8 !important;
+  --accent-purple: #a855f7 !important;
+  --accent-indigo: #6366f1 !important;
+  --accent-emerald: #10b981 !important;
+  --accent-amber: #f59e0b !important;
+
+  /* Fonts */
+  --font-serif: 'Space Grotesk', 'Outfit', -apple-system, sans-serif !important;
+  --font-display: 'Space Grotesk', 'Outfit', sans-serif !important;
+  --font-body: 'Inter', -apple-system, sans-serif !important;
+  --font-mono: 'JetBrains Mono', monospace !important;
+
+  /* Shadows & Radius */
+  --radius-card: 18px !important;
+  --radius-btn: 9999px !important;
+  --radius-badge: 9999px !important;
+  --shadow-tactile: 0 10px 30px -10px rgba(0, 0, 0, 0.6) !important;
+  --shadow-tactile-lg: 0 20px 50px -15px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* 1. Global Modern Background & Typography */
+body, .vintage-body, .modern-body {
+  background: #030712 !important;
+  background-image: 
+    radial-gradient(ellipse at 50% -20%, rgba(99, 102, 241, 0.16) 0%, transparent 65%),
+    radial-gradient(circle at 10% 40%, rgba(0, 240, 255, 0.07) 0%, transparent 45%),
+    radial-gradient(circle at 90% 75%, rgba(168, 85, 247, 0.08) 0%, transparent 50%) !important;
+  background-attachment: fixed !important;
+  color: #f8fafc !important;
+  font-family: 'Inter', -apple-system, sans-serif !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* 2. Floating Sleek Modern Header */
+.vintage-header, .modern-header {
+  position: sticky !important;
+  top: 12px !important;
+  z-index: 1000 !important;
+  margin: 0.5rem auto 1.5rem !important;
+  max-width: 1220px !important;
+  width: 95% !important;
+  background: rgba(8, 12, 28, 0.85) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.09) !important;
+  border-radius: 9999px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 240, 255, 0.08) !important;
+  padding: 0.35rem 1rem !important;
+}
+
+.header-container {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.brand-link {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 700 !important;
+  color: #f8fafc !important;
+  letter-spacing: 0.04em !important;
+  text-decoration: none !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 2px !important;
+}
+
+.brand-bracket {
+  color: #00f0ff !important;
+}
+
+.brand-text {
+  background: linear-gradient(135deg, #ffffff 40%, #00f0ff 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.nav-links {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.25rem !important;
+}
+
+.nav-item {
+  font-family: var(--font-mono) !important;
+  font-size: 0.76rem !important;
+  color: #94a3b8 !important;
+  padding: 0.35rem 0.65rem !important;
+  border-radius: 9999px !important;
+  border: 1px solid transparent !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+}
+
+.nav-item:hover {
+  color: #f8fafc !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+
+.nav-item.active {
+  color: #00f0ff !important;
+  background: rgba(0, 240, 255, 0.12) !important;
+  border-color: rgba(0, 240, 255, 0.35) !important;
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.2) !important;
+}
+
+/* 3. Cards & Surfaces (Frosted Glassmorphism) */
+.parchment-paper, .modern-card, .project-card, .skill-card, .bio-card, .stat-card, .admin-container, .terminal-chassis {
+  background: rgba(13, 19, 38, 0.72) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5) !important;
+  color: #f8fafc !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.parchment-paper:hover, .project-card:hover, .skill-card:hover {
+  border-color: rgba(0, 240, 255, 0.4) !important;
+  box-shadow: 0 15px 35px -10px rgba(0, 240, 255, 0.25), 0 0 20px rgba(0, 240, 255, 0.1) !important;
+  transform: translateY(-3px) !important;
+}
+
+/* 4. Modern Buttons */
+.vintage-btn, .modern-btn {
+  border-radius: 9999px !important;
+  font-family: var(--font-mono) !important;
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #f8fafc !important;
+  padding: 0.45rem 1.15rem !important;
+  transition: all 0.2s ease !important;
+  cursor: pointer !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2) !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.4rem !important;
+}
+
+.vintage-btn.btn-primary, .modern-btn.btn-primary {
+  background: linear-gradient(135deg, #00f0ff 0%, #3b82f6 100%) !important;
+  color: #020617 !important;
+  border: none !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 20px rgba(0, 240, 255, 0.35) !important;
+}
+
+.vintage-btn:hover, .modern-btn:hover {
+  border-color: #00f0ff !important;
+  color: #00f0ff !important;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.3) !important;
+  transform: translateY(-1px) !important;
+}
+
+.vintage-btn.btn-primary:hover, .modern-btn.btn-primary:hover {
+  background: linear-gradient(135deg, #38bdf8 0%, #60a5fa 100%) !important;
+  color: #020617 !important;
+  box-shadow: 0 6px 25px rgba(0, 240, 255, 0.5) !important;
+}
+
+/* 5. Modern Badges & Tags */
+.vintage-tag, .modern-badge, .sector-tag {
+  border-radius: 9999px !important;
+  background: rgba(0, 240, 255, 0.08) !important;
+  border: 1px solid rgba(0, 240, 255, 0.25) !important;
+  color: #38bdf8 !important;
+  font-family: var(--font-mono) !important;
+  font-size: 0.72rem !important;
+  padding: 0.2rem 0.65rem !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* 6. Form Inputs & Controls */
+.vintage-input, .modern-input {
+  background: rgba(5, 8, 20, 0.9) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: #f8fafc !important;
+  border-radius: 12px !important;
+  padding: 0.65rem 1rem !important;
+  font-family: var(--font-body) !important;
+  transition: all 0.2s ease !important;
+}
+
+.vintage-input:focus, .modern-input:focus {
+  border-color: #00f0ff !important;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.3) !important;
+  outline: none !important;
+}
+
+/* 7. Modern Terminal Chassis & Screen */
+.modern-terminal-chassis {
+  background: rgba(7, 11, 24, 0.95) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(0, 240, 255, 0.35) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 30px rgba(0, 240, 255, 0.15) !important;
+  overflow: hidden !important;
+}
+
+.modern-terminal-titlebar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  background: rgba(4, 7, 16, 0.96) !important;
+  padding: 0.65rem 1.15rem !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.window-controls {
+  display: flex !important;
+  align-items: center !important;
+  gap: 7px !important;
+}
+
+.control-dot {
+  width: 12px !important;
+  height: 12px !important;
+  border-radius: 50% !important;
+}
+
+.control-dot.red { background: #ef4444 !important; box-shadow: 0 0 6px rgba(239, 68, 68, 0.4) !important; }
+.control-dot.yellow { background: #f59e0b !important; box-shadow: 0 0 6px rgba(245, 158, 11, 0.4) !important; }
+.control-dot.green { background: #10b981 !important; box-shadow: 0 0 6px rgba(16, 185, 129, 0.4) !important; }
+
+.terminal-titlebar-title {
+  font-family: var(--font-mono) !important;
+  font-size: 0.82rem !important;
+  color: #94a3b8 !important;
+}
+
+.terminal-status-tag {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.35rem !important;
+  font-family: var(--font-mono) !important;
+  font-size: 0.7rem !important;
+  color: #10b981 !important;
+  font-weight: 700 !important;
+}
+
+.terminal-quick-bar {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.45rem !important;
+  padding: 0.55rem 1rem !important;
+  background: rgba(9, 14, 28, 0.88) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+  overflow-x: auto !important;
+  flex-wrap: wrap !important;
+}
+
+.term-pill-btn, .cmd-pill {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: #38bdf8 !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.72rem !important;
+  padding: 0.25rem 0.65rem !important;
+  border-radius: 9999px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  white-space: nowrap !important;
+}
+
+.term-pill-btn:hover, .cmd-pill:hover {
+  background: rgba(0, 240, 255, 0.18) !important;
+  border-color: #00f0ff !important;
+  color: #00f0ff !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.3) !important;
+}
+
+.terminal-screen {
+  background: #02040a !important;
+  padding: 1.25rem !important;
+  overflow-y: auto !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  line-height: 1.6 !important;
+  border-bottom-left-radius: 18px !important;
+  border-bottom-right-radius: 18px !important;
+}
+
+.term-line {
+  margin-bottom: 0.25rem !important;
+  white-space: pre-wrap !important;
+  word-break: break-all !important;
+}
+
+.term-prompt {
+  color: #10b981 !important;
+  font-weight: 700 !important;
+  white-space: nowrap !important;
+}
+
+.terminal-input {
+  color: #f8fafc !important;
+  caret-color: #00f0ff !important;
+}
+
+/* 8. Removal of Old Retro Gimmicks */
+.vintage-overlay, .retro-ticker-tape {
+  display: none !important;
+}

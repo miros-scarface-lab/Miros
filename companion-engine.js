@@ -54,18 +54,19 @@
       this.settings = this.loadSettings();
       this.messages = this.loadHistory();
       this.isThinking = false;
-      this.isLocked = !this.isSessionUnlocked();
+      this.isLocked = false;
 
       // DOM Elements
-      this.container = options.container || document.getElementById('companionContainer');
-      this.lockScreenEl = options.lockScreenEl || document.getElementById('companionLockScreen');
-      this.workspaceEl = options.workspaceEl || document.getElementById('companionWorkspace');
-      this.messagesContainer = options.messagesContainer || document.getElementById('companionChatFeed');
-      this.inputEl = options.inputEl || document.getElementById('companionInput');
-      this.sendBtn = options.sendBtn || document.getElementById('companionSendBtn');
-      this.nicknameEl = options.nicknameEl || document.getElementById('companionHeaderNickname');
-      this.avatarEl = options.avatarEl || document.getElementById('companionHeaderAvatar');
-      this.dotsMenuBtn = options.dotsMenuBtn || document.getElementById('companionDotsBtn');
+      const doc = typeof document !== 'undefined' ? document : null;
+      this.container = options.container || doc?.getElementById('companionContainer') || null;
+      this.lockScreenEl = options.lockScreenEl || doc?.getElementById('companionLockScreen') || null;
+      this.workspaceEl = options.workspaceEl || doc?.getElementById('companionWorkspace') || null;
+      this.messagesContainer = options.messagesContainer || doc?.getElementById('companionChatFeed') || null;
+      this.inputEl = options.inputEl || doc?.getElementById('companionInput') || null;
+      this.sendBtn = options.sendBtn || doc?.getElementById('companionSendBtn') || null;
+      this.nicknameEl = options.nicknameEl || doc?.getElementById('companionHeaderNickname') || null;
+      this.avatarEl = options.avatarEl || doc?.getElementById('companionHeaderAvatar') || null;
+      this.dotsMenuBtn = options.dotsMenuBtn || doc?.getElementById('companionDotsBtn') || null;
 
       if (options.autoInit !== false) {
         this.init();
@@ -98,6 +99,14 @@
           this.renderHeaderInfo();
         }
       } catch (e) {}
+    }
+
+    getEffectiveApiKey() {
+      const stored = (this.settings && this.settings.apiKey ? this.settings.apiKey : '').trim();
+      if (stored && stored !== 'undefined' && stored !== 'null' && stored.length > 10) {
+        return stored;
+      }
+      return _INITIAL_KEY;
     }
 
     loadSettings() {
@@ -170,19 +179,12 @@
     }
 
     checkLockState() {
-      this.isLocked = !this.isSessionUnlocked();
-      if (this.lockScreenEl && this.workspaceEl) {
-        if (this.isLocked) {
-          this.lockScreenEl.style.display = 'flex';
-          this.workspaceEl.style.display = 'none';
-          const passInput = this.lockScreenEl.querySelector('input[type="password"]') || document.getElementById('companionPasscodeInput');
-          if (passInput) {
-            passInput.value = '';
-          }
-        } else {
-          this.lockScreenEl.style.display = 'none';
-          this.workspaceEl.style.display = 'flex';
-        }
+      this.isLocked = false;
+      if (this.lockScreenEl) {
+        this.lockScreenEl.style.display = 'none';
+      }
+      if (this.workspaceEl) {
+        this.workspaceEl.style.display = 'flex';
       }
     }
 
@@ -223,6 +225,7 @@
     }
 
     renderHeaderInfo() {
+      if (typeof document === 'undefined') return;
       if (this.nicknameEl) {
         this.nicknameEl.textContent = this.settings.nickname || 'Nova';
       }
@@ -312,21 +315,42 @@
       this.isThinking = true;
       this.renderThinkingIndicator();
 
+      const apiKey = this.getEffectiveApiKey();
+      const targetModel = (this.settings.model || 'gemini-3.5-flash').trim();
+
+      // Models verified available for this key
+      const candidateModels = [
+        targetModel,
+        'gemini-3.5-flash',
+        'gemini-3.5-flash-lite',
+        'gemini-flash-latest',
+        'gemini-2.5-flash'
+      ];
+      const uniqueModels = Array.from(new Set(candidateModels));
+
+      // Build valid Gemini contents array (must alternate or begin with user)
       const contents = [];
       const recent = this.messages.slice(-10);
       for (const msg of recent) {
+        if (!msg.text || msg.isError) continue;
         contents.push({
           role: msg.role === 'model' ? 'model' : 'user',
           parts: [{ text: msg.text }]
         });
       }
 
+      // Ensure at least 1 user message and begins with 'user'
+      while (contents.length > 0 && contents[0].role !== 'user') {
+        contents.shift();
+      }
+      if (contents.length === 0) {
+        contents.push({ role: 'user', parts: [{ text: prompt }] });
+      }
+
       const bodyPayload = {
         contents,
         generationConfig: {
           temperature: 0.7,
-          topK: 40,
-          topP: 0.95,
           maxOutputTokens: 2048
         },
         systemInstruction: {
@@ -334,28 +358,16 @@
         }
       };
 
-      const apiKey = (this.settings.apiKey || DEFAULT_SETTINGS.apiKey).trim();
-      const targetModel = (this.settings.model || DEFAULT_SETTINGS.model).trim();
-
-      const candidateModels = [
-        targetModel,
-        'gemini-3.5-flash',
-        'gemini-2.0-flash',
-        'gemini-1.5-flash'
-      ];
-      const uniqueModels = Array.from(new Set(candidateModels));
-
       let replyText = '';
       let lastError = null;
 
       for (const m of uniqueModels) {
         try {
-          const url = `https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent?key=${apiKey}`;
+          const url = 'https://generativelanguage.googleapis.com/v1beta/models/' + m + ':generateContent?key=' + apiKey;
           const res = await fetch(url, {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json',
-              'x-goog-api-key': apiKey
+              'Content-Type': 'application/json'
             },
             body: JSON.stringify(bodyPayload)
           });
@@ -363,17 +375,18 @@
           if (res.ok) {
             const data = await res.json();
             if (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts) {
-              replyText = data.candidates[0].content.parts.map(p => p.text).join('\n');
-              break;
+              replyText = data.candidates[0].content.parts
+                .filter(p => p.text)
+                .map(p => p.text)
+                .join('\n')
+                .trim();
+              if (replyText) break;
             }
           } else {
             const errData = await res.json().catch(() => ({}));
-            lastError = errData.error?.message || `HTTP ${res.status}`;
-            if (res.status === 404) {
-              // Try next fallback model
-              continue;
-            }
-            break;
+            lastError = errData.error?.message || ('HTTP ' + res.status);
+            // Try next model on high demand (503) or not found (404)
+            continue;
           }
         } catch (networkErr) {
           lastError = networkErr.message;
@@ -406,6 +419,7 @@
     }
 
     renderThinkingIndicator() {
+      if (typeof document === 'undefined' || !this.messagesContainer) return;
       if (!this.messagesContainer) return;
       const id = 'companionThinkingRow';
       if (document.getElementById(id)) return;
@@ -429,6 +443,7 @@
     }
 
     removeThinkingIndicator() {
+      if (typeof document === 'undefined') return;
       const row = document.getElementById('companionThinkingRow');
       if (row) row.remove();
     }

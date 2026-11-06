@@ -1,22 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="vintage-parchment">
+<html lang="en" data-theme="modern-dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Companion | Mir A K Sajid</title>
-  <meta name="description" content="Intelligent AI Companion for systems engineering, programming, and academic problem solving.">
+  <meta name="description" content="Intelligent AI Companion powered by Gemini 3.5 Flash for computer science, systems programming, and academic problem solving.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,300..800;1,300..800&family=Outfit:wght@300..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="assets/images/avatar-pixel.png">
 </head>
-<body class="vintage-body companion-body-page">
-
-  <div class="vintage-overlay" id="vintageOverlay" aria-hidden="true"></div>
+<body class="modern-body companion-body-page">
 
   <!-- Slim Universal Header -->
-  <header class="vintage-header" id="header">
+  <header class="modern-header" id="header">
     <div class="header-container">
       <div class="brand-badge">
         <a href="index.html" class="brand-link">
@@ -40,22 +38,7 @@
       </nav>
 
       <div class="header-controls">
-        <div class="theme-dropdown">
-          <button class="vintage-btn btn-sm btn-icon" id="themeDropdownBtn" title="Switch Theme">
-            <span class="btn-icon-symbol">🗲</span>
-            <span class="theme-active-name" id="themeActiveName">Theme</span>
-          </button>
-          <div class="dropdown-menu" id="themeMenu">
-            <button class="theme-option active" data-theme-val="vintage-parchment">📜 Parchment &amp; Ink</button>
-            <button class="theme-option" data-theme-val="terminal-phosphor">📟 CRT Green Phosphor</button>
-            <button class="theme-option" data-theme-val="blueprint-cyan">📐 Blueprint Cyan</button>
-            <button class="theme-option" data-theme-val="amber-crt">💡 Amber Gas Discharge</button>
-            <button class="theme-option" data-theme-val="cyber-deck">💜 Cyberdeck Neon</button>
-            <button class="theme-option" data-theme-val="solarized-dark">☀️ Solarized Dark</button>
-          </div>
-        </div>
-
-        <button class="vintage-btn btn-sm btn-icon" id="audioToggleBtn" title="Toggle Audio">
+        <button class="modern-btn btn-sm btn-icon" id="audioToggleBtn" title="Toggle Audio">
           <span id="audioIcon">🔊</span>
         </button>
       </div>
@@ -66,30 +49,14 @@
     </div>
   </header>
 
-  <!-- Main Companion Viewport Container -->
+  <!-- Main Companion Viewport Container (Directly Open - Zero Passwords) -->
   <main class="companion-viewport-container" id="companionContainer">
 
-    <!-- Passphrase Lock Screen (Active by Default until 'miros' entered) -->
-    <div class="companion-lock-screen" id="companionLockScreen">
-      <div class="companion-lock-card parchment-paper">
-        <div class="lock-shield-icon">🔒</div>
-        <h2 class="lock-shield-title">Access Restricted</h2>
-        <p class="lock-shield-desc">Enter passphrase to access the companion workspace.</p>
-        <form id="companionLockForm" class="companion-lock-form">
-          <div class="lock-input-wrap">
-            <input type="password" id="companionPasscodeInput" class="vintage-input lock-passcode-input" placeholder="Enter passphrase..." required autofocus autocomplete="current-password">
-            <button type="submit" class="vintage-btn btn-primary lock-submit-btn">Unlock</button>
-          </div>
-          <div class="companion-lock-feedback" id="companionLockFeedback"></div>
-        </form>
-      </div>
-    </div>
-
-    <!-- Modern Clean Chat Workspace (Revealed Upon Unlock) -->
-    <div class="companion-workspace-wrapper" id="companionWorkspace" style="display: none;">
+    <!-- Modern Clean Chat Workspace (Always Active) -->
+    <div class="companion-workspace-wrapper" id="companionWorkspace" style="display: flex;">
       
       <!-- Clean Chat Window -->
-      <div class="modern-chat-window parchment-paper">
+      <div class="modern-chat-window">
         
         <!-- Chat Header with Model Nickname, Avatar & 3-Dot Settings Menu -->
         <div class="modern-chat-header">
@@ -98,7 +65,7 @@
             <div class="chat-header-info">
               <span class="chat-header-name" id="companionHeaderNickname">Nova</span>
               <span class="chat-header-status">
-                <span class="status-green-dot"></span> Active
+                <span class="status-green-dot"></span> Active • Ready
               </span>
             </div>
           </div>
@@ -111,7 +78,7 @@
           </div>
         </div>
 
-        <!-- Chat Messages Feed (No Gemini Branding) -->
+        <!-- Chat Messages Feed -->
         <div class="modern-chat-feed" id="companionChatFeed">
           <!-- Rendered dynamically -->
         </div>
@@ -142,7 +109,6 @@
       if (window.CompanionEngine && window.CompanionEngine.GeminiCompanion) {
         window.activeCompanion = new window.CompanionEngine.GeminiCompanion({
           container: document.getElementById('companionContainer'),
-          lockScreenEl: document.getElementById('companionLockScreen'),
           workspaceEl: document.getElementById('companionWorkspace'),
           messagesContainer: document.getElementById('companionChatFeed'),
           inputEl: document.getElementById('companionInput'),

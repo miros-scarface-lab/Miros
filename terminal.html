@@ -1,33 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="vintage-parchment">
+<html lang="en" data-theme="modern-dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>02. Teletype Terminal (REPL) | Mir A K Sajid CSE Portfolio</title>
-  <meta name="description" content="Interactive VT-100 mechanical terminal emulator. Run commands, inspect system blueprints, review skills matrix, and simulate Unix routines.">
+  <title>02. Linux Terminal | Mir A K Sajid</title>
+  <meta name="description" content="Interactive live Linux terminal emulator. Execute POSIX routines, Python REPL, Node.js scripts, and system telemetry.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,300..800;1,300..800&family=Outfit:wght@300..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="assets/images/avatar-pixel.png">
 </head>
-<body class="vintage-body">
+<body class="modern-body terminal-body-page">
 
-  <div class="vintage-overlay" id="vintageOverlay" aria-hidden="true"></div>
-
-  <!-- Header -->
-  <header class="vintage-header" id="header">
+  <!-- Slim Universal Header -->
+  <header class="modern-header" id="header">
     <div class="header-container">
       <div class="brand-badge">
         <a href="index.html" class="brand-link">
           <span class="brand-bracket">[</span>
-          <span class="brand-text" id="headerBrand">CSE://MIR_SAJID</span>
+          <span class="brand-text" id="headerBrand">CSE://SAJID</span>
           <span class="brand-bracket">]</span>
         </a>
-        <div class="status-pill" id="systemStatusPill">
-          <span class="status-indicator"></span>
-          <span class="status-label" id="headerStatus">KERNEL READY • OPEN TO WORK</span>
-        </div>
       </div>
 
       <nav class="nav-links" id="mainNav">
@@ -40,27 +34,11 @@
         <a href="experience.html" class="nav-item"><span>06.</span> Experience</a>
         <a href="contact.html" class="nav-item"><span>07.</span> Dispatch</a>
         <a href="hsc.html" class="nav-item"><span>08.</span> HSC Academic</a>
-          <a href="companion.html" class="nav-item"><span>09.</span> Companion</a>
+        <a href="companion.html" class="nav-item"><span>09.</span> Companion</a>
       </nav>
 
       <div class="header-controls">
-        <div class="theme-dropdown">
-          <button class="vintage-btn btn-sm btn-icon" id="themeDropdownBtn" title="Switch Vintage Theme">
-            <span class="btn-icon-symbol">🗲</span>
-            <span class="theme-active-name" id="themeActiveName">Parchment</span>
-          </button>
-          <div class="dropdown-menu" id="themeMenu">
-            <button class="theme-option active" data-theme-val="vintage-parchment">📜 Parchment & Ink</button>
-            <button class="theme-option" data-theme-val="terminal-phosphor">📟 CRT Green Phosphor</button>
-            <button class="theme-option" data-theme-val="blueprint-cyan">📐 Blueprint Cyan</button>
-            <button class="theme-option" data-theme-val="amber-crt">💡 Amber Gas Discharge</button>
-            <button class="theme-option" data-theme-val="cyber-deck">💜 Cyberdeck Neon</button>
-            <button class="theme-option" data-theme-val="solarized-dark">☀️ Solarized Dark</button>
-          </div>
-        </div>
-
-        <!-- 3-Dots Quick Action Menu -->
-        <button class="vintage-btn btn-sm btn-icon" id="audioToggleBtn" title="Toggle Mechanical Audio">
+        <button class="modern-btn btn-sm btn-icon" id="audioToggleBtn" title="Toggle Mechanical Audio">
           <span id="audioIcon">🔊</span>
         </button>
       </div>
@@ -71,114 +49,143 @@
     </div>
   </header>
 
-  <!-- Page Banner -->
-  <div class="page-banner">
-    <div class="container">
-      <div class="page-breadcrumbs">
-        <a href="index.html">Index</a> / <span>Sector 02</span> / <span>Teletype Terminal</span>
+  <main class="container terminal-page-container" style="padding-bottom: 4rem;">
+    
+    <!-- Page Intro Header -->
+    <div class="page-header" style="margin-bottom: 1.5rem; text-align: left;">
+      <div class="breadcrumb" style="font-family: var(--font-mono); font-size: 0.82rem; color: #64748b; margin-bottom: 0.5rem;">
+        <a href="index.html" style="color:#00f0ff; text-decoration:none;">Index</a> / <span>Sector 02</span> / <span style="color:#f8fafc;">Linux Shell</span>
       </div>
-      <h1 class="page-title">02. Interactive Teletype Unit (REPL)</h1>
-      <p class="page-lead">
-        Emulated VT-100 serial console. Execute POSIX routines, query system specs, run benchmarks, or shift display phosphors.
+      <h1 class="page-title" style="font-size: 2rem; margin: 0 0 0.5rem 0; font-family: var(--font-display); background: linear-gradient(135deg, #ffffff 40%, #00f0ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">02. Interactive Linux Terminal</h1>
+      <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.6; max-width: 800px; margin: 0;">
+        Full-featured POSIX virtual shell with Virtual Filesystem (VFS), Python 3 REPL, Node.js runtime, live script runner, and interactive <code style="color:#00f0ff;">nano</code> editor.
       </p>
     </div>
-  </div>
 
-  <main class="container" style="padding-bottom: 5rem;">
-    <!-- Large Dedicated Terminal Chassis -->
-    <div class="terminal-chassis" style="box-shadow: var(--shadow-tactile-lg);">
-      <div class="terminal-bezel">
-        <div class="terminal-status-lights">
-          <span class="light red" title="POWER"></span>
-          <span class="light yellow" title="DRIVE IO"></span>
-          <span class="light green" title="PARITY OK"></span>
-          <span class="terminal-model-title">VT-100 DEDICATED TELETYPE // TTY0 [BAUD: 19200]</span>
+    <!-- Modern Linux Terminal Chassis -->
+    <div class="modern-terminal-chassis">
+      
+      <!-- Top Window Title Bar with Window Controls -->
+      <div class="modern-terminal-titlebar">
+        <div class="window-controls">
+          <span class="control-dot red"></span>
+          <span class="control-dot yellow"></span>
+          <span class="control-dot green"></span>
         </div>
-        <div class="terminal-quick-keys">
-          <button class="cmd-pill" data-cmd="ls -la">ls -la</button>
-          <button class="cmd-pill" data-cmd="neofetch">neofetch</button>
-          <button class="cmd-pill" data-cmd="cmatrix">cmatrix</button>
-          <button class="cmd-pill" data-cmd="python3">python3</button>
-          <button class="cmd-pill" data-cmd="node">node</button>
-          <button class="cmd-pill" data-cmd="cat resume.md">cat resume.md</button>
-          <button class="cmd-pill" data-cmd="top">top</button>
-          <button class="cmd-pill" data-cmd="nano script.sh">nano script.sh</button>
-          <button class="cmd-pill" data-cmd="tree">tree</button>
-          <button class="cmd-pill" data-cmd="uname -a">uname -a</button>
-          <button class="cmd-pill" data-cmd="clear">clear</button></div>
+        <div class="terminal-titlebar-title">
+          <span style="color:#00f0ff;">sajid@scarface-lab</span>:<span style="color:#a855f7;">~</span> (bash — 64-bit VFS)
+        </div>
+        <div class="terminal-status-tag">
+          <span class="status-green-dot"></span> LIVE TTY
+        </div>
       </div>
 
-      <div class="terminal-screen" id="terminalScreen" style="min-height: 440px; max-height: 560px;">
+      <!-- Quick Command Bar -->
+      <div class="terminal-quick-bar">
+        <span style="font-size: 0.72rem; color: #64748b; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em;">Quick Routines:</span>
+        <button type="button" class="term-pill-btn" data-cmd="neofetch">neofetch</button>
+        <button type="button" class="term-pill-btn" data-cmd="ls -la">ls -la</button>
+        <button type="button" class="term-pill-btn" data-cmd="help">help</button>
+        <button type="button" class="term-pill-btn" data-cmd="cat resume.md">cat resume.md</button>
+        <button type="button" class="term-pill-btn" data-cmd="python3">python3</button>
+        <button type="button" class="term-pill-btn" data-cmd="node">node</button>
+        <button type="button" class="term-pill-btn" data-cmd="cmatrix">cmatrix</button>
+        <button type="button" class="term-pill-btn" data-cmd="uname -a">uname -a</button>
+        <button type="button" class="term-pill-btn" data-cmd="nano script.sh">nano</button>
+        <button type="button" class="term-pill-btn" data-cmd="clear">clear</button>
+      </div>
+
+      <!-- Terminal Screen Area -->
+      <div class="terminal-screen" id="terminalScreen" style="min-height: 480px; max-height: 640px; cursor: text;">
         <div class="terminal-output" id="terminalOutput">
-          <div class="term-line banner">========================================================================</div>
-          <div class="term-line banner">VINTAGE CSE TELETYPE MAINFRAME v2.6.4 (x86_64-pc-none-elf)</div>
-          <div class="term-line banner">Welcome, guest operator. System diagnostics report: ALL CIRCUITS NOMINAL.</div>
-          <div class="term-line banner">Type 'help' to review available system routines and binary routines.</div>
-          <div class="term-line banner">========================================================================</div>
+          <div class="term-line banner" style="color:#00f0ff; font-weight:700;">========================================================================</div>
+          <div class="term-line banner" style="color:#38bdf8;">SCARFACE LAB QUANTUM LINUX VIRTUAL MACHINE v3.2.0 (x86_64)</div>
+          <div class="term-line banner" style="color:#94a3b8;">Kernel 6.12.4-scarface-opt • POSIX VFS & Interactive Shell Engine Ready.</div>
+          <div class="term-line banner" style="color:#94a3b8;">Type '<span style="color:#00f0ff;">help</span>' to list commands, '<span style="color:#00f0ff;">neofetch</span>' for specs, or click any quick routine above.</div>
+          <div class="term-line banner" style="color:#00f0ff; font-weight:700;">========================================================================</div>
         </div>
-        <div class="terminal-input-row">
-          <span class="term-prompt">visitor@scarface-lab:~$</span>
-          <input type="text" class="terminal-input" id="terminalInput" autocomplete="off" spellcheck="false" placeholder="type a command (e.g. help, skills, cat resume)..." autofocus>
+
+        <!-- Terminal Active Input Line -->
+        <div class="terminal-input-row" style="display:flex; align-items:center; gap:0.5rem; margin-top:0.75rem;">
+          <span class="term-prompt" style="color:#10b981; font-weight:700; white-space:nowrap; font-family:'JetBrains Mono', monospace; font-size:0.9rem;">sajid@scarface-lab:~$</span>
+          <input type="text" class="terminal-input" id="terminalInput" autocomplete="off" spellcheck="false" placeholder="type a command..." autofocus style="flex:1; background:transparent; border:none; outline:none; color:#f8fafc; font-family:'JetBrains Mono', monospace; font-size:0.9rem; caret-color:#00f0ff;">
         </div>
       </div>
     </div>
 
-    <!-- Terminal Manual / Guide Sheet -->
-    <div class="parchment-paper" style="margin-top: 2rem;">
-      <h3 style="font-family: var(--font-serif); font-size: 1.35rem; margin-bottom: 0.5rem;">Teletype Instruction Reference</h3>
-      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; font-family: var(--font-mono); font-size: 0.82rem; margin-top: 1rem;">
-        <div style="border:1px solid var(--border-color); padding:0.75rem; background:var(--bg-subtle);">
-          <strong style="color:var(--accent-rust);">help</strong><br>
-          Displays full catalog of available system routines.
+    <!-- Modern Command Reference Sheet -->
+    <div class="modern-card" style="margin-top: 2rem; padding: 1.5rem; border-radius: 16px; background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(255, 255, 255, 0.08);">
+      <h3 style="font-family: var(--font-display); font-size: 1.25rem; color: #00f0ff; margin: 0 0 1rem 0;">Shell Commands & Reference Guide</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; font-family: var(--font-mono); font-size: 0.82rem;">
+        <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.06); padding: 0.85rem; border-radius: 10px;">
+          <strong style="color:#38bdf8;">help</strong> — Full catalog of available system routines
         </div>
-        <div style="border:1px solid var(--border-color); padding:0.75rem; background:var(--bg-subtle);">
-          <strong style="color:var(--accent-rust);">skills</strong><br>
-          Dumps technical competencies and measured proficiencies.
+        <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.06); padding: 0.85rem; border-radius: 10px;">
+          <strong style="color:#38bdf8;">neofetch</strong> — Hardware telemetry, CPU/GPU & OS badge
         </div>
-        <div style="border:1px solid var(--border-color); padding:0.75rem; background:var(--bg-subtle);">
-          <strong style="color:var(--accent-rust);">projects</strong><br>
-          Lists all active engineered blueprints and kernels.
+        <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.06); padding: 0.85rem; border-radius: 10px;">
+          <strong style="color:#38bdf8;">cmatrix</strong> — Live digital glyph rain (Ctrl+C to quit)
         </div>
-        <div style="border:1px solid var(--border-color); padding:0.75rem; background:var(--bg-subtle);">
-          <strong style="color:var(--accent-rust);">cat resume</strong><br>
-          Prints ASCII formatted academic & experience CV.
+        <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.06); padding: 0.85rem; border-radius: 10px;">
+          <strong style="color:#38bdf8;">python3</strong> — Start interactive Python 3 REPL
         </div>
-        <div style="border:1px solid var(--border-color); padding:0.75rem; background:var(--bg-subtle);">
-          <strong style="color:var(--accent-rust);">theme &lt;name&gt;</strong><br>
-          Shifts theme (parchment, phosphor, blueprint, amber).
+        <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.06); padding: 0.85rem; border-radius: 10px;">
+          <strong style="color:#38bdf8;">node</strong> — Start interactive JavaScript REPL
         </div>
-        <div style="border:1px solid var(--border-color); padding:0.75rem; background:var(--bg-subtle);">
-          <strong style="color:var(--accent-rust);">sudo hire</strong><br>
-          Unlocks direct priority dispatch to Station Master.
+        <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.06); padding: 0.85rem; border-radius: 10px;">
+          <strong style="color:#38bdf8;">nano &lt;file&gt;</strong> — Full in-terminal visual text editor
+        </div>
+        <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.06); padding: 0.85rem; border-radius: 10px;">
+          <strong style="color:#38bdf8;">cat &lt;file&gt;</strong> — Read file (e.g. cat resume.md, cat README.md)
+        </div>
+        <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.06); padding: 0.85rem; border-radius: 10px;">
+          <strong style="color:#38bdf8;">clear / Ctrl+L</strong> — Clear screen buffer
         </div>
       </div>
     </div>
+
   </main>
 
-  <!-- Footer -->
-  <footer class="vintage-footer">
-    <div class="container footer-content">
-      <div class="footer-left">
-        <div class="footer-seal"><div class="seal-inner"><span>CSE</span><span>CRAFT</span></div></div>
-        <div class="footer-text">
-          <p class="footer-title" id="footerBrand">Mir A K Sajid • Computer Science & Engineering Student</p>
-          <p class="footer-copy">Made on Scarface Lab</p>
-        </div>
-      </div>
-      <div class="footer-right">
-        <div class="system-telemetry">
-          <span class="telem-item">UPTIME: <strong>99.98%</strong></span>
-          <span class="telem-item">LOCAL_TIME: <strong id="telemTime">--:--:--</strong></span>
-        </div>
-        <div class="footer-quick-links">
-          <a href="index.html">Home</a><span class="sep">|</span>
-          <a href="terminal.html">Terminal</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
   <script src="terminal-engine.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const input = document.getElementById('terminalInput');
+      const output = document.getElementById('terminalOutput');
+      const screen = document.getElementById('terminalScreen');
+      const prompt = document.querySelector('.term-prompt');
+
+      if (window.LinuxTerminalEngine && window.LinuxTerminalEngine.LinuxTerminalVM && input && output) {
+        window.activeTerminalVM = new window.LinuxTerminalEngine.LinuxTerminalVM({
+          inputEl: input,
+          outputEl: output,
+          promptEl: prompt,
+          screenEl: screen
+        });
+
+        // Click anywhere in terminal screen to focus input
+        if (screen) {
+          screen.addEventListener('click', () => {
+            if (input) input.focus();
+          });
+        }
+
+        // Quick routine buttons
+        document.querySelectorAll('.term-pill-btn, .cmd-pill').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const cmd = btn.getAttribute('data-cmd');
+            if (cmd && window.activeTerminalVM) {
+              window.activeTerminalVM.executeInput(cmd);
+              if (input) input.focus();
+            }
+          });
+        });
+
+        // Initial focus
+        if (input) input.focus();
+      }
+    });
+  </script>
   <script src="script.js"></script>
 </body>
 </html>

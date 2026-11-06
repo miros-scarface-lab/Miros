@@ -445,7 +445,6 @@ function initFloatingCompanionDrawer() {
   const trigger = document.getElementById('floatingCompanionTrigger');
   const drawer = document.getElementById('floatingCompanionDrawer');
   const closeBtn = document.getElementById('closeCompanionDrawerBtn');
-  const lockScreen = document.getElementById('drawerLockScreen');
   const workspace = document.getElementById('drawerWorkspace');
   const feed = document.getElementById('drawerCompanionFeed');
   const input = document.getElementById('drawerCompanionInput');
@@ -461,10 +460,10 @@ function initFloatingCompanionDrawer() {
     const isHidden = drawer.style.display === 'none' || !drawer.style.display;
     if (isHidden) {
       drawer.style.display = 'flex';
+      if (workspace) workspace.style.display = 'flex';
       if (!drawerCompanion && window.CompanionEngine && window.CompanionEngine.GeminiCompanion) {
         drawerCompanion = new window.CompanionEngine.GeminiCompanion({
           container: drawer,
-          lockScreenEl: lockScreen,
           workspaceEl: workspace,
           messagesContainer: feed,
           inputEl: input,
@@ -473,10 +472,9 @@ function initFloatingCompanionDrawer() {
           nicknameEl: nicknameEl
         });
       } else if (drawerCompanion) {
-        drawerCompanion.checkLockState();
         drawerCompanion.renderHeaderInfo();
       }
-      if (input && !drawerCompanion?.isLocked) input.focus();
+      if (input) input.focus();
     } else {
       drawer.style.display = 'none';
     }
@@ -1627,29 +1625,17 @@ function initContactForm() {
 /**
  * Theme & Audio Management
  */
-function applyTheme(themeName) {
-  document.documentElement.setAttribute('data-theme', themeName);
-  window.PortfolioState.theme = themeName;
-  localStorage.setItem('cse_vintage_theme', themeName);
+function applyTheme(themeName = 'modern-dark') {
+  document.documentElement.setAttribute('data-theme', 'modern-dark');
+  window.PortfolioState.theme = 'modern-dark';
+  try {
+    localStorage.setItem('cse_vintage_theme', 'modern-dark');
+  } catch (e) {}
 
-  const displayMap = {
-    'vintage-parchment': 'Quantum Dark',
-    'cyber-deck': 'Cyberdeck Neon',
-    'blueprint-cyan': 'Blueprint Cyan',
-    'terminal-phosphor': 'CRT Green',
-    'amber-crt': 'Amber Plasma',
-    'solarized-dark': 'Solarized Dark'
-  };
   const label = document.getElementById('themeActiveName');
-  if (label) label.textContent = displayMap[themeName] || 'Parchment';
+  if (label) label.textContent = 'Modern Dark';
 
-  document.querySelectorAll('.theme-option').forEach(opt => {
-    if (opt.getAttribute('data-theme-val') === themeName) {
-      opt.classList.add('active');
-    } else {
-      opt.classList.remove('active');
-    }
-  });
+  window.dispatchEvent(new CustomEvent('themeChanged', { detail: { theme: 'modern-dark' } }));
 }
 
 function applyScanlines(enabled) {

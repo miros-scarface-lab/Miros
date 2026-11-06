@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="vintage-parchment">
+<html lang="en" data-theme="modern-dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +19,7 @@
 <body class="vintage-body">
 
   <!-- CRT Scanlines Overlay -->
-  <div class="vintage-overlay" id="vintageOverlay" aria-hidden="true"></div>
+  
 
   <!-- Top Vintage Header -->
   <header class="vintage-header" id="header">
@@ -51,21 +51,7 @@
       </nav>
 
       <div class="header-controls">
-        <!-- Theme Switcher Dropdown -->
-        <div class="theme-dropdown">
-          <button class="vintage-btn btn-sm btn-icon" id="themeDropdownBtn" title="Switch Vintage Theme">
-            <span class="btn-icon-symbol">🗲</span>
-            <span class="theme-active-name" id="themeActiveName">Parchment</span>
-          </button>
-          <div class="dropdown-menu" id="themeMenu">
-            <button class="theme-option active" data-theme-val="vintage-parchment">📜 Parchment & Ink</button>
-            <button class="theme-option" data-theme-val="terminal-phosphor">📟 CRT Green Phosphor</button>
-            <button class="theme-option" data-theme-val="blueprint-cyan">📐 Blueprint Cyan</button>
-            <button class="theme-option" data-theme-val="amber-crt">💡 Amber Gas Discharge</button>
-            <button class="theme-option" data-theme-val="cyber-deck">💜 Cyberdeck Neon</button>
-            <button class="theme-option" data-theme-val="solarized-dark">☀️ Solarized Dark</button>
-          </div>
-        </div>
+        
 
         <!-- 3-Dots Quick Action Menu -->
         <button class="vintage-btn btn-sm btn-icon" id="audioToggleBtn" title="Toggle Mechanical Typewriter Audio">
@@ -596,35 +582,7 @@
       </div>
     </div>
 
-    <!-- Drawer Passcode Lock Screen -->
-    <div id="drawerLockScreen" class="drawer-lock-screen" style="display:none;">
-      <div class="drawer-lock-content">
-        <div class="lock-shield-icon" style="font-size:2.2rem; margin-bottom:0.5rem;">🔒</div>
-        <h4 style="font-family:var(--font-serif); font-size:1.1rem; color:#00f0ff; margin:0 0 0.35rem 0;">Passphrase Guarded</h4>
-        <p style="font-size:0.78rem; color:#94a3b8; margin:0 0 1rem 0;">Enter passphrase to start companion session</p>
-        <form id="drawerLockForm" style="display:flex; flex-direction:column; gap:0.5rem; width:100%;">
-          <input type="password" id="drawerPasscodeInput" class="lock-passcode-input" placeholder="Passphrase..." required autocomplete="current-password" style="font-size:0.85rem; padding:0.5rem 1rem;">
-          <button type="submit" class="lock-submit-btn" style="font-size:0.82rem; padding:0.5rem 1rem;">Unlock Session</button>
-          <div id="drawerLockFeedback" class="companion-lock-feedback"></div>
-        </form>
-      </div>
-    </div>
-
-    <!-- Drawer Active Chat Workspace -->
-    <div id="drawerWorkspace" style="display:flex; flex-direction:column; flex:1; overflow:hidden;">
-      <div class="companion-drawer-feed" id="drawerCompanionFeed"></div>
-      <div class="companion-drawer-input-row">
-        <div class="modern-chatbar-frame" style="width:100%; border-radius:24px; padding:0.35rem 0.5rem 0.35rem 0.9rem;">
-          <textarea id="drawerCompanionInput" class="modern-chatbar-input" placeholder="Message..." rows="1" style="font-size:0.88rem;"></textarea>
-          <button type="button" id="drawerCompanionSendBtn" class="modern-chatbar-submit" aria-label="Send" style="width:32px; height:32px;">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="12" y1="19" x2="12" y2="5"></line>
-              <polyline points="5 12 12 5 19 12"></polyline>
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
+    
   </div>
 
   <script src="companion-engine.js"></script>
