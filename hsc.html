@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="bn" data-theme="modern-dark">
+<html lang="bn" data-theme="cyber-futuristic">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
@@ -139,7 +139,7 @@
       cursor: pointer;
       padding: 0.3rem 0.5rem;
       display: none;
-      border-radius: 50%;
+      border-radius: 8px;
     }
     .lib-search-clear:hover {
       color: var(--ink-primary);
@@ -355,7 +355,7 @@
       justify-content: center;
       width: 32px;
       height: 32px;
-      border-radius: 50%;
+      border-radius: 8px;
       color: #16a34a;
       background: transparent;
       border: none;
@@ -540,66 +540,44 @@
   
     /* Hub Navigation Tabs - Stacked Up and Down (Vertical Column) */
     .hub-tabs-container {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      margin-bottom: 2rem;
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 1rem;
-      width: 100%;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 0.75rem !important;
+      margin-bottom: 2rem !important;
+      border-bottom: 1px solid var(--border-color) !important;
+      padding-bottom: 1rem !important;
+      width: 100% !important;
     }
 
     .hub-tab-btn {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.75rem;
-      padding: 0.85rem 1.4rem;
-      width: 100%;
-      background: rgba(14, 20, 38, 0.75);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      color: #94a3b8;
-      font-family: var(--font-bengali);
-      font-weight: 600;
-      font-size: 0.95rem;
-      cursor: pointer;
-      box-sizing: border-box;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      backdrop-filter: blur(16px);
-    }
-    .hub-tab-text {
-      flex: 1;
-      text-align: left;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 0.75rem !important;
+      padding: 0.85rem 1.4rem !important;
+      width: 100% !important;
+      background: rgba(10, 16, 38, 0.78) !important;
+      border: 1px solid rgba(0, 240, 255, 0.2) !important;
+      border-radius: 8px !important;
+      color: #94a3b8 !important;
+      font-family: var(--font-bengali) !important;
+      font-weight: 600 !important;
+      font-size: 0.95rem !important;
+      cursor: pointer !important;
+      box-sizing: border-box !important;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      backdrop-filter: blur(16px) !important;
     }
     .hub-tab-btn:hover {
-      color: #ffffff;
-      border-color: rgba(0, 240, 255, 0.4);
-      background: rgba(0, 240, 255, 0.08);
-      transform: translateY(-2px);
+      color: #ffffff !important;
+      border-color: rgba(0, 240, 255, 0.45) !important;
+      background: rgba(0, 240, 255, 0.12) !important;
     }
     .hub-tab-btn.active {
-      background: linear-gradient(135deg, rgba(0, 240, 255, 0.2) 0%, rgba(99, 102, 241, 0.25) 100%);
-      color: #00f0ff;
-      border-color: #00f0ff;
-      box-shadow: 0 0 20px rgba(0, 240, 255, 0.25);
-    }
-    .hub-tab-icon {
-      font-size: 1.15rem;
-    }
-    .hub-tab-pill {
-      font-family: var(--font-mono);
-      font-size: 0.74rem;
-      padding: 0.2rem 0.55rem;
-      border-radius: 5px;
-      background: rgba(255, 255, 255, 0.08);
-      color: #cbd5e1;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-    }
-    .hub-tab-btn.active .hub-tab-pill {
-      background: rgba(0, 240, 255, 0.2);
-      color: #00f0ff;
-      border-color: rgba(0, 240, 255, 0.4);
+      background: rgba(0, 240, 255, 0.16) !important;
+      border-color: #00f0ff !important;
+      color: #ffffff !important;
+      box-shadow: 0 0 18px rgba(0, 240, 255, 0.25) !important;
     }
 
     /* Mulboi Control Toolbar */
@@ -661,7 +639,7 @@
       font-size: 1.1rem;
       cursor: pointer;
       display: none;
-      border-radius: 50%;
+      border-radius: 8px;
       padding: 0.2rem 0.4rem;
     }
     .mulboi-search-clear:hover {
@@ -893,7 +871,7 @@
       justify-content: center;
       width: 36px;
       height: 36px;
-      border-radius: 50%;
+      border-radius: 8px;
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.12);
       color: #cbd5e1;
@@ -934,14 +912,13 @@
         </div>
       </a>
 
-      <nav class="senior-nav-links" id="seniorNavLinks" aria-label="Main Navigation">
-        <a href="index.html" class="senior-nav-link" data-page="home">Home</a>
-        <a href="about.html" class="senior-nav-link" data-page="about">About</a>
-        <a href="projects.html" class="senior-nav-link" data-page="projects">Projects</a>
-        <a href="skills.html" class="senior-nav-link" data-page="skills">Skills</a>
-        <a href="experience.html" class="senior-nav-link" data-page="experience">Experience</a>
-        <a href="academics.html" class="senior-nav-link" data-page="academics">Academics</a>
-        <a href="contact.html" class="senior-nav-link" data-page="contact">Contact</a>
+            <nav class="senior-nav-links" id="seniorNavLinks" aria-label="Core Navigation">
+        <a href="index.html" class="senior-nav-link${activePage === 'home' ? ' active' : ''}" data-page="home">Core</a>
+        <a href="projects.html" class="senior-nav-link${activePage === 'projects' ? ' active' : ''}" data-page="projects">Systems</a>
+        <a href="terminal.html" class="senior-nav-link${activePage === 'terminal' ? ' active' : ''}" data-page="terminal">Terminal</a>
+        <a href="companion.html" class="senior-nav-link${activePage === 'companion' ? ' active' : ''}" data-page="companion">Isabella AI</a>
+        <a href="hsc.html" class="senior-nav-link${activePage === 'vault' ? ' active' : ''}" data-page="vault">Vault</a>
+        <a href="contact.html" class="senior-nav-link${activePage === 'contact' ? ' active' : ''}" data-page="contact">Dispatch</a>
       </nav>
 
       <div class="senior-nav-actions">
@@ -1034,20 +1011,21 @@
   </div>
 
   <!-- Fixed Mobile Bottom App Dock -->
+    <!-- Fixed Mobile Bottom App Dock -->
   <nav class="mobile-bottom-dock" id="mobileBottomDock" aria-label="Mobile Navigation Dock">
-    <a href="index.html" class="dock-item" data-page="home">
-      <span class="dock-icon">🏠</span>
-      <span class="dock-label">Home</span>
+    <a href="index.html" class="dock-item${activePage === 'home' ? ' active' : ''}" data-page="home">
+      <span class="dock-icon">⚡</span>
+      <span class="dock-label">Core</span>
     </a>
-    <a href="projects.html" class="dock-item" data-page="projects">
-      <span class="dock-icon">💼</span>
-      <span class="dock-label">Projects</span>
+    <a href="projects.html" class="dock-item${activePage === 'projects' ? ' active' : ''}" data-page="projects">
+      <span class="dock-icon">⚙️</span>
+      <span class="dock-label">Systems</span>
     </a>
-    <a href="terminal.html" class="dock-item" data-page="terminal">
+    <a href="terminal.html" class="dock-item${activePage === 'terminal' ? ' active' : ''}" data-page="terminal">
       <span class="dock-icon">&gt;_</span>
-      <span class="dock-label">Terminal</span>
+      <span class="dock-label">Shell</span>
     </a>
-    <a href="companion.html" class="dock-item" data-page="companion">
+    <a href="companion.html" class="dock-item${activePage === 'companion' ? ' active' : ''}" data-page="companion">
       <span class="dock-icon">🤖</span>
       <span class="dock-label">Isabella</span>
     </a>

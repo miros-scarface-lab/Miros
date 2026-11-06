@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="modern-dark">
+<html lang="en" data-theme="cyber-futuristic">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
@@ -29,14 +29,13 @@
         </div>
       </a>
 
-      <nav class="senior-nav-links" id="seniorNavLinks" aria-label="Main Navigation">
-        <a href="index.html" class="senior-nav-link" data-page="home">Home</a>
-        <a href="about.html" class="senior-nav-link" data-page="about">About</a>
-        <a href="projects.html" class="senior-nav-link" data-page="projects">Projects</a>
-        <a href="skills.html" class="senior-nav-link" data-page="skills">Skills</a>
-        <a href="experience.html" class="senior-nav-link" data-page="experience">Experience</a>
-        <a href="academics.html" class="senior-nav-link" data-page="academics">Academics</a>
-        <a href="contact.html" class="senior-nav-link" data-page="contact">Contact</a>
+            <nav class="senior-nav-links" id="seniorNavLinks" aria-label="Core Navigation">
+        <a href="index.html" class="senior-nav-link${activePage === 'home' ? ' active' : ''}" data-page="home">Core</a>
+        <a href="projects.html" class="senior-nav-link${activePage === 'projects' ? ' active' : ''}" data-page="projects">Systems</a>
+        <a href="terminal.html" class="senior-nav-link${activePage === 'terminal' ? ' active' : ''}" data-page="terminal">Terminal</a>
+        <a href="companion.html" class="senior-nav-link${activePage === 'companion' ? ' active' : ''}" data-page="companion">Isabella AI</a>
+        <a href="hsc.html" class="senior-nav-link${activePage === 'vault' ? ' active' : ''}" data-page="vault">Vault</a>
+        <a href="contact.html" class="senior-nav-link${activePage === 'contact' ? ' active' : ''}" data-page="contact">Dispatch</a>
       </nav>
 
       <div class="senior-nav-actions">
@@ -123,20 +122,21 @@
   </div>
 
   <!-- Fixed Mobile Bottom App Dock -->
+    <!-- Fixed Mobile Bottom App Dock -->
   <nav class="mobile-bottom-dock" id="mobileBottomDock" aria-label="Mobile Navigation Dock">
-    <a href="index.html" class="dock-item" data-page="home">
-      <span class="dock-icon">🏠</span>
-      <span class="dock-label">Home</span>
+    <a href="index.html" class="dock-item${activePage === 'home' ? ' active' : ''}" data-page="home">
+      <span class="dock-icon">⚡</span>
+      <span class="dock-label">Core</span>
     </a>
-    <a href="projects.html" class="dock-item" data-page="projects">
-      <span class="dock-icon">💼</span>
-      <span class="dock-label">Projects</span>
+    <a href="projects.html" class="dock-item${activePage === 'projects' ? ' active' : ''}" data-page="projects">
+      <span class="dock-icon">⚙️</span>
+      <span class="dock-label">Systems</span>
     </a>
-    <a href="terminal.html" class="dock-item" data-page="terminal">
+    <a href="terminal.html" class="dock-item${activePage === 'terminal' ? ' active' : ''}" data-page="terminal">
       <span class="dock-icon">&gt;_</span>
-      <span class="dock-label">Terminal</span>
+      <span class="dock-label">Shell</span>
     </a>
-    <a href="companion.html" class="dock-item" data-page="companion">
+    <a href="companion.html" class="dock-item${activePage === 'companion' ? ' active' : ''}" data-page="companion">
       <span class="dock-icon">🤖</span>
       <span class="dock-label">Isabella</span>
     </a>
