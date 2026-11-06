@@ -19,7 +19,27 @@ window.AdminPanel = {
       window.addEventListener('hashchange', () => this.checkHash());
     }
     this.checkHash();
+
+    // Ensure portfolio data is fully loaded even if script.js raced
+    if (!window.PortfolioState || !window.PortfolioState.data || !window.PortfolioState.data.profile) {
+      try {
+        let res = await fetch('/api/portfolio').catch(() => null);
+        if (!res || !res.ok) {
+          res = await fetch('data/portfolio.json').catch(() => null);
+        }
+        if (res && res.ok) {
+          const d = await res.json();
+          if (!window.PortfolioState) window.PortfolioState = {};
+          window.PortfolioState.data = d;
+        }
+      } catch (e) {
+        console.warn('Portfolio fetch fallback:', e);
+      }
+    }
+
     await this.verifySession();
+    this.showWorkspace();
+    this.refreshAllTabs();
   },
 
   async verifySession() {

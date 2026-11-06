@@ -5161,3 +5161,194 @@ h1, h2, h3, h4,
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(0, 240, 255, 0.5);
 }
+
+/* ==========================================================================
+   PERMANENT REMOVAL OF THE TWO FLOATING BOTTOM DOCKS & MUSIC BOX
+   ========================================================================== */
+.floating-hud-dock,
+#floatingHudDock,
+.vintage-music-player,
+#vintageMusicPlayer {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: absolute !important;
+  z-index: -9999 !important;
+}
+
+/* ==========================================================================
+   REMOVAL OF 3-DOTS DROPDOWN BUTTON
+   ========================================================================== */
+.dots-dropdown,
+#dotsMenuBtn,
+#dotsMenu {
+  display: none !important;
+}
+
+/* ==========================================================================
+   PROMINENT FUTURISTIC ADMIN NAVIGATION BUTTON
+   ========================================================================== */
+.nav-admin-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.35rem !important;
+  color: #00f0ff !important;
+  font-weight: 700 !important;
+  padding: 0.35rem 0.85rem !important;
+  border-radius: 9999px !important;
+  border: 1px solid rgba(0, 240, 255, 0.45) !important;
+  background: rgba(0, 240, 255, 0.08) !important;
+  box-shadow: 0 0 14px rgba(0, 240, 255, 0.15) !important;
+  transition: all 0.25s ease !important;
+}
+
+.nav-admin-btn:hover,
+.nav-admin-btn.active {
+  background: rgba(0, 240, 255, 0.2) !important;
+  border-color: #00f0ff !important;
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.4) !important;
+  color: #ffffff !important;
+  transform: translateY(-1px) !important;
+}
+
+.btn-admin-header {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.35rem !important;
+  font-weight: 700 !important;
+  color: #00f0ff !important;
+  border: 1px solid rgba(0, 240, 255, 0.45) !important;
+  background: rgba(0, 240, 255, 0.08) !important;
+  border-radius: 9999px !important;
+  padding: 0.35rem 0.85rem !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.15) !important;
+}
+
+.btn-admin-header:hover {
+  background: rgba(0, 240, 255, 0.22) !important;
+  border-color: #00f0ff !important;
+  box-shadow: 0 0 22px rgba(0, 240, 255, 0.45) !important;
+  color: #ffffff !important;
+  transform: translateY(-1px) !important;
+}
+
+/* ==========================================================================
+   INTERACTIVE IN-TERMINAL NANO / VIM EDITOR & CYBER TERMINAL
+   ========================================================================== */
+.terminal-screen {
+  position: relative !important;
+  background: #050813 !important;
+  border: 1px solid rgba(0, 240, 255, 0.25) !important;
+  border-radius: 12px !important;
+  box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.9), 0 0 25px rgba(0, 240, 255, 0.12) !important;
+}
+
+.terminal-nano-editor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #070b18;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  border-radius: 10px;
+  font-family: var(--font-mono);
+}
+
+.nano-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(0, 240, 255, 0.15);
+  color: #00f0ff;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.nano-textarea {
+  flex: 1;
+  background: #03050d;
+  color: #a7f3d0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  resize: none;
+  outline: none;
+}
+
+.nano-textarea:focus {
+  border-color: rgba(0, 240, 255, 0.5);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+}
+
+.nano-bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(15, 23, 42, 0.9);
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  margin-top: 0.5rem;
+  font-size: 0.78rem;
+}
+
+.nano-keys {
+  display: flex;
+  gap: 1rem;
+  color: #94a3b8;
+}
+
+.nano-key b {
+  color: #00f0ff;
+}
+
+.nano-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.term-matrix {
+  color: #10b981 !important;
+  text-shadow: 0 0 8px #10b981 !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  letter-spacing: 2px !important;
+  white-space: pre !important;
+  font-size: 0.9rem !important;
+  line-height: 1.2 !important;
+}
+
+.term-cyan {
+  color: #00f0ff !important;
+  font-weight: 600 !important;
+}
+
+.term-green {
+  color: #10b981 !important;
+  font-weight: 600 !important;
+}
+
+.term-error {
+  color: #f87171 !important;
+}
+
+.term-dim {
+  color: #64748b !important;
+  font-style: italic !important;
+}
+

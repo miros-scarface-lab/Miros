@@ -431,96 +431,11 @@ function applyFloatingBoxes(enabled = true, intensity = 'normal') {
 window.applyFloatingBoxes = applyFloatingBoxes;
 
 /**
- * 2D Retro Game Floating Boxes & Quick Navigation HUD
+ * 2D Floating Boxes & Quick Navigation HUD (Removed per User Request)
  */
 function initFloatingBoxes() {
-  let dock = document.getElementById('floatingHudDock');
-  if (!dock) {
-    dock = document.createElement('aside');
-    dock.className = 'floating-hud-dock';
-    dock.id = 'floatingHudDock';
-    dock.setAttribute('role', 'toolbar');
-    dock.setAttribute('aria-label', 'Floating Navigation Hub');
-    dock.innerHTML = `
-      <span class="dock-title">2D HUD:</span>
-      <a href="index.html" class="dock-pill pill-home" id="dockHomeBtn" title="Return to Home Station">
-        <span>🏠</span> Home Panel
-      </a>
-      <button type="button" class="dock-pill pill-vault" id="dockVaultBtn" title="Open Encrypted Personal Directory">
-        <span>📁</span> Directory 🔒
-      </button>
-      <button type="button" class="dock-pill pill-music" id="dockMusicBtn" title="Expand Genshin Jukebox Deck">
-        <span>🎵</span> Jukebox ▾
-      </button>
-      <a href="hsc.html" class="dock-pill pill-hsc" id="dockHscBtn" title="HSC Academic Resource Hub">
-        <span>📚</span> HSC Hub
-      </a>
-      <button type="button" class="dock-pill pill-snow" id="dockSnowBtn" title="Toggle Snowfall Weather">
-        <span>❄️</span> <span id="snowStatusText">Snow ON</span>
-      </button>
-    `;
-    document.body.appendChild(dock);
-  }
-
-  const homeBtn = document.getElementById('openHomeFloatingBtn');
-  const dockHomeBtn = document.getElementById('dockHomeBtn');
-
-  function handleHome(e) {
-    const isHome = window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname === '';
-    if (isHome) {
-      if (e) e.preventDefault();
-      vintageSound.playBell();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      const heroContent = document.querySelector('.hero-content');
-      if (heroContent) {
-        heroContent.style.transition = 'box-shadow 0.4s ease';
-        heroContent.style.boxShadow = '0 0 35px rgba(185, 75, 47, 0.55)';
-        setTimeout(() => {
-          heroContent.style.boxShadow = '';
-        }, 1600);
-      }
-    }
-  }
-
-  if (homeBtn) homeBtn.addEventListener('click', handleHome);
-  if (dockHomeBtn) dockHomeBtn.addEventListener('click', handleHome);
-
-  const dockVaultBtn = document.getElementById('dockVaultBtn');
-  if (dockVaultBtn) {
-    dockVaultBtn.addEventListener('click', () => {
-      const vaultBtn = document.getElementById('openVaultFloatingBtn') || document.getElementById('openVaultTileBtn');
-      if (vaultBtn) {
-        vaultBtn.click();
-      } else {
-        window.location.href = 'index.html#open-vault';
-      }
-    });
-  }
-
-  const dockMusicBtn = document.getElementById('dockMusicBtn');
-  if (dockMusicBtn) {
-    dockMusicBtn.addEventListener('click', () => {
-      if (typeof window.openExpandedMusicJukebox === 'function') {
-        window.openExpandedMusicJukebox();
-      } else {
-        const musicBtn = document.getElementById('openMusicBoxFloatingBtn') || document.getElementById('openMusicTileBtn') || document.getElementById('bgmExpandBtn');
-        if (musicBtn) {
-          musicBtn.click();
-        } else {
-          window.location.href = 'index.html#open-music';
-        }
-      }
-    });
-  }
-
-  const dockSnowBtn = document.getElementById('dockSnowBtn');
-  if (dockSnowBtn) {
-    dockSnowBtn.addEventListener('click', () => {
-      if (typeof window.cycleSnowfallMode === 'function') {
-        window.cycleSnowfallMode();
-      }
-    });
-  }
+  const dock = document.getElementById('floatingHudDock');
+  if (dock) dock.remove();
 }
 
 // Main Initialization
@@ -773,10 +688,11 @@ function initAtmosphere() {
 
 /**
  * Vintage Genshin Impact Style BGM Audio Player Engine
- * Ambient fantasy background themes (Dawn Winery acoustic / Liyue peaceful piano)
+ * Headless background audio player without the floating box widget
  */
 function initBgmPlayer() {
-  if (document.getElementById('vintageMusicPlayer')) return;
+  const existingPlayer = document.getElementById('vintageMusicPlayer');
+  if (existingPlayer) existingPlayer.remove();
 
   const defaultTracks = [
     {
@@ -811,57 +727,6 @@ function initBgmPlayer() {
   audio.volume = savedVolume;
   audio.preload = 'auto';
 
-  // Build floating player container
-  const player = document.createElement('div');
-  player.className = 'vintage-music-player';
-  player.id = 'vintageMusicPlayer';
-  player.setAttribute('role', 'region');
-  player.setAttribute('aria-label', 'Genshin Impact Background Music Controller');
-
-  player.innerHTML = `
-    <button class="bgm-play-btn" id="bgmPlayBtn" title="Play Genshin BGM" aria-label="Play or pause Genshin soundtrack">▶</button>
-    <div class="bgm-equalizer" title="Acoustic Resonance Frequency">
-      <div class="eq-bar"></div>
-      <div class="eq-bar"></div>
-      <div class="eq-bar"></div>
-      <div class="eq-bar"></div>
-    </div>
-    <div class="bgm-track-info" id="bgmTrackInfoClickable" style="cursor: pointer;" title="Click to expand complete Jukebox tracklist">
-      <span class="bgm-tag" id="bgmTag">${TRACKS[currentTrackIdx].tag}</span>
-      <span class="bgm-title" id="bgmTitle">${TRACKS[currentTrackIdx].title}</span>
-    </div>
-    <button class="bgm-switch-track-btn" id="bgmNextBtn" title="Switch Genshin Soundtrack">⏭ Track</button>
-    <button class="bgm-expand-btn" id="bgmExpandBtn" title="Open complete Jukebox & tracklist">🎵 Deck ▾</button>
-    <input type="range" class="bgm-volume-slider" id="bgmVolume" min="0" max="1" step="0.05" value="${savedVolume}" title="Volume">
-  `;
-
-  document.body.appendChild(player);
-
-  const playBtn = player.querySelector('#bgmPlayBtn');
-  const tagEl = player.querySelector('#bgmTag');
-  const titleEl = player.querySelector('#bgmTitle');
-  const nextBtn = player.querySelector('#bgmNextBtn');
-  const volumeSlider = player.querySelector('#bgmVolume');
-  const trackInfoEl = player.querySelector('#bgmTrackInfoClickable');
-  const expandBtn = player.querySelector('#bgmExpandBtn');
-
-  if (trackInfoEl) {
-    trackInfoEl.addEventListener('click', () => {
-      if (typeof window.openExpandedMusicJukebox === 'function') {
-        window.openExpandedMusicJukebox();
-      }
-    });
-  }
-
-  if (expandBtn) {
-    expandBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (typeof window.openExpandedMusicJukebox === 'function') {
-        window.openExpandedMusicJukebox();
-      }
-    });
-  }
-
   const listeners = [];
   function notifyListeners() {
     const state = {
@@ -879,22 +744,14 @@ function initBgmPlayer() {
   function updateTrackDisplay() {
     if (!TRACKS[currentTrackIdx]) currentTrackIdx = 0;
     const track = TRACKS[currentTrackIdx];
-    tagEl.textContent = track.tag;
-    titleEl.textContent = track.title;
     audio.src = track.src;
     notifyListeners();
   }
 
   function setPlayingState(isPlaying) {
     if (isPlaying) {
-      player.classList.add('playing');
-      playBtn.textContent = '❚❚';
-      playBtn.setAttribute('title', 'Pause Genshin BGM');
       localStorage.setItem('cse_bgm_playing', 'true');
     } else {
-      player.classList.remove('playing');
-      playBtn.textContent = '▶';
-      playBtn.setAttribute('title', 'Play Genshin BGM');
       localStorage.setItem('cse_bgm_playing', 'false');
     }
     notifyListeners();
@@ -946,26 +803,6 @@ function initBgmPlayer() {
     }
   }
 
-  playBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    vintageSound.playMechanicalClick(1400);
-    togglePlay();
-  });
-
-  nextBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    vintageSound.playMechanicalClick(1600);
-    switchTrack();
-  });
-
-  volumeSlider.addEventListener('input', (e) => {
-    const val = parseFloat(e.target.value);
-    audio.volume = val;
-    localStorage.setItem('cse_bgm_volume', val);
-    notifyListeners();
-  });
-
-  // Loop back seamlessly on track end
   audio.addEventListener('ended', () => {
     audio.currentTime = 0;
     audio.play().catch(() => {});
@@ -997,7 +834,6 @@ function initBgmPlayer() {
     },
     setVolume: (val) => {
       audio.volume = Math.max(0, Math.min(1, val));
-      volumeSlider.value = audio.volume;
       localStorage.setItem('cse_bgm_volume', audio.volume);
       notifyListeners();
     },
@@ -1036,7 +872,6 @@ function initBgmPlayer() {
     }
   };
 
-  // Initial track display
   updateTrackDisplay();
 
   // ── AUTO-PLAY on every visit ──────────────────────────────────────────────
@@ -1623,7 +1458,7 @@ function initTypewriter() {
 }
 
 /**
- * Interactive Vintage REPL Terminal
+ * Interactive POSIX Linux Terminal & Shell Engine
  */
 function initInteractiveTerminal() {
   const input = document.getElementById('terminalInput');
@@ -1632,177 +1467,39 @@ function initInteractiveTerminal() {
 
   if (jumpBtn) {
     jumpBtn.addEventListener('click', () => {
-      document.getElementById('terminal-section').scrollIntoView({ behavior: 'smooth' });
+      const termSec = document.getElementById('terminal-section') || document.querySelector('.terminal-chassis');
+      if (termSec) termSec.scrollIntoView({ behavior: 'smooth' });
       if (input) input.focus();
     });
   }
 
   if (!input || !output) return;
 
-  // Quick Command Pills
-  document.querySelectorAll('.cmd-pill').forEach(pill => {
-    pill.addEventListener('click', () => {
-      const cmd = pill.getAttribute('data-cmd');
-      executeTerminalCommand(cmd);
-      input.focus();
+  // If LinuxTerminalEngine is available, boot full Linux VM
+  if (window.LinuxTerminalEngine && window.LinuxTerminalEngine.LinuxTerminalVM) {
+    window.activeTerminalVM = new window.LinuxTerminalEngine.LinuxTerminalVM({
+      inputEl: input,
+      outputEl: output,
+      promptEl: document.querySelector('.term-prompt'),
+      screenEl: document.getElementById('terminalScreen')
     });
-  });
-
-  input.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-      const command = input.value.trim();
-      input.value = '';
-      vintageSound.playMechanicalClick(1400, 0.03);
-      executeTerminalCommand(command);
-    }
-  });
-
-  function executeTerminalCommand(cmd) {
-    if (!cmd) return;
-
-    // Append user input line
-    appendTerminalLine(`visitor@scarface-lab:~$ ${escapeHtml(cmd)}`, 'cmd-echo');
-
-    const cleanCmd = cmd.toLowerCase().trim();
-    const parts = cleanCmd.split(' ');
-    const root = parts[0];
-    const prof = (window.PortfolioState.data && window.PortfolioState.data.profile) || {};
-    const profName = prof.name || 'Mir A K Sajid';
-    const profEmail = prof.email || 'alex.chen.cse@example.edu';
-
-    switch (root) {
-      case 'help':
-        appendTerminalLine(`
-AVAILABLE TELETYPE ROUTINES:
-  help           Display this manual
-  skills         Print technical competency registry
-  projects       Catalog all active system blueprints
-  cat resume     Print academic & experiential curriculum
-  whoami         Output current identity & engineering credentials
-  vault          Decrypt and access the Personal Google Drive Directory
-  admin          Launch Station Master Control Console
-  theme <name>   Switch theme: parchment | phosphor | blueprint | amber | cyberdeck
-  sudo hire      Initiate urgent dispatch protocol
-  clear          Flush teletype display buffer
-  contact        Coordinate coordinates & transmission channels
-  uptime         Print real-time system metrics
-        `);
-        break;
-
-      case 'skills':
-        const skills = (window.PortfolioState.data && window.PortfolioState.data.skills) || [];
-        const skillText = skills.map(s => `  [${s.level}%] ${s.name} (${s.category})`).join('\n');
-        appendTerminalLine(`TECHNICAL COMPETENCY MATRIX:\n${skillText}`);
-        break;
-
-      case 'projects':
-        const projs = (window.PortfolioState.data && window.PortfolioState.data.projects) || [];
-        const projText = projs.map(p => `  * ${p.title} [${p.category}] - ${p.tagline}`).join('\n');
-        appendTerminalLine(`ACTIVE BLUEPRINTS:\n${projText}\n(Type 'cat resume' or click inspect on grid)`);
-        break;
-
-      case 'whoami':
-        appendTerminalLine(`OPERATOR: ${profName}\nROLE: ${prof.role || 'CSE Student'}\nDEGREE: ${prof.degree || 'B.S. in CSE'}\nGPA: ${prof.gpa || '3.89'}\nSTATUS: ${prof.status || 'Available'}`);
-        break;
-
-      case 'cat':
-        if (parts[1] === 'resume') {
-          appendTerminalLine(`
-======================= RESUME SUMMARY =======================
-NAME: ${profName} | ${prof.degree || 'B.S. in Computer Science & Engineering'}
-GPA: ${prof.gpa || '3.89/4.00 (Dean\'s Honor List)'}
-CORE FOCUS: Systems Programming, Compiler Design, Distributed Systems
-EMAIL: ${profEmail}
-LOCATION: ${prof.location || 'San Francisco, CA / Remote'}
-STATUS: ${prof.status || 'Available for SWE Internships'}
-==============================================================
-          `);
-        } else {
-          appendTerminalLine(`cat: ${parts[1] || 'file'}: No such file or directory. Try: cat resume`, 'error');
-        }
-        break;
-
-      case 'vault':
-      case 'directory':
-        appendTerminalLine(`Decoupling vault latch... Opening Personal Drive Directory.`);
-        const vaultTrigger = document.getElementById('dockVaultBtn') || document.getElementById('openVaultFloatingBtn') || document.getElementById('openVaultTileBtn');
-        if (vaultTrigger) vaultTrigger.click();
-        break;
-
-      case 'admin':
-        appendTerminalLine(`Routing to Station Master Control Console...`);
-        window.location.href = 'admin.html';
-        break;
-
-      case 'clear':
-        output.innerHTML = '';
-        break;
-
-      case 'sudo':
-        if (parts[1] === 'hire') {
-          vintageSound.playBell();
-          appendTerminalLine(`
-[SUCCESS] ROOT PERMISSION GRANTED!
-Thank you for your interest! Please dispatch your proposal below or 
-send electronic correspondence directly to: ${profEmail}
-Ready to deploy immediately.
-          `);
-          const contactSec = document.getElementById('contact') || document.getElementById('contactForm');
-          if (contactSec) contactSec.scrollIntoView({ behavior: 'smooth' });
-        } else {
-          appendTerminalLine(`sudo: unauthorized instruction. Try: sudo hire`, 'error');
-        }
-        break;
-
-      case 'theme':
-        const target = parts[1];
-        if (['parchment', 'vintage-parchment'].includes(target)) {
-          applyTheme('vintage-parchment');
-          appendTerminalLine(`Theme shifted to Parchment & Ink.`);
-        } else if (['phosphor', 'terminal-phosphor', 'green'].includes(target)) {
-          applyTheme('terminal-phosphor');
-          appendTerminalLine(`Theme shifted to CRT Green Phosphor.`);
-        } else if (['blueprint', 'blueprint-cyan', 'blue'].includes(target)) {
-          applyTheme('blueprint-cyan');
-          appendTerminalLine(`Theme shifted to Blueprint Cyan.`);
-        } else if (['amber', 'amber-crt', 'orange'].includes(target)) {
-          applyTheme('amber-crt');
-          appendTerminalLine(`Theme shifted to Amber CRT.`);
-        } else if (['cyber', 'cyberdeck', 'cyber-deck', 'neon'].includes(target)) {
-          applyTheme('cyber-deck');
-          appendTerminalLine(`Theme shifted to Cyberdeck Neon.`);
-        } else if (['solarized', 'solarized-dark', 'slate'].includes(target)) {
-          applyTheme('solarized-dark');
-          appendTerminalLine(`Theme shifted to Solarized Dark.`);
-        } else {
-          appendTerminalLine(`Unknown theme. Choose: parchment, phosphor, blueprint, amber, cyberdeck, solarized`, 'error');
-        }
-        break;
-
-      case 'contact':
-        appendTerminalLine(`Coordinates: ${prof.location || 'San Francisco, CA'}\nMail: ${profEmail}\nNavigating to dispatch...`);
-        const contactEl = document.getElementById('contact') || document.getElementById('contactForm');
-        if (contactEl) contactEl.scrollIntoView({ behavior: 'smooth' });
-        break;
-
-      case 'uptime':
-        appendTerminalLine(`UPTIME: 99.98% • LOAD AVERAGE: 0.12, 0.08, 0.05 • MEMORY: 32MB / 64MB`);
-        break;
-
-      default:
-        appendTerminalLine(`zsh: command not found: ${escapeHtml(cleanCmd)}. Type 'help' for routine listings.`, 'error');
-        break;
-    }
-
-    output.scrollTop = output.scrollHeight;
+    return;
   }
 
-  function appendTerminalLine(text, className = '') {
-    const div = document.createElement('div');
-    div.className = `term-line ${className}`;
-    div.textContent = text;
-    output.appendChild(div);
-  }
+  // Fallback: dynamically load terminal-engine.js if not yet present
+  const scriptTag = document.createElement('script');
+  scriptTag.src = 'terminal-engine.js';
+  scriptTag.onload = () => {
+    if (window.LinuxTerminalEngine && window.LinuxTerminalEngine.LinuxTerminalVM) {
+      window.activeTerminalVM = new window.LinuxTerminalEngine.LinuxTerminalVM({
+        inputEl: input,
+        outputEl: output,
+        promptEl: document.querySelector('.term-prompt'),
+        screenEl: document.getElementById('terminalScreen')
+      });
+    }
+  };
+  document.head.appendChild(scriptTag);
 }
 
 /**
