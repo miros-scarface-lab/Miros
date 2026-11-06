@@ -47,7 +47,7 @@
         <a href="experience.html" class="nav-item"><span>06.</span> Experience</a>
         <a href="contact.html" class="nav-item"><span>07.</span> Dispatch</a>
         <a href="hsc.html" class="nav-item"><span>08.</span> HSC Academic</a>
-        <a href="admin.html" class="nav-item nav-admin-btn"><span>⚙️</span> Admin</a>
+          <a href="companion.html" class="nav-item"><span>09.</span> Companion</a>
       </nav>
 
       <div class="header-controls">
@@ -68,12 +68,6 @@
         </div>
 
         <!-- 3-Dots Quick Action Menu -->
-        <!-- Prominent Station Master Admin Button -->
-        <a href="admin.html" class="vintage-btn btn-sm btn-admin-header" id="headerAdminBtn" title="Station Master Admin Console">
-          <span class="btn-icon-symbol">⚙️</span>
-          <span>Admin</span>
-        </a>
-
         <button class="vintage-btn btn-sm btn-icon" id="audioToggleBtn" title="Toggle Mechanical Typewriter Audio">
           <span id="audioIcon">🔊</span>
         </button>
@@ -338,6 +332,24 @@
             </div>
             <span class="vintage-btn btn-sm btn-outline" style="align-self:flex-start; margin-top:0.5rem;">Explore HSC Hub →</span>
           </a>
+          <!-- Card 09: AI Companion (Gemini 3.5 Flash) -->
+          <a href="companion.html" class="parchment-paper" style="display:flex; flex-direction:column; gap:0.5rem; transition: transform 0.15s ease, box-shadow 0.15s ease; border-color:rgba(0, 240, 255, 0.45); background:rgba(0, 240, 255, 0.04);">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+              <span class="sector-tag" style="font-family:var(--font-mono); font-size:0.75rem; color:#00f0ff;">SECTOR // 09</span>
+              <span style="font-size:1.6rem;">✨</span>
+            </div>
+            <h3 style="font-size:1.25rem; font-family:var(--font-serif); margin:0; color:#00f0ff;">AI Companion</h3>
+            <p style="font-size:0.88rem; color:var(--ink-secondary); line-height:1.6; flex:1;">
+              Autonomous neural intelligence running on Gemini 3.5 Flash API. Real-time reasoning, code debugging, and HSC academic problem solving.
+            </p>
+            <div style="display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.25rem;">
+              <span class="vintage-tag" style="font-size: 0.65rem; border-color:#00f0ff; color:#00f0ff;">⚡ Gemini 3.5 Flash</span>
+              <span class="vintage-tag" style="font-size: 0.65rem;">🧠 Neural Tutor</span>
+              <span class="vintage-tag" style="font-size: 0.65rem;">🐞 Code Debug</span>
+            </div>
+            <span class="vintage-btn btn-sm btn-outline" style="align-self:flex-start; margin-top:0.5rem; border-color:#00f0ff; color:#00f0ff;">Launch Companion (09) →</span>
+          </a>
+
 
 
         </div>
@@ -560,5 +572,31 @@
   
 
   <script src="script.js"></script>
+
+  <!-- Floating Gemini AI Companion Trigger & Drawer -->
+  <button type="button" class="floating-companion-btn" id="floatingCompanionTrigger" title="Open AI Companion (Gemini 3.5 Flash)">
+    <span>✨</span>
+    <span class="floating-btn-text">AI Companion</span>
+  </button>
+
+  <div class="floating-companion-drawer" id="floatingCompanionDrawer" style="display:none;">
+    <div class="companion-drawer-header">
+      <div style="display:flex; align-items:center; gap:0.4rem;">
+        <span style="font-size:1.1rem;">🤖</span>
+        <strong>Gemini 3.5 Flash</strong>
+      </div>
+      <div style="display:flex; align-items:center; gap:0.35rem;">
+        <a href="companion.html" class="drawer-action-link" title="Open Full-Screen Page 09">↗ Full Page</a>
+        <button type="button" class="drawer-close-btn" id="closeCompanionDrawerBtn">✕</button>
+      </div>
+    </div>
+    <div class="companion-drawer-feed" id="drawerCompanionFeed"></div>
+    <div class="companion-drawer-input-row">
+      <input type="text" class="companion-drawer-input" id="drawerCompanionInput" placeholder="Ask Gemini 3.5 Flash...">
+      <button type="button" class="companion-drawer-send-btn" id="drawerCompanionSendBtn">⚡</button>
+    </div>
+  </div>
+
+  <script src="companion-engine.js"></script>
 </body>
 </html>

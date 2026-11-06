@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="vintage-parchment">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>09. AI Companion (Gemini 3.5 Flash) | Mir A K Sajid</title>
+  <meta name="description" content="Quantum Neural AI Companion powered by Gemini 3.5 Flash API for systems engineering, code analysis, and HSC academic problem solving.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,300..800;1,300..800&family=Outfit:wght@300..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="assets/images/avatar-pixel.png">
+</head>
+<body class="vintage-body">
+
+  <div class="vintage-overlay" id="vintageOverlay" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="vintage-header" id="header">
+    <div class="header-container">
+      <div class="brand-badge">
+        <a href="index.html" class="brand-link">
+          <span class="brand-bracket">[</span>
+          <span class="brand-text" id="headerBrand">CSE://SAJID</span>
+          <span class="brand-bracket">]</span>
+        </a>
+        <div class="status-pill">
+          <span class="status-indicator"></span>
+          <span class="status-label" id="headerStatus">COMPANION ONLINE • GEMINI 3.5 FLASH</span>
+        </div>
+      </div>
+
+      <nav class="nav-links" id="mainNav">
+        <a href="index.html" class="nav-item"><span>00.</span> Home</a>
+        <a href="about.html" class="nav-item"><span>01.</span> About</a>
+        <a href="terminal.html" class="nav-item"><span>02.</span> Terminal</a>
+        <a href="projects.html" class="nav-item"><span>03.</span> Projects</a>
+        <a href="skills.html" class="nav-item"><span>04.</span> Skills</a>
+        <a href="academics.html" class="nav-item"><span>05.</span> Academics</a>
+        <a href="experience.html" class="nav-item"><span>06.</span> Experience</a>
+        <a href="contact.html" class="nav-item"><span>07.</span> Dispatch</a>
+        <a href="hsc.html" class="nav-item"><span>08.</span> HSC Academic</a>
+        <a href="companion.html" class="nav-item active"><span>09.</span> Companion</a>
+      </nav>
+
+      <div class="header-controls">
+        <div class="theme-dropdown">
+          <button class="vintage-btn btn-sm btn-icon" id="themeDropdownBtn" title="Switch Theme">
+            <span class="btn-icon-symbol">🗲</span>
+            <span class="theme-active-name" id="themeActiveName">Theme</span>
+          </button>
+          <div class="dropdown-menu" id="themeMenu">
+            <button class="theme-option active" data-theme-val="vintage-parchment">📜 Parchment &amp; Ink</button>
+            <button class="theme-option" data-theme-val="terminal-phosphor">📟 CRT Green Phosphor</button>
+            <button class="theme-option" data-theme-val="blueprint-cyan">📐 Blueprint Cyan</button>
+            <button class="theme-option" data-theme-val="amber-crt">💡 Amber Gas Discharge</button>
+            <button class="theme-option" data-theme-val="cyber-deck">💜 Cyberdeck Neon</button>
+            <button class="theme-option" data-theme-val="solarized-dark">☀️ Solarized Dark</button>
+          </div>
+        </div>
+
+        <button class="vintage-btn btn-sm btn-icon" id="audioToggleBtn" title="Toggle Mechanical Audio">
+          <span id="audioIcon">🔊</span>
+        </button>
+      </div>
+
+      <button class="mobile-toggle" id="mobileMenuToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Page Banner -->
+  <div class="page-banner">
+    <div class="container">
+      <div class="page-breadcrumbs">
+        <a href="index.html">Index</a> / <span>Sector 09</span> / <span>Neural Companion</span>
+      </div>
+      <h1 class="page-title">09. Quantum Neural Companion</h1>
+      <p class="page-lead">
+        Autonomous AI intelligence powered by Google Gemini API (Model: <code>gemini-3.5-flash</code>). Real-time reasoning, compiler diagnostics, and HSC academic problem solving.
+      </p>
+    </div>
+  </div>
+
+  <!-- Main Companion Flexbox Chassis -->
+  <main class="container companion-main-container" style="padding-bottom: 4rem;">
+    <div class="companion-chassis parchment-paper">
+      
+      <!-- Companion Top Controls Bar -->
+      <div class="companion-top-bar">
+        <div class="companion-telemetry-badge">
+          <span class="pulse-indicator"></span>
+          <span id="companionStatusText" class="companion-status-text">
+            <strong>gemini-3.5-flash</strong> • ACTIVE
+          </span>
+        </div>
+
+        <div class="companion-actions-bar">
+          <button type="button" class="vintage-btn btn-sm" id="configureApiKeyBtn" title="Set Google Gemini API Key">
+            🔑 Set API Key
+          </button>
+          <button type="button" class="vintage-btn btn-sm btn-outline" id="clearChatHistoryBtn" title="Flush Chat History">
+            🗑️ Clear Memory
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Action Prompt Chips -->
+      <div class="companion-quick-chips">
+        <button type="button" class="companion-quick-pill" data-prompt="Explain the distributed systems and compiler projects in this portfolio.">
+          ⚡ Portfolio Architecture
+        </button>
+        <button type="button" class="companion-quick-pill" data-prompt="How do I debug a segmentation fault and memory leak in C using GDB and Valgrind?">
+          🐞 Debug C/C++ Code
+        </button>
+        <button type="button" class="companion-quick-pill" data-prompt="Solve this HSC Physics 1st Paper problem: A body is projected at 30 degrees with velocity 40 m/s. Calculate maximum height and range.">
+          🔬 HSC Physics Solve
+        </button>
+        <button type="button" class="companion-quick-pill" data-prompt="Explain hybridization in PCl5 and SF6 with molecular orbital geometry for HSC Chemistry.">
+          🧪 HSC Chemistry Solve
+        </button>
+        <button type="button" class="companion-quick-pill" data-prompt="What are the essential shortcut formulas for HSC Higher Math calculus and vectors?">
+          ⚡ Higher Math Tricks
+        </button>
+      </div>
+
+      <!-- Chat Messages Scroll Feed -->
+      <div class="companion-chat-feed" id="companionChatFeed">
+        <!-- Rendered dynamically by companion-engine.js -->
+      </div>
+
+      <!-- Chat Input Deck -->
+      <div class="companion-input-deck">
+        <textarea class="companion-textarea" id="companionInput" rows="1" placeholder="Ask Gemini 3.5 Flash anything (Press Enter to transmit, Shift+Enter for new line)..." spellcheck="false"></textarea>
+        <button type="button" class="vintage-btn btn-primary companion-send-btn" id="companionSendBtn">
+          <span>⚡ Send</span>
+        </button>
+      </div>
+      
+      <div class="companion-footer-meta">
+        <span>Model: <code>gemini-3.5-flash</code></span>
+        <span>•</span>
+        <span>End-to-End Client Encryption</span>
+        <span>•</span>
+        <span>Powered by Google Gemini API</span>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="vintage-footer">
+    <div class="container footer-container">
+      <div class="footer-left">
+        <span class="footer-prompt">&gt; SYSTEM SHUTDOWN PROTOCOL READY</span>
+        <span class="footer-stamp">SCARFACE RESEARCH LAB • CSE WORKSTATION</span>
+      </div>
+      <div class="footer-right">
+        <span class="footer-coords">SECTOR: 09 • AI COMPANION (GEMINI 3.5 FLASH)</span>
+        <span class="footer-copy">© 2026 Mir A K Sajid. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="companion-engine.js"></script>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const feed = document.getElementById('companionChatFeed');
+      const input = document.getElementById('companionInput');
+      const sendBtn = document.getElementById('companionSendBtn');
+      const statusEl = document.getElementById('companionStatusText');
+
+      if (window.CompanionEngine && window.CompanionEngine.GeminiCompanion) {
+        window.activeCompanion = new window.CompanionEngine.GeminiCompanion({
+          messagesContainer: feed,
+          inputEl: input,
+          sendBtn: sendBtn,
+          statusEl: statusEl
+        });
+
+        // Key configuration button
+        const keyBtn = document.getElementById('configureApiKeyBtn');
+        if (keyBtn) {
+          keyBtn.addEventListener('click', () => {
+            window.activeCompanion.promptForApiKey();
+          });
+        }
+
+        // Clear history button
+        const clearBtn = document.getElementById('clearChatHistoryBtn');
+        if (clearBtn) {
+          clearBtn.addEventListener('click', () => {
+            if (confirm('Flush conversation memory?')) {
+              window.activeCompanion.clearHistory();
+            }
+          });
+        }
+      }
+    });
+  </script>
+</body>
+</html>

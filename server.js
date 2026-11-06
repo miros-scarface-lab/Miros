@@ -1072,6 +1072,7 @@ app.get('/academics', (req, res) => res.sendFile(path.join(__dirname, 'academics
 app.get('/experience', (req, res) => res.sendFile(path.join(__dirname, 'experience.html')));
 app.get('/contact', (req, res) => res.sendFile(path.join(__dirname, 'contact.html')));
 app.get('/hsc', (req, res) => res.sendFile(path.join(__dirname, 'hsc.html')));
+app.get('/companion', (req, res) => res.sendFile(path.join(__dirname, 'companion.html')));
 app.get('/admin', (req, res) => res.sendFile(path.join(__dirname, 'admin.html')));
 
 // Fallback to index.html (never serve index.html for static asset extensions)

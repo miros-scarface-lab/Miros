@@ -10,6 +10,7 @@
     { "source": "/experience", "destination": "/experience.html" },
     { "source": "/contact", "destination": "/contact.html" },
     { "source": "/hsc", "destination": "/hsc.html" },
+    { "source": "/companion", "destination": "/companion.html" },
     { "source": "/admin", "destination": "/admin.html" }
   ]
 }

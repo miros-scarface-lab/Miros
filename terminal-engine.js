@@ -960,6 +960,12 @@
           window.location.href = 'hsc.html';
           return { stdout: 'Launching HSC Academic Hub...', stderr: '' };
 
+        case 'companion':
+        case 'ai':
+        case 'gemini':
+          window.location.href = 'companion.html';
+          return { stdout: 'Launching Sector 09: Quantum Neural Companion (Gemini 3.5 Flash)...', stderr: '' };
+
         case 'projects':
           return this.cmdProjects();
 

@@ -438,6 +438,45 @@ function initFloatingBoxes() {
   if (dock) dock.remove();
 }
 
+/**
+ * Floating AI Companion Drawer (Gemini 3.5 Flash) on Home Page
+ */
+function initFloatingCompanionDrawer() {
+  const trigger = document.getElementById('floatingCompanionTrigger');
+  const drawer = document.getElementById('floatingCompanionDrawer');
+  const closeBtn = document.getElementById('closeCompanionDrawerBtn');
+  const feed = document.getElementById('drawerCompanionFeed');
+  const input = document.getElementById('drawerCompanionInput');
+  const sendBtn = document.getElementById('drawerCompanionSendBtn');
+
+  if (!trigger || !drawer) return;
+
+  let drawerCompanion = null;
+
+  trigger.addEventListener('click', () => {
+    const isHidden = drawer.style.display === 'none' || !drawer.style.display;
+    if (isHidden) {
+      drawer.style.display = 'flex';
+      if (!drawerCompanion && window.CompanionEngine && window.CompanionEngine.GeminiCompanion) {
+        drawerCompanion = new window.CompanionEngine.GeminiCompanion({
+          messagesContainer: feed,
+          inputEl: input,
+          sendBtn: sendBtn
+        });
+      }
+      if (input) input.focus();
+    } else {
+      drawer.style.display = 'none';
+    }
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      drawer.style.display = 'none';
+    });
+  }
+}
+
 // Main Initialization
 document.addEventListener('DOMContentLoaded', async () => {
   applyTheme(window.PortfolioState.theme);
@@ -468,6 +507,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   initPersonalVault(); // Encrypted Personal Directory & Google Drive Filesystem
   initExpandedJukebox(); // Expanded Genshin BGM Jukebox Modal
   initFloatingBoxes(); // Interactive 2D Floating Boxes & HUD Navigation
+  initFloatingCompanionDrawer(); // AI Companion (Gemini 3.5 Flash) Drawer on Home Page
 
   // Load Data
   await loadPortfolioData();
