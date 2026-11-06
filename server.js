@@ -689,6 +689,128 @@ app.put('/api/hsc', requireAdminAuth, (req, res) => {
   }
 });
 
+// Helper: Extract Google Drive File or Folder ID
+function extractDriveId(url) {
+  if (!url) return null;
+  const match = String(url).match(/\/d\/([a-zA-Z0-9_-]+)/);
+  if (match) return match[1];
+  const folderMatch = String(url).match(/\/folders\/([a-zA-Z0-9_-]+)/);
+  if (folderMatch) return folderMatch[1];
+  const idParam = String(url).match(/id=([a-zA-Z0-9_-]+)/);
+  if (idParam) return idParam[1];
+  return null;
+}
+
+// Tree node management endpoints for AAPathshala Library
+app.post('/api/hsc/node', requireAdminAuth, (req, res) => {
+  const { parentId, node } = req.body || {};
+  if (!node || !node.name) {
+    return res.status(400).json({ error: 'Node name is required' });
+  }
+
+  const data = readJSON(PORTFOLIO_FILE, {});
+  if (!data.hsc) data.hsc = { rootItems: [] };
+  if (!Array.isArray(data.hsc.rootItems)) data.hsc.rootItems = [];
+
+  const safeId = node.id || `node-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
+  const driveId = extractDriveId(node.downloadUrl || node.webViewLink || node.webContentLink) || node.driveId;
+
+  const nodeItem = {
+    id: safeId,
+    name: String(node.name).trim(),
+    type: node.type || (node.mimeType && node.mimeType.includes('folder') ? 'folder' : 'pdf'),
+    mimeType: node.mimeType || (node.type === 'folder' ? 'application/vnd.google-apps.folder' : 'application/pdf'),
+    driveId: driveId || null,
+    webViewLink: node.webViewLink || (driveId ? `https://drive.google.com/file/d/${driveId}/view` : (node.downloadUrl || '')),
+    webContentLink: node.webContentLink || (driveId ? `https://drive.google.com/uc?id=${driveId}&export=download` : (node.downloadUrl || '')),
+    size: node.size || null,
+    updatedAt: new Date().toISOString()
+  };
+
+  if (nodeItem.type === 'folder') {
+    nodeItem.children = Array.isArray(node.children) ? node.children : [];
+  }
+
+  function findNode(list, targetId) {
+    for (let it of list) {
+      if (it.id === targetId) return it;
+      if (it.children) {
+        let f = findNode(it.children, targetId);
+        if (f) return f;
+      }
+    }
+    return null;
+  }
+
+  function updateOrInsert(list, targetParentId, item) {
+    function updateExisting(arr) {
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i].id === item.id) {
+          if (arr[i].children && !item.children) item.children = arr[i].children;
+          arr[i] = Object.assign(arr[i], item);
+          return true;
+        }
+        if (arr[i].children && updateExisting(arr[i].children)) return true;
+      }
+      return false;
+    }
+
+    if (node.id && updateExisting(list)) return true;
+
+    if (targetParentId && targetParentId !== 'root') {
+      const parent = findNode(list, targetParentId);
+      if (parent) {
+        if (!Array.isArray(parent.children)) parent.children = [];
+        parent.children.push(item);
+        return true;
+      }
+    }
+    list.push(item);
+    return true;
+  }
+
+  updateOrInsert(data.hsc.rootItems, parentId, nodeItem);
+  const success = writeJSON(PORTFOLIO_FILE, data);
+  if (success) {
+    res.json({ success: true, item: nodeItem, hsc: data.hsc });
+  } else {
+    res.status(500).json({ error: 'Failed to save node' });
+  }
+});
+
+app.delete('/api/hsc/node/:id', requireAdminAuth, (req, res) => {
+  const { id } = req.params;
+  const data = readJSON(PORTFOLIO_FILE, {});
+  if (!data.hsc || !Array.isArray(data.hsc.rootItems)) {
+    return res.status(404).json({ error: 'HSC library not found' });
+  }
+
+  function deleteFromList(list, targetId) {
+    for (let i = 0; i < list.length; i++) {
+      if (list[i].id === targetId) {
+        list.splice(i, 1);
+        return true;
+      }
+      if (list[i].children && deleteFromList(list[i].children, targetId)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  const deleted = deleteFromList(data.hsc.rootItems, id);
+  if (!deleted) {
+    return res.status(404).json({ error: 'Node not found' });
+  }
+
+  const success = writeJSON(PORTFOLIO_FILE, data);
+  if (success) {
+    res.json({ success: true, message: 'Node deleted', hsc: data.hsc });
+  } else {
+    res.status(500).json({ error: 'Failed to delete node' });
+  }
+});
+
 app.post('/api/hsc/:category', requireAdminAuth, (req, res) => {
   const { category } = req.params;
   const validCategories = ['books', 'board', 'tricks', 'tests'];

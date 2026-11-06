@@ -1,25 +1,28 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="vintage-parchment">
+<html lang="bn" data-theme="vintage-parchment">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>📚 HSC Academic Resource Hub | Mir A K Sajid</title>
-  <meta name="description" content="HSC Academic Resources — Books, Board Solution Books, Short Tricks, and Test Papers curated by Mir A K Sajid.">
+  <title>📚 এইচএসসি একাডেমিক লাইব্রেরি | HSC Academic Resource Hub</title>
+  <meta name="description" content="এইচএসসি একাডেমিক পড়াশোনা - বোর্ড পরীক্ষার প্রস্তুতি। টেস্ট পেপার, প্রশ্নব্যাংক, ফাইনাল মডেল টেস্ট, বোর্ড প্রশ্ন সলভ ও বোর্ড সল্যুশন বুক।">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="assets/images/avatar-pixel.png">
   
-  <!-- HSC Page specific styles -->
   <style>
-    /* HSC Hero Banner */
+    /* AAPathshala Library Explorer - Responsive Styling */
+    :root {
+      --font-bengali: 'Hind Siliguri', 'Kalpurush', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
     .hsc-hero {
       background: linear-gradient(135deg, var(--bg-subtle) 0%, var(--bg-surface) 100%);
       border: var(--border-width) solid var(--border-color);
       border-radius: var(--radius-badge);
-      padding: 3rem 2rem;
-      margin-bottom: 3rem;
+      padding: 2.5rem 1.5rem;
+      margin-bottom: 2rem;
       position: relative;
       overflow: hidden;
       box-shadow: var(--shadow-tactile-lg);
@@ -31,7 +34,7 @@
       top: 0; left: 0; right: 0; bottom: 0;
       background: var(--bg-pattern);
       background-size: var(--bg-pattern-size);
-      opacity: 0.5;
+      opacity: 0.45;
       pointer-events: none;
     }
     .hsc-hero-badge {
@@ -39,230 +42,500 @@
       font-family: var(--font-mono);
       font-size: 0.72rem;
       font-weight: 700;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       background: var(--accent-rust);
       color: #fff;
-      padding: 0.3rem 0.9rem;
+      padding: 0.35rem 0.9rem;
       border-radius: var(--radius-badge);
-      margin-bottom: 1rem;
+      margin-bottom: 0.9rem;
+      box-shadow: 2px 2px 0 rgba(0,0,0,0.25);
     }
     .hsc-hero h1 {
-      font-family: var(--font-serif);
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      font-weight: 900;
+      font-family: var(--font-bengali);
+      font-size: clamp(1.8rem, 4.5vw, 2.75rem);
+      font-weight: 700;
       color: var(--ink-primary);
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.6rem;
       position: relative;
+      line-height: 1.3;
     }
     .hsc-hero p {
-      font-family: var(--font-body);
-      font-size: 1.05rem;
+      font-family: var(--font-bengali);
+      font-size: 1.02rem;
       color: var(--ink-secondary);
-      max-width: 600px;
+      max-width: 680px;
       margin: 0 auto;
       line-height: 1.7;
       position: relative;
     }
 
-    /* Tab Navigation for HSC sections */
-    .hsc-tabs {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      margin-bottom: 2rem;
-      border-bottom: var(--border-width) solid var(--border-color);
-      padding-bottom: 0;
-    }
-    .hsc-tab-btn {
-      font-family: var(--font-mono);
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      padding: 0.6rem 1.25rem;
-      border: var(--border-width) solid var(--border-color);
-      border-bottom: none;
-      background: var(--bg-subtle);
-      color: var(--ink-secondary);
-      cursor: pointer;
-      border-radius: var(--radius-badge) var(--radius-badge) 0 0;
-      transition: all var(--transition-quick);
-      position: relative;
-      bottom: calc(-1 * var(--border-width));
-    }
-    .hsc-tab-btn:hover {
-      background: var(--bg-surface);
-      color: var(--ink-primary);
-    }
-    .hsc-tab-btn.active {
-      background: var(--bg-surface);
-      color: var(--accent-rust);
-      border-color: var(--border-color);
-      border-bottom-color: var(--bg-surface);
-      box-shadow: var(--shadow-tactile-sm);
-    }
-
-    /* Tab Panes */
-    .hsc-pane { display: none; }
-    .hsc-pane.active { display: block; }
-
-    /* Resource Cards Grid */
-    .hsc-resource-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.25rem;
-      margin-top: 1.5rem;
-    }
-    .hsc-resource-card {
+    /* Library Card Explorer Container */
+    .lib-explorer-box {
       background: var(--bg-surface);
       border: var(--border-width) solid var(--border-color);
       border-radius: var(--radius-badge);
-      padding: 1.25rem;
-      box-shadow: var(--shadow-tactile-sm);
-      transition: transform var(--transition-quick), box-shadow var(--transition-quick);
+      box-shadow: var(--shadow-tactile);
+      overflow: hidden;
+      margin-bottom: 3rem;
+    }
+
+    /* Top Explorer Toolbar */
+    .lib-toolbar {
+      padding: 1.25rem 1.5rem;
+      background: var(--bg-subtle);
+      border-bottom: var(--border-width) solid var(--border-color);
       display: flex;
       flex-direction: column;
-      gap: 0.6rem;
+      gap: 1rem;
     }
-    .hsc-resource-card:hover {
-      transform: translateY(-3px) translateX(-2px);
-      box-shadow: var(--shadow-tactile);
+    @media (min-width: 768px) {
+      .lib-toolbar {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
     }
-    .hsc-card-header {
+
+    /* Search Input Container */
+    .lib-search-box {
+      position: relative;
+      flex: 1;
+      max-width: 600px;
       display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
+      align-items: center;
     }
-    .hsc-card-icon {
-      font-size: 2rem;
-      flex-shrink: 0;
-      line-height: 1;
+    .lib-search-input {
+      width: 100%;
+      padding: 0.65rem 2.5rem 0.65rem 2.4rem;
+      font-family: var(--font-bengali);
+      font-size: 0.95rem;
+      background: var(--bg-surface);
+      border: var(--border-width) solid var(--border-color);
+      border-radius: var(--radius-badge);
+      color: var(--ink-primary);
+      box-shadow: var(--shadow-tactile-sm);
+      transition: all var(--transition-quick);
     }
-    .hsc-card-meta { flex: 1; }
-    .hsc-card-category {
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent-rust);
-      margin-bottom: 0.2rem;
+    .lib-search-input:focus {
+      outline: none;
+      border-color: var(--accent-rust);
+      box-shadow: 0 0 0 3px rgba(180, 83, 9, 0.15);
     }
-    .hsc-card-title {
-      font-family: var(--font-serif);
+    .lib-search-icon {
+      position: absolute;
+      left: 0.8rem;
+      font-size: 1rem;
+      color: var(--ink-muted);
+      pointer-events: none;
+    }
+    .lib-search-clear {
+      position: absolute;
+      right: 0.6rem;
+      background: transparent;
+      border: none;
+      color: var(--ink-muted);
       font-size: 1.1rem;
+      cursor: pointer;
+      padding: 0.3rem 0.5rem;
+      display: none;
+      border-radius: 50%;
+    }
+    .lib-search-clear:hover {
+      color: var(--ink-primary);
+      background: var(--bg-subtle);
+    }
+
+    /* Library Telemetry Badges */
+    .lib-stats-pills {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .lib-badge {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 0.35rem 0.75rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-badge);
+      color: var(--ink-secondary);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .lib-badge.active-count {
+      background: var(--accent-patina);
+      color: #fff;
+      border-color: var(--accent-patina);
+    }
+
+    /* Breadcrumbs Navigation Bar */
+    .lib-breadcrumbs-bar {
+      padding: 0.85rem 1.5rem;
+      background: var(--bg-subtle);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .lib-back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-bengali);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.35rem 0.85rem;
+      background: var(--bg-surface);
+      border: var(--border-width) solid var(--border-color);
+      border-radius: var(--radius-badge);
+      color: var(--ink-primary);
+      cursor: pointer;
+      box-shadow: 1px 1px 0 rgba(0,0,0,0.15);
+      transition: all var(--transition-quick);
+    }
+    .lib-back-btn:hover:not(:disabled) {
+      background: var(--accent-rust);
+      color: #fff;
+      border-color: var(--accent-rust);
+      transform: translateX(-2px);
+    }
+    .lib-back-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .lib-breadcrumbs {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      font-family: var(--font-bengali);
+      font-size: 0.92rem;
+      color: var(--ink-secondary);
+    }
+    .crumb-item {
+      cursor: pointer;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      transition: background var(--transition-quick), color var(--transition-quick);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .crumb-item:hover {
+      background: var(--bg-surface);
+      color: var(--accent-rust);
+      text-decoration: underline;
+    }
+    .crumb-item.current {
       font-weight: 700;
       color: var(--ink-primary);
-      line-height: 1.35;
+      cursor: default;
+      pointer-events: none;
+      text-decoration: none;
     }
-    .hsc-card-desc {
-      font-family: var(--font-body);
-      font-size: 0.83rem;
-      color: var(--ink-secondary);
-      line-height: 1.6;
+    .crumb-sep {
+      color: var(--ink-muted);
+      font-size: 0.8rem;
+    }
+
+    /* AAPathshala Explorer List Table - Matches Screenshot */
+    .lib-table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+    }
+    .lib-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font-bengali);
+      text-align: left;
+    }
+    .lib-table tr {
+      border-bottom: 1px solid var(--border-color);
+      transition: background 0.15s ease;
+    }
+    .lib-table tr:last-child {
+      border-bottom: none;
+    }
+    .lib-table tr:hover {
+      background: var(--bg-subtle);
+    }
+
+    /* Folder Row */
+    .lib-row-folder {
+      cursor: pointer;
+      user-select: none;
+    }
+    .lib-row-folder:hover td.col-name .item-title {
+      color: #1d4ed8;
+      text-decoration: underline;
+    }
+
+    /* Table Columns */
+    .lib-table td {
+      padding: 0.95rem 1.5rem;
+      vertical-align: middle;
+    }
+    .col-name {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      min-width: 260px;
+    }
+    .col-action {
+      text-align: right;
+      white-space: nowrap;
+      width: 70px;
+    }
+
+    /* Folder Icon SVG (Exact Blue Outline Matching AAPathshala) */
+    .folder-icon-svg {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      color: #2563eb;
+    }
+
+    /* PDF Badge Icon (Exact Red Rounded Badge Matching AAPathshala) */
+    .pdf-badge-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #dc2626;
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-weight: 900;
+      font-size: 0.65rem;
+      letter-spacing: 0.05em;
+      border-radius: 4px;
+      width: 28px;
+      height: 22px;
+      flex-shrink: 0;
+      box-shadow: 0 1px 2px rgba(220, 38, 38, 0.3);
+    }
+
+    .item-title {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--ink-primary);
+      line-height: 1.45;
+      word-break: break-word;
+      transition: color var(--transition-quick);
+    }
+    .file-name-link {
+      cursor: pointer;
+      color: var(--ink-primary);
+      text-decoration: none;
+    }
+    .file-name-link:hover {
+      color: var(--accent-rust);
+      text-decoration: underline;
+    }
+
+    /* Dash for Folder */
+    .folder-dash {
+      font-family: var(--font-mono);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--ink-muted);
+      padding-right: 0.5rem;
+      display: inline-block;
+    }
+
+    /* Green Circular Download Icon (Exact Circle-Down Matching Screenshot) */
+    .download-circle-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      color: #16a34a;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+      text-decoration: none;
+      padding: 0;
+    }
+    .download-circle-btn svg {
+      width: 26px;
+      height: 26px;
+    }
+    .download-circle-btn:hover {
+      transform: scale(1.15);
+      color: #15803d;
+      background: rgba(22, 163, 74, 0.1);
+    }
+
+    /* Empty state */
+    .lib-empty {
+      padding: 3.5rem 1.5rem;
+      text-align: center;
+      color: var(--ink-muted);
+      font-family: var(--font-bengali);
+    }
+    .lib-empty-icon {
+      font-size: 3rem;
+      margin-bottom: 0.75rem;
+    }
+    .lib-empty h3 {
+      font-size: 1.2rem;
+      color: var(--ink-primary);
+      margin-bottom: 0.35rem;
+    }
+
+    /* Search Results Path Tag */
+    .search-path-tag {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+      margin-top: 0.2rem;
+    }
+
+    /* PDF Preview Modal */
+    .pdf-modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .pdf-modal-overlay.active {
+      display: flex;
+    }
+    .pdf-modal-box {
+      background: var(--bg-surface);
+      border: var(--border-width) solid var(--border-color);
+      border-radius: var(--radius-badge);
+      box-shadow: var(--shadow-tactile-lg);
+      width: 100%;
+      max-width: 950px;
+      height: 90vh;
+      max-height: 850px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      animation: modalSlideUp 0.2s ease-out;
+    }
+    @keyframes modalSlideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .pdf-modal-header {
+      padding: 1rem 1.5rem;
+      background: var(--bg-subtle);
+      border-bottom: var(--border-width) solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .pdf-modal-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      min-width: 0;
+    }
+    .pdf-modal-title {
+      font-family: var(--font-bengali);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--ink-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .pdf-modal-close {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-badge);
+      color: var(--ink-primary);
+      font-size: 1.1rem;
+      cursor: pointer;
+      padding: 0.4rem 0.8rem;
+      line-height: 1;
+      transition: all var(--transition-quick);
+    }
+    .pdf-modal-close:hover {
+      background: var(--accent-rust);
+      color: #fff;
+      border-color: var(--accent-rust);
+    }
+    .pdf-modal-frame-wrap {
       flex: 1;
+      position: relative;
+      background: #1e1e1e;
     }
-    .hsc-card-footer {
+    .pdf-modal-frame {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .pdf-modal-footer {
+      padding: 0.85rem 1.5rem;
+      background: var(--bg-subtle);
+      border-top: var(--border-width) solid var(--border-color);
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 0.5rem;
-      padding-top: 0.6rem;
-      border-top: 1px dashed var(--border-color);
-      margin-top: auto;
+      gap: 0.75rem;
     }
-    .hsc-card-tag {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      background: var(--bg-subtle);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-badge);
-      padding: 0.2rem 0.6rem;
-      color: var(--ink-muted);
+    .pdf-modal-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
     }
-    .hsc-download-btn {
+    .pdf-btn-download {
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 0.4rem 0.9rem;
-      background: var(--accent-rust);
+      background: #16a34a;
       color: #fff;
-      border: none;
+      font-family: var(--font-bengali);
+      font-weight: 600;
+      font-size: 0.88rem;
+      padding: 0.5rem 1.1rem;
       border-radius: var(--radius-badge);
-      cursor: pointer;
       text-decoration: none;
-      box-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+      box-shadow: 2px 2px 0 rgba(0,0,0,0.2);
       transition: all var(--transition-quick);
     }
-    .hsc-download-btn:hover {
-      background: var(--accent-rust-hover);
+    .pdf-btn-download:hover {
+      background: #15803d;
       transform: translateY(-1px);
-      box-shadow: 3px 3px 0 rgba(0,0,0,0.3);
     }
-    .hsc-empty-state {
-      text-align: center;
-      padding: 4rem 2rem;
-      font-family: var(--font-mono);
-      color: var(--ink-muted);
-    }
-    .hsc-empty-state .empty-icon { font-size: 3rem; margin-bottom: 1rem; }
-    .hsc-empty-state h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
-    .hsc-empty-state p { font-size: 0.85rem; }
-
-    /* Category icons map */
-    .cat-books    { color: #8B5CF6; }
-    .cat-board    { color: #0EA5E9; }
-    .cat-tricks   { color: #10B981; }
-    .cat-test     { color: #F59E0B; }
-
-    /* Search bar */
-    .hsc-search-bar {
-      display: flex;
-      gap: 0.75rem;
+    .pdf-btn-drive {
+      display: inline-flex;
       align-items: center;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-    }
-    .hsc-search-bar input {
-      flex: 1;
-      min-width: 220px;
-    }
-    .hsc-count-badge {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      font-weight: 700;
-      background: var(--accent-patina);
-      color: #fff;
-      padding: 0.2rem 0.65rem;
-      border-radius: var(--radius-badge);
-    }
-
-    /* Pane header with section description */
-    .hsc-pane-header {
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-      padding: 1.25rem;
-      background: var(--bg-subtle);
+      gap: 0.4rem;
+      background: var(--bg-surface);
+      color: var(--ink-primary);
       border: var(--border-width) solid var(--border-color);
+      font-family: var(--font-bengali);
+      font-weight: 600;
+      font-size: 0.88rem;
+      padding: 0.5rem 1rem;
       border-radius: var(--radius-badge);
+      text-decoration: none;
+      transition: all var(--transition-quick);
     }
-    .hsc-pane-icon { font-size: 2.5rem; }
-    .hsc-pane-header h2 {
-      font-family: var(--font-serif);
-      font-size: 1.5rem;
-      margin-bottom: 0.3rem;
-    }
-    .hsc-pane-header p {
-      font-size: 0.85rem;
-      color: var(--ink-secondary);
-      margin: 0;
+    .pdf-btn-drive:hover {
+      background: var(--bg-subtle);
+      color: var(--accent-rust);
     }
   </style>
 </head>
@@ -281,7 +554,7 @@
         </a>
         <div class="status-pill" id="systemStatusPill">
           <span class="status-indicator"></span>
-          <span class="status-label">HSC ACADEMIC HUB • OPEN ACCESS</span>
+          <span class="status-label">HSC ACADEMIC HUB • AAPATHSHALA ARCHIVE</span>
         </div>
       </div>
 
@@ -321,13 +594,14 @@
           <div class="dropdown-menu" id="dotsMenu">
             <a href="hsc.html" class="dots-menu-item dots-menu-highlight">
               <span class="dots-icon">📚</span>
-              <strong>HSC Academic Hub</strong>
+              <strong>একাডেমিক লাইব্রেরি (HSC Academic)</strong>
             </a>
             <div class="dots-divider"></div>
-            <a href="hsc.html?tab=books" class="dots-menu-subitem">📖 Books</a>
-            <a href="hsc.html?tab=board" class="dots-menu-subitem">📋 Board Solution Book</a>
-            <a href="hsc.html?tab=tricks" class="dots-menu-subitem">⚡ Question Banks &amp; Tricks</a>
-            <a href="hsc.html?tab=tests" class="dots-menu-subitem">📝 Test Papers &amp; Model Tests</a>
+            <a href="hsc.html?folder=folder-test-papers" class="dots-menu-subitem">📁 টেস্ট পেপার</a>
+            <a href="hsc.html?folder=folder-question-banks" class="dots-menu-subitem">📁 প্রশ্নব্যাংক</a>
+            <a href="hsc.html?folder=folder-final-model-tests" class="dots-menu-subitem">📁 ফাইনাল মডেল টেস্ট</a>
+            <a href="hsc.html?folder=folder-board-solved-22" class="dots-menu-subitem">📁 বোর্ড প্রশ্ন সলভ-২২</a>
+            <a href="hsc.html?folder=folder-board-solution-books" class="dots-menu-subitem">📁 বোর্ড সল্যুশন বুক</a>
             <div class="dots-divider"></div>
             <a href="admin.html#tab-hsc" class="dots-menu-subitem">⚙️ Manage HSC (Admin)</a>
           </div>
@@ -348,161 +622,98 @@
   <div class="retro-ticker-tape" aria-hidden="true">
     <div class="ticker-track">
       <span class="ticker-item"><span class="ticker-dot">📚</span> HSC ACADEMIC RESOURCE HUB</span>
-      <span class="ticker-item"><span class="ticker-dot">●</span> BOOKS • BOARD SOLUTIONS • SHORT TRICKS • TEST PAPERS</span>
-      <span class="ticker-item"><span class="ticker-dot">●</span> FREE DOWNLOADS • CURATED BY MIR A K SAJID</span>
-      <span class="ticker-item"><span class="ticker-dot">●</span> SCARFACE LAB EDUCATION WING</span>
+      <span class="ticker-item"><span class="ticker-dot">📁</span> টেস্ট পেপার • প্রশ্নব্যাংক • ফাইনাল মডেল টেস্ট • বোর্ড প্রশ্ন সলভ-২২ • বোর্ড সল্যুশন বুক</span>
+      <span class="ticker-item"><span class="ticker-dot">⚡</span> DIRECT GOOGLE DRIVE ACCESS &amp; DOWNLOADS</span>
+      <span class="ticker-item"><span class="ticker-dot">●</span> AAPATHSHALA CURATED ARCHIVE</span>
       <span class="ticker-item"><span class="ticker-dot">📚</span> HSC ACADEMIC RESOURCE HUB</span>
-      <span class="ticker-item"><span class="ticker-dot">●</span> BOOKS • BOARD SOLUTIONS • SHORT TRICKS • TEST PAPERS</span>
-      <span class="ticker-item"><span class="ticker-dot">●</span> FREE DOWNLOADS • CURATED BY MIR A K SAJID</span>
-      <span class="ticker-item"><span class="ticker-dot">●</span> SCARFACE LAB EDUCATION WING</span>
+      <span class="ticker-item"><span class="ticker-dot">📁</span> টেস্ট পেপার • প্রশ্নব্যাংক • ফাইনাল মডেল টেস্ট • বোর্ড প্রশ্ন সলভ-২২ • বোর্ড সল্যুশন বুক</span>
+      <span class="ticker-item"><span class="ticker-dot">⚡</span> DIRECT GOOGLE DRIVE ACCESS &amp; DOWNLOADS</span>
+      <span class="ticker-item"><span class="ticker-dot">●</span> AAPATHSHALA CURATED ARCHIVE</span>
     </div>
   </div>
 
   <main class="portfolio-main">
-    <div class="container" style="padding-top: 2.5rem; padding-bottom: 4rem;">
+    <div class="container" style="padding-top: 2rem; padding-bottom: 4rem;">
 
-      <!-- HSC Hero -->
+      <!-- Hero Header -->
       <div class="hsc-hero">
-        <div class="hsc-hero-badge">📚 SCARFACE LAB EDUCATION WING</div>
-        <h1>HSC Academic Resource Hub</h1>
-        <p>Curated study materials for Higher Secondary Certificate — textbooks, board solution guides, short tricks &amp; memory aids, and past test papers. All free to download.</p>
+        <div class="hsc-hero-badge">📚 AAPATHSHALA ARCHIVE • BOARD EXAM PREPARATION</div>
+        <h1 id="libMainTitle">একাডেমিক পড়াশোনা  - বোর্ড পরীক্ষার প্রস্তুতি</h1>
+        <p>উচ্চ মাধ্যমিক বোর্ড পরীক্ষার পূর্ণাঙ্গ প্রস্তুতি সামগ্রী — বিগত বছরের টেস্ট পেপার, চ্যাপ্টারওয়াইজ প্রশ্নব্যাংক, মডেল টেস্ট, বোর্ড প্রশ্ন ও পূর্ণাঙ্গ সল্যুশন বুকের অফিশিয়াল ড্রাইভ সংগ্রহ।</p>
       </div>
 
-      <!-- Section Tabs -->
-      <div class="hsc-tabs" id="hscTabs">
-        <button class="hsc-tab-btn active" data-pane="pane-books">📖 Books</button>
-        <button class="hsc-tab-btn" data-pane="pane-board">📋 Board Solution Books</button>
-        <button class="hsc-tab-btn" data-pane="pane-tricks">⚡ Question Banks &amp; Tricks</button>
-        <button class="hsc-tab-btn" data-pane="pane-tests">📝 Test Papers &amp; Model Tests</button>
-      </div>
+      <!-- Main Explorer Container -->
+      <div class="lib-explorer-box">
+        
+        <!-- Top Toolbar: Search & Statistics -->
+        <div class="lib-toolbar">
+          <div class="lib-search-box">
+            <span class="lib-search-icon">🔍</span>
+            <input type="text" id="libSearchInput" class="lib-search-input" placeholder="লাইব্রেরির যেকোনো ফাইল খুঁজুন (যেমন: Physics, Panjeri, উদ্বাস, পর্যায়বৃত্ত গতি)..." autocomplete="off" aria-label="Search library files">
+            <button type="button" id="libSearchClearBtn" class="lib-search-clear" title="Clear search">✕</button>
+          </div>
+          <div class="lib-stats-pills">
+            <span class="lib-badge" id="statsFolderCount">📁 107 ফোল্ডার</span>
+            <span class="lib-badge" id="statsFileCount">📄 620 ফাইল</span>
+            <span class="lib-badge active-count" id="activeItemsBadge">৭টি আইটেম</span>
+          </div>
+        </div>
 
-      <!-- PANE: Books -->
-      <div class="hsc-pane active" id="pane-books">
-        <div class="hsc-pane-header">
-          <div class="hsc-pane-icon">📖</div>
-          <div>
-            <h2>HSC Science Textbooks &amp; Reference Books</h2>
-            <p>Official NCTB and renowned professor textbooks for Higher Secondary Science subjects. Tap any subject below to explore 1st Paper and 2nd Paper books with direct PDF download links.</p>
+        <!-- Breadcrumbs Navigation Bar -->
+        <div class="lib-breadcrumbs-bar">
+          <button type="button" class="lib-back-btn" id="libBackBtn" disabled>
+            <span>⬅</span>
+            <span>ফিরে যান</span>
+          </button>
+          <div class="lib-breadcrumbs" id="libBreadcrumbs">
+            <span class="crumb-item current">🏠 লাইব্রেরি</span>
           </div>
         </div>
-        <div class="hsc-search-bar">
-          <input type="text" class="vintage-input hsc-search-input" placeholder="🔍 Search science subjects, authors (Tapan, Hazari, Ketab...), or book titles..." data-target="pane-books" id="searchBooks">
-          <span class="hsc-count-badge" id="countBooks">0 subjects</span>
-        </div>
-        <div class="hsc-subject-grid" id="gridBooks">
-          <div class="hsc-empty-state">
-            <div class="empty-icon">📖</div>
-            <h3>Loading Science Books...</h3>
-            <p>Fetching curated NCTB 1st and 2nd Paper textbooks from archive.</p>
-          </div>
-        </div>
-      </div>
 
-      <!-- PANE: Board Solution Books -->
-      <div class="hsc-pane" id="pane-board">
-        <div class="hsc-pane-header">
-          <div class="hsc-pane-icon">📋</div>
-          <div>
-            <h2>HSC Board Solution Books</h2>
-            <p>Comprehensive creative question (CQ) and MCQ solutions for all major HSC Science subjects. Select Physics, Chemistry, or Mathematics to view all 1st and 2nd Paper solved PDFs.</p>
+        <!-- Explorer Content Table (Exact AAPathshala Layout) -->
+        <div class="lib-table-wrapper">
+          <table class="lib-table" id="libTable">
+            <tbody id="libTableBody">
+              <!-- Dynamically populated rows -->
+            </tbody>
+          </table>
+          <div id="libEmptyState" class="lib-empty" style="display: none;">
+            <div class="lib-empty-icon">📂</div>
+            <h3 id="libEmptyTitle">কোনো ফাইল বা ফোল্ডার পাওয়া যায়নি</h3>
+            <p id="libEmptyDesc">এই ফোল্ডারে এখনো কোনো উপাদান যুক্ত করা হয়নি অথবা আপনার অনুসন্ধানের সাথে মিলছে না।</p>
           </div>
         </div>
-        <div class="hsc-search-bar">
-          <input type="text" class="vintage-input hsc-search-input" placeholder="🔍 Search board solutions by subject, board (Dhaka, All Board), or year..." data-target="pane-board" id="searchBoard">
-          <span class="hsc-count-badge" id="countBoard">0 subjects</span>
-        </div>
-        <div class="hsc-subject-grid" id="gridBoard">
-          <div class="hsc-empty-state">
-            <div class="empty-icon">📋</div>
-            <h3>Loading Board Solution Guides...</h3>
-            <p>Fetching Physics, Chemistry, and Math board question solutions.</p>
-          </div>
-        </div>
-      </div>
 
-      <!-- PANE: Short Tricks & Question Banks -->
-      <div class="hsc-pane" id="pane-tricks">
-        <div class="hsc-pane-header">
-          <div class="hsc-pane-icon">⚡</div>
-          <div>
-            <h2>Question Banks &amp; Short Tricks</h2>
-            <p>Chapterwise question banks (Udvash, AAPathshala), formula cheatsheets, and rapid revision aids covering all major HSC subjects.</p>
-          </div>
-        </div>
-        <div class="hsc-search-bar">
-          <input type="text" class="vintage-input hsc-search-input" placeholder="🔍 Search question banks & tricks by subject (Physics, Chemistry, Math...) or chapter..." data-target="pane-tricks" id="searchTricks">
-          <span class="hsc-count-badge" id="countTricks">0 items</span>
-        </div>
-        <div class="hsc-resource-grid" id="gridTricks">
-          <div class="hsc-empty-state">
-            <div class="empty-icon">⚡</div>
-            <h3>Loading Question Banks &amp; Tricks...</h3>
-            <p>Fetching curated chapterwise question banks and formula sheets.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- PANE: Test Papers & Model Tests -->
-      <div class="hsc-pane" id="pane-tests">
-        <div class="hsc-pane-header">
-          <div class="hsc-pane-icon">📝</div>
-          <div>
-            <h2>Test Papers &amp; Final Model Tests</h2>
-            <p>HSC Panjeri Test Papers (Edition 2018–2023), cadet college test sets, and Final Model Test examination papers with solutions.</p>
-          </div>
-        </div>
-        <div class="hsc-search-bar">
-          <input type="text" class="vintage-input hsc-search-input" placeholder="🔍 Search test papers by edition (2023, 2022, 2021...), subject, or college..." data-target="pane-tests" id="searchTests">
-          <span class="hsc-count-badge" id="countTests">0 papers</span>
-        </div>
-        <div class="hsc-resource-grid" id="gridTests">
-          <div class="hsc-empty-state">
-            <div class="empty-icon">📝</div>
-            <h3>Loading Test Papers &amp; Model Tests...</h3>
-            <p>Fetching Panjeri test papers and final model test sets.</p>
-          </div>
-        </div>
       </div>
 
     </div>
   </main>
 
-  <!-- HSC Hierarchical Science Resource Pop-up Modal -->
-  <div class="hsc-modal-overlay" id="hscSubjectModal" aria-hidden="true">
-    <div class="hsc-modal-container parchment-paper" role="dialog" aria-modal="true" aria-labelledby="hscModalTitle">
-      <div class="hsc-modal-header">
-        <div class="hsc-modal-title-group">
-          <div class="hsc-modal-header-icon" id="hscModalIcon">⚛️</div>
-          <div>
-            <div class="hsc-modal-stamp" id="hscModalStamp">HSC SCIENCE RESOURCE ARCHIVE</div>
-            <h2 class="hsc-modal-title" id="hscModalTitle">Physics 1st &amp; 2nd Paper</h2>
-            <div class="hsc-modal-subtitle" id="hscModalSubtitle">পদার্থবিজ্ঞান • NCTB Approved Textbooks &amp; Reference Guides</div>
-          </div>
+  <!-- PDF Preview Modal -->
+  <div class="pdf-modal-overlay" id="pdfPreviewModal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="pdf-modal-box parchment-paper">
+      <div class="pdf-modal-header">
+        <div class="pdf-modal-title-wrap">
+          <span class="pdf-badge-icon">PDF</span>
+          <h2 class="pdf-modal-title" id="pdfModalTitle">Document Preview</h2>
         </div>
-        <button class="hsc-modal-close-btn" id="hscModalCloseBtn" aria-label="Close dialog">✕</button>
+        <button type="button" class="pdf-modal-close" id="pdfModalCloseBtn" aria-label="Close Preview">✕</button>
       </div>
 
-      <!-- Paper Filter Controls & Instant Search Inside Modal -->
-      <div class="hsc-modal-controls">
-        <div class="hsc-modal-filter-tabs" id="hscModalFilterTabs">
-          <button class="hsc-modal-filter-tab active" data-paper-filter="all">All Papers (<span id="countModalAll">0</span>)</button>
-          <button class="hsc-modal-filter-tab" data-paper-filter="1st Paper">1st Paper (<span id="countModal1st">0</span>)</button>
-          <button class="hsc-modal-filter-tab" data-paper-filter="2nd Paper">2nd Paper (<span id="countModal2nd">0</span>)</button>
-        </div>
-        <div class="hsc-modal-search-box">
-          <input type="text" id="hscModalSearchInput" class="vintage-input" placeholder="🔍 Search this subject..." aria-label="Search within subject">
-        </div>
+      <div class="pdf-modal-frame-wrap">
+        <iframe id="pdfModalIframe" class="pdf-modal-frame" src="about:blank" title="Google Drive PDF Preview" allow="autoplay"></iframe>
       </div>
 
-      <!-- Modal Body (Paper Resource Cards) -->
-      <div class="hsc-modal-body" id="hscModalBody">
-        <!-- Dynamically rendered by controller -->
-      </div>
-
-      <!-- Modal Footer -->
-      <div class="hsc-modal-footer">
-        <span class="hsc-modal-footer-info" id="hscModalFooterInfo">Showing all available resources</span>
-        <button type="button" class="vintage-btn btn-sm btn-outline" id="hscModalFooterCloseBtn">✕ Close Hub</button>
+      <div class="pdf-modal-footer">
+        <div style="font-family:var(--font-mono); font-size:0.78rem; color:var(--ink-muted);" id="pdfModalMeta">Google Drive PDF Viewer</div>
+        <div class="pdf-modal-actions">
+          <a href="#" target="_blank" rel="noopener noreferrer" class="pdf-btn-drive" id="pdfModalDriveBtn">
+            <span>↗</span> ড্রাইভে খুলুন
+          </a>
+          <a href="#" download class="pdf-btn-download" id="pdfModalDownloadBtn">
+            <span>⬇</span> সরাসরি ডাউনলোড
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -516,13 +727,13 @@
         </div>
         <div class="footer-text">
           <p class="footer-title" id="footerBrand">Mir A K Sajid • HSC Academic Resource Hub</p>
-          <p class="footer-copy">Made on Scarface Lab</p>
+          <p class="footer-copy">Made on Scarface Lab • AAPathshala Library Archive</p>
         </div>
       </div>
       <div class="footer-right">
         <div class="system-telemetry">
-          <span class="telem-item">RESOURCES: <strong id="telemTotal">0</strong></span>
-          <span class="telem-item">LOCAL_TIME: <strong id="telemTime">--:--:--</strong></span>
+          <span class="telem-item">COLLECTION: <strong>620+ PDFs</strong></span>
+          <span class="telem-item">STATUS: <strong style="color:var(--accent-patina);">ACTIVE_SYNC</strong></span>
         </div>
         <div class="footer-quick-links">
           <a href="index.html">Home</a>
@@ -530,579 +741,489 @@
           <a href="academics.html">Academics</a>
           <span class="sep">|</span>
           <a href="hsc.html">HSC Hub</a>
+          <span class="sep">|</span>
+          <a href="admin.html#tab-hsc">Admin</a>
         </div>
       </div>
     </div>
   </footer>
 
+  <!-- Scripts -->
   <script src="script.js"></script>
   <script>
-  // HSC Page Controller - Hierarchical Science Books & Board Solutions
   (function() {
-    // ---- Tab switching with query/hash support ----
-    const tabs = document.querySelectorAll('.hsc-tab-btn');
-    const panes = document.querySelectorAll('.hsc-pane');
+    'use strict';
 
-    function selectPane(paneId) {
-      tabs.forEach(t => t.classList.toggle('active', t.dataset.pane === paneId));
-      panes.forEach(p => p.classList.toggle('active', p.id === paneId));
-    }
+    // SVG Icons
+    const FOLDER_SVG = `<svg class="folder-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/></svg>`;
+    const DOWNLOAD_SVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="8 12 12 16 16 12"/><line x1="12" y1="8" x2="12" y2="16"/></svg>`;
 
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        selectPane(tab.dataset.pane);
-      });
-    });
-
-    // Support direct navigation via query parameter (?tab=board) or hash (#pane-board)
-    function applyUrlTab() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const tabParam = urlParams.get('tab');
-      const paneMap = {
-        books: 'pane-books',
-        board: 'pane-board',
-        tricks: 'pane-tricks',
-        tests: 'pane-tests'
-      };
-      if (tabParam && paneMap[tabParam]) {
-        selectPane(paneMap[tabParam]);
-      } else if (window.location.hash) {
-        const hash = window.location.hash.replace('#', '');
-        if (document.getElementById(hash)) {
-          selectPane(hash);
-        } else if (paneMap[hash]) {
-          selectPane(paneMap[hash]);
-        }
-      }
-    }
-    applyUrlTab();
-    window.addEventListener('hashchange', applyUrlTab);
-
-    // Global state
-    let hscLiveState = null;
-    let activeModalSubject = null;
-    let activeModalCategory = 'books';
-    let currentPaperFilter = 'all';
-
-    // Subject Icon & Bengali Title Dictionary
-    const SUBJECT_METADATA = {
-      'Physics': { icon: '⚛️', bangla: 'পদার্থবিজ্ঞান', subtitle: 'NCTB Curriculum • 1st & 2nd Paper' },
-      'Chemistry': { icon: '🧪', bangla: 'রসায়ন', subtitle: 'NCTB Curriculum • 1st & 2nd Paper' },
-      'Higher Mathematics': { icon: '📐', bangla: 'উচ্চতর গণিত', subtitle: 'Calculus, Vectors, Geometry & Algebra' },
-      'Biology': { icon: '🧬', bangla: 'জীববিজ্ঞান', subtitle: '1st Paper (Botany) & 2nd Paper (Zoology)' },
-      'Information & Comm. Technology': { icon: '💻', bangla: 'তথ্য ও যোগাযোগ প্রযুক্তি', subtitle: 'C Programming, HTML & Logic Gates' }
-    };
-
-    function escH(str) {
-      if (!str) return '';
-      return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-    }
+    // DOM Elements
+    const tableBody = document.getElementById('libTableBody');
+    const emptyState = document.getElementById('libEmptyState');
+    const emptyTitle = document.getElementById('libEmptyTitle');
+    const emptyDesc = document.getElementById('libEmptyDesc');
+    const breadcrumbsContainer = document.getElementById('libBreadcrumbs');
+    const backBtn = document.getElementById('libBackBtn');
+    const searchInput = document.getElementById('libSearchInput');
+    const searchClearBtn = document.getElementById('libSearchClearBtn');
+    const activeBadge = document.getElementById('activeItemsBadge');
+    const statsFolder = document.getElementById('statsFolderCount');
+    const statsFile = document.getElementById('statsFileCount');
 
     // Modal Elements
-    const modalOverlay = document.getElementById('hscSubjectModal');
-    const modalIcon = document.getElementById('hscModalIcon');
-    const modalStamp = document.getElementById('hscModalStamp');
-    const modalTitle = document.getElementById('hscModalTitle');
-    const modalSubtitle = document.getElementById('hscModalSubtitle');
-    const modalBody = document.getElementById('hscModalBody');
-    const modalCloseBtn = document.getElementById('hscModalCloseBtn');
-    const modalFooterCloseBtn = document.getElementById('hscModalFooterCloseBtn');
-    const modalSearchInput = document.getElementById('hscModalSearchInput');
-    const modalFilterTabs = document.querySelectorAll('.hsc-modal-filter-tab');
-    const countModalAll = document.getElementById('countModalAll');
-    const countModal1st = document.getElementById('countModal1st');
-    const countModal2nd = document.getElementById('countModal2nd');
-    const modalFooterInfo = document.getElementById('hscModalFooterInfo');
+    const pdfModal = document.getElementById('pdfPreviewModal');
+    const pdfModalTitle = document.getElementById('pdfModalTitle');
+    const pdfModalIframe = document.getElementById('pdfModalIframe');
+    const pdfModalDriveBtn = document.getElementById('pdfModalDriveBtn');
+    const pdfModalDownloadBtn = document.getElementById('pdfModalDownloadBtn');
+    const pdfModalCloseBtn = document.getElementById('pdfModalCloseBtn');
+    const pdfModalMeta = document.getElementById('pdfModalMeta');
 
-    function openSubjectModal(subjectGroup, category) {
-      if (!subjectGroup) return;
-      activeModalSubject = subjectGroup;
-      activeModalCategory = category;
-      currentPaperFilter = 'all';
+    // State
+    let libraryData = null;
+    let pathHistory = []; // Stack of folders: [ { id: 'root', name: 'লাইব্রেরি', children: [...] } ]
+    let allFlattenedFiles = []; // For instant live search across all 620 files
 
-      // Set Header
-      const meta = SUBJECT_METADATA[subjectGroup.subject] || {
-        icon: subjectGroup.icon || (category === 'books' ? '📖' : '📋'),
-        bangla: subjectGroup.banglaName || subjectGroup.subject,
-        subtitle: subjectGroup.desc || ''
-      };
-
-      modalIcon.textContent = subjectGroup.icon || meta.icon;
-      modalStamp.textContent = category === 'books' 
-        ? `HSC SCIENCE TEXTBOOK ARCHIVE • ${subjectGroup.subject.toUpperCase()}`
-        : `HSC BOARD QUESTION SOLUTIONS • ${subjectGroup.subject.toUpperCase()}`;
-      modalTitle.textContent = `${subjectGroup.subject} 1st & 2nd Paper`;
-      modalSubtitle.textContent = `${subjectGroup.banglaName || meta.bangla} • ${subjectGroup.desc || meta.subtitle}`;
-
-      // Reset filters & search
-      modalFilterTabs.forEach(tab => {
-        tab.classList.toggle('active', tab.getAttribute('data-paper-filter') === 'all');
-      });
-      if (modalSearchInput) modalSearchInput.value = '';
-
-      renderModalItems();
-
-      // Show modal
-      modalOverlay.classList.add('active');
-      modalOverlay.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-      if (modalSearchInput) modalSearchInput.focus();
+    function esc(str) {
+      if (!str) return '';
+      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
 
-    function closeSubjectModal() {
-      modalOverlay.classList.remove('active');
-      modalOverlay.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-      activeModalSubject = null;
-    }
-
-    if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeSubjectModal);
-    if (modalFooterCloseBtn) modalFooterCloseBtn.addEventListener('click', closeSubjectModal);
-
-    modalOverlay.addEventListener('click', (e) => {
-      if (e.target === modalOverlay) closeSubjectModal();
-    });
-
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
-        closeSubjectModal();
+    // Play tactile mechanical click on navigation if audio enabled
+    function clickSound() {
+      if (window.vintageSound && typeof window.vintageSound.playMechanicalClick === 'function') {
+        window.vintageSound.playMechanicalClick();
       }
-    });
-
-    // Modal filter tabs
-    modalFilterTabs.forEach(btn => {
-      btn.addEventListener('click', () => {
-        modalFilterTabs.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        currentPaperFilter = btn.getAttribute('data-paper-filter');
-        renderModalItems();
-      });
-    });
-
-    if (modalSearchInput) {
-      modalSearchInput.addEventListener('input', () => {
-        renderModalItems();
-      });
     }
 
-    function renderModalItems() {
-      if (!activeModalSubject || !modalBody) return;
-      const papers = Array.isArray(activeModalSubject.papers) ? activeModalSubject.papers : [];
-
-      // Count stats for filter pills
-      const count1st = papers.filter(p => (p.paper || '').toLowerCase().includes('1st')).length;
-      const count2nd = papers.filter(p => (p.paper || '').toLowerCase().includes('2nd')).length;
-      if (countModalAll) countModalAll.textContent = papers.length;
-      if (countModal1st) countModal1st.textContent = count1st;
-      if (countModal2nd) countModal2nd.textContent = count2nd;
-
-      // Filter by paper tab
-      let list = papers;
-      if (currentPaperFilter === '1st Paper') {
-        list = papers.filter(p => (p.paper || '').toLowerCase().includes('1st'));
-      } else if (currentPaperFilter === '2nd Paper') {
-        list = papers.filter(p => (p.paper || '').toLowerCase().includes('2nd'));
-      }
-
-      // Filter by search query
-      const q = (modalSearchInput ? modalSearchInput.value : '').toLowerCase().trim();
-      if (q) {
-        list = list.filter(p =>
-          (p.name || '').toLowerCase().includes(q) ||
-          (p.author || '').toLowerCase().includes(q) ||
-          (p.board || '').toLowerCase().includes(q) ||
-          (p.year || '').toLowerCase().includes(q) ||
-          (p.edition || '').toLowerCase().includes(q) ||
-          (p.desc || '').toLowerCase().includes(q)
-        );
-      }
-
-      if (modalFooterInfo) {
-        modalFooterInfo.textContent = `Showing ${list.length} of ${papers.length} resources in ${activeModalSubject.subject}`;
-      }
-
-      if (list.length === 0) {
-        modalBody.innerHTML = `
-          <div class="hsc-empty-state" style="padding: 2.5rem 1rem;">
-            <div class="empty-icon">🔍</div>
-            <h3>No matching resources found</h3>
-            <p>Try switching filter tabs or clearing the search box.</p>
-          </div>
-        `;
-        return;
-      }
-
-      modalBody.innerHTML = list.map(item => {
-        const is1st = (item.paper || '').toLowerCase().includes('1st');
-        const tagClass = is1st ? 'tag-1st' : 'tag-2nd';
-        const authorOrBoard = item.author || item.board || '';
-        const yearOrEdition = item.edition || item.year || '';
-
-        return `
-          <div class="hsc-modal-item">
-            <div class="hsc-modal-item-header">
-              <div class="hsc-modal-item-title-col">
-                <span class="hsc-modal-item-paper-tag ${tagClass}">📄 ${escH(item.paper || 'Full Paper')}</span>
-                <h3 class="hsc-modal-item-name">${escH(item.name)}</h3>
-                ${authorOrBoard ? `<div class="hsc-modal-item-author">✍️ ${escH(authorOrBoard)}</div>` : ''}
-              </div>
-            </div>
-            ${item.desc ? `<div class="hsc-modal-item-desc">${escH(item.desc)}</div>` : ''}
-            <div class="hsc-modal-item-footer">
-              <div class="hsc-modal-item-meta">
-                ${yearOrEdition ? `<span class="hsc-modal-item-badge">📅 ${escH(yearOrEdition)}</span>` : ''}
-                ${item.board && item.board !== authorOrBoard ? `<span class="hsc-modal-item-badge">🏛️ ${escH(item.board)}</span>` : ''}
-              </div>
-              ${item.downloadUrl ? `
-                <a class="hsc-modal-download-btn" href="${escH(item.downloadUrl)}" target="_blank" rel="noopener noreferrer">
-                  <span>⬇</span> Download PDF
-                </a>
-              ` : '<span style="font-family:var(--font-mono);font-size:0.75rem;color:var(--ink-muted);">Link unavailable</span>'}
-            </div>
-          </div>
-        `;
-      }).join('');
-    }
-
-    // ---- Render Subject Cards for Books & Board Solutions ----
-    function renderSubjectGrid(categoryKey, containerId, countId, searchFilter = '') {
-      const container = document.getElementById(containerId);
-      const countEl = document.getElementById(countId);
-      if (!container) return;
-
-      const rawItems = (hscLiveState && hscLiveState[categoryKey]) || [];
-      const q = searchFilter.toLowerCase().trim();
-
-      // Normalize into subject groups
-      let groups = [];
-      if (rawItems.length > 0 && rawItems[0].papers) {
-        // Already hierarchical subject groups
-        groups = rawItems;
-      } else {
-        // Group flat items by subject
-        const map = new Map();
-        rawItems.forEach(item => {
-          const sub = item.subject || 'General Science';
-          if (!map.has(sub)) {
-            const meta = SUBJECT_METADATA[sub] || { icon: '📚', bangla: sub, subtitle: '' };
-            map.set(sub, {
-              id: 'group-' + sub.toLowerCase().replace(/[^a-z0-9]/g, '-'),
-              subject: sub,
-              banglaName: meta.bangla,
-              icon: meta.icon,
-              desc: meta.subtitle,
-              papers: []
-            });
-          }
-          map.get(sub).papers.push(item);
-        });
-        groups = Array.from(map.values());
-      }
-
-      // Filter groups
-      const filteredGroups = q ? groups.filter(g => {
-        const subMatch = (g.subject || '').toLowerCase().includes(q) ||
-                         (g.banglaName || '').toLowerCase().includes(q) ||
-                         (g.desc || '').toLowerCase().includes(q);
-        if (subMatch) return true;
-        // Also check if any paper inside matches
-        return Array.isArray(g.papers) && g.papers.some(p =>
-          (p.name || '').toLowerCase().includes(q) ||
-          (p.author || '').toLowerCase().includes(q) ||
-          (p.board || '').toLowerCase().includes(q) ||
-          (p.year || '').toLowerCase().includes(q) ||
-          (p.desc || '').toLowerCase().includes(q)
-        );
-      }) : groups;
-
-      // Calculate total resource count across all groups
-      let totalPaperCount = 0;
-      groups.forEach(g => { totalPaperCount += (g.papers || []).length; });
-
-      if (countEl) {
-        countEl.textContent = `${filteredGroups.length} Subjects • ${totalPaperCount} PDFs`;
-      }
-
-      if (filteredGroups.length === 0) {
-        container.innerHTML = `
-          <div class="hsc-empty-state" style="grid-column: 1 / -1;">
-            <div class="empty-icon">${categoryKey === 'books' ? '📖' : '📋'}</div>
-            <h3>${q ? 'No matching subjects found' : 'No subjects cataloged yet'}</h3>
-            <p>${q ? `No subjects or books match "${escH(q)}". Try another keyword.` : 'Admin can add resources via the Admin Panel.'}</p>
-          </div>
-        `;
-        return;
-      }
-
-      container.innerHTML = '';
-      filteredGroups.forEach(group => {
-        const meta = SUBJECT_METADATA[group.subject] || {
-          icon: group.icon || (categoryKey === 'books' ? '📖' : '📋'),
-          bangla: group.banglaName || group.subject,
-          subtitle: group.desc || 'Curated NCTB Resources'
-        };
-
-        const paperCount = Array.isArray(group.papers) ? group.papers.length : 0;
-        const has1st = (group.papers || []).some(p => (p.paper || '').toLowerCase().includes('1st'));
-        const has2nd = (group.papers || []).some(p => (p.paper || '').toLowerCase().includes('2nd'));
-
-        const card = document.createElement('div');
-        card.className = 'hsc-subject-card';
-        card.setAttribute('role', 'button');
-        card.setAttribute('tabindex', '0');
-        card.setAttribute('aria-label', `View ${group.subject} 1st and 2nd Paper`);
-
-        card.innerHTML = `
-          <div class="hsc-subject-card-header">
-            <div class="hsc-subject-icon">${group.icon || meta.icon}</div>
-            <div class="hsc-subject-meta">
-              <div class="hsc-subject-title-row">
-                <h3 class="hsc-subject-title">${escH(group.subject)}</h3>
-                <span class="hsc-subject-bangla">${escH(group.banglaName || meta.bangla)}</span>
-              </div>
-              <div class="hsc-paper-badges">
-                ${has1st ? `<span class="hsc-paper-pill pill-1st">1st Paper</span>` : ''}
-                ${has2nd ? `<span class="hsc-paper-pill pill-2nd">2nd Paper</span>` : ''}
-                ${!has1st && !has2nd ? `<span class="hsc-paper-pill">Complete Guide</span>` : ''}
-              </div>
-            </div>
-          </div>
-          <div class="hsc-subject-desc">${escH(group.desc || meta.subtitle)}</div>
-          <div class="hsc-subject-footer">
-            <span class="hsc-subject-count">📚 ${paperCount} ${categoryKey === 'books' ? 'Books' : 'Solved PDFs'} (1st & 2nd)</span>
-            <span class="hsc-subject-btn">
-              <span>${categoryKey === 'books' ? '📖 View Books' : '📋 View Solutions'}</span>
-              <span>→</span>
-            </span>
-          </div>
-        `;
-
-        // Interactive tap / click opens modal
-        const handleOpen = () => openSubjectModal(group, categoryKey);
-        card.addEventListener('click', handleOpen);
-        card.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            handleOpen();
-          }
-        });
-
-        container.appendChild(card);
-      });
-    }
-
-    // ---- Flat Resource Card for Tricks & Tests ----
-    function buildSimpleCard(item, catKey) {
-      const card = document.createElement('div');
-      card.className = 'hsc-resource-card';
-      const icon = catKey === 'tricks' ? '⚡' : '📝';
-      const tagClass = catKey === 'tricks' ? 'cat-tricks' : 'cat-test';
-      card.innerHTML = `
-        <div class="hsc-card-header">
-          <div class="hsc-card-icon ${tagClass}">${icon}</div>
-          <div class="hsc-card-meta">
-            <div class="hsc-card-category">${escH(item.subject || 'HSC Resource')}</div>
-            <div class="hsc-card-title">${escH(item.name)}</div>
-          </div>
-        </div>
-        ${item.desc ? `<div class="hsc-card-desc">${escH(item.desc)}</div>` : ''}
-        <div class="hsc-card-footer">
-          <div style="display:flex;gap:0.4rem;flex-wrap:wrap;">
-            ${item.year ? `<span class="hsc-card-tag">📅 ${escH(item.year)}</span>` : ''}
-            ${item.subject ? `<span class="hsc-card-tag">📌 ${escH(item.subject)}</span>` : ''}
-          </div>
-          ${item.downloadUrl ? `
-            <a class="hsc-download-btn" href="${escH(item.downloadUrl)}" target="_blank" rel="noopener noreferrer">
-              <span>⬇</span> Download
-            </a>
-          ` : '<span style="font-family:var(--font-mono);font-size:0.72rem;color:var(--ink-muted);">Link unavailable</span>'}
-        </div>
-      `;
-      return card;
-    }
-
-    function renderFlatCategory(catKey, gridId, countId, filter = '') {
-      const grid = document.getElementById(gridId);
-      const countEl = document.getElementById(countId);
-      if (!grid) return;
-
-      const items = (hscLiveState && hscLiveState[catKey]) || [];
-      const q = filter.toLowerCase().trim();
-      const filtered = q ? items.filter(it =>
-        (it.name || '').toLowerCase().includes(q) ||
-        (it.subject || '').toLowerCase().includes(q) ||
-        (it.year || '').toLowerCase().includes(q) ||
-        (it.desc || '').toLowerCase().includes(q)
-      ) : items;
-
-      if (countEl) countEl.textContent = `${filtered.length} ${catKey === 'tricks' ? 'tricks' : 'papers'}`;
-
-      if (filtered.length === 0) {
-        grid.innerHTML = `
-          <div class="hsc-empty-state">
-            <div class="empty-icon">${catKey === 'tricks' ? '⚡' : '📝'}</div>
-            <h3>${q ? 'No matches found' : 'No items cataloged yet'}</h3>
-            <p>${q ? `No results for "${escH(q)}"` : 'Admin can add resources from the Admin Panel → HSC Academic tab.'}</p>
-          </div>
-        `;
-        return;
-      }
-
-      grid.innerHTML = '';
-      filtered.forEach(it => grid.appendChild(buildSimpleCard(it, catKey)));
-    }
-
-    // ---- Update Telemetry Total ----
-    function updateTelemetry() {
-      if (!hscLiveState) return;
-      let total = 0;
-      // books
-      (hscLiveState.books || []).forEach(b => { total += (b.papers ? b.papers.length : 1); });
-      // board
-      (hscLiveState.board || []).forEach(b => { total += (b.papers ? b.papers.length : 1); });
-      // tricks
-      total += (hscLiveState.tricks || []).length;
-      // tests
-      total += (hscLiveState.tests || []).length;
-
-      const el = document.getElementById('telemTotal');
-      if (el) el.textContent = total;
-    }
-
-    // ---- Render All Panes ----
-    function renderAll() {
-      const searchB = document.getElementById('searchBooks')?.value || '';
-      const searchBd = document.getElementById('searchBoard')?.value || '';
-      const searchTr = document.getElementById('searchTricks')?.value || '';
-      const searchTs = document.getElementById('searchTests')?.value || '';
-
-      renderSubjectGrid('books', 'gridBooks', 'countBooks', searchB);
-      renderSubjectGrid('board', 'gridBoard', 'countBoard', searchBd);
-      renderFlatCategory('tricks', 'gridTricks', 'countTricks', searchTr);
-      renderFlatCategory('tests', 'gridTests', 'countTests', searchTs);
-      updateTelemetry();
-    }
-
-    // ---- Search Input Handlers ----
-    const searchBooksEl = document.getElementById('searchBooks');
-    if (searchBooksEl) {
-      searchBooksEl.addEventListener('input', () => {
-        renderSubjectGrid('books', 'gridBooks', 'countBooks', searchBooksEl.value);
-      });
-    }
-
-    const searchBoardEl = document.getElementById('searchBoard');
-    if (searchBoardEl) {
-      searchBoardEl.addEventListener('input', () => {
-        renderSubjectGrid('board', 'gridBoard', 'countBoard', searchBoardEl.value);
-      });
-    }
-
-    const searchTricksEl = document.getElementById('searchTricks');
-    if (searchTricksEl) {
-      searchTricksEl.addEventListener('input', () => {
-        renderFlatCategory('tricks', 'gridTricks', 'countTricks', searchTricksEl.value);
-      });
-    }
-
-    const searchTestsEl = document.getElementById('searchTests');
-    if (searchTestsEl) {
-      searchTestsEl.addEventListener('input', () => {
-        renderFlatCategory('tests', 'gridTests', 'countTests', searchTestsEl.value);
-      });
-    }
-
-    // Merge server data with local user modifications so nothing is ever lost
-    function mergeHscData(server, local) {
-      if (!local || typeof local !== 'object') return server || { books: [], board: [], tricks: [], tests: [] };
-      if (!server || typeof server !== 'object') return local;
-
-      const merged = {
-        books: JSON.parse(JSON.stringify(server.books || [])),
-        board: JSON.parse(JSON.stringify(server.board || [])),
-        tricks: JSON.parse(JSON.stringify(server.tricks || [])),
-        tests: JSON.parse(JSON.stringify(server.tests || []))
-      };
-
-      ['books', 'board'].forEach(cat => {
-        const localGroups = Array.isArray(local[cat]) ? local[cat] : [];
-        localGroups.forEach(localGroup => {
-          let targetGroup = merged[cat].find(g => (g.subject || '').toLowerCase() === (localGroup.subject || '').toLowerCase());
-          if (!targetGroup) {
-            merged[cat].push(localGroup);
-          } else if (Array.isArray(localGroup.papers)) {
-            if (!Array.isArray(targetGroup.papers)) targetGroup.papers = [];
-            localGroup.papers.forEach(lp => {
-              const exists = targetGroup.papers.some(p => p.id === lp.id);
-              if (!exists) targetGroup.papers.push(lp);
-            });
-          }
-        });
-      });
-
-      ['tricks', 'tests'].forEach(cat => {
-        const localItems = Array.isArray(local[cat]) ? local[cat] : [];
-        localItems.forEach(li => {
-          const exists = merged[cat].some(it => it.id === li.id);
-          if (!exists) merged[cat].push(li);
-        });
-      });
-
-      return merged;
-    }
-
-    // ---- Fetch HSC Data ----
-    async function loadHscData() {
-      let localCached = null;
+    // Load Library Data
+    async function loadLibrary() {
+      // 1. Try local cache first for instant rendering
       try {
-        const cachedStr = localStorage.getItem('cse_hsc_data');
-        if (cachedStr) localCached = JSON.parse(cachedStr);
+        const cached = localStorage.getItem('scarface_hsc_library_cache');
+        if (cached) {
+          const parsed = JSON.parse(cached);
+          if (parsed && Array.isArray(parsed.rootItems)) {
+            initLibrary(parsed);
+          }
+        }
       } catch (e) {}
 
-      // Immediately render local cache so user sees saved updates without network wait
-      if (localCached && typeof localCached === 'object') {
-        hscLiveState = localCached;
-        renderAll();
-      }
-
+      // 2. Fetch live data from /api/hsc or data/portfolio.json
       try {
-        let res = await fetch('/api/hsc');
+        const res = await fetch('/api/hsc', { cache: 'no-cache' });
         if (res.ok) {
-          const serverData = await res.json();
-          hscLiveState = mergeHscData(serverData, localCached);
-          renderAll();
-          return;
-        }
-      } catch (e) {
-        console.warn('HSC API fetch failed, falling back to portfolio.json', e);
-      }
-
-      try {
-        const res = await fetch('data/portfolio.json');
-        if (res.ok) {
-          const full = await res.json();
-          if (full.hsc) {
-            hscLiveState = mergeHscData(full.hsc, localCached);
-            renderAll();
+          const data = await res.json();
+          if (data && Array.isArray(data.rootItems)) {
+            localStorage.setItem('scarface_hsc_library_cache', JSON.stringify(data));
+            initLibrary(data);
+            return;
           }
         }
       } catch (err) {
-        console.error('Failed to load HSC data:', err);
+        console.warn('API fetch failed, falling back to static portfolio.json:', err);
+      }
+
+      // 3. Fallback: fetch from data/portfolio.json directly
+      try {
+        const fallbackRes = await fetch('data/portfolio.json');
+        if (fallbackRes.ok) {
+          const fullPortfolio = await fallbackRes.json();
+          if (fullPortfolio && fullPortfolio.hsc && Array.isArray(fullPortfolio.hsc.rootItems)) {
+            initLibrary(fullPortfolio.hsc);
+          }
+        }
+      } catch (err) {
+        console.error('All fetch strategies failed:', err);
       }
     }
 
-    // Clock
-    function updateClock() {
-      const el = document.getElementById('telemTime');
-      if (el) el.textContent = new Date().toLocaleTimeString();
-    }
-    updateClock();
-    setInterval(updateClock, 1000);
+    function initLibrary(data) {
+      libraryData = data;
 
-    // Initial load
-    document.addEventListener('DOMContentLoaded', () => {
-      loadHscData();
+      // Calculate total counts
+      let totalFolders = 0;
+      let totalFiles = 0;
+      allFlattenedFiles = [];
+
+      function traverse(node, currentPathStr) {
+        if (node.type === 'folder') {
+          totalFolders++;
+          if (Array.isArray(node.children)) {
+            node.children.forEach(ch => {
+              traverse(ch, currentPathStr ? `${currentPathStr} > ${node.name}` : node.name);
+            });
+          }
+        } else {
+          totalFiles++;
+          allFlattenedFiles.push({
+            node,
+            pathStr: currentPathStr || 'রুট লাইব্রেরি'
+          });
+        }
+      }
+
+      (data.rootItems || []).forEach(item => traverse(item, ''));
+
+      if (statsFolder) statsFolder.textContent = `📁 ${totalFolders} ফোল্ডার`;
+      if (statsFile) statsFile.textContent = `📄 ${totalFiles} ফাইল`;
+
+      // Set Root Folder
+      const rootFolder = {
+        id: 'root',
+        name: 'লাইব্রেরি',
+        type: 'folder',
+        children: data.rootItems || []
+      };
+
+      pathHistory = [rootFolder];
+
+      // Check query parameter for initial folder deep link
+      const urlParams = new URLSearchParams(window.location.search);
+      const targetFolderId = urlParams.get('folder');
+      const initialSearch = urlParams.get('search');
+
+      if (targetFolderId) {
+        const foundPath = findPathToId(rootFolder, targetFolderId);
+        if (foundPath && foundPath.length > 0) {
+          pathHistory = foundPath;
+        }
+      }
+
+      if (initialSearch) {
+        searchInput.value = initialSearch;
+        performSearch(initialSearch);
+      } else {
+        renderCurrentFolder();
+      }
+    }
+
+    // Find path of folders leading to a specific folder id
+    function findPathToId(current, targetId) {
+      if (current.id === targetId) return [current];
+      if (current.children) {
+        for (let ch of current.children) {
+          if (ch.type === 'folder') {
+            const sub = findPathToId(ch, targetId);
+            if (sub) return [current, ...sub];
+          }
+        }
+      }
+      return null;
+    }
+
+    // Render Current Folder
+    function renderCurrentFolder() {
+      if (!pathHistory.length) return;
+      const currentFolder = pathHistory[pathHistory.length - 1];
+      const items = currentFolder.children || [];
+
+      // Update Breadcrumbs
+      renderBreadcrumbs();
+
+      // Update Back Button state
+      backBtn.disabled = pathHistory.length <= 1;
+
+      // Update Active Badge
+      if (activeBadge) {
+        activeBadge.textContent = `${items.length}টি আইটেম`;
+      }
+
+      if (items.length === 0) {
+        tableBody.innerHTML = '';
+        emptyTitle.textContent = 'এই ফোল্ডারটি খালি';
+        emptyDesc.textContent = 'এখানে কোনো ফাইল বা ফোল্ডার পাওয়া যায়নি।';
+        emptyState.style.display = 'block';
+        return;
+      }
+
+      emptyState.style.display = 'none';
+
+      // Sort: Folders first, then PDFs
+      const sorted = [...items].sort((a, b) => {
+        if (a.type === 'folder' && b.type !== 'folder') return -1;
+        if (a.type !== 'folder' && b.type === 'folder') return 1;
+        return (a.name || '').localeCompare(b.name || '', 'bn');
+      });
+
+      let html = '';
+      sorted.forEach(item => {
+        if (item.type === 'folder') {
+          html += `
+            <tr class="lib-row-folder" data-folder-id="${esc(item.id)}" role="button" tabindex="0" title="ফোল্ডার খুলতে ক্লিক করুন">
+              <td class="col-name">
+                ${FOLDER_SVG}
+                <span class="item-title">${esc(item.name)}</span>
+              </td>
+              <td class="col-action">
+                <span class="folder-dash">-</span>
+              </td>
+            </tr>
+          `;
+        } else {
+          const downloadUrl = item.webContentLink || (item.driveId ? `https://drive.google.com/uc?id=${item.driveId}&export=download` : item.webViewLink);
+          html += `
+            <tr class="lib-row-file" data-file-id="${esc(item.id)}">
+              <td class="col-name">
+                <span class="pdf-badge-icon">PDF</span>
+                <a href="#" class="item-title file-name-link" data-preview-id="${esc(item.id)}" title="প্রিভিউ দেখতে ক্লিক করুন">
+                  ${esc(item.name)}
+                </a>
+              </td>
+              <td class="col-action">
+                <a href="${esc(downloadUrl)}" class="download-circle-btn" title="সরাসরি ডাউনলোড করুন" download target="_blank" rel="noopener noreferrer">
+                  ${DOWNLOAD_SVG}
+                </a>
+              </td>
+            </tr>
+          `;
+        }
+      });
+
+      tableBody.innerHTML = html;
+      attachTableListeners();
+    }
+
+    // Attach Row Click Handlers
+    function attachTableListeners() {
+      // Folder click
+      const folderRows = tableBody.querySelectorAll('.lib-row-folder');
+      folderRows.forEach(row => {
+        const handler = () => {
+          const folderId = row.getAttribute('data-folder-id');
+          openFolderById(folderId);
+        };
+        row.addEventListener('click', handler);
+        row.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            handler();
+          }
+        });
+      });
+
+      // File name preview click
+      const fileLinks = tableBody.querySelectorAll('.file-name-link');
+      fileLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const fileId = link.getAttribute('data-preview-id');
+          openPdfPreview(fileId);
+        });
+      });
+    }
+
+    function openFolderById(folderId) {
+      if (!pathHistory.length) return;
+      const currentFolder = pathHistory[pathHistory.length - 1];
+      const target = (currentFolder.children || []).find(c => c.id === folderId);
+      if (target && target.type === 'folder') {
+        clickSound();
+        pathHistory.push(target);
+        if (searchInput.value) {
+          searchInput.value = '';
+          searchClearBtn.style.display = 'none';
+        }
+        renderCurrentFolder();
+        window.scrollTo({ top: document.querySelector('.lib-explorer-box').offsetTop - 80, behavior: 'smooth' });
+      }
+    }
+
+    // Breadcrumbs Navigation
+    function renderBreadcrumbs() {
+      breadcrumbsContainer.innerHTML = '';
+      pathHistory.forEach((folder, index) => {
+        const isLast = index === pathHistory.length - 1;
+        const span = document.createElement('span');
+        span.className = isLast ? 'crumb-item current' : 'crumb-item';
+        span.textContent = index === 0 ? '🏠 লাইব্রেরি' : folder.name;
+        
+        if (!isLast) {
+          span.setAttribute('role', 'button');
+          span.setAttribute('tabindex', '0');
+          span.addEventListener('click', () => {
+            clickSound();
+            pathHistory = pathHistory.slice(0, index + 1);
+            if (searchInput.value) {
+              searchInput.value = '';
+              searchClearBtn.style.display = 'none';
+            }
+            renderCurrentFolder();
+          });
+        }
+        breadcrumbsContainer.appendChild(span);
+
+        if (!isLast) {
+          const sep = document.createElement('span');
+          sep.className = 'crumb-sep';
+          sep.textContent = '>';
+          breadcrumbsContainer.appendChild(sep);
+        }
+      });
+    }
+
+    // Back Button Handler
+    backBtn.addEventListener('click', () => {
+      if (pathHistory.length > 1) {
+        clickSound();
+        pathHistory.pop();
+        if (searchInput.value) {
+          searchInput.value = '';
+          searchClearBtn.style.display = 'none';
+        }
+        renderCurrentFolder();
+      }
     });
+
+    // Live Search across all 620 files
+    let searchDebounceTimer = null;
+    searchInput.addEventListener('input', (e) => {
+      const q = e.target.value.trim();
+      searchClearBtn.style.display = q ? 'block' : 'none';
+      clearTimeout(searchDebounceTimer);
+      searchDebounceTimer = setTimeout(() => {
+        if (q.length > 0) {
+          performSearch(q);
+        } else {
+          renderCurrentFolder();
+        }
+      }, 150);
+    });
+
+    searchClearBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      searchClearBtn.style.display = 'none';
+      renderCurrentFolder();
+      searchInput.focus();
+    });
+
+    function performSearch(query) {
+      const q = query.toLowerCase();
+      const results = allFlattenedFiles.filter(item => {
+        return (item.node.name || '').toLowerCase().includes(q) ||
+               (item.pathStr || '').toLowerCase().includes(q);
+      });
+
+      // Update badge
+      if (activeBadge) {
+        activeBadge.textContent = `${results.length}টি ফলাফল`;
+      }
+
+      breadcrumbsContainer.innerHTML = `<span class="crumb-item current">🔍 অনুসন্ধান ফলাফল: "${esc(query)}" (${results.length}টি ফাইল)</span>`;
+      backBtn.disabled = false;
+
+      if (results.length === 0) {
+        tableBody.innerHTML = '';
+        emptyTitle.textContent = 'কোনো ফাইল মেলেনি';
+        emptyDesc.textContent = `"${esc(query)}" এর সাথে সম্পর্কিত কোনো বই বা পেপার পাওয়া যায়নি। বানানের সঠিকতা যাচাই করুন।`;
+        emptyState.style.display = 'block';
+        return;
+      }
+
+      emptyState.style.display = 'none';
+
+      let html = '';
+      results.forEach(res => {
+        const item = res.node;
+        const downloadUrl = item.webContentLink || (item.driveId ? `https://drive.google.com/uc?id=${item.driveId}&export=download` : item.webViewLink);
+        
+        // Highlight query match
+        const regex = new RegExp(`(${query.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&')})`, 'gi');
+        const highlightedName = esc(item.name).replace(regex, '<mark style="background:#fef08a;color:#854d0e;padding:0 2px;border-radius:2px;">$1</mark>');
+
+        html += `
+          <tr class="lib-row-file" data-file-id="${esc(item.id)}">
+            <td class="col-name">
+              <span class="pdf-badge-icon">PDF</span>
+              <div>
+                <a href="#" class="item-title file-name-link" data-preview-id="${esc(item.id)}" title="প্রিভিউ দেখতে ক্লিক করুন">
+                  ${highlightedName}
+                </a>
+                <span class="search-path-tag">📂 ${esc(res.pathStr)}</span>
+              </div>
+            </td>
+            <td class="col-action">
+              <a href="${esc(downloadUrl)}" class="download-circle-btn" title="সরাসরি ডাউনলোড করুন" download target="_blank" rel="noopener noreferrer">
+                ${DOWNLOAD_SVG}
+              </a>
+            </td>
+          </tr>
+        `;
+      });
+
+      tableBody.innerHTML = html;
+      attachTableListeners();
+    }
+
+    // PDF Preview Modal Logic
+    function findFileNode(targetId) {
+      const match = allFlattenedFiles.find(f => f.node.id === targetId);
+      if (match) return match.node;
+      // Search in root items
+      function searchNodes(nodes) {
+        for (let n of nodes) {
+          if (n.id === targetId) return n;
+          if (n.children) {
+            const found = searchNodes(n.children);
+            if (found) return found;
+          }
+        }
+        return null;
+      }
+      return searchNodes((libraryData && libraryData.rootItems) || []);
+    }
+
+    function openPdfPreview(fileId) {
+      const file = findFileNode(fileId);
+      if (!file) return;
+
+      clickSound();
+      pdfModalTitle.textContent = file.name;
+
+      // Extract drive ID
+      let driveId = file.driveId;
+      if (!driveId && file.webViewLink) {
+        const m = file.webViewLink.match(/\/d\/([a-zA-Z0-9_-]+)/);
+        if (m) driveId = m[1];
+      }
+
+      const previewUrl = driveId
+        ? `https://drive.google.com/file/d/${driveId}/preview`
+        : (file.webViewLink || 'about:blank');
+
+      const downloadUrl = file.webContentLink || (driveId ? `https://drive.google.com/uc?id=${driveId}&export=download` : file.webViewLink);
+      const driveUrl = file.webViewLink || (driveId ? `https://drive.google.com/file/d/${driveId}/view` : '#');
+
+      pdfModalIframe.src = previewUrl;
+      pdfModalDownloadBtn.href = downloadUrl;
+      pdfModalDriveBtn.href = driveUrl;
+      pdfModalMeta.textContent = driveId ? `Drive ID: ${driveId}` : 'Document Preview';
+
+      pdfModal.classList.add('active');
+      pdfModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePdfPreview() {
+      pdfModal.classList.remove('active');
+      pdfModal.setAttribute('aria-hidden', 'true');
+      pdfModalIframe.src = 'about:blank';
+      document.body.style.overflow = '';
+    }
+
+    pdfModalCloseBtn.addEventListener('click', closePdfPreview);
+    pdfModal.addEventListener('click', (e) => {
+      if (e.target === pdfModal) closePdfPreview();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && pdfModal.classList.contains('active')) {
+        closePdfPreview();
+      }
+    });
+
+    // Start loading
+    loadLibrary();
 
   })();
   </script>

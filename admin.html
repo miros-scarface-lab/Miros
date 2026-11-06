@@ -48,6 +48,54 @@
           <button class="vintage-btn btn-sm btn-icon" id="dotsMenuBtn" title="More Options & HSC Academic Hub" aria-label="More options">
             <span class="dots-symbol">⋮</span>
           </button>
+                    <div class="dropdown-menu" id="dotsMenu">
+            <a href="hsc.html" class="dots-menu-item dots-menu-highlight">
+              <span class="dots-icon">📚</span>
+              <strong>একাডেমিক লাইব্রেরি (HSC)</strong>
+            </a>
+            <div class="dots-divider"></div>
+            <a href="hsc.html?folder=folder-test-papers" class="dots-menu-subitem">📁 টেস্ট পেপার</a>
+            <a href="hsc.html?folder=folder-question-banks" class="dots-menu-subitem">📁 প্রশ্নব্যাংক</a>
+            <a href="hsc.html?folder=folder-final-model-tests" class="dots-menu-subitem">📁 ফাইনাল মডেল টেস্ট</a>
+            <a href="hsc.html?folder=folder-board-solved-22" class="dots-menu-subitem">📁 বোর্ড প্রশ্ন সলভ-২২</a>
+            <a href="hsc.html?folder=folder-board-solution-books" class="dots-menu-subitem">📁 বোর্ড সল্যুশন বুক</a>
+            <div class="dots-divider"></div>
+            <a href="admin.html#tab-hsc" class="dots-menu-subitem">⚙️ Manage HSC (Admin)</a>
+          </div>
+
+  <!-- Header -->
+  <header class="vintage-header" id="header">
+    <div class="header-container">
+      <div class="brand-badge">
+        <a href="index.html" class="brand-link">
+          <span class="brand-bracket">[</span>
+          <span class="brand-text">CSE://STATION_MASTER</span>
+          <span class="brand-bracket">]</span>
+        </a>
+        <div class="status-pill">
+          <span class="status-indicator"></span>
+          <span class="status-label">CONTROL ACCESS LEVEL: 0</span>
+        </div>
+      </div>
+
+      <nav class="nav-links" id="mainNav">
+        <a href="index.html" class="nav-item"><span>00.</span> Home</a>
+        <a href="about.html" class="nav-item"><span>01.</span> About</a>
+        <a href="terminal.html" class="nav-item"><span>02.</span> Terminal</a>
+        <a href="projects.html" class="nav-item"><span>03.</span> Projects</a>
+        <a href="skills.html" class="nav-item"><span>04.</span> Skills</a>
+        <a href="academics.html" class="nav-item"><span>05.</span> Academics</a>
+        <a href="experience.html" class="nav-item"><span>06.</span> Experience</a>
+        <a href="contact.html" class="nav-item"><span>07.</span> Dispatch</a>
+        <a href="hsc.html" class="nav-item"><span>08.</span> HSC Academic</a>
+      </nav>
+
+      <div class="header-controls">
+        <!-- 3-Dots Quick Action Menu -->
+        <div class="dots-dropdown">
+          <button class="vintage-btn btn-sm btn-icon" id="dotsMenuBtn" title="More Options & HSC Academic Hub" aria-label="More options">
+            <span class="dots-symbol">⋮</span>
+          </button>
           <div class="dropdown-menu" id="dotsMenu">
             <a href="hsc.html" class="dots-menu-item dots-menu-highlight">
               <span class="dots-icon">📚</span>
@@ -1000,262 +1048,101 @@
           <div class="admin-tab-pane" id="tab-hsc">
             <div class="tab-pane-header" style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;">
               <div>
-                <h3 class="pane-title">📚 HSC Academic Resource Hub</h3>
-                <p class="pane-subtitle">Manage books, board solution books, short tricks, and test papers displayed on the public HSC Academic Hub page.</p>
+                <h3 class="pane-title">📚 AAPathshala Academic Library Manager</h3>
+                <p class="pane-subtitle">Manage, add, edit, and organize all 620+ books, routines, question banks, and test papers across all folders.</p>
               </div>
-              <div style="display:flex;gap:0.5rem;align-items:center;">
-                <button type="button" class="vintage-btn btn-sm btn-outline" id="exportHscDataBtn" title="Download backup JSON of all HSC books and solutions">💾 Export HSC Data (JSON)</button>
-                <a href="hsc.html" target="_blank" class="vintage-btn btn-sm">👁 View Public Hub</a>
+              <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
+                <button type="button" class="vintage-btn btn-sm btn-outline" id="exportHscDataBtn" title="Download backup JSON of all HSC books and solutions">💾 Export Library (JSON)</button>
+                <label class="vintage-btn btn-sm btn-outline" style="cursor:pointer;" title="Upload JSON backup to restore library">
+                  📥 Import Library
+                  <input type="file" id="importHscDataInput" accept=".json" style="display:none;">
+                </label>
+                <a href="hsc.html" target="_blank" class="vintage-btn btn-sm">👁 View Public Page</a>
               </div>
             </div>
 
-            <!-- HSC Category Tabs -->
-            <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:1.5rem;border-bottom:var(--border-width) solid var(--border-color);padding-bottom:0;">
-              <button class="admin-hsc-tab-btn active" data-hsc-pane="hsc-admin-books" style="font-family:var(--font-mono);font-size:0.78rem;font-weight:700;padding:0.5rem 1rem;border:var(--border-width) solid var(--border-color);border-bottom:none;background:var(--bg-subtle);color:var(--ink-secondary);cursor:pointer;border-radius:var(--radius-badge) var(--radius-badge) 0 0;position:relative;bottom:calc(-1 * var(--border-width));">📖 Books</button>
-              <button class="admin-hsc-tab-btn" data-hsc-pane="hsc-admin-board" style="font-family:var(--font-mono);font-size:0.78rem;font-weight:700;padding:0.5rem 1rem;border:var(--border-width) solid var(--border-color);border-bottom:none;background:var(--bg-subtle);color:var(--ink-secondary);cursor:pointer;border-radius:var(--radius-badge) var(--radius-badge) 0 0;position:relative;bottom:calc(-1 * var(--border-width));">📋 Board Solutions</button>
-              <button class="admin-hsc-tab-btn" data-hsc-pane="hsc-admin-tricks" style="font-family:var(--font-mono);font-size:0.78rem;font-weight:700;padding:0.5rem 1rem;border:var(--border-width) solid var(--border-color);border-bottom:none;background:var(--bg-subtle);color:var(--ink-secondary);cursor:pointer;border-radius:var(--radius-badge) var(--radius-badge) 0 0;position:relative;bottom:calc(-1 * var(--border-width));">⚡ Short Tricks</button>
-              <button class="admin-hsc-tab-btn" data-hsc-pane="hsc-admin-tests" style="font-family:var(--font-mono);font-size:0.78rem;font-weight:700;padding:0.5rem 1rem;border:var(--border-width) solid var(--border-color);border-bottom:none;background:var(--bg-subtle);color:var(--ink-secondary);cursor:pointer;border-radius:var(--radius-badge) var(--radius-badge) 0 0;position:relative;bottom:calc(-1 * var(--border-width));">📝 Test Papers</button>
-            </div>
-
-            <!-- Books Pane -->
-            <div class="hsc-admin-pane active" id="hsc-admin-books">
-              <div class="sub-pane-card parchment-paper" style="margin-bottom:1.5rem;">
-                <h4 class="sub-pane-title">➕ Add / Edit Science Book (1st &amp; 2nd Paper)</h4>
-                <form id="adminAddHscBookForm" class="vintage-admin-form">
-                  <input type="hidden" id="hscBookEditId" value="">
-                  <div class="form-grid-2">
-                    <div class="form-group">
-                      <label class="form-label">Subject</label>
-                      <select id="hscBookSubject" class="vintage-input vintage-select" required>
-                        <option value="Physics">⚛️ Physics (পদার্থবিজ্ঞান)</option>
-                        <option value="Chemistry">🧪 Chemistry (রসায়ন)</option>
-                        <option value="Higher Mathematics">📐 Higher Mathematics (উচ্চতর গণিত)</option>
-                        <option value="Biology">🧬 Biology (জীববিজ্ঞান)</option>
-                        <option value="Information & Comm. Technology">💻 Information &amp; Comm. Technology (ICT)</option>
-                        <option value="General Science">📚 Other Science Subject</option>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label class="form-label">Paper Classification</label>
-                      <select id="hscBookPaper" class="vintage-input vintage-select" required>
-                        <option value="1st Paper">📄 1st Paper</option>
-                        <option value="2nd Paper">📄 2nd Paper</option>
-                        <option value="Full Paper">📑 Full Paper / Combined</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-grid-2">
-                    <div class="form-group">
-                      <label class="form-label">Book Title</label>
-                      <input type="text" id="hscBookName" class="vintage-input" placeholder="e.g. HSC Physics 1st Paper (Dr. Shahjahan Tapan)" required>
-                    </div>
-                    <div class="form-group">
-                      <label class="form-label">Author / Writer / Publication</label>
-                      <input type="text" id="hscBookAuthor" class="vintage-input" placeholder="e.g. Dr. Shahjahan Tapan, Muhammad Aziz Hasan">
-                    </div>
-                  </div>
-                  <div class="form-grid-2">
-                    <div class="form-group">
-                      <label class="form-label">Download Link (Google Drive / Direct URL)</label>
-                      <input type="url" id="hscBookUrl" class="vintage-input" placeholder="https://drive.google.com/file/d/..." required>
-                    </div>
-                    <div class="form-group">
-                      <label class="form-label">Year / Edition</label>
-                      <input type="text" id="hscBookYear" class="vintage-input" placeholder="e.g. Latest 2024 Edition">
-                    </div>
+            <!-- Form: Add or Edit Item / Folder -->
+            <div class="sub-pane-card parchment-paper" style="margin-bottom:1.5rem;">
+              <h4 class="sub-pane-title" id="hscFormTitle">➕ Add / Edit Resource in Library</h4>
+              <form id="adminAddHscNodeForm" class="vintage-admin-form">
+                <input type="hidden" id="hscNodeEditId" value="">
+                
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label class="form-label">Parent Folder</label>
+                    <select id="hscNodeParent" class="vintage-input vintage-select" required>
+                      <option value="root">📁 রুট লাইব্রেরি (Root Library Level)</option>
+                      <option value="folder-test-papers">📁 টেস্ট পেপার (Test Papers)</option>
+                      <option value="folder-question-banks">📁 প্রশ্নব্যাংক (Question Banks)</option>
+                      <option value="folder-final-model-tests">📁 ফাইনাল মডেল টেস্ট (Final Model Tests)</option>
+                      <option value="folder-board-solved-22">📁 বোর্ড প্রশ্ন সলভ-২২ (Board Question Solved-22)</option>
+                      <option value="folder-board-solution-books">📁 বোর্ড সল্যুশন বুক (Board Solution Book)</option>
+                    </select>
                   </div>
                   <div class="form-group">
-                    <label class="form-label">Description / Syllabus Topics</label>
-                    <input type="text" id="hscBookDesc" class="vintage-input" placeholder="e.g. Mechanics, Periodic Motion, Waves, Thermodynamics...">
+                    <label class="form-label">Resource Type</label>
+                    <select id="hscNodeType" class="vintage-input vintage-select" required>
+                      <option value="pdf">📄 PDF Document</option>
+                      <option value="folder">📁 Subfolder</option>
+                    </select>
                   </div>
-                  <div style="display:flex;gap:0.5rem;align-items:center;">
-                    <button type="submit" class="vintage-btn btn-primary btn-sm" id="hscBookSubmitBtn">+ Save Science Book</button>
-                    <button type="button" class="vintage-btn btn-sm btn-outline" id="hscBookCancelEdit" style="display:none;">✕ Cancel Edit</button>
-                    <span id="hscBookFeedback" style="font-family:var(--font-mono);font-size:0.8rem;margin-left:0.5rem;"></span>
-                  </div>
-                </form>
-              </div>
-              <div class="sub-pane-card parchment-paper">
-                <div class="flex-between" style="margin-bottom:0.75rem;">
-                  <h4 class="sub-pane-title" style="margin-bottom:0;">📖 Science Books Library (<span id="hscBookCount">0</span>)</h4>
-                  <a href="hsc.html?tab=books" target="_blank" class="vintage-btn btn-sm btn-outline">👁 View Public Hub</a>
                 </div>
-                <div class="admin-table-container">
-                  <table class="vintage-table">
-                    <thead><tr><th>Subject</th><th>Paper</th><th>Book Title &amp; Author</th><th>Edition</th><th>Link</th><th style="text-align:right;">Actions</th></tr></thead>
-                    <tbody id="hscBooksTableBody"></tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
 
-            <!-- Board Solutions Pane -->
-            <div class="hsc-admin-pane" id="hsc-admin-board" style="display:none;">
-              <div class="sub-pane-card parchment-paper" style="margin-bottom:1.5rem;">
-                <h4 class="sub-pane-title">➕ Add / Edit Board Solution Book (Physics, Chemistry &amp; More)</h4>
-                <form id="adminAddHscBoardForm" class="vintage-admin-form">
-                  <input type="hidden" id="hscBoardEditId" value="">
-                  <div class="form-grid-2">
-                    <div class="form-group">
-                      <label class="form-label">Subject</label>
-                      <select id="hscBoardSubject" class="vintage-input vintage-select" required>
-                        <option value="Physics">⚛️ Physics (পদার্থবিজ্ঞান)</option>
-                        <option value="Chemistry">🧪 Chemistry (রসায়ন)</option>
-                        <option value="Higher Mathematics">📐 Higher Mathematics (উচ্চতর গণিত)</option>
-                        <option value="Biology">🧬 Biology (জীববিজ্ঞান)</option>
-                        <option value="Other">📚 Other Subject</option>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label class="form-label">Paper</label>
-                      <select id="hscBoardPaper" class="vintage-input vintage-select" required>
-                        <option value="1st Paper">📄 1st Paper</option>
-                        <option value="2nd Paper">📄 2nd Paper</option>
-                        <option value="All Papers Combined">📑 All Papers Combined</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-grid-2">
-                    <div class="form-group">
-                      <label class="form-label">Solution Book Title</label>
-                      <input type="text" id="hscBoardName" class="vintage-input" placeholder="e.g. HSC Physics 1st Paper All Board Question Solutions" required>
-                    </div>
-                    <div class="form-group">
-                      <label class="form-label">Education Board</label>
-                      <input type="text" id="hscBoardBoard" class="vintage-input" placeholder="e.g. All Education Boards Combined, Dhaka Board">
-                    </div>
-                  </div>
-                  <div class="form-grid-2">
-                    <div class="form-group">
-                      <label class="form-label">Download Link (PDF Drive / URL)</label>
-                      <input type="url" id="hscBoardUrl" class="vintage-input" placeholder="https://drive.google.com/file/d/..." required>
-                    </div>
-                    <div class="form-group">
-                      <label class="form-label">Examination Year / Period</label>
-                      <input type="text" id="hscBoardYear" class="vintage-input" placeholder="e.g. 2018–2023 or 2024">
-                    </div>
-                  </div>
+                <div class="form-grid-2">
                   <div class="form-group">
-                    <label class="form-label">Description / Solution Features</label>
-                    <input type="text" id="hscBoardDesc" class="vintage-input" placeholder="e.g. Solved CQ derivations, mark distribution, and MCQ answer explanations...">
+                    <label class="form-label">Resource Title / File Name</label>
+                    <input type="text" id="hscNodeName" class="vintage-input" placeholder="e.g. Physics 1st Paper Board Solution.pdf or Edition-2024" required>
                   </div>
-                  <div style="display:flex;gap:0.5rem;align-items:center;">
-                    <button type="submit" class="vintage-btn btn-primary btn-sm" id="hscBoardSubmitBtn">+ Save Solution Book</button>
-                    <button type="button" class="vintage-btn btn-sm btn-outline" id="hscBoardCancelEdit" style="display:none;">✕ Cancel Edit</button>
-                    <span id="hscBoardFeedback" style="font-family:var(--font-mono);font-size:0.8rem;margin-left:0.5rem;"></span>
+                  <div class="form-group" id="hscNodeUrlGroup">
+                    <label class="form-label">Google Drive View or Download Link (or ID)</label>
+                    <input type="text" id="hscNodeUrl" class="vintage-input" placeholder="https://drive.google.com/file/d/... or folder link">
                   </div>
-                </form>
-              </div>
-              <div class="sub-pane-card parchment-paper">
-                <div class="flex-between" style="margin-bottom:0.75rem;">
-                  <h4 class="sub-pane-title" style="margin-bottom:0;">📋 Board Solutions Library (<span id="hscBoardCount">0</span>)</h4>
-                  <a href="hsc.html?tab=board" target="_blank" class="vintage-btn btn-sm btn-outline">👁 View Public Hub</a>
                 </div>
-                <div class="admin-table-container">
-                  <table class="vintage-table">
-                    <thead><tr><th>Subject</th><th>Paper</th><th>Title</th><th>Board / Year</th><th>Link</th><th style="text-align:right;">Actions</th></tr></thead>
-                    <tbody id="hscBoardTableBody"></tbody>
-                  </table>
+
+                <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;margin-top:0.5rem;">
+                  <button type="submit" class="vintage-btn btn-primary btn-sm" id="hscNodeSubmitBtn">+ Save to Library</button>
+                  <button type="button" class="vintage-btn btn-sm btn-outline" id="hscNodeCancelBtn" style="display:none;">✕ Cancel Edit</button>
+                  <span id="hscNodeFeedback" style="font-family:var(--font-mono);font-size:0.8rem;margin-left:0.5rem;"></span>
                 </div>
-              </div>
+              </form>
             </div>
 
-            <!-- Short Tricks Pane -->
-            <div class="hsc-admin-pane" id="hsc-admin-tricks" style="display:none;">
-              <div class="sub-pane-card parchment-paper" style="margin-bottom:1.5rem;">
-                <h4 class="sub-pane-title">➕ Add Short Trick / Memory Sheet</h4>
-                <form id="adminAddHscTricksForm" class="vintage-admin-form">
-                  <input type="hidden" id="hscTricksEditId" value="">
-                  <div class="form-grid-2">
-                    <div class="form-group">
-                      <label class="form-label">Trick Sheet Name</label>
-                      <input type="text" id="hscTricksName" class="vintage-input" placeholder="e.g. Physics Formula Quick Sheet" required>
-                    </div>
-                    <div class="form-group">
-                      <label class="form-label">Subject</label>
-                      <input type="text" id="hscTricksSubject" class="vintage-input" placeholder="e.g. Physics, Math, Chemistry...">
-                    </div>
-                  </div>
-                  <div class="form-grid-2">
-                    <div class="form-group">
-                      <label class="form-label">Download Link</label>
-                      <input type="url" id="hscTricksUrl" class="vintage-input" placeholder="https://drive.google.com/file/d/..." required>
-                    </div>
-                    <div class="form-group">
-                      <label class="form-label">Year / Edition</label>
-                      <input type="text" id="hscTricksYear" class="vintage-input" placeholder="e.g. 2024">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label">Description (Optional)</label>
-                    <input type="text" id="hscTricksDesc" class="vintage-input" placeholder="e.g. 50 quick mnemonics for organic chemistry...">
-                  </div>
-                  <div style="display:flex;gap:0.5rem;align-items:center;">
-                    <button type="submit" class="vintage-btn btn-primary btn-sm" id="hscTricksSubmitBtn">+ Save Trick Sheet</button>
-                    <button type="button" class="vintage-btn btn-sm btn-outline" id="hscTricksCancelEdit" style="display:none;">✕ Cancel Edit</button>
-                    <span id="hscTricksFeedback" style="font-family:var(--font-mono);font-size:0.8rem;margin-left:0.5rem;"></span>
-                  </div>
-                </form>
-              </div>
-              <div class="sub-pane-card parchment-paper">
-                <h4 class="sub-pane-title" style="margin-bottom:0.75rem;">⚡ Short Tricks Library (<span id="hscTricksCount">0</span>)</h4>
-                <div class="admin-table-container">
-                  <table class="vintage-table">
-                    <thead><tr><th>Title</th><th>Subject</th><th>Year</th><th>Link</th><th style="text-align:right;">Actions</th></tr></thead>
-                    <tbody id="hscTricksTableBody"></tbody>
-                  </table>
+            <!-- Library Interactive Explorer Table in Admin -->
+            <div class="sub-pane-card parchment-paper">
+              <div class="flex-between" style="margin-bottom:1rem;flex-wrap:wrap;gap:0.75rem;">
+                <div>
+                  <h4 class="sub-pane-title" style="margin-bottom:0.25rem;">📁 Library Explorer (<span id="adminHscItemCount">0</span> items)</h4>
+                  <div style="font-family:var(--font-mono);font-size:0.75rem;color:var(--ink-muted);" id="adminHscStats">Total Folders: 107 • Total Files: 620</div>
+                </div>
+                <div style="display:flex;gap:0.5rem;align-items:center;">
+                  <input type="text" id="adminHscSearchInput" class="vintage-input" placeholder="🔍 Search library..." style="padding:0.35rem 0.75rem;font-size:0.82rem;width:200px;">
                 </div>
               </div>
-            </div>
 
-            <!-- Test Papers Pane -->
-            <div class="hsc-admin-pane" id="hsc-admin-tests" style="display:none;">
-              <div class="sub-pane-card parchment-paper" style="margin-bottom:1.5rem;">
-                <h4 class="sub-pane-title">➕ Add Test Paper / Past Exam</h4>
-                <form id="adminAddHscTestsForm" class="vintage-admin-form">
-                  <input type="hidden" id="hscTestsEditId" value="">
-                  <div class="form-grid-2">
-                    <div class="form-group">
-                      <label class="form-label">Test Paper Name</label>
-                      <input type="text" id="hscTestsName" class="vintage-input" placeholder="e.g. HSC Physics MCQ Paper 2022" required>
-                    </div>
-                    <div class="form-group">
-                      <label class="form-label">Subject</label>
-                      <input type="text" id="hscTestsSubject" class="vintage-input" placeholder="e.g. Physics, Math, ICT...">
-                    </div>
-                  </div>
-                  <div class="form-grid-2">
-                    <div class="form-group">
-                      <label class="form-label">Download Link</label>
-                      <input type="url" id="hscTestsUrl" class="vintage-input" placeholder="https://drive.google.com/file/d/..." required>
-                    </div>
-                    <div class="form-group">
-                      <label class="form-label">Year / Board</label>
-                      <input type="text" id="hscTestsYear" class="vintage-input" placeholder="e.g. Dhaka Board 2022">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label">Description (Optional)</label>
-                    <input type="text" id="hscTestsDesc" class="vintage-input" placeholder="e.g. Full MCQ + Creative questions with marking scheme...">
-                  </div>
-                  <div style="display:flex;gap:0.5rem;align-items:center;">
-                    <button type="submit" class="vintage-btn btn-primary btn-sm" id="hscTestsSubmitBtn">+ Save Test Paper</button>
-                    <button type="button" class="vintage-btn btn-sm btn-outline" id="hscTestsCancelEdit" style="display:none;">✕ Cancel Edit</button>
-                    <span id="hscTestsFeedback" style="font-family:var(--font-mono);font-size:0.8rem;margin-left:0.5rem;"></span>
-                  </div>
-                </form>
-              </div>
-              <div class="sub-pane-card parchment-paper">
-                <h4 class="sub-pane-title" style="margin-bottom:0.75rem;">📝 Test Papers Library (<span id="hscTestsCount">0</span>)</h4>
-                <div class="admin-table-container">
-                  <table class="vintage-table">
-                    <thead><tr><th>Title</th><th>Subject</th><th>Year/Board</th><th>Link</th><th style="text-align:right;">Actions</th></tr></thead>
-                    <tbody id="hscTestsTableBody"></tbody>
-                  </table>
+              <!-- Admin Breadcrumbs Navigation -->
+              <div style="display:flex;align-items:center;gap:0.5rem;background:var(--bg-subtle);padding:0.6rem 1rem;border-radius:var(--radius-badge);border:1px solid var(--border-color);margin-bottom:1rem;flex-wrap:wrap;">
+                <button type="button" class="vintage-btn btn-sm" id="adminHscBackBtn" disabled style="padding:0.2rem 0.6rem;font-size:0.75rem;">⬅ Back</button>
+                <div id="adminHscBreadcrumbs" style="font-family:var(--font-mono);font-size:0.8rem;color:var(--ink-secondary);">
+                  <span style="cursor:pointer;font-weight:700;color:var(--ink-primary);">🏠 লাইব্রেরি</span>
                 </div>
               </div>
-            </div>
 
+              <div class="admin-table-container">
+                <table class="vintage-table">
+                  <thead>
+                    <tr>
+                      <th style="width:45px;">Type</th>
+                      <th>Name / Title</th>
+                      <th>Drive Link / ID</th>
+                      <th style="text-align:right;width:150px;">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="adminHscTableBody">
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
           <!-- TAB 7: BACKUP & EXPORT -->
           <div class="admin-tab-pane" id="tab-backup">

@@ -1954,620 +1954,532 @@ window.AdminPanel = {
   // ------------------------------------------------------------------------
   // HSC Academic Resources Management (Hierarchical Books, Board Solutions, Tricks, Tests)
   // ------------------------------------------------------------------------
-  hscCategories: {
-    books: {
-      key: 'books',
-      formId: 'adminAddHscBookForm',
-      subjectId: 'hscBookSubject',
-      paperId: 'hscBookPaper',
-      nameId: 'hscBookName',
-      authorId: 'hscBookAuthor',
-      urlId: 'hscBookUrl',
-      yearId: 'hscBookYear',
-      descId: 'hscBookDesc',
-      submitId: 'hscBookSubmitBtn',
-      cancelId: 'hscBookCancelEdit',
-      editIdId: 'hscBookEditId',
-      feedbackId: 'hscBookFeedback',
-      tableBodyId: 'hscBooksTableBody',
-      countId: 'hscBookCount'
-    },
-    board: {
-      key: 'board',
-      formId: 'adminAddHscBoardForm',
-      subjectId: 'hscBoardSubject',
-      paperId: 'hscBoardPaper',
-      nameId: 'hscBoardName',
-      boardId: 'hscBoardBoard',
-      urlId: 'hscBoardUrl',
-      yearId: 'hscBoardYear',
-      descId: 'hscBoardDesc',
-      submitId: 'hscBoardSubmitBtn',
-      cancelId: 'hscBoardCancelEdit',
-      editIdId: 'hscBoardEditId',
-      feedbackId: 'hscBoardFeedback',
-      tableBodyId: 'hscBoardTableBody',
-      countId: 'hscBoardCount'
-    },
-    tricks: {
-      key: 'tricks',
-      formId: 'adminAddHscTricksForm',
-      nameId: 'hscTricksName',
-      subjectId: 'hscTricksSubject',
-      urlId: 'hscTricksUrl',
-      yearId: 'hscTricksYear',
-      descId: 'hscTricksDesc',
-      submitId: 'hscTricksSubmitBtn',
-      cancelId: 'hscTricksCancelEdit',
-      editIdId: 'hscTricksEditId',
-      feedbackId: 'hscTricksFeedback',
-      tableBodyId: 'hscTricksTableBody',
-      countId: 'hscTricksCount'
-    },
-    tests: {
-      key: 'tests',
-      formId: 'adminAddHscTestsForm',
-      nameId: 'hscTestsName',
-      subjectId: 'hscTestsSubject',
-      urlId: 'hscTestsUrl',
-      yearId: 'hscTestsYear',
-      descId: 'hscTestsDesc',
-      submitId: 'hscTestsSubmitBtn',
-      cancelId: 'hscTestsCancelEdit',
-      editIdId: 'hscTestsEditId',
-      feedbackId: 'hscTestsFeedback',
-      tableBodyId: 'hscTestsTableBody',
-      countId: 'hscTestsCount'
+  // AAPathshala Academic Library Manager (Tree & Node Hierarchy)
+  // ------------------------------------------------------------------------
+  hscTreeData: null,
+  adminHscPath: [], // folder stack: [ { id: 'root', name: 'লাইব্রেরি', children: [...] } ]
+  adminHscBound: false,
+
+  async initHscManager() {
+    if (!this.adminHscBound) {
+      this.bindHscEvents();
+      this.adminHscBound = true;
     }
+    await this.fetchHscLibrary();
   },
 
-  hscDataCache: null,
-  hscBound: false,
-
-  mergeHscData(server, local) {
-    if (!local || typeof local !== 'object') return server || { books: [], board: [], tricks: [], tests: [] };
-    if (!server || typeof server !== 'object') return local;
-
-    const merged = {
-      books: JSON.parse(JSON.stringify(server.books || [])),
-      board: JSON.parse(JSON.stringify(server.board || [])),
-      tricks: JSON.parse(JSON.stringify(server.tricks || [])),
-      tests: JSON.parse(JSON.stringify(server.tests || []))
-    };
-
-    ['books', 'board'].forEach(cat => {
-      const localGroups = Array.isArray(local[cat]) ? local[cat] : [];
-      localGroups.forEach(localGroup => {
-        let targetGroup = merged[cat].find(g => (g.subject || '').toLowerCase() === (localGroup.subject || '').toLowerCase());
-        if (!targetGroup) {
-          merged[cat].push(localGroup);
-        } else if (Array.isArray(localGroup.papers)) {
-          if (!Array.isArray(targetGroup.papers)) targetGroup.papers = [];
-          localGroup.papers.forEach(lp => {
-            const exists = targetGroup.papers.some(p => p.id === lp.id);
-            if (!exists) targetGroup.papers.push(lp);
-          });
+  async fetchHscLibrary() {
+    // 1. Try local cache
+    try {
+      const cached = localStorage.getItem('cse_hsc_library_cache');
+      if (cached) {
+        const parsed = JSON.parse(cached);
+        if (parsed && Array.isArray(parsed.rootItems)) {
+          this.hscTreeData = parsed;
+          this.setupAdminHscView();
         }
-      });
-    });
+      }
+    } catch (e) {}
 
-    ['tricks', 'tests'].forEach(cat => {
-      const localItems = Array.isArray(local[cat]) ? local[cat] : [];
-      localItems.forEach(li => {
-        const exists = merged[cat].some(it => it.id === li.id);
-        if (!exists) merged[cat].push(li);
-      });
-    });
-
-    return merged;
-  },
-
-  async fetchHscData() {
-    let localData = null;
-    const cached = localStorage.getItem('cse_hsc_data');
-    if (cached) {
-      try { localData = JSON.parse(cached); } catch (e) {}
-    }
-
+    // 2. Fetch from server
     try {
       const res = await fetch('/api/hsc');
       if (res.ok) {
-        const serverData = await res.json();
-        this.hscDataCache = this.mergeHscData(serverData, localData);
-        localStorage.setItem('cse_hsc_data', JSON.stringify(this.hscDataCache));
-        return this.hscDataCache;
-      }
-    } catch (e) {
-      console.warn('HSC API fetch fallback to local storage:', e);
-    }
-
-    if (localData) {
-      this.hscDataCache = localData;
-      return this.hscDataCache;
-    }
-
-    try {
-      const res = await fetch('data/portfolio.json');
-      if (res.ok) {
-        const full = await res.json();
-        if (full.hsc) {
-          this.hscDataCache = full.hsc;
-          localStorage.setItem('cse_hsc_data', JSON.stringify(this.hscDataCache));
-          return this.hscDataCache;
-        }
-      }
-    } catch (err) {}
-
-    this.hscDataCache = { books: [], board: [], tricks: [], tests: [] };
-    return this.hscDataCache;
-  },
-
-  async initHscManager() {
-    if (!this.hscBound) {
-      this.bindHscControls();
-      this.hscBound = true;
-    }
-    await this.fetchHscData();
-    this.renderAllHscTables();
-  },
-
-  bindHscControls() {
-    document.querySelectorAll('.admin-hsc-tab-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.admin-hsc-tab-btn').forEach(b => {
-          b.style.background = 'var(--bg-subtle)';
-          b.style.color = 'var(--ink-secondary)';
-          b.classList.remove('active');
-        });
-        document.querySelectorAll('.hsc-admin-pane').forEach(p => p.style.display = 'none');
-        btn.style.background = 'var(--bg-surface)';
-        btn.style.color = 'var(--accent-rust)';
-        btn.classList.add('active');
-        const paneId = btn.getAttribute('data-hsc-pane');
-        const targetPane = document.getElementById(paneId);
-        if (targetPane) targetPane.style.display = 'block';
-      });
-    });
-
-    Object.keys(this.hscCategories).forEach(catKey => {
-      const cfg = this.hscCategories[catKey];
-      const form = document.getElementById(cfg.formId);
-      if (form) {
-        form.addEventListener('submit', (e) => {
-          e.preventDefault();
-          this.handleHscFormSubmit(catKey);
-        });
-      }
-      const cancelBtn = document.getElementById(cfg.cancelId);
-      if (cancelBtn) {
-        cancelBtn.addEventListener('click', () => {
-          this.resetHscForm(catKey);
-        });
-      }
-    });
-
-    // Wire up Export HSC Data button if present
-    const exportBtn = document.getElementById('exportHscDataBtn');
-    if (exportBtn) {
-      exportBtn.addEventListener('click', () => {
-        const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(this.hscDataCache, null, 2));
-        const dlAnchor = document.createElement('a');
-        dlAnchor.setAttribute('href', dataStr);
-        dlAnchor.setAttribute('download', 'hsc_resources_backup.json');
-        dlAnchor.click();
-      });
-    }
-  },
-
-  async handleHscFormSubmit(catKey) {
-    const cfg = this.hscCategories[catKey];
-    const nameInput = document.getElementById(cfg.nameId);
-    const subjectInput = document.getElementById(cfg.subjectId);
-    const paperInput = cfg.paperId ? document.getElementById(cfg.paperId) : null;
-    const authorInput = cfg.authorId ? document.getElementById(cfg.authorId) : null;
-    const boardInput = cfg.boardId ? document.getElementById(cfg.boardId) : null;
-    const urlInput = document.getElementById(cfg.urlId);
-    const yearInput = document.getElementById(cfg.yearId);
-    const descInput = document.getElementById(cfg.descId);
-    const editIdInput = document.getElementById(cfg.editIdId);
-    const feedback = document.getElementById(cfg.feedbackId);
-
-    const name = nameInput ? nameInput.value.trim() : '';
-    const subject = subjectInput ? subjectInput.value.trim() : 'Physics';
-    const paper = paperInput ? paperInput.value.trim() : '1st Paper';
-    const author = authorInput ? authorInput.value.trim() : '';
-    const board = boardInput ? boardInput.value.trim() : '';
-    const downloadUrl = urlInput ? urlInput.value.trim() : '';
-    const year = yearInput ? yearInput.value.trim() : '';
-    const desc = descInput ? descInput.value.trim() : '';
-    const editId = editIdInput ? editIdInput.value.trim() : '';
-
-    if (!name || !downloadUrl) {
-      if (feedback) {
-        feedback.textContent = '⚠️ Title and Download Link are required.';
-        feedback.style.color = 'var(--accent-rust)';
-      }
-      return;
-    }
-
-    const safeId = editId || `hsc-${catKey}-${Date.now()}`;
-    const payload = {
-      id: safeId,
-      name,
-      subject,
-      paper,
-      author: author || board || '',
-      board: board || '',
-      edition: year,
-      year,
-      downloadUrl,
-      desc
-    };
-
-    if (feedback) {
-      feedback.textContent = '💾 Saving resource...';
-      feedback.style.color = 'var(--accent-amber)';
-    }
-
-    // 1. Update in-memory cache immediately
-    if (!this.hscDataCache) {
-      this.hscDataCache = { books: [], board: [], tricks: [], tests: [] };
-    }
-    if (!Array.isArray(this.hscDataCache[catKey])) {
-      this.hscDataCache[catKey] = [];
-    }
-
-    if (catKey === 'books' || catKey === 'board') {
-      const subjectMeta = {
-        'Physics': { icon: '⚛️', bangla: catKey === 'books' ? 'পদার্থবিজ্ঞান' : 'পদার্থবিজ্ঞান বোর্ড সমাধান' },
-        'Chemistry': { icon: '🧪', bangla: catKey === 'books' ? 'রসায়ন' : 'রসায়ন বোর্ড সমাধান' },
-        'Higher Mathematics': { icon: '📐', bangla: catKey === 'books' ? 'উচ্চতর গণিত' : 'উচ্চতর গণিত বোর্ড সমাধান' },
-        'Biology': { icon: '🧬', bangla: catKey === 'books' ? 'জীববিজ্ঞান' : 'জীববিজ্ঞান বোর্ড সমাধান' },
-        'Information & Comm. Technology': { icon: '💻', bangla: 'তথ্য ও যোগাযোগ প্রযুক্তি' }
-      };
-      const meta = subjectMeta[subject] || { icon: '📚', bangla: subject };
-
-      let group = this.hscDataCache[catKey].find(g => (g.subject || '').toLowerCase() === subject.toLowerCase());
-      if (!group) {
-        group = {
-          id: `group-${catKey}-${subject.toLowerCase().replace(/[^a-z0-9]/g, '-')}`,
-          subject,
-          banglaName: meta.bangla,
-          icon: meta.icon,
-          desc: `Curated ${subject} ${catKey === 'books' ? 'Textbooks' : 'Board Solutions'}.`,
-          papers: []
-        };
-        this.hscDataCache[catKey].push(group);
-      }
-      if (!Array.isArray(group.papers)) group.papers = [];
-
-      // If editing subject, remove from previous group
-      if (editId) {
-        this.hscDataCache[catKey].forEach(g => {
-          if (g !== group && Array.isArray(g.papers)) {
-            g.papers = g.papers.filter(p => p.id !== safeId);
-          }
-        });
-      }
-
-      const paperItem = {
-        id: safeId,
-        paper,
-        name,
-        author: author || board || '',
-        board: board || '',
-        edition: year,
-        year,
-        downloadUrl,
-        desc,
-        updatedAt: new Date().toISOString()
-      };
-
-      const pIdx = group.papers.findIndex(p => p.id === safeId);
-      if (pIdx >= 0) {
-        group.papers[pIdx] = paperItem;
-      } else {
-        group.papers.push(paperItem);
-      }
-    } else {
-      const flatItem = {
-        id: safeId,
-        name,
-        subject,
-        downloadUrl,
-        year,
-        desc,
-        updatedAt: new Date().toISOString()
-      };
-      const idx = this.hscDataCache[catKey].findIndex(it => it.id === safeId);
-      if (idx >= 0) {
-        this.hscDataCache[catKey][idx] = flatItem;
-      } else {
-        this.hscDataCache[catKey].push(flatItem);
-      }
-    }
-
-    // 2. Persist to localStorage immediately
-    localStorage.setItem('cse_hsc_data', JSON.stringify(this.hscDataCache));
-
-    // 3. Immediately re-render table & reset form
-    this.renderHscTable(catKey);
-    this.resetHscForm(catKey);
-
-    // 4. Instant positive feedback
-    if (feedback) {
-      feedback.textContent = editId ? '✔ Resource updated & saved!' : '✔ Resource saved to library!';
-      feedback.style.color = 'var(--accent-patina)';
-      setTimeout(() => { if (feedback) feedback.textContent = ''; }, 4000);
-    }
-
-    // 5. In parallel sync with server API
-    try {
-      const res = await this.authFetch(`/api/hsc/${catKey}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      if (res.ok) {
         const data = await res.json();
-        if (data.data) {
-          this.hscDataCache[catKey] = data.data;
-          localStorage.setItem('cse_hsc_data', JSON.stringify(this.hscDataCache));
-          this.renderHscTable(catKey);
+        if (data && Array.isArray(data.rootItems)) {
+          this.hscTreeData = data;
+          localStorage.setItem('cse_hsc_library_cache', JSON.stringify(data));
+          this.setupAdminHscView();
+          return;
         }
       }
     } catch (err) {
-      console.warn('Backend sync deferred, saved locally in browser storage:', err);
+      console.warn('Admin HSC fetch error:', err);
     }
-  },
 
-  resetHscForm(catKey) {
-    const cfg = this.hscCategories[catKey];
-    const form = document.getElementById(cfg.formId);
-    if (form) form.reset();
-    const editIdInput = document.getElementById(cfg.editIdId);
-    if (editIdInput) editIdInput.value = '';
-    const submitBtn = document.getElementById(cfg.submitId);
-    if (submitBtn) {
-      submitBtn.textContent = catKey === 'books' ? '+ Save Science Book' :
-                              catKey === 'board' ? '+ Save Solution Book' :
-                              catKey === 'tricks' ? '+ Save Trick Sheet' : '+ Save Test Paper';
-    }
-    const cancelBtn = document.getElementById(cfg.cancelId);
-    if (cancelBtn) cancelBtn.style.display = 'none';
-  },
-
-  editHscItem(catKey, id) {
-    if (!this.hscDataCache || !this.hscDataCache[catKey]) return;
-    const cfg = this.hscCategories[catKey];
-
-    let foundItem = null;
-    let foundSubject = '';
-
-    if (catKey === 'books' || catKey === 'board') {
-      // Search inside subject group papers
-      for (const group of this.hscDataCache[catKey]) {
-        if (Array.isArray(group.papers)) {
-          const p = group.papers.find(x => x.id === id);
-          if (p) {
-            foundItem = p;
-            foundSubject = group.subject || '';
-            break;
-          }
-        }
-        if (group.id === id) {
-          foundItem = group;
-          foundSubject = group.subject || '';
-          break;
+    // 3. Fallback to portfolio.json
+    try {
+      const fallback = await fetch('data/portfolio.json');
+      if (fallback.ok) {
+        const d = await fallback.json();
+        if (d && d.hsc && Array.isArray(d.hsc.rootItems)) {
+          this.hscTreeData = d.hsc;
+          this.setupAdminHscView();
         }
       }
-    }
+    } catch (e) {}
+  },
 
-    if (!foundItem) {
-      foundItem = this.hscDataCache[catKey].find(x => x.id === id);
-    }
+  setupAdminHscView() {
+    if (!this.hscTreeData) return;
 
-    if (!foundItem) return;
-
-    const setVal = (elemId, val) => {
-      const el = document.getElementById(elemId);
-      if (el) el.value = val || '';
+    const root = {
+      id: 'root',
+      name: 'লাইব্রেরি',
+      type: 'folder',
+      children: this.hscTreeData.rootItems || []
     };
 
-    setVal(cfg.editIdId, foundItem.id);
-    setVal(cfg.nameId, foundItem.name);
-    if (cfg.subjectId) setVal(cfg.subjectId, foundSubject || foundItem.subject || 'Physics');
-    if (cfg.paperId) setVal(cfg.paperId, foundItem.paper || '1st Paper');
-    if (cfg.authorId) setVal(cfg.authorId, foundItem.author || foundItem.edition || '');
-    if (cfg.boardId) setVal(cfg.boardId, foundItem.board || '');
-    setVal(cfg.urlId, foundItem.downloadUrl);
-    setVal(cfg.yearId, foundItem.edition || foundItem.year || '');
-    setVal(cfg.descId, foundItem.desc);
+    if (!this.adminHscPath.length) {
+      this.adminHscPath = [root];
+    } else {
+      // Refresh current node in path
+      this.adminHscPath[0] = root;
+    }
 
-    const submitBtn = document.getElementById(cfg.submitId);
-    if (submitBtn) submitBtn.textContent = '💾 Update Resource';
-    const cancelBtn = document.getElementById(cfg.cancelId);
-    if (cancelBtn) cancelBtn.style.display = 'inline-flex';
-
-    const form = document.getElementById(cfg.formId);
-    if (form) form.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    this.populateParentFolderDropdown();
+    this.renderAdminHscExplorer();
+    this.updateAdminHscStats();
   },
 
-  async deleteHscItem(catKey, id) {
-    if (!confirm('Are you sure you want to delete this resource?')) return;
+  populateParentFolderDropdown() {
+    const select = document.getElementById('hscNodeParent');
+    if (!select || !this.hscTreeData) return;
 
-    // Immediately remove from local cache and render
-    if (this.hscDataCache && this.hscDataCache[catKey]) {
-      if (catKey === 'books' || catKey === 'board') {
-        this.hscDataCache[catKey].forEach(group => {
-          if (Array.isArray(group.papers)) {
-            group.papers = group.papers.filter(p => p.id !== id);
+    const currentVal = select.value;
+    select.innerHTML = '<option value="root">📁 রুট লাইব্রেরি (Root Library Level)</option>';
+
+    function addOptions(node, prefix = '') {
+      if (node.type === 'folder' && node.id !== 'root') {
+        const opt = document.createElement('option');
+        opt.value = node.id;
+        opt.textContent = `${prefix}📁 ${node.name}`;
+        select.appendChild(opt);
+      }
+      if (Array.isArray(node.children)) {
+        node.children.forEach(c => {
+          if (c.type === 'folder') {
+            addOptions(c, prefix + '  ↳ ');
           }
         });
-        this.hscDataCache[catKey] = this.hscDataCache[catKey].filter(g => g.id !== id);
-      } else {
-        this.hscDataCache[catKey] = this.hscDataCache[catKey].filter(it => it.id !== id);
       }
-      localStorage.setItem('cse_hsc_data', JSON.stringify(this.hscDataCache));
-      this.renderHscTable(catKey);
     }
 
-    try {
-      await this.authFetch(`/api/hsc/${catKey}/${encodeURIComponent(id)}`, {
-        method: 'DELETE'
-      });
-    } catch (e) {
-      console.warn('Backend delete sync deferred, deleted locally');
-    }
-  },
-
-  renderAllHscTables() {
-    Object.keys(this.hscCategories).forEach(catKey => {
-      this.renderHscTable(catKey);
+    (this.hscTreeData.rootItems || []).forEach(it => {
+      if (it.type === 'folder') addOptions(it);
     });
+
+    if (currentVal) select.value = currentVal;
   },
 
-  renderHscTable(catKey) {
-    const cfg = this.hscCategories[catKey];
-    const tbody = document.getElementById(cfg.tableBodyId);
-    const countEl = document.getElementById(cfg.countId);
-    if (!tbody) return;
+  updateAdminHscStats() {
+    if (!this.hscTreeData) return;
+    let folders = 0;
+    let files = 0;
+    function count(node) {
+      if (node.type === 'folder') {
+        folders++;
+        if (node.children) node.children.forEach(count);
+      } else {
+        files++;
+      }
+    }
+    (this.hscTreeData.rootItems || []).forEach(count);
 
-    const rawData = (this.hscDataCache && this.hscDataCache[catKey]) || [];
+    const statsEl = document.getElementById('adminHscStats');
+    if (statsEl) {
+      statsEl.textContent = `Total Folders: ${folders} • Total Files: ${files}`;
+    }
+  },
 
-    // Flatten hierarchical data for tabular display in admin
-    let tableRows = [];
-    if (catKey === 'books' || catKey === 'board') {
-      rawData.forEach(group => {
-        if (Array.isArray(group.papers) && group.papers.length > 0) {
-          group.papers.forEach(p => {
-            tableRows.push({
-              id: p.id,
-              subject: group.subject || 'General',
-              paper: p.paper || '1st Paper',
-              name: p.name,
-              author: p.author || p.board || '',
-              board: p.board || '',
-              year: p.edition || p.year || '',
-              downloadUrl: p.downloadUrl,
-              desc: p.desc || ''
-            });
-          });
-        } else {
-          tableRows.push({
-            id: group.id,
-            subject: group.subject || 'General',
-            paper: group.paper || 'Full Guide',
-            name: group.name || group.subject,
-            author: group.author || '',
-            board: group.board || '',
-            year: group.year || group.edition || '',
-            downloadUrl: group.downloadUrl || '',
-            desc: group.desc || ''
-          });
+  renderAdminHscExplorer() {
+    if (!this.adminHscPath.length) return;
+    const currentFolder = this.adminHscPath[this.adminHscPath.length - 1];
+    const items = currentFolder.children || [];
+
+    // Update breadcrumbs
+    const crumbsEl = document.getElementById('adminHscBreadcrumbs');
+    if (crumbsEl) {
+      crumbsEl.innerHTML = '';
+      this.adminHscPath.forEach((f, idx) => {
+        const isLast = idx === this.adminHscPath.length - 1;
+        const span = document.createElement('span');
+        span.style.cursor = isLast ? 'default' : 'pointer';
+        span.style.fontWeight = isLast ? '700' : '500';
+        span.style.color = isLast ? 'var(--ink-primary)' : 'var(--accent-rust)';
+        span.textContent = idx === 0 ? '🏠 লাইব্রেরি' : f.name;
+        if (!isLast) {
+          span.onclick = () => {
+            this.adminHscPath = this.adminHscPath.slice(0, idx + 1);
+            this.renderAdminHscExplorer();
+          };
+        }
+        crumbsEl.appendChild(span);
+        if (!isLast) {
+          const sep = document.createElement('span');
+          sep.textContent = ' > ';
+          sep.style.color = 'var(--ink-muted)';
+          crumbsEl.appendChild(sep);
         }
       });
-    } else {
-      tableRows = rawData;
     }
 
-    if (countEl) countEl.textContent = tableRows.length;
+    // Update back button
+    const backBtn = document.getElementById('adminHscBackBtn');
+    if (backBtn) {
+      backBtn.disabled = this.adminHscPath.length <= 1;
+    }
 
-    if (tableRows.length === 0) {
+    // Update count
+    const countEl = document.getElementById('adminHscItemCount');
+    if (countEl) countEl.textContent = items.length;
+
+    const tbody = document.getElementById('adminHscTableBody');
+    if (!tbody) return;
+
+    if (items.length === 0) {
       tbody.innerHTML = `
         <tr>
-          <td colspan="6" style="text-align: center; color: var(--ink-muted); font-family: var(--font-mono); padding: 1.5rem;">
-            No ${catKey} items cataloged yet. Use the form above to add one.
+          <td colspan="4" style="text-align: center; color: var(--ink-muted); font-family: var(--font-mono); padding: 2rem;">
+            This folder is empty. Use the form above to add a file or subfolder.
           </td>
         </tr>
       `;
       return;
     }
 
-    if (catKey === 'books') {
-      tbody.innerHTML = tableRows.map(item => `
+    const sorted = [...items].sort((a, b) => {
+      if (a.type === 'folder' && b.type !== 'folder') return -1;
+      if (a.type !== 'folder' && b.type === 'folder') return 1;
+      return (a.name || '').localeCompare(b.name || '');
+    });
+
+    tbody.innerHTML = sorted.map(item => {
+      const isFolder = item.type === 'folder';
+      const driveLink = item.webContentLink || item.webViewLink || (item.driveId ? `https://drive.google.com/file/d/${item.driveId}/view` : '');
+      return `
         <tr>
-          <td>
-            <span class="vintage-tag" style="font-size: 0.72rem; font-weight:700;">${this.escape(item.subject)}</span>
+          <td style="font-size: 1.2rem; text-align: center;">
+            ${isFolder ? '📁' : '📄'}
           </td>
           <td>
-            <span class="hsc-paper-pill ${String(item.paper).includes('1st') ? 'pill-1st' : 'pill-2nd'}">${this.escape(item.paper)}</span>
+            <div style="font-weight: 700; font-family: var(--font-sans); font-size: 0.95rem; cursor: ${isFolder ? 'pointer' : 'default'}; color: ${isFolder ? '#1d4ed8' : 'var(--ink-primary)'};"
+                 ${isFolder ? `onclick="window.AdminPanel.drillIntoAdminFolder('${this.escape(item.id)}')"` : ''}>
+              ${this.escape(item.name)}
+              ${isFolder ? ` <span style="font-size:0.75rem; color:var(--ink-muted); font-weight:normal;">(${item.children ? item.children.length : 0} items)</span>` : ''}
+            </div>
+            ${item.driveId ? `<div style="font-family:var(--font-mono); font-size:0.7rem; color:var(--ink-muted);">ID: ${this.escape(item.driveId)}</div>` : ''}
           </td>
           <td>
-            <div style="font-weight: 700; font-family: var(--font-serif); font-size: 0.92rem;">${this.escape(item.name)}</div>
-            ${item.author ? `<div style="font-size: 0.78rem; color: var(--ink-secondary);">✍️ ${this.escape(item.author)}</div>` : ''}
-            ${item.desc ? `<div style="font-size: 0.75rem; color: var(--ink-muted); margin-top:2px;">${this.escape(item.desc)}</div>` : ''}
-          </td>
-          <td style="font-family: var(--font-mono); font-size: 0.78rem;">${this.escape(item.year || '—')}</td>
-          <td>
-            ${item.downloadUrl ? `
-              <a href="${this.escape(item.downloadUrl)}" target="_blank" rel="noopener noreferrer" class="vintage-btn btn-sm btn-outline" style="font-size: 0.7rem; padding: 2px 7px;">
-                🔗 PDF ↗
+            ${driveLink ? `
+              <a href="${this.escape(driveLink)}" target="_blank" rel="noopener noreferrer" class="vintage-btn btn-sm btn-outline" style="font-size:0.72rem; padding: 2px 7px;">
+                🔗 Drive ↗
               </a>
             ` : '<span style="color:var(--ink-muted); font-size:0.75rem;">None</span>'}
           </td>
           <td style="text-align: right; white-space: nowrap;">
-            <button type="button" class="vintage-btn btn-sm" onclick="window.AdminPanel.editHscItem('${catKey}', '${this.escape(item.id)}')">✏️ Edit</button>
-            <button type="button" class="vintage-btn btn-sm btn-outline btn-danger" onclick="window.AdminPanel.deleteHscItem('${catKey}', '${this.escape(item.id)}')">🗑️</button>
+            <button type="button" class="vintage-btn btn-sm" onclick="window.AdminPanel.editHscNode('${this.escape(item.id)}')">✏️ Edit</button>
+            <button type="button" class="vintage-btn btn-sm btn-outline btn-danger" onclick="window.AdminPanel.deleteHscNode('${this.escape(item.id)}')">🗑️</button>
           </td>
         </tr>
-      `).join('');
-    } else if (catKey === 'board') {
-      tbody.innerHTML = tableRows.map(item => `
-        <tr>
-          <td>
-            <span class="vintage-tag" style="font-size: 0.72rem; font-weight:700;">${this.escape(item.subject)}</span>
-          </td>
-          <td>
-            <span class="hsc-paper-pill ${String(item.paper).includes('1st') ? 'pill-1st' : 'pill-2nd'}">${this.escape(item.paper)}</span>
-          </td>
-          <td>
-            <div style="font-weight: 700; font-family: var(--font-serif); font-size: 0.92rem;">${this.escape(item.name)}</div>
-            ${item.desc ? `<div style="font-size: 0.75rem; color: var(--ink-muted); margin-top:2px;">${this.escape(item.desc)}</div>` : ''}
-          </td>
-          <td style="font-family: var(--font-mono); font-size: 0.78rem;">
-            ${item.board ? `<div>🏛️ ${this.escape(item.board)}</div>` : ''}
-            <div>📅 ${this.escape(item.year || '—')}</div>
-          </td>
-          <td>
-            ${item.downloadUrl ? `
-              <a href="${this.escape(item.downloadUrl)}" target="_blank" rel="noopener noreferrer" class="vintage-btn btn-sm btn-outline" style="font-size: 0.7rem; padding: 2px 7px;">
-                🔗 PDF ↗
-              </a>
-            ` : '<span style="color:var(--ink-muted); font-size:0.75rem;">None</span>'}
-          </td>
-          <td style="text-align: right; white-space: nowrap;">
-            <button type="button" class="vintage-btn btn-sm" onclick="window.AdminPanel.editHscItem('${catKey}', '${this.escape(item.id)}')">✏️ Edit</button>
-            <button type="button" class="vintage-btn btn-sm btn-outline btn-danger" onclick="window.AdminPanel.deleteHscItem('${catKey}', '${this.escape(item.id)}')">🗑️</button>
-          </td>
-        </tr>
-      `).join('');
-    } else {
-      tbody.innerHTML = tableRows.map(item => `
-        <tr>
-          <td>
-            <div style="font-weight: 700; font-family: var(--font-serif); font-size: 0.95rem;">${this.escape(item.name)}</div>
-            ${item.desc ? `<div style="font-size: 0.78rem; color: var(--ink-muted); line-height: 1.4;">${this.escape(item.desc)}</div>` : ''}
-          </td>
-          <td>
-            <span class="vintage-tag" style="font-size: 0.7rem;">${this.escape(item.subject || 'General')}</span>
-          </td>
-          <td style="font-family: var(--font-mono); font-size: 0.78rem;">${this.escape(item.year || '—')}</td>
-          <td>
-            ${item.downloadUrl ? `
-              <a href="${this.escape(item.downloadUrl)}" target="_blank" rel="noopener noreferrer" class="vintage-btn btn-sm btn-outline" style="font-size: 0.7rem; padding: 2px 7px;">
-                🔗 Link ↗
-              </a>
-            ` : '<span style="color:var(--ink-muted); font-size:0.75rem;">None</span>'}
-          </td>
-          <td style="text-align: right; white-space: nowrap;">
-            <button type="button" class="vintage-btn btn-sm" onclick="window.AdminPanel.editHscItem('${catKey}', '${this.escape(item.id)}')">✏️ Edit</button>
-            <button type="button" class="vintage-btn btn-sm btn-outline btn-danger" onclick="window.AdminPanel.deleteHscItem('${catKey}', '${this.escape(item.id)}')">🗑️</button>
-          </td>
-        </tr>
-      `).join('');
+      `;
+    }).join('');
+  },
+
+  drillIntoAdminFolder(folderId) {
+    if (!this.adminHscPath.length) return;
+    const currentFolder = this.adminHscPath[this.adminHscPath.length - 1];
+    const target = (currentFolder.children || []).find(c => c.id === folderId);
+    if (target && target.type === 'folder') {
+      this.adminHscPath.push(target);
+      const parentSel = document.getElementById('hscNodeParent');
+      if (parentSel) parentSel.value = target.id;
+      this.renderAdminHscExplorer();
     }
   },
+
+  bindHscEvents() {
+    const backBtn = document.getElementById('adminHscBackBtn');
+    if (backBtn) {
+      backBtn.onclick = () => {
+        if (this.adminHscPath.length > 1) {
+          this.adminHscPath.pop();
+          const cur = this.adminHscPath[this.adminHscPath.length - 1];
+          const parentSel = document.getElementById('hscNodeParent');
+          if (parentSel) parentSel.value = cur.id === 'root' ? 'root' : cur.id;
+          this.renderAdminHscExplorer();
+        }
+      };
+    }
+
+    const form = document.getElementById('adminAddHscNodeForm');
+    if (form) {
+      form.onsubmit = async (e) => {
+        e.preventDefault();
+        await this.handleSaveHscNode();
+      };
+    }
+
+    const cancelBtn = document.getElementById('hscNodeCancelBtn');
+    if (cancelBtn) {
+      cancelBtn.onclick = () => this.resetHscNodeForm();
+    }
+
+    const exportBtn = document.getElementById('exportHscDataBtn');
+    if (exportBtn) {
+      exportBtn.onclick = () => this.exportHscLibraryJSON();
+    }
+
+    const importInput = document.getElementById('importHscDataInput');
+    if (importInput) {
+      importInput.onchange = (e) => this.handleImportHscLibrary(e);
+    }
+
+    const searchInput = document.getElementById('adminHscSearchInput');
+    if (searchInput) {
+      searchInput.oninput = (e) => {
+        const q = e.target.value.toLowerCase().trim();
+        if (!q) {
+          this.renderAdminHscExplorer();
+          return;
+        }
+        this.renderAdminHscSearchResults(q);
+      };
+    }
+  },
+
+  renderAdminHscSearchResults(query) {
+    if (!this.hscTreeData) return;
+    const matches = [];
+    function search(node, pathStr) {
+      if ((node.name || '').toLowerCase().includes(query)) {
+        matches.push({ node, pathStr });
+      }
+      if (node.children) {
+        node.children.forEach(c => search(c, pathStr ? `${pathStr} > ${node.name}` : node.name));
+      }
+    }
+    (this.hscTreeData.rootItems || []).forEach(it => search(it, ''));
+
+    const tbody = document.getElementById('adminHscTableBody');
+    if (!tbody) return;
+
+    if (matches.length === 0) {
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="4" style="text-align: center; color: var(--ink-muted); font-family: var(--font-mono); padding: 1.5rem;">
+            No items matching "${this.escape(query)}".
+          </td>
+        </tr>
+      `;
+      return;
+    }
+
+    tbody.innerHTML = matches.map(m => {
+      const item = m.node;
+      const isFolder = item.type === 'folder';
+      const driveLink = item.webContentLink || item.webViewLink || (item.driveId ? `https://drive.google.com/file/d/${item.driveId}/view` : '');
+      return `
+        <tr>
+          <td style="font-size: 1.2rem; text-align: center;">${isFolder ? '📁' : '📄'}</td>
+          <td>
+            <div style="font-weight: 700; font-size: 0.95rem;">${this.escape(item.name)}</div>
+            <div style="font-family:var(--font-mono); font-size:0.72rem; color:var(--ink-muted);">Path: ${this.escape(m.pathStr || 'Root')}</div>
+          </td>
+          <td>
+            ${driveLink ? `
+              <a href="${this.escape(driveLink)}" target="_blank" rel="noopener noreferrer" class="vintage-btn btn-sm btn-outline" style="font-size:0.72rem; padding: 2px 7px;">
+                🔗 Drive ↗
+              </a>
+            ` : '<span style="color:var(--ink-muted); font-size:0.75rem;">None</span>'}
+          </td>
+          <td style="text-align: right; white-space: nowrap;">
+            <button type="button" class="vintage-btn btn-sm" onclick="window.AdminPanel.editHscNode('${this.escape(item.id)}')">✏️ Edit</button>
+            <button type="button" class="vintage-btn btn-sm btn-outline btn-danger" onclick="window.AdminPanel.deleteHscNode('${this.escape(item.id)}')">🗑️</button>
+          </td>
+        </tr>
+      `;
+    }).join('');
+  },
+
+  async handleSaveHscNode() {
+    const editId = document.getElementById('hscNodeEditId').value;
+    const parentId = document.getElementById('hscNodeParent').value;
+    const type = document.getElementById('hscNodeType').value;
+    const name = document.getElementById('hscNodeName').value.trim();
+    const url = document.getElementById('hscNodeUrl').value.trim();
+    const feedback = document.getElementById('hscNodeFeedback');
+
+    if (!name) return;
+
+    if (feedback) {
+      feedback.style.color = 'var(--ink-muted)';
+      feedback.textContent = '⏳ Saving...';
+    }
+
+    const payload = {
+      parentId: parentId || 'root',
+      node: {
+        id: editId || undefined,
+        name,
+        type,
+        downloadUrl: url,
+        webViewLink: url
+      }
+    };
+
+    try {
+      const res = await this.authFetch('/api/hsc/node', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        if (data.hsc) {
+          this.hscTreeData = data.hsc;
+          localStorage.setItem('cse_hsc_library_cache', JSON.stringify(data.hsc));
+          localStorage.setItem('scarface_hsc_library_cache', JSON.stringify(data.hsc));
+        }
+        if (feedback) {
+          feedback.style.color = '#16a34a';
+          feedback.textContent = '✓ Saved successfully!';
+        }
+        this.resetHscNodeForm();
+        this.setupAdminHscView();
+        setTimeout(() => { if (feedback) feedback.textContent = ''; }, 3000);
+      } else {
+        const err = await res.json().catch(() => ({}));
+        if (feedback) {
+          feedback.style.color = '#dc2626';
+          feedback.textContent = `❌ ${err.error || 'Failed to save node'}`;
+        }
+      }
+    } catch (err) {
+      if (feedback) {
+        feedback.style.color = '#dc2626';
+        feedback.textContent = `❌ Network error: ${err.message}`;
+      }
+    }
+  },
+
+  editHscNode(nodeId) {
+    if (!this.hscTreeData) return;
+    let found = null;
+    let foundParentId = 'root';
+
+    function find(node, currentParentId) {
+      if (node.id === nodeId) {
+        found = node;
+        foundParentId = currentParentId;
+        return true;
+      }
+      if (node.children) {
+        for (let c of node.children) {
+          if (find(c, node.id)) return true;
+        }
+      }
+      return false;
+    }
+
+    (this.hscTreeData.rootItems || []).forEach(it => find(it, 'root'));
+
+    if (!found) return;
+
+    document.getElementById('hscNodeEditId').value = found.id;
+    document.getElementById('hscNodeName').value = found.name || '';
+    document.getElementById('hscNodeType').value = found.type || 'pdf';
+    document.getElementById('hscNodeParent').value = foundParentId;
+    document.getElementById('hscNodeUrl').value = found.webViewLink || found.webContentLink || '';
+
+    const titleEl = document.getElementById('hscFormTitle');
+    if (titleEl) titleEl.textContent = `✏️ Edit: ${found.name}`;
+    const submitBtn = document.getElementById('hscNodeSubmitBtn');
+    if (submitBtn) submitBtn.textContent = '✓ Update Resource';
+    const cancelBtn = document.getElementById('hscNodeCancelBtn');
+    if (cancelBtn) cancelBtn.style.display = 'inline-block';
+
+    window.scrollTo({ top: document.getElementById('adminAddHscNodeForm').offsetTop - 100, behavior: 'smooth' });
+  },
+
+  resetHscNodeForm() {
+    document.getElementById('hscNodeEditId').value = '';
+    document.getElementById('hscNodeName').value = '';
+    document.getElementById('hscNodeUrl').value = '';
+    document.getElementById('hscNodeType').value = 'pdf';
+
+    const titleEl = document.getElementById('hscFormTitle');
+    if (titleEl) titleEl.textContent = '➕ Add / Edit Resource in Library';
+    const submitBtn = document.getElementById('hscNodeSubmitBtn');
+    if (submitBtn) submitBtn.textContent = '+ Save to Library';
+    const cancelBtn = document.getElementById('hscNodeCancelBtn');
+    if (cancelBtn) cancelBtn.style.display = 'none';
+  },
+
+  async deleteHscNode(nodeId) {
+    if (!confirm('Are you sure you want to delete this resource or folder from the library?')) return;
+
+    try {
+      const res = await this.authFetch(`/api/hsc/node/${encodeURIComponent(nodeId)}`, {
+        method: 'DELETE'
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        if (data.hsc) {
+          this.hscTreeData = data.hsc;
+          localStorage.setItem('cse_hsc_library_cache', JSON.stringify(data.hsc));
+          localStorage.setItem('scarface_hsc_library_cache', JSON.stringify(data.hsc));
+        }
+        this.setupAdminHscView();
+      } else {
+        alert('Failed to delete node from server.');
+      }
+    } catch (err) {
+      alert(`Error deleting node: ${err.message}`);
+    }
+  },
+
+  exportHscLibraryJSON() {
+    if (!this.hscTreeData) return;
+    const blob = new Blob([JSON.stringify(this.hscTreeData, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `aapathshala_library_backup_${new Date().toISOString().slice(0, 10)}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  },
+
+  async handleImportHscLibrary(event) {
+    const file = event.target.files && event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = async (e) => {
+      try {
+        const imported = JSON.parse(e.target.result);
+        if (!imported || !Array.isArray(imported.rootItems)) {
+          alert('Invalid HSC Library backup JSON: missing rootItems array.');
+          return;
+        }
+
+        const res = await this.authFetch('/api/hsc', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(imported)
+        });
+
+        if (res.ok) {
+          this.hscTreeData = imported;
+          localStorage.setItem('cse_hsc_library_cache', JSON.stringify(imported));
+          localStorage.setItem('scarface_hsc_library_cache', JSON.stringify(imported));
+          this.setupAdminHscView();
+          alert('HSC Library successfully restored from backup!');
+        } else {
+          alert('Failed to sync imported library with server.');
+        }
+      } catch (err) {
+        alert(`Error parsing JSON file: ${err.message}`);
+      }
+    };
+    reader.readAsText(file);
+    event.target.value = '';
+  },
+
 
   escape(str) {
     if (typeof str !== 'string') return str;
