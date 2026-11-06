@@ -1045,6 +1045,16 @@ app.get('/admin.js', (req, res) => {
   res.sendFile(path.join(__dirname, 'admin.js'));
 });
 
+app.get('/companion-engine.js', (req, res) => {
+  res.setHeader('Content-Type', 'application/javascript; charset=UTF-8');
+  res.sendFile(path.join(__dirname, 'companion-engine.js'));
+});
+
+app.get('/terminal-engine.js', (req, res) => {
+  res.setHeader('Content-Type', 'application/javascript; charset=UTF-8');
+  res.sendFile(path.join(__dirname, 'terminal-engine.js'));
+});
+
 app.use('/assets', express.static(path.join(__dirname, 'assets'), {
   maxAge: '1d',
   setHeaders: (res, filePath) => {
@@ -1064,16 +1074,16 @@ app.use(express.static(__dirname, {
 }));
 
 // Clean, direct URL routes
-app.get('/about', (req, res) => res.sendFile(path.join(__dirname, 'about.html')));
-app.get('/terminal', (req, res) => res.sendFile(path.join(__dirname, 'terminal.html')));
-app.get('/projects', (req, res) => res.sendFile(path.join(__dirname, 'projects.html')));
-app.get('/skills', (req, res) => res.sendFile(path.join(__dirname, 'skills.html')));
-app.get('/academics', (req, res) => res.sendFile(path.join(__dirname, 'academics.html')));
-app.get('/experience', (req, res) => res.sendFile(path.join(__dirname, 'experience.html')));
-app.get('/contact', (req, res) => res.sendFile(path.join(__dirname, 'contact.html')));
-app.get('/hsc', (req, res) => res.sendFile(path.join(__dirname, 'hsc.html')));
-app.get('/companion', (req, res) => res.sendFile(path.join(__dirname, 'companion.html')));
-app.get('/admin', (req, res) => res.sendFile(path.join(__dirname, 'admin.html')));
+app.get(['/about', '/about.html'], (req, res) => res.sendFile(path.join(__dirname, 'about.html')));
+app.get(['/terminal', '/terminal.html'], (req, res) => res.sendFile(path.join(__dirname, 'terminal.html')));
+app.get(['/projects', '/projects.html'], (req, res) => res.sendFile(path.join(__dirname, 'projects.html')));
+app.get(['/skills', '/skills.html'], (req, res) => res.sendFile(path.join(__dirname, 'skills.html')));
+app.get(['/academics', '/academics.html'], (req, res) => res.sendFile(path.join(__dirname, 'academics.html')));
+app.get(['/experience', '/experience.html'], (req, res) => res.sendFile(path.join(__dirname, 'experience.html')));
+app.get(['/contact', '/contact.html'], (req, res) => res.sendFile(path.join(__dirname, 'contact.html')));
+app.get(['/hsc', '/hsc.html'], (req, res) => res.sendFile(path.join(__dirname, 'hsc.html')));
+app.get(['/companion', '/companion.html'], (req, res) => res.sendFile(path.join(__dirname, 'companion.html')));
+app.get(['/admin', '/admin.html'], (req, res) => res.sendFile(path.join(__dirname, 'admin.html')));
 
 // Fallback to index.html (never serve index.html for static asset extensions)
 app.get('*', (req, res) => {
