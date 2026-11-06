@@ -4095,6 +4095,10 @@ textarea.vintage-input {
   top: calc(100% + 8px);
   padding: 0.35rem 0;
   border-radius: var(--radius-badge);
+  z-index: 3000 !important;
+}
+#dotsMenu.show {
+  display: flex !important;
 }
 .dots-menu-item {
   display: flex;
