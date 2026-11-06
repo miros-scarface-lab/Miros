@@ -3681,3 +3681,465 @@ textarea.vintage-input {
 
 
 
+
+/* ==========================================================================
+   HSC ACADEMIC HUB — PROFESSIONAL DESIGN SYSTEM EXTENSION
+   Premium typography, glassmorphism accents, micro-interactions
+   ========================================================================== */
+
+/* ── 1. HSC Hero Section ── */
+.hsc-hero {
+  background: linear-gradient(135deg, var(--bg-subtle) 0%, var(--bg-surface) 100%);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--radius-badge);
+  padding: 3.5rem 2rem;
+  margin-bottom: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-tactile-lg);
+  text-align: center;
+}
+.hsc-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--bg-pattern);
+  background-size: var(--bg-pattern-size);
+  opacity: 0.45;
+  pointer-events: none;
+}
+.hsc-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-rust), var(--accent-patina), var(--accent-amber));
+}
+.hsc-hero > * { position: relative; z-index: 1; }
+
+.hsc-hero-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  background: var(--accent-rust);
+  color: #fff;
+  padding: 0.3rem 1rem;
+  border-radius: var(--radius-badge);
+  margin-bottom: 1.25rem;
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+}
+.hsc-hero h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  color: var(--ink-primary);
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+.hsc-hero p {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--ink-secondary);
+  max-width: 620px;
+  margin: 0 auto;
+  line-height: 1.75;
+}
+
+/* ── 2. HSC Tab Navigation ── */
+.hsc-tabs {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  border-bottom: var(--border-width) solid var(--border-color);
+  padding-bottom: 0;
+}
+.hsc-tab-btn {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.65rem 1.4rem;
+  border: var(--border-width) solid var(--border-color);
+  border-bottom: none;
+  background: var(--bg-subtle);
+  color: var(--ink-secondary);
+  cursor: pointer;
+  border-radius: var(--radius-badge) var(--radius-badge) 0 0;
+  transition: all var(--transition-quick);
+  position: relative;
+  bottom: calc(-1 * var(--border-width));
+}
+.hsc-tab-btn:hover {
+  background: var(--bg-surface);
+  color: var(--ink-primary);
+  box-shadow: var(--shadow-tactile-sm);
+}
+.hsc-tab-btn.active {
+  background: var(--bg-surface);
+  color: var(--accent-rust);
+  border-bottom-color: var(--bg-surface);
+  box-shadow: var(--shadow-tactile-sm);
+}
+
+/* ── 3. HSC Pane ── */
+.hsc-pane { display: none; }
+.hsc-pane.active { display: block; animation: hscFadeIn 0.2s ease; }
+
+@keyframes hscFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hsc-pane-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.1rem;
+  margin-bottom: 1.75rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--bg-subtle);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--radius-badge);
+  box-shadow: var(--shadow-tactile-sm);
+}
+.hsc-pane-icon {
+  font-size: 2.75rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.hsc-pane-header h2 {
+  font-family: var(--font-serif);
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+  margin-bottom: 0.3rem;
+}
+.hsc-pane-header p {
+  font-size: 0.85rem;
+  color: var(--ink-secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ── 4. Search Bar ── */
+.hsc-search-bar {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+.hsc-search-bar input { flex: 1; min-width: 220px; }
+
+.hsc-count-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: var(--accent-patina);
+  color: #fff;
+  padding: 0.2rem 0.7rem;
+  border-radius: var(--radius-badge);
+  white-space: nowrap;
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.15);
+}
+
+/* ── 5. Resource Cards ── */
+.hsc-resource-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(295px, 1fr));
+  gap: 1.25rem;
+}
+.hsc-resource-card {
+  background: var(--bg-surface);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--radius-badge);
+  padding: 1.3rem;
+  box-shadow: var(--shadow-tactile-sm);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  position: relative;
+}
+.hsc-resource-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--accent-rust);
+  border-radius: var(--radius-badge) 0 0 var(--radius-badge);
+  opacity: 0;
+  transition: opacity var(--transition-quick);
+}
+.hsc-resource-card:hover {
+  transform: translateY(-3px) translateX(-2px);
+  box-shadow: var(--shadow-tactile);
+}
+.hsc-resource-card:hover::before { opacity: 1; }
+
+.hsc-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+.hsc-card-icon {
+  font-size: 2rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.hsc-card-category {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-rust);
+  margin-bottom: 0.2rem;
+}
+.hsc-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+  line-height: 1.35;
+}
+.hsc-card-desc {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: var(--ink-secondary);
+  line-height: 1.65;
+  flex: 1;
+}
+.hsc-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-top: 0.65rem;
+  border-top: 1px dashed var(--border-color);
+  margin-top: auto;
+}
+.hsc-card-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-badge);
+  padding: 0.18rem 0.55rem;
+  color: var(--ink-muted);
+}
+.hsc-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.4rem 0.9rem;
+  background: var(--accent-rust);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-badge);
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.25);
+  transition: all var(--transition-quick);
+}
+.hsc-download-btn:hover {
+  background: var(--accent-rust-hover);
+  transform: translateY(-1px) translateX(-1px);
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+}
+
+/* ── 6. HSC Empty State ── */
+.hsc-empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem 2rem;
+  font-family: var(--font-mono);
+  color: var(--ink-muted);
+  background: var(--bg-subtle);
+  border: var(--border-dashed);
+  border-radius: var(--radius-badge);
+}
+.hsc-empty-state .empty-icon { font-size: 3rem; margin-bottom: 1rem; display: block; }
+.hsc-empty-state h3 { font-size: 1.05rem; margin-bottom: 0.5rem; color: var(--ink-secondary); }
+.hsc-empty-state p  { font-size: 0.82rem; }
+
+/* ── 7. Category icon colors ── */
+.cat-books  { color: #7c3aed; }
+.cat-board  { color: #0ea5e9; }
+.cat-tricks { color: #10b981; }
+.cat-test   { color: #f59e0b; }
+
+/* ── 8. Admin HSC pane sub-tabs active state ── */
+.admin-hsc-tab-btn.admin-hsc-active {
+  background: var(--bg-surface) !important;
+  color: var(--accent-rust) !important;
+  border-bottom-color: var(--bg-surface);
+  box-shadow: var(--shadow-tactile-sm);
+}
+
+/* ── 9. Refined Professional Nav hover glow ── */
+.nav-links .nav-item[href="hsc.html"] {
+  background: linear-gradient(135deg, rgba(124,58,237,0.08), rgba(16,185,129,0.06));
+  border-radius: var(--radius-badge);
+}
+.nav-links .nav-item[href="hsc.html"]:hover,
+.nav-links .nav-item[href="hsc.html"].active {
+  background: linear-gradient(135deg, rgba(124,58,237,0.18), rgba(16,185,129,0.12));
+}
+
+/* ── 10. Floating HUD HSC pill ── */
+.dock-pill.pill-hsc {
+  background: linear-gradient(135deg, #7c3aed, #5b21b6);
+  color: #fff;
+  border-color: #7c3aed;
+}
+.dock-pill.pill-hsc:hover {
+  background: linear-gradient(135deg, #6d28d9, #4c1d95);
+  box-shadow: var(--shadow-tactile-sm);
+}
+
+/* ── 11. Professional global micro-improvements ── */
+
+/* Smoother card hover transitions site-wide */
+.parchment-paper {
+  transition: transform 0.18s ease, box-shadow 0.18s ease !important;
+}
+.parchment-paper:hover {
+  transform: translateY(-2px) translateX(-1px);
+  box-shadow: var(--shadow-tactile) !important;
+}
+
+/* More prominent section stamps */
+.section-stamp {
+  letter-spacing: 0.18em;
+  font-weight: 800;
+  border: 2px solid var(--accent-rust);
+  box-shadow: 3px 3px 0 var(--accent-rust);
+}
+
+/* Better focus outline for accessibility */
+:focus-visible {
+  outline: 2px solid var(--accent-rust);
+  outline-offset: 3px;
+}
+
+/* Smoother button press feedback */
+.vintage-btn:active {
+  transform: translateY(2px) translateX(2px);
+  box-shadow: 1px 1px 0 var(--border-color) !important;
+}
+
+/* Professional table row hover */
+.vintage-table tbody tr:hover {
+  background: var(--bg-subtle) !important;
+  transition: background 0.12s ease;
+}
+
+/* Better vintage-input focus ring */
+.vintage-input:focus {
+  border-color: var(--accent-rust);
+  box-shadow: 0 0 0 3px rgba(185, 75, 47, 0.12);
+  outline: none;
+}
+[data-theme="terminal-phosphor"] .vintage-input:focus {
+  border-color: var(--accent-patina);
+  box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.12);
+}
+[data-theme="blueprint-cyan"] .vintage-input:focus {
+  border-color: var(--accent-blueprint);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.12);
+}
+
+/* Refined hero stats bar pills */
+.hero-stats-bar .stat-pill {
+  transition: transform var(--transition-quick), box-shadow var(--transition-quick);
+}
+.hero-stats-bar .stat-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-tactile);
+}
+
+/* ── 12. Responsive HSC grid ── */
+@media (max-width: 600px) {
+  .hsc-tabs { gap: 0.3rem; }
+  .hsc-tab-btn { padding: 0.5rem 0.75rem; font-size: 0.72rem; }
+  .hsc-pane-header { flex-direction: column; gap: 0.75rem; }
+  .hsc-resource-grid { grid-template-columns: 1fr; }
+}
+
+/* ── 13. Three-Dots Navigation Menu (⋮) ── */
+.dots-dropdown {
+  position: relative;
+  display: inline-flex;
+}
+.dots-symbol {
+  font-size: 1.25rem;
+  font-weight: 900;
+  line-height: 1;
+  display: inline-block;
+  letter-spacing: -0.05em;
+}
+#dotsMenu {
+  min-width: 230px;
+  right: 0;
+  top: calc(100% + 8px);
+  padding: 0.35rem 0;
+  border-radius: var(--radius-badge);
+}
+.dots-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--ink-primary);
+  text-decoration: none;
+  transition: all var(--transition-quick);
+}
+.dots-menu-item:hover {
+  background: var(--bg-subtle);
+  color: var(--accent-rust);
+}
+.dots-menu-highlight {
+  background: rgba(185, 75, 47, 0.08);
+  border-left: 3px solid var(--accent-rust);
+}
+[data-theme="terminal-phosphor"] .dots-menu-highlight {
+  background: rgba(57, 255, 20, 0.1);
+  border-left-color: var(--ink-primary);
+}
+[data-theme="blueprint-cyan"] .dots-menu-highlight {
+  background: rgba(56, 189, 248, 0.12);
+  border-left-color: var(--accent-blueprint);
+}
+.dots-menu-subitem {
+  display: block;
+  padding: 0.45rem 1rem 0.45rem 2.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ink-secondary);
+  text-decoration: none;
+  transition: all var(--transition-quick);
+}
+.dots-menu-subitem:hover {
+  background: var(--bg-subtle);
+  color: var(--accent-rust);
+  padding-left: 2.45rem;
+}
+.dots-divider {
+  height: 1px;
+  background-color: var(--border-color);
+  opacity: 0.25;
+  margin: 0.35rem 0;
+}

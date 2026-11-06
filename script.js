@@ -443,6 +443,9 @@ function initFloatingBoxes() {
       <button type="button" class="dock-pill pill-music" id="dockMusicBtn" title="Expand Genshin Jukebox Deck">
         <span>🎵</span> Jukebox ▾
       </button>
+      <a href="hsc.html" class="dock-pill pill-hsc" id="dockHscBtn" title="HSC Academic Resource Hub">
+        <span>📚</span> HSC Hub
+      </a>
       <button type="button" class="dock-pill pill-snow" id="dockSnowBtn" title="Toggle Snowfall Weather">
         <span>❄️</span> <span id="snowStatusText">Snow ON</span>
       </button>
@@ -528,6 +531,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   initAudioToggle();
   initThemeMenu();
+  initDotsMenu();
   initMobileNav();
   initTypewriter();
   initClock();
@@ -1026,10 +1030,46 @@ function initBgmPlayer() {
   // Initial track display
   updateTrackDisplay();
 
-  // If user previously set BGM to playing, attempt playback
-  if (localStorage.getItem('cse_bgm_playing') === 'true') {
-    playAudio();
+  // ── AUTO-PLAY on every visit ──────────────────────────────────────────────
+  // Browsers require a user gesture before audio can play. Strategy:
+  //   1. Try to play immediately (works if the browser permits it, e.g. user
+  //      has previously interacted with the site or browser policy allows it).
+  //   2. If blocked, register a one-time listener on the first real user
+  //      interaction (click, touch, or key) and auto-play at that moment.
+  // This means audio starts AUTOMATICALLY without the user needing to press
+  // any play button — it fires as soon as the browser lets it.
+
+  // Always mark as "should play" so it auto-resumes on page navigation too
+  localStorage.setItem('cse_bgm_playing', 'true');
+
+  function attemptAutoPlay() {
+    if (!audio.paused) return; // already playing
+    try {
+      if (vintageSound && vintageSound.ctx && vintageSound.ctx.state === 'suspended') {
+        vintageSound.ctx.resume().catch(() => {});
+      }
+    } catch(e) {}
+
+    audio.play().then(() => {
+      setPlayingState(true);
+      // Remove gesture listeners once playing
+      ['click', 'touchstart', 'pointerdown', 'keydown', 'scroll', 'mousemove'].forEach(ev => {
+        window.removeEventListener(ev, attemptAutoPlay, true);
+        document.removeEventListener(ev, attemptAutoPlay, true);
+      });
+    }).catch(() => {
+      // Autoplay deferred pending first user action
+    });
   }
+
+  // Try immediately
+  attemptAutoPlay();
+
+  // Fallback: fire on any user touch/move/key/scroll as soon as they enter
+  ['click', 'touchstart', 'pointerdown', 'keydown', 'scroll', 'mousemove'].forEach(ev => {
+    window.addEventListener(ev, attemptAutoPlay, { once: true, capture: true, passive: true });
+    document.addEventListener(ev, attemptAutoPlay, { once: true, capture: true, passive: true });
+  });
 }
 
 /**
@@ -1821,6 +1861,26 @@ function initThemeMenu() {
       applyTheme(themeVal);
       menu.classList.remove('show');
     });
+  });
+}
+
+function initDotsMenu() {
+  const btn = document.getElementById('dotsMenuBtn');
+  const menu = document.getElementById('dotsMenu');
+  if (!btn || !menu) return;
+
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    menu.classList.toggle('show');
+    // Close theme menu if open
+    const themeMenu = document.getElementById('themeMenu');
+    if (themeMenu) themeMenu.classList.remove('show');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!menu.contains(e.target) && e.target !== btn) {
+      menu.classList.remove('show');
+    }
   });
 }
 

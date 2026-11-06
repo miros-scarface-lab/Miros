@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="vintage-parchment">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📚 HSC Academic Resource Hub | Mir A K Sajid</title>
+  <meta name="description" content="HSC Academic Resources — Books, Board Solution Books, Short Tricks, and Test Papers curated by Mir A K Sajid.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="assets/images/avatar-pixel.png">
+  
+  <!-- HSC Page specific styles -->
+  <style>
+    /* HSC Hero Banner */
+    .hsc-hero {
+      background: linear-gradient(135deg, var(--bg-subtle) 0%, var(--bg-surface) 100%);
+      border: var(--border-width) solid var(--border-color);
+      border-radius: var(--radius-badge);
+      padding: 3rem 2rem;
+      margin-bottom: 3rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-tactile-lg);
+      text-align: center;
+    }
+    .hsc-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--bg-pattern);
+      background-size: var(--bg-pattern-size);
+      opacity: 0.5;
+      pointer-events: none;
+    }
+    .hsc-hero-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      background: var(--accent-rust);
+      color: #fff;
+      padding: 0.3rem 0.9rem;
+      border-radius: var(--radius-badge);
+      margin-bottom: 1rem;
+    }
+    .hsc-hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      color: var(--ink-primary);
+      margin-bottom: 0.75rem;
+      position: relative;
+    }
+    .hsc-hero p {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      color: var(--ink-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.7;
+      position: relative;
+    }
+
+    /* Tab Navigation for HSC sections */
+    .hsc-tabs {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+      border-bottom: var(--border-width) solid var(--border-color);
+      padding-bottom: 0;
+    }
+    .hsc-tab-btn {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.6rem 1.25rem;
+      border: var(--border-width) solid var(--border-color);
+      border-bottom: none;
+      background: var(--bg-subtle);
+      color: var(--ink-secondary);
+      cursor: pointer;
+      border-radius: var(--radius-badge) var(--radius-badge) 0 0;
+      transition: all var(--transition-quick);
+      position: relative;
+      bottom: calc(-1 * var(--border-width));
+    }
+    .hsc-tab-btn:hover {
+      background: var(--bg-surface);
+      color: var(--ink-primary);
+    }
+    .hsc-tab-btn.active {
+      background: var(--bg-surface);
+      color: var(--accent-rust);
+      border-color: var(--border-color);
+      border-bottom-color: var(--bg-surface);
+      box-shadow: var(--shadow-tactile-sm);
+    }
+
+    /* Tab Panes */
+    .hsc-pane { display: none; }
+    .hsc-pane.active { display: block; }
+
+    /* Resource Cards Grid */
+    .hsc-resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .hsc-resource-card {
+      background: var(--bg-surface);
+      border: var(--border-width) solid var(--border-color);
+      border-radius: var(--radius-badge);
+      padding: 1.25rem;
+      box-shadow: var(--shadow-tactile-sm);
+      transition: transform var(--transition-quick), box-shadow var(--transition-quick);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .hsc-resource-card:hover {
+      transform: translateY(-3px) translateX(-2px);
+      box-shadow: var(--shadow-tactile);
+    }
+    .hsc-card-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    .hsc-card-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .hsc-card-meta { flex: 1; }
+    .hsc-card-category {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-rust);
+      margin-bottom: 0.2rem;
+    }
+    .hsc-card-title {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ink-primary);
+      line-height: 1.35;
+    }
+    .hsc-card-desc {
+      font-family: var(--font-body);
+      font-size: 0.83rem;
+      color: var(--ink-secondary);
+      line-height: 1.6;
+      flex: 1;
+    }
+    .hsc-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding-top: 0.6rem;
+      border-top: 1px dashed var(--border-color);
+      margin-top: auto;
+    }
+    .hsc-card-tag {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-badge);
+      padding: 0.2rem 0.6rem;
+      color: var(--ink-muted);
+    }
+    .hsc-download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.4rem 0.9rem;
+      background: var(--accent-rust);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-badge);
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+      transition: all var(--transition-quick);
+    }
+    .hsc-download-btn:hover {
+      background: var(--accent-rust-hover);
+      transform: translateY(-1px);
+      box-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+    }
+    .hsc-empty-state {
+      text-align: center;
+      padding: 4rem 2rem;
+      font-family: var(--font-mono);
+      color: var(--ink-muted);
+    }
+    .hsc-empty-state .empty-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .hsc-empty-state h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+    .hsc-empty-state p { font-size: 0.85rem; }
+
+    /* Category icons map */
+    .cat-books    { color: #8B5CF6; }
+    .cat-board    { color: #0EA5E9; }
+    .cat-tricks   { color: #10B981; }
+    .cat-test     { color: #F59E0B; }
+
+    /* Search bar */
+    .hsc-search-bar {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .hsc-search-bar input {
+      flex: 1;
+      min-width: 220px;
+    }
+    .hsc-count-badge {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: var(--accent-patina);
+      color: #fff;
+      padding: 0.2rem 0.65rem;
+      border-radius: var(--radius-badge);
+    }
+
+    /* Pane header with section description */
+    .hsc-pane-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding: 1.25rem;
+      background: var(--bg-subtle);
+      border: var(--border-width) solid var(--border-color);
+      border-radius: var(--radius-badge);
+    }
+    .hsc-pane-icon { font-size: 2.5rem; }
+    .hsc-pane-header h2 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      margin-bottom: 0.3rem;
+    }
+    .hsc-pane-header p {
+      font-size: 0.85rem;
+      color: var(--ink-secondary);
+      margin: 0;
+    }
+  </style>
+</head>
+<body class="vintage-body">
+
+  <div class="vintage-overlay" id="vintageOverlay" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="vintage-header" id="header">
+    <div class="header-container">
+      <div class="brand-badge">
+        <a href="index.html" class="brand-link">
+          <span class="brand-bracket">[</span>
+          <span class="brand-text" id="headerBrand">CSE://MIR_AK_SAJID</span>
+          <span class="brand-bracket">]</span>
+        </a>
+        <div class="status-pill" id="systemStatusPill">
+          <span class="status-indicator"></span>
+          <span class="status-label">HSC ACADEMIC HUB • OPEN ACCESS</span>
+        </div>
+      </div>
+
+      <nav class="nav-links" id="mainNav">
+        <a href="index.html" class="nav-item"><span>00.</span> Home</a>
+        <a href="about.html" class="nav-item"><span>01.</span> About</a>
+        <a href="terminal.html" class="nav-item"><span>02.</span> Terminal</a>
+        <a href="projects.html" class="nav-item"><span>03.</span> Projects</a>
+        <a href="skills.html" class="nav-item"><span>04.</span> Skills</a>
+        <a href="academics.html" class="nav-item"><span>05.</span> Academics</a>
+        <a href="experience.html" class="nav-item"><span>06.</span> Experience</a>
+        <a href="contact.html" class="nav-item"><span>07.</span> Dispatch</a>
+        <a href="hsc.html" class="nav-item active"><span>08.</span> HSC Hub</a>
+      </nav>
+
+      <div class="header-controls">
+        <div class="theme-dropdown">
+          <button class="vintage-btn btn-sm btn-icon" id="themeDropdownBtn" title="Switch Vintage Theme">
+            <span class="btn-icon-symbol">🗲</span>
+            <span class="theme-active-name" id="themeActiveName">Parchment</span>
+          </button>
+          <div class="dropdown-menu" id="themeMenu">
+            <button class="theme-option active" data-theme-val="vintage-parchment">📜 Parchment &amp; Ink</button>
+            <button class="theme-option" data-theme-val="terminal-phosphor">📟 CRT Green Phosphor</button>
+            <button class="theme-option" data-theme-val="blueprint-cyan">📐 Blueprint Cyan</button>
+            <button class="theme-option" data-theme-val="amber-crt">💡 Amber Gas Discharge</button>
+            <button class="theme-option" data-theme-val="cyber-deck">💜 Cyberdeck Neon</button>
+            <button class="theme-option" data-theme-val="solarized-dark">☀️ Solarized Dark</button>
+          </div>
+        </div>
+
+        <!-- 3-Dots Quick Action Menu -->
+        <div class="dots-dropdown">
+          <button class="vintage-btn btn-sm btn-icon" id="dotsMenuBtn" title="More Options & HSC Academic Hub" aria-label="More options">
+            <span class="dots-symbol">⋮</span>
+          </button>
+          <div class="dropdown-menu" id="dotsMenu">
+            <a href="hsc.html" class="dots-menu-item dots-menu-highlight">
+              <span class="dots-icon">📚</span>
+              <strong>HSC Academic Hub</strong>
+            </a>
+            <div class="dots-divider"></div>
+            <a href="hsc.html?tab=books" class="dots-menu-subitem">📖 Books</a>
+            <a href="hsc.html?tab=board" class="dots-menu-subitem">📋 Board Solution Book</a>
+            <a href="hsc.html?tab=tricks" class="dots-menu-subitem">⚡ Short Tricks</a>
+            <a href="hsc.html?tab=tests" class="dots-menu-subitem">📝 Test Papers</a>
+            <div class="dots-divider"></div>
+            <a href="admin.html#tab-hsc" class="dots-menu-subitem">⚙️ Manage HSC (Admin)</a>
+          </div>
+        </div>
+
+        <button class="vintage-btn btn-sm btn-icon" id="audioToggleBtn" title="Toggle Audio">
+          <span id="audioIcon">🔊</span>
+        </button>
+      </div>
+
+      <button class="mobile-toggle" id="mobileMenuToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Retro Ticker Tape -->
+  <div class="retro-ticker-tape" aria-hidden="true">
+    <div class="ticker-track">
+      <span class="ticker-item"><span class="ticker-dot">📚</span> HSC ACADEMIC RESOURCE HUB</span>
+      <span class="ticker-item"><span class="ticker-dot">●</span> BOOKS • BOARD SOLUTIONS • SHORT TRICKS • TEST PAPERS</span>
+      <span class="ticker-item"><span class="ticker-dot">●</span> FREE DOWNLOADS • CURATED BY MIR A K SAJID</span>
+      <span class="ticker-item"><span class="ticker-dot">●</span> SCARFACE LAB EDUCATION WING</span>
+      <span class="ticker-item"><span class="ticker-dot">📚</span> HSC ACADEMIC RESOURCE HUB</span>
+      <span class="ticker-item"><span class="ticker-dot">●</span> BOOKS • BOARD SOLUTIONS • SHORT TRICKS • TEST PAPERS</span>
+      <span class="ticker-item"><span class="ticker-dot">●</span> FREE DOWNLOADS • CURATED BY MIR A K SAJID</span>
+      <span class="ticker-item"><span class="ticker-dot">●</span> SCARFACE LAB EDUCATION WING</span>
+    </div>
+  </div>
+
+  <main class="portfolio-main">
+    <div class="container" style="padding-top: 2.5rem; padding-bottom: 4rem;">
+
+      <!-- HSC Hero -->
+      <div class="hsc-hero">
+        <div class="hsc-hero-badge">📚 SCARFACE LAB EDUCATION WING</div>
+        <h1>HSC Academic Resource Hub</h1>
+        <p>Curated study materials for Higher Secondary Certificate — textbooks, board solution guides, short tricks &amp; memory aids, and past test papers. All free to download.</p>
+      </div>
+
+      <!-- Section Tabs -->
+      <div class="hsc-tabs" id="hscTabs">
+        <button class="hsc-tab-btn active" data-pane="pane-books">📖 Books</button>
+        <button class="hsc-tab-btn" data-pane="pane-board">📋 Board Solution Books</button>
+        <button class="hsc-tab-btn" data-pane="pane-tricks">⚡ Short Tricks</button>
+        <button class="hsc-tab-btn" data-pane="pane-tests">📝 Test Papers</button>
+      </div>
+
+      <!-- PANE: Books -->
+      <div class="hsc-pane active" id="pane-books">
+        <div class="hsc-pane-header">
+          <div class="hsc-pane-icon">📖</div>
+          <div>
+            <h2>HSC Textbooks &amp; Study Books</h2>
+            <p>Official and supplementary textbooks for all HSC subjects. Click the download button to access any book directly.</p>
+          </div>
+        </div>
+        <div class="hsc-search-bar">
+          <input type="text" class="vintage-input hsc-search-input" placeholder="🔍 Search books by title or subject..." data-target="pane-books" id="searchBooks">
+          <span class="hsc-count-badge" id="countBooks">0 books</span>
+        </div>
+        <div class="hsc-resource-grid" id="gridBooks">
+          <div class="hsc-empty-state">
+            <div class="empty-icon">📖</div>
+            <h3>No Books Added Yet</h3>
+            <p>Admin can add books with download links from the Admin Panel → HSC Academic tab.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANE: Board Solution Books -->
+      <div class="hsc-pane" id="pane-board">
+        <div class="hsc-pane-header">
+          <div class="hsc-pane-icon">📋</div>
+          <div>
+            <h2>Board Solution Books</h2>
+            <p>Official HSC board question solutions, model answers, and annotated answer keys for all major subjects and years.</p>
+          </div>
+        </div>
+        <div class="hsc-search-bar">
+          <input type="text" class="vintage-input hsc-search-input" placeholder="🔍 Search by subject, year, or board..." data-target="pane-board" id="searchBoard">
+          <span class="hsc-count-badge" id="countBoard">0 solutions</span>
+        </div>
+        <div class="hsc-resource-grid" id="gridBoard">
+          <div class="hsc-empty-state">
+            <div class="empty-icon">📋</div>
+            <h3>No Board Solutions Added Yet</h3>
+            <p>Admin can add board solution books with download links from the Admin Panel → HSC Academic tab.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANE: Short Tricks -->
+      <div class="hsc-pane" id="pane-tricks">
+        <div class="hsc-pane-header">
+          <div class="hsc-pane-icon">⚡</div>
+          <div>
+            <h2>Short Tricks &amp; Memory Aids</h2>
+            <p>Quick formulas, mnemonics, rapid revision sheets, and memory tricks for scoring high in HSC examinations.</p>
+          </div>
+        </div>
+        <div class="hsc-search-bar">
+          <input type="text" class="vintage-input hsc-search-input" placeholder="🔍 Search tricks by subject or topic..." data-target="pane-tricks" id="searchTricks">
+          <span class="hsc-count-badge" id="countTricks">0 tricks</span>
+        </div>
+        <div class="hsc-resource-grid" id="gridTricks">
+          <div class="hsc-empty-state">
+            <div class="empty-icon">⚡</div>
+            <h3>No Short Tricks Added Yet</h3>
+            <p>Admin can add short trick sheets with download links from the Admin Panel → HSC Academic tab.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANE: Test Papers -->
+      <div class="hsc-pane" id="pane-tests">
+        <div class="hsc-pane-header">
+          <div class="hsc-pane-icon">📝</div>
+          <div>
+            <h2>Test Papers &amp; Past Exams</h2>
+            <p>Previous HSC board question papers, model test sets, and practice exams organized by subject and examination year.</p>
+          </div>
+        </div>
+        <div class="hsc-search-bar">
+          <input type="text" class="vintage-input hsc-search-input" placeholder="🔍 Search papers by subject, year, or board..." data-target="pane-tests" id="searchTests">
+          <span class="hsc-count-badge" id="countTests">0 papers</span>
+        </div>
+        <div class="hsc-resource-grid" id="gridTests">
+          <div class="hsc-empty-state">
+            <div class="empty-icon">📝</div>
+            <h3>No Test Papers Added Yet</h3>
+            <p>Admin can add test papers with download links from the Admin Panel → HSC Academic tab.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="vintage-footer">
+    <div class="container footer-content">
+      <div class="footer-left">
+        <div class="footer-seal">
+          <div class="seal-inner"><span>HSC</span><span>HUB</span></div>
+        </div>
+        <div class="footer-text">
+          <p class="footer-title" id="footerBrand">Mir A K Sajid • HSC Academic Resource Hub</p>
+          <p class="footer-copy">Made on Scarface Lab</p>
+        </div>
+      </div>
+      <div class="footer-right">
+        <div class="system-telemetry">
+          <span class="telem-item">RESOURCES: <strong id="telemTotal">0</strong></span>
+          <span class="telem-item">LOCAL_TIME: <strong id="telemTime">--:--:--</strong></span>
+        </div>
+        <div class="footer-quick-links">
+          <a href="index.html">Home</a>
+          <span class="sep">|</span>
+          <a href="academics.html">Academics</a>
+          <span class="sep">|</span>
+          <a href="hsc.html">HSC Hub</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+  // HSC Page Controller
+  (function() {
+    // ---- Tab switching with query/hash support ----
+    const tabs = document.querySelectorAll('.hsc-tab-btn');
+    const panes = document.querySelectorAll('.hsc-pane');
+
+    function selectPane(paneId) {
+      tabs.forEach(t => t.classList.toggle('active', t.dataset.pane === paneId));
+      panes.forEach(p => p.classList.toggle('active', p.id === paneId));
+    }
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        selectPane(tab.dataset.pane);
+      });
+    });
+
+    // Support direct navigation via query parameter (?tab=board) or hash (#pane-board)
+    function applyUrlTab() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const tabParam = urlParams.get('tab');
+      const paneMap = {
+        books: 'pane-books',
+        board: 'pane-board',
+        tricks: 'pane-tricks',
+        tests: 'pane-tests'
+      };
+      if (tabParam && paneMap[tabParam]) {
+        selectPane(paneMap[tabParam]);
+      } else if (window.location.hash) {
+        const hash = window.location.hash.replace('#', '');
+        if (document.getElementById(hash)) {
+          selectPane(hash);
+        } else if (paneMap[hash]) {
+          selectPane(paneMap[hash]);
+        }
+      }
+    }
+    applyUrlTab();
+    window.addEventListener('hashchange', applyUrlTab);
+
+    // ---- Category config ----
+    const CATEGORIES = {
+      books:  { key: 'hscBooks',  gridId: 'gridBooks',  countId: 'countBooks',  icon: '📖', label: 'Book',     catClass: 'cat-books' },
+      board:  { key: 'hscBoard',  gridId: 'gridBoard',  countId: 'countBoard',  icon: '📋', label: 'Solution', catClass: 'cat-board' },
+      tricks: { key: 'hscTricks', gridId: 'gridTricks', countId: 'countTricks', icon: '⚡', label: 'Trick',    catClass: 'cat-tricks' },
+      tests:  { key: 'hscTests',  gridId: 'gridTests',  countId: 'countTests',  icon: '📝', label: 'Paper',    catClass: 'cat-test'  }
+    };
+
+    const EMPTY_ICONS  = { books: '📖', board: '📋', tricks: '⚡', tests: '📝' };
+    const EMPTY_LABELS = {
+      books:  'No Books Added Yet',
+      board:  'No Board Solutions Added Yet',
+      tricks: 'No Short Tricks Added Yet',
+      tests:  'No Test Papers Added Yet'
+    };
+
+    // ---- Build a resource card ----
+    function buildCard(item, catKey) {
+      const cfg = CATEGORIES[catKey];
+      const card = document.createElement('div');
+      card.className = 'hsc-resource-card';
+      card.innerHTML = `
+        <div class="hsc-card-header">
+          <div class="hsc-card-icon ${cfg.catClass}">${cfg.icon}</div>
+          <div class="hsc-card-meta">
+            <div class="hsc-card-category">${item.subject || cfg.label}</div>
+            <div class="hsc-card-title">${escH(item.name)}</div>
+          </div>
+        </div>
+        ${item.desc ? `<div class="hsc-card-desc">${escH(item.desc)}</div>` : ''}
+        <div class="hsc-card-footer">
+          <div style="display:flex;gap:0.4rem;flex-wrap:wrap;">
+            ${item.year ? `<span class="hsc-card-tag">📅 ${escH(item.year)}</span>` : ''}
+            ${item.subject ? `<span class="hsc-card-tag">📌 ${escH(item.subject)}</span>` : ''}
+          </div>
+          ${item.downloadUrl ? `<a class="hsc-download-btn" href="${escH(item.downloadUrl)}" target="_blank" rel="noopener noreferrer">⬇ Download</a>` : '<span style="font-family:var(--font-mono);font-size:0.72rem;color:var(--ink-muted);">No link yet</span>'}
+        </div>
+      `;
+      return card;
+    }
+
+    function escH(str) {
+      if (!str) return '';
+      return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    // ---- Render a category grid ----
+    function renderCategory(catKey, filter = '') {
+      const cfg = CATEGORIES[catKey];
+      const grid = document.getElementById(cfg.gridId);
+      const countEl = document.getElementById(cfg.countId);
+      if (!grid) return;
+
+      let items = [];
+      try {
+        items = JSON.parse(localStorage.getItem(cfg.key) || '[]');
+      } catch(e) { items = []; }
+
+      // Try live server API data first, then window.PortfolioState.data
+      if (window._hscLive && Array.isArray(window._hscLive[catKey]) && window._hscLive[catKey].length > 0) {
+        items = window._hscLive[catKey];
+      } else {
+        const serverData = window.PortfolioState && window.PortfolioState.data && window.PortfolioState.data.hsc;
+        if (serverData && Array.isArray(serverData[catKey]) && serverData[catKey].length > 0) {
+          items = serverData[catKey];
+        }
+      }
+
+      // Filter
+      const q = filter.toLowerCase().trim();
+      const filtered = q ? items.filter(it =>
+        (it.name||'').toLowerCase().includes(q) ||
+        (it.subject||'').toLowerCase().includes(q) ||
+        (it.year||'').toLowerCase().includes(q) ||
+        (it.desc||'').toLowerCase().includes(q)
+      ) : items;
+
+      grid.innerHTML = '';
+      const plural = { books: 'books', board: 'solutions', tricks: 'tricks', tests: 'papers' };
+      if (countEl) countEl.textContent = `${filtered.length} ${plural[catKey]}`;
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `<div class="hsc-empty-state">
+          <div class="empty-icon">${EMPTY_ICONS[catKey]}</div>
+          <h3>${q ? 'No matches found' : EMPTY_LABELS[catKey]}</h3>
+          <p>${q ? `No results for "${escH(q)}"` : 'Admin can add resources from the Admin Panel → HSC Academic tab.'}</p>
+        </div>`;
+        return;
+      }
+
+      filtered.forEach(item => grid.appendChild(buildCard(item, catKey)));
+      // Update total telemetry
+      updateTotal();
+    }
+
+    function updateTotal() {
+      let total = 0;
+      Object.values(CATEGORIES).forEach(cfg => {
+        try { total += JSON.parse(localStorage.getItem(cfg.key) || '[]').length; } catch(e) {}
+      });
+      const el = document.getElementById('telemTotal');
+      if (el) el.textContent = total;
+    }
+
+    // ---- Search inputs ----
+    ['Books','Board','Tricks','Tests'].forEach(name => {
+      const input = document.getElementById('search' + name);
+      if (!input) return;
+      input.addEventListener('input', () => {
+        renderCategory(name.toLowerCase(), input.value);
+      });
+    });
+
+    // ---- Initial render ----
+    function renderAll() {
+      Object.keys(CATEGORIES).forEach(k => renderCategory(k));
+    }
+
+    async function loadHscData() {
+      try {
+        const res = await fetch('/api/hsc');
+        if (res.ok) {
+          window._hscLive = await res.json();
+          renderAll();
+        }
+      } catch (e) {}
+    }
+
+    // Wait for portfolio data to load, then re-render
+    document.addEventListener('DOMContentLoaded', () => {
+      renderAll();
+      loadHscData();
+      // Re-render after portfolio data loads (may include hsc from server)
+      const origLoad = window.loadPortfolioData;
+      if (origLoad) {
+        const orig = window.renderPortfolio;
+        window.renderPortfolio = function() {
+          if (orig) orig.apply(this, arguments);
+          renderAll();
+        };
+      }
+    });
+
+    // Clock
+    function updateClock() {
+      const el = document.getElementById('telemTime');
+      if (el) el.textContent = new Date().toLocaleTimeString();
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
+
+  })();
+  </script>
+</body>
+</html>

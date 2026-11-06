@@ -442,5 +442,119 @@
         "desc": "Updated resume for Software Engineering internships and research opportunities."
       }
     ]
+  },
+  "hsc": {
+    "books": [
+      {
+        "id": "book-1",
+        "name": "HSC Physics 1st Paper (Dr. Shahjahan Tapan)",
+        "subject": "Physics",
+        "year": "2024 Edition",
+        "downloadUrl": "https://drive.google.com/file/d/example_physics1/view",
+        "desc": "Comprehensive textbook covering Mechanics, Periodic Motion, Waves, and Thermodynamics with exercise problems."
+      },
+      {
+        "id": "book-2",
+        "name": "HSC Higher Mathematics 1st Paper (S.U. Ahmed & M.A. Jabbar)",
+        "subject": "Higher Math",
+        "year": "2024 Edition",
+        "downloadUrl": "https://drive.google.com/file/d/example_higher_math1/view",
+        "desc": "Complete textbook with Matrix & Determinants, Coordinate Geometry, Trigonometry, and Calculus."
+      },
+      {
+        "id": "book-3",
+        "name": "HSC Chemistry 1st Paper (Dr. Saroj Kanti Singha Hazari)",
+        "subject": "Chemistry",
+        "year": "2024 Edition",
+        "downloadUrl": "https://drive.google.com/file/d/example_chem1/view",
+        "desc": "Atomic Structure, Periodic Table & Chemical Bonding, Qualitative & Quantitative Analysis."
+      },
+      {
+        "id": "book-4",
+        "name": "HSC Information & Communication Technology (NCTB)",
+        "subject": "ICT",
+        "year": "2024 Edition",
+        "downloadUrl": "https://drive.google.com/file/d/example_ict/view",
+        "desc": "Official NCTB textbook covering Number Systems, Digital Devices, Web Design (HTML), and C Programming."
+      }
+    ],
+    "board": [
+      {
+        "id": "board-1",
+        "name": "HSC Higher Math Board Question Solutions (2018–2023)",
+        "subject": "Higher Math",
+        "year": "All Boards (2018-2023)",
+        "downloadUrl": "https://drive.google.com/file/d/example_board_math/view",
+        "desc": "Step-by-step solved Creative Questions (CQ) & MCQs across all education boards with mark distribution."
+      },
+      {
+        "id": "board-2",
+        "name": "HSC Physics Board Question Complete Solutions (CQ + MCQ)",
+        "subject": "Physics",
+        "year": "Dhaka & Rajshahi Board 2023",
+        "downloadUrl": "https://drive.google.com/file/d/example_board_physics/view",
+        "desc": "Full mathematical derivations, diagram explanations, and fast calculation techniques."
+      },
+      {
+        "id": "board-3",
+        "name": "HSC Chemistry Board Solution & Model Test Answers",
+        "subject": "Chemistry",
+        "year": "All Education Boards 2023",
+        "downloadUrl": "https://drive.google.com/file/d/example_board_chem/view",
+        "desc": "Organic conversion pathway answers, stoichiometry equations, and electrochemistry solved papers."
+      }
+    ],
+    "tricks": [
+      {
+        "id": "trick-1",
+        "name": "Differential & Integral Calculus Quick Formula Matrix",
+        "subject": "Higher Math",
+        "year": "HSC Quick Sheet",
+        "downloadUrl": "https://drive.google.com/file/d/example_calc_tricks/view",
+        "desc": "Standard derivative & integral formulas, UV substitution tricks, and L'Hopital rule shortcuts."
+      },
+      {
+        "id": "trick-2",
+        "name": "Organic Chemistry Complete Reaction Roadmap & Mnemonics",
+        "subject": "Chemistry",
+        "year": "HSC Quick Sheet",
+        "downloadUrl": "https://drive.google.com/file/d/example_organic_tricks/view",
+        "desc": "One-page visual flow diagram of all alkane, alkene, alcohol, aldehyde, ketone, and acid interconversions."
+      },
+      {
+        "id": "trick-3",
+        "name": "Physics Vector & Mechanics 30-Second MCQ Shortcuts",
+        "subject": "Physics",
+        "year": "HSC Quick Sheet",
+        "downloadUrl": "https://drive.google.com/file/d/example_physics_shortcuts/view",
+        "desc": "Fast problem-solving techniques for river-boat, projectile motion, and collision problems without long equations."
+      }
+    ],
+    "tests": [
+      {
+        "id": "test-1",
+        "name": "Notre Dame College (NDC) HSC Test Examination Paper",
+        "subject": "Science Combined",
+        "year": "Test Exam 2023",
+        "downloadUrl": "https://drive.google.com/file/d/example_ndc_test/view",
+        "desc": "Prestigious college test examination question papers for Physics, Chemistry, and Higher Mathematics."
+      },
+      {
+        "id": "test-2",
+        "name": "Dhaka Residential Model College Model Test Question Bank",
+        "subject": "Higher Math & Physics",
+        "year": "Test Exam 2023",
+        "downloadUrl": "https://drive.google.com/file/d/example_drmc_test/view",
+        "desc": "Curated model test paper with CQ and standard 25 MCQ sets with answer keys."
+      },
+      {
+        "id": "test-3",
+        "name": "Rajuk Uttara Model College Selective Test Examination",
+        "subject": "Chemistry & Biology",
+        "year": "Test Exam 2023",
+        "downloadUrl": "https://drive.google.com/file/d/example_rumc_test/view",
+        "desc": "Rigorous practice papers covering Botany, Zoology, and Chemistry 1st & 2nd paper."
+      }
+    ]
   }
 }

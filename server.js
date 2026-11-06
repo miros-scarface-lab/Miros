@@ -365,7 +365,7 @@ app.post('/api/portfolio', requireAdminAuth, (req, res) => {
   const mergedData = { ...existingData, ...updatedData };
 
   // Deep merge sub-sections safely
-  ['settings', 'profile', 'personalDirectory'].forEach(section => {
+  ['settings', 'profile', 'personalDirectory', 'hsc'].forEach(section => {
     if (updatedData[section] && typeof updatedData[section] === 'object') {
       mergedData[section] = { ...(existingData[section] || {}), ...updatedData[section] };
     }
@@ -623,6 +623,81 @@ app.post('/api/upload', requireAdminAuth, (req, res) => {
 });
 
 // ============================================================================
+// 10.5. HSC Academic Resource Management Endpoints
+// ============================================================================
+app.get('/api/hsc', (req, res) => {
+  const data = readJSON(PORTFOLIO_FILE, {});
+  res.json(data.hsc || { books: [], board: [], tricks: [], tests: [] });
+});
+
+app.post('/api/hsc/:category', requireAdminAuth, (req, res) => {
+  const { category } = req.params;
+  const validCategories = ['books', 'board', 'tricks', 'tests'];
+  if (!validCategories.includes(category)) {
+    return res.status(400).json({ error: 'Invalid HSC category' });
+  }
+
+  const { id, name, subject, downloadUrl, year, desc } = req.body || {};
+  if (!name || !downloadUrl) {
+    return res.status(400).json({ error: 'Name and downloadUrl are required' });
+  }
+
+  const data = readJSON(PORTFOLIO_FILE, {});
+  if (!data.hsc) data.hsc = { books: [], board: [], tricks: [], tests: [] };
+  if (!Array.isArray(data.hsc[category])) data.hsc[category] = [];
+
+  const existingIdx = id ? data.hsc[category].findIndex(item => item.id === id) : -1;
+  const resourceItem = {
+    id: id || `hsc-${category}-${Date.now()}`,
+    name: String(name).trim(),
+    subject: String(subject || '').trim(),
+    downloadUrl: String(downloadUrl).trim(),
+    year: String(year || '').trim(),
+    desc: String(desc || '').trim(),
+    updatedAt: new Date().toISOString()
+  };
+
+  if (existingIdx >= 0) {
+    data.hsc[category][existingIdx] = resourceItem;
+  } else {
+    data.hsc[category].push(resourceItem);
+  }
+
+  const success = writeJSON(PORTFOLIO_FILE, data);
+  if (success) {
+    res.json({ success: true, item: resourceItem, data: data.hsc[category] });
+  } else {
+    res.status(500).json({ error: 'Failed to save resource to database' });
+  }
+});
+
+app.delete('/api/hsc/:category/:id', requireAdminAuth, (req, res) => {
+  const { category, id } = req.params;
+  const validCategories = ['books', 'board', 'tricks', 'tests'];
+  if (!validCategories.includes(category)) {
+    return res.status(400).json({ error: 'Invalid HSC category' });
+  }
+
+  const data = readJSON(PORTFOLIO_FILE, {});
+  if (!data.hsc || !Array.isArray(data.hsc[category])) {
+    return res.status(404).json({ error: 'Category not found or empty' });
+  }
+
+  const prevLen = data.hsc[category].length;
+  data.hsc[category] = data.hsc[category].filter(item => item.id !== id);
+  if (data.hsc[category].length === prevLen) {
+    return res.status(404).json({ error: 'Resource item not found' });
+  }
+
+  const success = writeJSON(PORTFOLIO_FILE, data);
+  if (success) {
+    res.json({ success: true, message: 'Resource removed', data: data.hsc[category] });
+  } else {
+    res.status(500).json({ error: 'Failed to write update' });
+  }
+});
+
+// ============================================================================
 // 11. Static File Serving & Direct Page Routing
 // ============================================================================
 
@@ -653,6 +728,7 @@ app.get('/skills', (req, res) => res.sendFile(path.join(__dirname, 'skills.html'
 app.get('/academics', (req, res) => res.sendFile(path.join(__dirname, 'academics.html')));
 app.get('/experience', (req, res) => res.sendFile(path.join(__dirname, 'experience.html')));
 app.get('/contact', (req, res) => res.sendFile(path.join(__dirname, 'contact.html')));
+app.get('/hsc', (req, res) => res.sendFile(path.join(__dirname, 'hsc.html')));
 app.get('/admin', (req, res) => res.sendFile(path.join(__dirname, 'admin.html')));
 
 // Fallback to index.html

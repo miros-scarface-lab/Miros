@@ -502,6 +502,9 @@ window.AdminPanel = {
     if (tabId === 'tab-vault') {
       this.initVaultManager();
     }
+    if (tabId === 'tab-hsc') {
+      this.initHscManager();
+    }
   },
 
   refreshAllTabs() {
@@ -514,6 +517,7 @@ window.AdminPanel = {
     this.initMusicStudio();
     this.syncBackgroundImageUI();
     this.initVaultManager();
+    this.initHscManager();
   },
 
   syncData(data) {
@@ -1945,6 +1949,262 @@ window.AdminPanel = {
         }
       });
     }
+  },
+
+  // ------------------------------------------------------------------------
+  // HSC Academic Resources Management (Books, Board Solutions, Tricks, Tests)
+  // ------------------------------------------------------------------------
+  hscCategories: {
+    books:  { key: 'books',  formId: 'adminAddHscBookForm',   nameId: 'hscBookName',    subjectId: 'hscBookSubject',    urlId: 'hscBookUrl',    yearId: 'hscBookYear',    descId: 'hscBookDesc',    submitId: 'hscBookSubmitBtn',   cancelId: 'hscBookCancelEdit',   editIdId: 'hscBookEditId',   feedbackId: 'hscBookFeedback',   tableBodyId: 'hscBooksTableBody',  countId: 'hscBookCount'  },
+    board:  { key: 'board',  formId: 'adminAddHscBoardForm',  nameId: 'hscBoardName',   subjectId: 'hscBoardSubject',   urlId: 'hscBoardUrl',   yearId: 'hscBoardYear',   descId: 'hscBoardDesc',   submitId: 'hscBoardSubmitBtn',  cancelId: 'hscBoardCancelEdit',  editIdId: 'hscBoardEditId',  feedbackId: 'hscBoardFeedback',  tableBodyId: 'hscBoardTableBody',  countId: 'hscBoardCount'  },
+    tricks: { key: 'tricks', formId: 'adminAddHscTricksForm', nameId: 'hscTricksName',  subjectId: 'hscTricksSubject',  urlId: 'hscTricksUrl',  yearId: 'hscTricksYear',  descId: 'hscTricksDesc',  submitId: 'hscTricksSubmitBtn', cancelId: 'hscTricksCancelEdit', editIdId: 'hscTricksEditId', feedbackId: 'hscTricksFeedback', tableBodyId: 'hscTricksTableBody', countId: 'hscTricksCount' },
+    tests:  { key: 'tests',  formId: 'adminAddHscTestsForm',  nameId: 'hscTestsName',   subjectId: 'hscTestsSubject',   urlId: 'hscTestsUrl',   yearId: 'hscTestsYear',   descId: 'hscTestsDesc',   submitId: 'hscTestsSubmitBtn',  cancelId: 'hscTestsCancelEdit',  editIdId: 'hscTestsEditId',  feedbackId: 'hscTestsFeedback',  tableBodyId: 'hscTestsTableBody',  countId: 'hscTestsCount'  }
+  },
+
+  hscDataCache: null,
+  hscBound: false,
+
+  async fetchHscData() {
+    try {
+      const res = await fetch('/api/hsc');
+      if (res.ok) {
+        this.hscDataCache = await res.json();
+        localStorage.setItem('cse_hsc_data', JSON.stringify(this.hscDataCache));
+        return this.hscDataCache;
+      }
+    } catch (e) {
+      console.warn('HSC API fetch fallback to local storage:', e);
+    }
+    const cached = localStorage.getItem('cse_hsc_data');
+    if (cached) {
+      try { this.hscDataCache = JSON.parse(cached); return this.hscDataCache; } catch (e) {}
+    }
+    this.hscDataCache = { books: [], board: [], tricks: [], tests: [] };
+    return this.hscDataCache;
+  },
+
+  async initHscManager() {
+    if (!this.hscBound) {
+      this.bindHscControls();
+      this.hscBound = true;
+    }
+    await this.fetchHscData();
+    this.renderAllHscTables();
+  },
+
+  bindHscControls() {
+    document.querySelectorAll('.admin-hsc-tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.admin-hsc-tab-btn').forEach(b => {
+          b.style.background = 'var(--bg-subtle)';
+          b.style.color = 'var(--ink-secondary)';
+          b.classList.remove('active');
+        });
+        document.querySelectorAll('.hsc-admin-pane').forEach(p => p.style.display = 'none');
+        btn.style.background = 'var(--bg-surface)';
+        btn.style.color = 'var(--accent-rust)';
+        btn.classList.add('active');
+        const paneId = btn.getAttribute('data-hsc-pane');
+        const targetPane = document.getElementById(paneId);
+        if (targetPane) targetPane.style.display = 'block';
+      });
+    });
+
+    Object.keys(this.hscCategories).forEach(catKey => {
+      const cfg = this.hscCategories[catKey];
+      const form = document.getElementById(cfg.formId);
+      if (form) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          this.handleHscFormSubmit(catKey);
+        });
+      }
+      const cancelBtn = document.getElementById(cfg.cancelId);
+      if (cancelBtn) {
+        cancelBtn.addEventListener('click', () => {
+          this.resetHscForm(catKey);
+        });
+      }
+    });
+  },
+
+  async handleHscFormSubmit(catKey) {
+    const cfg = this.hscCategories[catKey];
+    const nameInput = document.getElementById(cfg.nameId);
+    const subjectInput = document.getElementById(cfg.subjectId);
+    const urlInput = document.getElementById(cfg.urlId);
+    const yearInput = document.getElementById(cfg.yearId);
+    const descInput = document.getElementById(cfg.descId);
+    const editIdInput = document.getElementById(cfg.editIdId);
+    const feedback = document.getElementById(cfg.feedbackId);
+
+    const name = nameInput ? nameInput.value.trim() : '';
+    const subject = subjectInput ? subjectInput.value.trim() : '';
+    const downloadUrl = urlInput ? urlInput.value.trim() : '';
+    const year = yearInput ? yearInput.value.trim() : '';
+    const desc = descInput ? descInput.value.trim() : '';
+    const editId = editIdInput ? editIdInput.value.trim() : '';
+
+    if (!name || !downloadUrl) {
+      if (feedback) {
+        feedback.textContent = '⚠️ Name and Download Link are required.';
+        feedback.style.color = 'var(--accent-rust)';
+      }
+      return;
+    }
+
+    const payload = {
+      id: editId || undefined,
+      name,
+      subject,
+      downloadUrl,
+      year,
+      desc
+    };
+
+    if (feedback) {
+      feedback.textContent = '💾 Saving resource...';
+      feedback.style.color = 'var(--accent-amber)';
+    }
+
+    try {
+      const res = await this.authFetch(`/api/hsc/${catKey}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+
+      if (res.ok) {
+        if (feedback) {
+          feedback.textContent = editId ? '✔ Resource updated!' : '✔ Resource added to library!';
+          feedback.style.color = 'var(--accent-patina)';
+          setTimeout(() => { if (feedback) feedback.textContent = ''; }, 3500);
+        }
+        this.resetHscForm(catKey);
+        await this.fetchHscData();
+        this.renderHscTable(catKey);
+      } else {
+        throw new Error(data.error || 'Failed to save resource');
+      }
+    } catch (err) {
+      if (feedback) {
+        feedback.textContent = `❌ ${err.message}`;
+        feedback.style.color = 'var(--accent-rust)';
+      }
+    }
+  },
+
+  resetHscForm(catKey) {
+    const cfg = this.hscCategories[catKey];
+    const form = document.getElementById(cfg.formId);
+    if (form) form.reset();
+    const editIdInput = document.getElementById(cfg.editIdId);
+    if (editIdInput) editIdInput.value = '';
+    const submitBtn = document.getElementById(cfg.submitId);
+    if (submitBtn) {
+      submitBtn.textContent = catKey === 'books' ? '+ Save Book' :
+                              catKey === 'board' ? '+ Save Solution Book' :
+                              catKey === 'tricks' ? '+ Save Trick Sheet' : '+ Save Test Paper';
+    }
+    const cancelBtn = document.getElementById(cfg.cancelId);
+    if (cancelBtn) cancelBtn.style.display = 'none';
+  },
+
+  editHscItem(catKey, id) {
+    if (!this.hscDataCache || !this.hscDataCache[catKey]) return;
+    const item = this.hscDataCache[catKey].find(x => x.id === id);
+    if (!item) return;
+
+    const cfg = this.hscCategories[catKey];
+    const setVal = (elemId, val) => {
+      const el = document.getElementById(elemId);
+      if (el) el.value = val || '';
+    };
+
+    setVal(cfg.editIdId, item.id);
+    setVal(cfg.nameId, item.name);
+    setVal(cfg.subjectId, item.subject);
+    setVal(cfg.urlId, item.downloadUrl);
+    setVal(cfg.yearId, item.year);
+    setVal(cfg.descId, item.desc);
+
+    const submitBtn = document.getElementById(cfg.submitId);
+    if (submitBtn) submitBtn.textContent = '💾 Update Resource';
+    const cancelBtn = document.getElementById(cfg.cancelId);
+    if (cancelBtn) cancelBtn.style.display = 'inline-flex';
+
+    const form = document.getElementById(cfg.formId);
+    if (form) form.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  },
+
+  async deleteHscItem(catKey, id) {
+    if (!confirm('Are you sure you want to delete this resource?')) return;
+    try {
+      const res = await this.authFetch(`/api/hsc/${catKey}/${encodeURIComponent(id)}`, {
+        method: 'DELETE'
+      });
+      if (res.ok) {
+        await this.fetchHscData();
+        this.renderHscTable(catKey);
+      } else {
+        const err = await res.json();
+        alert(`Failed to delete: ${err.error || 'Server error'}`);
+      }
+    } catch (e) {
+      alert(`Error deleting item: ${e.message}`);
+    }
+  },
+
+  renderAllHscTables() {
+    Object.keys(this.hscCategories).forEach(catKey => {
+      this.renderHscTable(catKey);
+    });
+  },
+
+  renderHscTable(catKey) {
+    const cfg = this.hscCategories[catKey];
+    const tbody = document.getElementById(cfg.tableBodyId);
+    const countEl = document.getElementById(cfg.countId);
+    if (!tbody) return;
+
+    const items = (this.hscDataCache && this.hscDataCache[catKey]) || [];
+    if (countEl) countEl.textContent = items.length;
+
+    if (items.length === 0) {
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="5" style="text-align: center; color: var(--ink-muted); font-family: var(--font-mono); padding: 1.5rem;">
+            No ${catKey} items cataloged yet. Use the form above to add one.
+          </td>
+        </tr>
+      `;
+      return;
+    }
+
+    tbody.innerHTML = items.map(item => `
+      <tr>
+        <td>
+          <div style="font-weight: 700; font-family: var(--font-serif); font-size: 0.95rem;">${this.escape(item.name)}</div>
+          ${item.desc ? `<div style="font-size: 0.78rem; color: var(--ink-muted); line-height: 1.4;">${this.escape(item.desc)}</div>` : ''}
+        </td>
+        <td>
+          <span class="vintage-tag" style="font-size: 0.7rem;">${this.escape(item.subject || 'General')}</span>
+        </td>
+        <td style="font-family: var(--font-mono); font-size: 0.78rem;">${this.escape(item.year || '—')}</td>
+        <td>
+          ${item.downloadUrl ? `
+            <a href="${this.escape(item.downloadUrl)}" target="_blank" rel="noopener noreferrer" class="vintage-btn btn-sm btn-outline" style="font-size: 0.7rem; padding: 2px 7px;">
+              🔗 Link ↗
+            </a>
+          ` : '<span style="color:var(--ink-muted); font-size:0.75rem;">None</span>'}
+        </td>
+        <td style="text-align: right; white-space: nowrap;">
+          <button type="button" class="vintage-btn btn-sm" onclick="window.AdminPanel.editHscItem('${catKey}', '${this.escape(item.id)}')">✏️ Edit</button>
+          <button type="button" class="vintage-btn btn-sm btn-outline btn-danger" onclick="window.AdminPanel.deleteHscItem('${catKey}', '${this.escape(item.id)}')">🗑️</button>
+        </td>
+      </tr>
+    `).join('');
   },
 
   escape(str) {
