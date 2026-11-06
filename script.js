@@ -1132,15 +1132,24 @@ function initBgmPlayer() {
 async function loadPortfolioData() {
   let loadedData = null;
   
-  // Try API first
+  // Try API first, fallback to static JSON
   try {
-    const res = await fetch('/api/portfolio');
+    let res = await fetch('/api/portfolio');
+    if (!res.ok) {
+      res = await fetch('data/portfolio.json');
+    }
     if (res.ok) {
       loadedData = await res.json();
       localStorage.setItem('cse_portfolio_data', JSON.stringify(loadedData));
     }
   } catch (err) {
-    console.warn('API unavailable, reading local cached storage:', err);
+    try {
+      const staticRes = await fetch('data/portfolio.json');
+      if (staticRes.ok) {
+        loadedData = await staticRes.json();
+        localStorage.setItem('cse_portfolio_data', JSON.stringify(loadedData));
+      }
+    } catch(e) {}
   }
 
   // Fallback to localStorage or Default

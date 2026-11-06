@@ -658,12 +658,33 @@
 
     async function loadHscData() {
       try {
-        const res = await fetch('/api/hsc');
-        if (res.ok) {
+        let res = await fetch('/api/hsc');
+        if (!res.ok) {
+          res = await fetch('data/portfolio.json');
+          if (res.ok) {
+            const full = await res.json();
+            if (full.hsc) {
+              window._hscLive = full.hsc;
+              renderAll();
+              return;
+            }
+          }
+        } else {
           window._hscLive = await res.json();
           renderAll();
         }
-      } catch (e) {}
+      } catch (e) {
+        try {
+          const fbRes = await fetch('data/portfolio.json');
+          if (fbRes.ok) {
+            const full = await fbRes.json();
+            if (full.hsc) {
+              window._hscLive = full.hsc;
+              renderAll();
+            }
+          }
+        } catch(err) {}
+      }
     }
 
     // Wait for portfolio data to load, then re-render

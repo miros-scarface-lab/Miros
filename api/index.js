@@ -1,2 +1,6 @@
 const app = require('../server.js');
-module.exports = app;
+
+module.exports = (req, res) => {
+  // Normalize URL path for express
+  return app(req, res);
+};
