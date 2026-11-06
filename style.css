@@ -63,7 +63,7 @@
   --radius-md: 14px;
   --radius-lg: 20px;
   --radius-full: 9999px;
-  --radius-badge: 9999px;
+  --radius-badge: 6px;
 
   --theme-glow: 0 0 25px rgba(0, 240, 255, 0.35);
   --theme-glow-accent: 0 0 25px rgba(168, 85, 247, 0.35);
@@ -119,7 +119,7 @@ body.modern-body::before {
   backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 9999px !important;
+  border-radius: 12px !important;
   box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 240, 255, 0.08) !important;
   padding: 0.4rem 1.25rem !important;
   transition: all 0.3s ease !important;
@@ -164,7 +164,7 @@ body.modern-body::before {
   align-items: center !important;
   gap: 0.4rem !important;
   padding: 0.2rem 0.65rem !important;
-  border-radius: 9999px !important;
+  border-radius: 6px !important;
   background: rgba(16, 185, 129, 0.1) !important;
   border: 1px solid rgba(16, 185, 129, 0.25) !important;
   font-family: var(--font-mono) !important;
@@ -184,7 +184,7 @@ body.modern-body::before {
   color: #94a3b8 !important;
   text-decoration: none !important;
   padding: 0.4rem 0.75rem !important;
-  border-radius: 9999px !important;
+  border-radius: 6px !important;
   transition: all 0.2s ease !important;
   display: inline-flex !important;
   align-items: center !important;
@@ -225,7 +225,7 @@ body.modern-body::before {
   backdrop-filter: blur(24px) !important;
   -webkit-backdrop-filter: blur(24px) !important;
   border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  border-radius: 9999px !important;
+  border-radius: 12px !important;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.65), 0 0 25px rgba(0, 240, 255, 0.08) !important;
   padding: 0.45rem 1.25rem !important;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
@@ -319,7 +319,7 @@ body.modern-body::before {
   color: #94a3b8 !important;
   text-decoration: none !important;
   padding: 0.45rem 0.85rem !important;
-  border-radius: 9999px !important;
+  border-radius: 6px !important;
   transition: all 0.2s ease !important;
   position: relative !important;
 }
@@ -350,7 +350,7 @@ body.modern-body::before {
   align-items: center !important;
   gap: 0.4rem !important;
   padding: 0.35rem 0.75rem !important;
-  border-radius: 9999px !important;
+  border-radius: 6px !important;
   font-family: var(--font-mono, monospace) !important;
   font-size: 0.75rem !important;
   font-weight: 700 !important;
@@ -385,7 +385,7 @@ body.modern-body::before {
 .nav-icon-circle {
   width: 34px !important;
   height: 34px !important;
-  border-radius: 50% !important;
+  border-radius: 8px !important;
   background: rgba(255, 255, 255, 0.05) !important;
   border: 1px solid rgba(255, 255, 255, 0.12) !important;
   color: #f8fafc !important;
@@ -578,7 +578,7 @@ body.modern-body::before {
   align-items: center !important;
   gap: 0.35rem !important;
   padding: 0.2rem 0.55rem !important;
-  border-radius: 9999px !important;
+  border-radius: 6px !important;
   background: rgba(16, 185, 129, 0.12) !important;
   border: 1px solid rgba(16, 185, 129, 0.3) !important;
   color: #10b981 !important;
@@ -764,7 +764,7 @@ body.modern-body::before {
   align-items: center !important;
   gap: 0.35rem !important;
   padding: 0.35rem 0.75rem !important;
-  border-radius: 9999px !important;
+  border-radius: 6px !important;
   background: rgba(255, 255, 255, 0.06) !important;
   border: 1px solid rgba(255, 255, 255, 0.12) !important;
   color: #f8fafc !important;
@@ -787,7 +787,7 @@ body.modern-body::before {
   align-items: center !important;
   gap: 0.35rem !important;
   padding: 0.25rem 0.65rem !important;
-  border-radius: 9999px !important;
+  border-radius: 6px !important;
   background: rgba(0, 240, 255, 0.1) !important;
   border: 1px solid rgba(0, 240, 255, 0.3) !important;
   color: #00f0ff !important;
@@ -813,7 +813,7 @@ body.modern-body::before {
 .companion-suggestion-chip {
   flex-shrink: 0 !important;
   padding: 0.35rem 0.85rem !important;
-  border-radius: 9999px !important;
+  border-radius: 6px !important;
   background: rgba(15, 23, 42, 0.85) !important;
   border: 1px solid rgba(255, 255, 255, 0.12) !important;
   color: #cbd5e1 !important;
@@ -960,7 +960,7 @@ body.modern-body::before {
   font-size: 0.85rem !important;
   font-weight: 600 !important;
   padding: 0.65rem 1.25rem !important;
-  border-radius: 9999px !important;
+  border-radius: 8px !important;
   text-decoration: none !important;
   cursor: pointer !important;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
@@ -1022,7 +1022,7 @@ body.modern-body::before {
   width: 36px !important;
   height: 36px !important;
   padding: 0 !important;
-  border-radius: 50% !important;
+  border-radius: 8px !important;
 }
 
 /* Badges & Tags */
@@ -1030,7 +1030,7 @@ body.modern-body::before {
 .modern-tag,
 .vintage-stamp-badge,
 .scarface-badge {
-  border-radius: 9999px !important;
+  border-radius: 6px !important;
   background: rgba(0, 240, 255, 0.08) !important;
   border: 1px solid rgba(0, 240, 255, 0.25) !important;
   color: #38bdf8 !important;
@@ -1193,7 +1193,7 @@ select:focus {
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Hind Siliguri', sans-serif;
   
   --transition-quick: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  --radius-badge: 9999px;
+  --radius-badge: 6px;
   --stamp-rotation: 0deg;
 
   --theme-glow: 0 0 25px rgba(0, 240, 255, 0.35);
@@ -2260,7 +2260,7 @@ a {
   color: #fff;
   font-size: 0.68rem;
   padding: 0.1rem 0.35rem;
-  border-radius: 999px;
+  border-radius: 4px;
   border: 1px solid var(--border-color);
   font-weight: 700;
 }
@@ -4037,7 +4037,7 @@ textarea.vintage-input {
   color: #fff;
   font-size: 0.68rem;
   padding: 0.1rem 0.4rem;
-  border-radius: 999px;
+  border-radius: 4px;
 }
 
 .admin-tab-content-area {
@@ -4798,7 +4798,7 @@ textarea.vintage-input {
 ::-webkit-scrollbar-thumb {
   background: var(--border-color);
   border: 2px solid var(--bg-canvas);
-  border-radius: var(--radius-badge);
+  border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent-rust);
@@ -5978,7 +5978,7 @@ h1, h2, h3, h4,
   font-weight: 500;
   color: #94a3b8 !important;
   padding: 0.45rem 0.85rem;
-  border-radius: 9999px;
+  border-radius: 6px;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
   border: 1px solid transparent;
@@ -6004,7 +6004,7 @@ h1, h2, h3, h4,
 
 /* Modern Pill Buttons */
 .vintage-btn {
-  border-radius: 9999px !important;
+  border-radius: 8px !important;
   font-family: var(--font-body) !important;
   font-weight: 600 !important;
   letter-spacing: 0.02em !important;
@@ -6125,11 +6125,9 @@ h1, h2, h3, h4,
 /* Modern High-Tech Badges & Status Chips */
 .vintage-stamp-badge,
 .status-pill,
-.vintage-tag,
-.scarface-badge,
-.hero-badge {
+.vintage-tag, .scarface-badge, .hero-badge {
   transform: none !important;
-  border-radius: 9999px !important;
+  border-radius: 6px !important;
   font-family: var(--font-mono) !important;
   font-weight: 600 !important;
   font-size: 0.74rem !important;
@@ -6251,11 +6249,10 @@ h1, h2, h3, h4,
 .hsc-table tbody tr:hover {
   background: rgba(0, 240, 255, 0.08) !important;
 }
-.hsc-download-btn,
-.hsc-item-download-btn {
+.hsc-download-btn, .hsc-item-download-btn {
   background: linear-gradient(135deg, #10b981, #059669) !important;
   color: #ffffff !important;
-  border-radius: 9999px !important;
+  border-radius: 6px !important;
   padding: 0.35rem 0.85rem !important;
   font-size: 0.78rem !important;
   font-weight: 600 !important;
@@ -6305,7 +6302,7 @@ h1, h2, h3, h4,
 }
 ::-webkit-scrollbar-thumb {
   background: rgba(56, 189, 248, 0.25);
-  border-radius: 9999px;
+  border-radius: 4px;
   border: 2px solid #060814;
 }
 ::-webkit-scrollbar-thumb:hover {
@@ -6350,7 +6347,7 @@ h1, h2, h3, h4,
   color: #00f0ff !important;
   font-weight: 700 !important;
   padding: 0.35rem 0.85rem !important;
-  border-radius: 9999px !important;
+  border-radius: 8px !important;
   border: 1px solid rgba(0, 240, 255, 0.45) !important;
   background: rgba(0, 240, 255, 0.08) !important;
   box-shadow: 0 0 14px rgba(0, 240, 255, 0.15) !important;
@@ -6402,7 +6399,7 @@ h1, h2, h3, h4,
   font-size: 0.72rem !important;
   height: 26px !important;
   line-height: 1 !important;
-  border-radius: 9999px !important;
+  border-radius: 8px !important;
   letter-spacing: 0.01em !important;
   gap: 0.2rem !important;
   white-space: nowrap !important;
@@ -6428,7 +6425,7 @@ h1, h2, h3, h4,
 .nav-links .nav-item {
   padding: 0.2rem 0.45rem !important;
   font-size: 0.75rem !important;
-  border-radius: 9999px !important;
+  border-radius: 6px !important;
   white-space: nowrap !important;
   letter-spacing: 0.01em !important;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
@@ -6607,7 +6604,7 @@ h1, h2, h3, h4,
   color: #38bdf8;
   background: rgba(56, 189, 248, 0.1);
   padding: 0.3rem 0.75rem;
-  border-radius: 9999px;
+  border-radius: 4px;
   border: 1px solid rgba(56, 189, 248, 0.25);
 }
 
@@ -6633,7 +6630,7 @@ h1, h2, h3, h4,
   font-size: 0.76rem;
   font-weight: 500;
   padding: 0.3rem 0.7rem;
-  border-radius: 9999px;
+  border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
@@ -6834,7 +6831,7 @@ h1, h2, h3, h4,
   backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
   border: 1px solid rgba(0, 240, 255, 0.55) !important;
-  border-radius: 9999px !important;
+  border-radius: 12px !important;
   padding: 0.45rem 1rem !important;
   color: #00f0ff !important;
   font-family: var(--font-mono) !important;
@@ -6891,7 +6888,7 @@ h1, h2, h3, h4,
   font-size: 0.72rem !important;
   padding: 0.2rem 0.45rem !important;
   border: 1px solid rgba(56, 189, 248, 0.3) !important;
-  border-radius: 9999px !important;
+  border-radius: 6px !important;
   transition: all 0.2s ease !important;
 }
 
@@ -6936,7 +6933,7 @@ h1, h2, h3, h4,
   flex: 1 1 auto !important;
   background: rgba(15, 23, 42, 0.8) !important;
   border: 1px solid rgba(0, 240, 255, 0.2) !important;
-  border-radius: 9999px !important;
+  border-radius: 8px !important;
   padding: 0.4rem 0.85rem !important;
   font-size: 0.8rem !important;
   color: #f8fafc !important;
@@ -6951,7 +6948,7 @@ h1, h2, h3, h4,
   background: #00f0ff !important;
   color: #040814 !important;
   border: none !important;
-  border-radius: 50% !important;
+  border-radius: 8px !important;
   width: 32px !important;
   height: 32px !important;
   font-weight: 800 !important;
@@ -7174,7 +7171,7 @@ h1, h2, h3, h4,
   flex: 1 1 auto !important;
   background: rgba(4, 8, 20, 0.95) !important;
   border: 1px solid rgba(0, 240, 255, 0.35) !important;
-  border-radius: 9999px !important;
+  border-radius: 8px !important;
   padding: 0.65rem 1.25rem !important;
   color: #f8fafc !important;
   font-size: 0.92rem !important;
@@ -7189,7 +7186,7 @@ h1, h2, h3, h4,
 }
 
 .lock-submit-btn {
-  border-radius: 9999px !important;
+  border-radius: 8px !important;
   padding: 0.65rem 1.4rem !important;
   font-size: 0.88rem !important;
   white-space: nowrap !important;
@@ -7544,7 +7541,7 @@ h1, h2, h3, h4,
   width: 100% !important;
   background: rgba(6, 10, 24, 0.95) !important;
   border: 1px solid rgba(0, 240, 255, 0.35) !important;
-  border-radius: 9999px !important;
+  border-radius: 12px !important;
   padding: 0.4rem 0.6rem 0.4rem 1.25rem !important;
   box-shadow: 0 4px 25px rgba(0, 0, 0, 0.6), 0 0 15px rgba(0, 240, 255, 0.1) !important;
   transition: all 0.25s ease !important;
@@ -7576,7 +7573,7 @@ h1, h2, h3, h4,
 .modern-send-btn, .modern-chatbar-submit {
   width: 36px !important;
   height: 36px !important;
-  border-radius: 50% !important;
+  border-radius: 8px !important;
   background: #00f0ff !important;
   color: #020617 !important;
   border: none !important;
@@ -7625,7 +7622,7 @@ h1, h2, h3, h4,
   color: #94a3b8 !important;
   font-size: 0.7rem !important;
   padding: 0.2rem 0.55rem !important;
-  border-radius: 9999px !important;
+  border-radius: 6px !important;
   cursor: pointer !important;
   transition: all 0.2s ease !important;
 }
@@ -7648,7 +7645,7 @@ h1, h2, h3, h4,
   background: rgba(8, 12, 28, 0.92) !important;
   border: 1px solid rgba(0, 240, 255, 0.45) !important;
   color: #00f0ff !important;
-  border-radius: 9999px !important;
+  border-radius: 12px !important;
   padding: 0.55rem 1.15rem !important;
   font-family: var(--font-mono) !important;
   font-size: 0.85rem !important;
@@ -7793,9 +7790,9 @@ h1, h2, h3, h4,
   --font-mono: 'JetBrains Mono', monospace !important;
 
   /* Shadows & Radius */
-  --radius-card: 18px !important;
-  --radius-btn: 9999px !important;
-  --radius-badge: 9999px !important;
+  --radius-card: 14px !important;
+  --radius-btn: 8px !important;
+  --radius-badge: 6px !important;
   --shadow-tactile: 0 10px 30px -10px rgba(0, 0, 0, 0.6) !important;
   --shadow-tactile-lg: 0 20px 50px -15px rgba(0, 0, 0, 0.8) !important;
 }
@@ -7815,7 +7812,8 @@ body, .vintage-body, .modern-body {
 }
 
 /* 2. Floating Sleek Modern Header */
-.vintage-header, .modern-header {
+.vintage-header,
+.modern-header {
   position: sticky !important;
   top: 12px !important;
   z-index: 1000 !important;
@@ -7826,7 +7824,7 @@ body, .vintage-body, .modern-body {
   backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
   border: 1px solid rgba(255, 255, 255, 0.09) !important;
-  border-radius: 9999px !important;
+  border-radius: 12px !important;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 240, 255, 0.08) !important;
   padding: 0.35rem 1rem !important;
 }
@@ -7869,7 +7867,7 @@ body, .vintage-body, .modern-body {
   font-size: 0.76rem !important;
   color: #94a3b8 !important;
   padding: 0.35rem 0.65rem !important;
-  border-radius: 9999px !important;
+  border-radius: 6px !important;
   border: 1px solid transparent !important;
   text-decoration: none !important;
   transition: all 0.2s ease !important;
@@ -7907,7 +7905,7 @@ body, .vintage-body, .modern-body {
 
 /* 4. Modern Buttons */
 .vintage-btn, .modern-btn {
-  border-radius: 9999px !important;
+  border-radius: 8px !important;
   font-family: var(--font-mono) !important;
   font-size: 0.82rem !important;
   font-weight: 600 !important;
@@ -7947,7 +7945,7 @@ body, .vintage-body, .modern-body {
 
 /* 5. Modern Badges & Tags */
 .vintage-tag, .modern-badge, .sector-tag {
-  border-radius: 9999px !important;
+  border-radius: 6px !important;
   background: rgba(0, 240, 255, 0.08) !important;
   border: 1px solid rgba(0, 240, 255, 0.25) !important;
   color: #38bdf8 !important;
@@ -8044,7 +8042,7 @@ body, .vintage-body, .modern-body {
   font-family: 'JetBrains Mono', monospace !important;
   font-size: 0.72rem !important;
   padding: 0.25rem 0.65rem !important;
-  border-radius: 9999px !important;
+  border-radius: 6px !important;
   cursor: pointer !important;
   transition: all 0.2s ease !important;
   white-space: nowrap !important;
@@ -8088,4 +8086,81 @@ body, .vintage-body, .modern-body {
 /* 8. Removal of Old Retro Gimmicks */
 .vintage-overlay, .retro-ticker-tape {
   display: none !important;
+}
+
+/* ==========================================================================
+   CLEAN MODERN GEOMETRIC BORDER SYSTEM (NO CIRCLES / NO CAPSULES)
+   ========================================================================== */
+.lib-explorer-box,
+.hsc-hero,
+.hsc-subject-card,
+.hsc-resource-card,
+.hsc-modal-container,
+.pdf-modal-box,
+.jukebox-hero-card,
+.stat-box,
+.vintage-card,
+.polaroid-frame,
+.hero-content,
+.parchment-paper,
+.modern-card,
+.card,
+.project-card,
+.skill-card,
+.academic-card,
+.experience-card,
+.admin-container,
+.terminal-chassis {
+  border-radius: 14px !important;
+}
+
+.senior-navbar,
+.vintage-header,
+.modern-header {
+  border-radius: 12px !important;
+}
+
+.senior-nav-link,
+.nav-action-pill,
+.vintage-btn,
+.modern-btn,
+.btn,
+.term-pill-btn,
+.cmd-pill,
+.companion-action-pill,
+.companion-suggestion-chip,
+.filter-chip,
+.filter-pill,
+.hub-tab-btn,
+.btn-read-online,
+.lib-back-btn,
+.pdf-btn-download,
+.pdf-btn-drive {
+  border-radius: 8px !important;
+}
+
+.vintage-tag,
+.modern-tag,
+.vintage-stamp-badge,
+.scarface-badge,
+.modern-badge,
+.sector-tag,
+.badge-subject,
+.badge-category,
+.badge-edition,
+.status-pill,
+.drawer-status-chip,
+.companion-model-badge,
+.companion-telemetry-badge,
+.hub-tab-pill,
+.pill-count,
+.lib-badge {
+  border-radius: 5px !important;
+}
+
+.lib-search-input,
+.mulboi-search-input,
+.vintage-input,
+.modern-input {
+  border-radius: 8px !important;
 }
