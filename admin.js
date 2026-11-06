@@ -1952,13 +1952,73 @@ window.AdminPanel = {
   },
 
   // ------------------------------------------------------------------------
-  // HSC Academic Resources Management (Books, Board Solutions, Tricks, Tests)
+  // HSC Academic Resources Management (Hierarchical Books, Board Solutions, Tricks, Tests)
   // ------------------------------------------------------------------------
   hscCategories: {
-    books:  { key: 'books',  formId: 'adminAddHscBookForm',   nameId: 'hscBookName',    subjectId: 'hscBookSubject',    urlId: 'hscBookUrl',    yearId: 'hscBookYear',    descId: 'hscBookDesc',    submitId: 'hscBookSubmitBtn',   cancelId: 'hscBookCancelEdit',   editIdId: 'hscBookEditId',   feedbackId: 'hscBookFeedback',   tableBodyId: 'hscBooksTableBody',  countId: 'hscBookCount'  },
-    board:  { key: 'board',  formId: 'adminAddHscBoardForm',  nameId: 'hscBoardName',   subjectId: 'hscBoardSubject',   urlId: 'hscBoardUrl',   yearId: 'hscBoardYear',   descId: 'hscBoardDesc',   submitId: 'hscBoardSubmitBtn',  cancelId: 'hscBoardCancelEdit',  editIdId: 'hscBoardEditId',  feedbackId: 'hscBoardFeedback',  tableBodyId: 'hscBoardTableBody',  countId: 'hscBoardCount'  },
-    tricks: { key: 'tricks', formId: 'adminAddHscTricksForm', nameId: 'hscTricksName',  subjectId: 'hscTricksSubject',  urlId: 'hscTricksUrl',  yearId: 'hscTricksYear',  descId: 'hscTricksDesc',  submitId: 'hscTricksSubmitBtn', cancelId: 'hscTricksCancelEdit', editIdId: 'hscTricksEditId', feedbackId: 'hscTricksFeedback', tableBodyId: 'hscTricksTableBody', countId: 'hscTricksCount' },
-    tests:  { key: 'tests',  formId: 'adminAddHscTestsForm',  nameId: 'hscTestsName',   subjectId: 'hscTestsSubject',   urlId: 'hscTestsUrl',   yearId: 'hscTestsYear',   descId: 'hscTestsDesc',   submitId: 'hscTestsSubmitBtn',  cancelId: 'hscTestsCancelEdit',  editIdId: 'hscTestsEditId',  feedbackId: 'hscTestsFeedback',  tableBodyId: 'hscTestsTableBody',  countId: 'hscTestsCount'  }
+    books: {
+      key: 'books',
+      formId: 'adminAddHscBookForm',
+      subjectId: 'hscBookSubject',
+      paperId: 'hscBookPaper',
+      nameId: 'hscBookName',
+      authorId: 'hscBookAuthor',
+      urlId: 'hscBookUrl',
+      yearId: 'hscBookYear',
+      descId: 'hscBookDesc',
+      submitId: 'hscBookSubmitBtn',
+      cancelId: 'hscBookCancelEdit',
+      editIdId: 'hscBookEditId',
+      feedbackId: 'hscBookFeedback',
+      tableBodyId: 'hscBooksTableBody',
+      countId: 'hscBookCount'
+    },
+    board: {
+      key: 'board',
+      formId: 'adminAddHscBoardForm',
+      subjectId: 'hscBoardSubject',
+      paperId: 'hscBoardPaper',
+      nameId: 'hscBoardName',
+      boardId: 'hscBoardBoard',
+      urlId: 'hscBoardUrl',
+      yearId: 'hscBoardYear',
+      descId: 'hscBoardDesc',
+      submitId: 'hscBoardSubmitBtn',
+      cancelId: 'hscBoardCancelEdit',
+      editIdId: 'hscBoardEditId',
+      feedbackId: 'hscBoardFeedback',
+      tableBodyId: 'hscBoardTableBody',
+      countId: 'hscBoardCount'
+    },
+    tricks: {
+      key: 'tricks',
+      formId: 'adminAddHscTricksForm',
+      nameId: 'hscTricksName',
+      subjectId: 'hscTricksSubject',
+      urlId: 'hscTricksUrl',
+      yearId: 'hscTricksYear',
+      descId: 'hscTricksDesc',
+      submitId: 'hscTricksSubmitBtn',
+      cancelId: 'hscTricksCancelEdit',
+      editIdId: 'hscTricksEditId',
+      feedbackId: 'hscTricksFeedback',
+      tableBodyId: 'hscTricksTableBody',
+      countId: 'hscTricksCount'
+    },
+    tests: {
+      key: 'tests',
+      formId: 'adminAddHscTestsForm',
+      nameId: 'hscTestsName',
+      subjectId: 'hscTestsSubject',
+      urlId: 'hscTestsUrl',
+      yearId: 'hscTestsYear',
+      descId: 'hscTestsDesc',
+      submitId: 'hscTestsSubmitBtn',
+      cancelId: 'hscTestsCancelEdit',
+      editIdId: 'hscTestsEditId',
+      feedbackId: 'hscTestsFeedback',
+      tableBodyId: 'hscTestsTableBody',
+      countId: 'hscTestsCount'
+    }
   },
 
   hscDataCache: null,
@@ -2032,6 +2092,9 @@ window.AdminPanel = {
     const cfg = this.hscCategories[catKey];
     const nameInput = document.getElementById(cfg.nameId);
     const subjectInput = document.getElementById(cfg.subjectId);
+    const paperInput = cfg.paperId ? document.getElementById(cfg.paperId) : null;
+    const authorInput = cfg.authorId ? document.getElementById(cfg.authorId) : null;
+    const boardInput = cfg.boardId ? document.getElementById(cfg.boardId) : null;
     const urlInput = document.getElementById(cfg.urlId);
     const yearInput = document.getElementById(cfg.yearId);
     const descInput = document.getElementById(cfg.descId);
@@ -2040,6 +2103,9 @@ window.AdminPanel = {
 
     const name = nameInput ? nameInput.value.trim() : '';
     const subject = subjectInput ? subjectInput.value.trim() : '';
+    const paper = paperInput ? paperInput.value.trim() : '1st Paper';
+    const author = authorInput ? authorInput.value.trim() : '';
+    const board = boardInput ? boardInput.value.trim() : '';
     const downloadUrl = urlInput ? urlInput.value.trim() : '';
     const year = yearInput ? yearInput.value.trim() : '';
     const desc = descInput ? descInput.value.trim() : '';
@@ -2047,7 +2113,7 @@ window.AdminPanel = {
 
     if (!name || !downloadUrl) {
       if (feedback) {
-        feedback.textContent = '⚠️ Name and Download Link are required.';
+        feedback.textContent = '⚠️ Title and Download Link are required.';
         feedback.style.color = 'var(--accent-rust)';
       }
       return;
@@ -2057,8 +2123,12 @@ window.AdminPanel = {
       id: editId || undefined,
       name,
       subject,
-      downloadUrl,
+      paper,
+      author,
+      board,
+      edition: year,
       year,
+      downloadUrl,
       desc
     };
 
@@ -2103,7 +2173,7 @@ window.AdminPanel = {
     if (editIdInput) editIdInput.value = '';
     const submitBtn = document.getElementById(cfg.submitId);
     if (submitBtn) {
-      submitBtn.textContent = catKey === 'books' ? '+ Save Book' :
+      submitBtn.textContent = catKey === 'books' ? '+ Save Science Book' :
                               catKey === 'board' ? '+ Save Solution Book' :
                               catKey === 'tricks' ? '+ Save Trick Sheet' : '+ Save Test Paper';
     }
@@ -2113,21 +2183,50 @@ window.AdminPanel = {
 
   editHscItem(catKey, id) {
     if (!this.hscDataCache || !this.hscDataCache[catKey]) return;
-    const item = this.hscDataCache[catKey].find(x => x.id === id);
-    if (!item) return;
-
     const cfg = this.hscCategories[catKey];
+
+    let foundItem = null;
+    let foundSubject = '';
+
+    if (catKey === 'books' || catKey === 'board') {
+      // Search inside subject group papers
+      for (const group of this.hscDataCache[catKey]) {
+        if (Array.isArray(group.papers)) {
+          const p = group.papers.find(x => x.id === id);
+          if (p) {
+            foundItem = p;
+            foundSubject = group.subject || '';
+            break;
+          }
+        }
+        if (group.id === id) {
+          foundItem = group;
+          foundSubject = group.subject || '';
+          break;
+        }
+      }
+    }
+
+    if (!foundItem) {
+      foundItem = this.hscDataCache[catKey].find(x => x.id === id);
+    }
+
+    if (!foundItem) return;
+
     const setVal = (elemId, val) => {
       const el = document.getElementById(elemId);
       if (el) el.value = val || '';
     };
 
-    setVal(cfg.editIdId, item.id);
-    setVal(cfg.nameId, item.name);
-    setVal(cfg.subjectId, item.subject);
-    setVal(cfg.urlId, item.downloadUrl);
-    setVal(cfg.yearId, item.year);
-    setVal(cfg.descId, item.desc);
+    setVal(cfg.editIdId, foundItem.id);
+    setVal(cfg.nameId, foundItem.name);
+    if (cfg.subjectId) setVal(cfg.subjectId, foundSubject || foundItem.subject || 'Physics');
+    if (cfg.paperId) setVal(cfg.paperId, foundItem.paper || '1st Paper');
+    if (cfg.authorId) setVal(cfg.authorId, foundItem.author || foundItem.edition || '');
+    if (cfg.boardId) setVal(cfg.boardId, foundItem.board || '');
+    setVal(cfg.urlId, foundItem.downloadUrl);
+    setVal(cfg.yearId, foundItem.edition || foundItem.year || '');
+    setVal(cfg.descId, foundItem.desc);
 
     const submitBtn = document.getElementById(cfg.submitId);
     if (submitBtn) submitBtn.textContent = '💾 Update Resource';
@@ -2168,13 +2267,50 @@ window.AdminPanel = {
     const countEl = document.getElementById(cfg.countId);
     if (!tbody) return;
 
-    const items = (this.hscDataCache && this.hscDataCache[catKey]) || [];
-    if (countEl) countEl.textContent = items.length;
+    const rawData = (this.hscDataCache && this.hscDataCache[catKey]) || [];
 
-    if (items.length === 0) {
+    // Flatten hierarchical data for tabular display in admin
+    let tableRows = [];
+    if (catKey === 'books' || catKey === 'board') {
+      rawData.forEach(group => {
+        if (Array.isArray(group.papers) && group.papers.length > 0) {
+          group.papers.forEach(p => {
+            tableRows.push({
+              id: p.id,
+              subject: group.subject || 'General',
+              paper: p.paper || '1st Paper',
+              name: p.name,
+              author: p.author || p.board || '',
+              board: p.board || '',
+              year: p.edition || p.year || '',
+              downloadUrl: p.downloadUrl,
+              desc: p.desc || ''
+            });
+          });
+        } else {
+          tableRows.push({
+            id: group.id,
+            subject: group.subject || 'General',
+            paper: group.paper || 'Full Guide',
+            name: group.name || group.subject,
+            author: group.author || '',
+            board: group.board || '',
+            year: group.year || group.edition || '',
+            downloadUrl: group.downloadUrl || '',
+            desc: group.desc || ''
+          });
+        }
+      });
+    } else {
+      tableRows = rawData;
+    }
+
+    if (countEl) countEl.textContent = tableRows.length;
+
+    if (tableRows.length === 0) {
       tbody.innerHTML = `
         <tr>
-          <td colspan="5" style="text-align: center; color: var(--ink-muted); font-family: var(--font-mono); padding: 1.5rem;">
+          <td colspan="6" style="text-align: center; color: var(--ink-muted); font-family: var(--font-mono); padding: 1.5rem;">
             No ${catKey} items cataloged yet. Use the form above to add one.
           </td>
         </tr>
@@ -2182,29 +2318,89 @@ window.AdminPanel = {
       return;
     }
 
-    tbody.innerHTML = items.map(item => `
-      <tr>
-        <td>
-          <div style="font-weight: 700; font-family: var(--font-serif); font-size: 0.95rem;">${this.escape(item.name)}</div>
-          ${item.desc ? `<div style="font-size: 0.78rem; color: var(--ink-muted); line-height: 1.4;">${this.escape(item.desc)}</div>` : ''}
-        </td>
-        <td>
-          <span class="vintage-tag" style="font-size: 0.7rem;">${this.escape(item.subject || 'General')}</span>
-        </td>
-        <td style="font-family: var(--font-mono); font-size: 0.78rem;">${this.escape(item.year || '—')}</td>
-        <td>
-          ${item.downloadUrl ? `
-            <a href="${this.escape(item.downloadUrl)}" target="_blank" rel="noopener noreferrer" class="vintage-btn btn-sm btn-outline" style="font-size: 0.7rem; padding: 2px 7px;">
-              🔗 Link ↗
-            </a>
-          ` : '<span style="color:var(--ink-muted); font-size:0.75rem;">None</span>'}
-        </td>
-        <td style="text-align: right; white-space: nowrap;">
-          <button type="button" class="vintage-btn btn-sm" onclick="window.AdminPanel.editHscItem('${catKey}', '${this.escape(item.id)}')">✏️ Edit</button>
-          <button type="button" class="vintage-btn btn-sm btn-outline btn-danger" onclick="window.AdminPanel.deleteHscItem('${catKey}', '${this.escape(item.id)}')">🗑️</button>
-        </td>
-      </tr>
-    `).join('');
+    if (catKey === 'books') {
+      tbody.innerHTML = tableRows.map(item => `
+        <tr>
+          <td>
+            <span class="vintage-tag" style="font-size: 0.72rem; font-weight:700;">${this.escape(item.subject)}</span>
+          </td>
+          <td>
+            <span class="hsc-paper-pill ${String(item.paper).includes('1st') ? 'pill-1st' : 'pill-2nd'}">${this.escape(item.paper)}</span>
+          </td>
+          <td>
+            <div style="font-weight: 700; font-family: var(--font-serif); font-size: 0.92rem;">${this.escape(item.name)}</div>
+            ${item.author ? `<div style="font-size: 0.78rem; color: var(--ink-secondary);">✍️ ${this.escape(item.author)}</div>` : ''}
+            ${item.desc ? `<div style="font-size: 0.75rem; color: var(--ink-muted); margin-top:2px;">${this.escape(item.desc)}</div>` : ''}
+          </td>
+          <td style="font-family: var(--font-mono); font-size: 0.78rem;">${this.escape(item.year || '—')}</td>
+          <td>
+            ${item.downloadUrl ? `
+              <a href="${this.escape(item.downloadUrl)}" target="_blank" rel="noopener noreferrer" class="vintage-btn btn-sm btn-outline" style="font-size: 0.7rem; padding: 2px 7px;">
+                🔗 PDF ↗
+              </a>
+            ` : '<span style="color:var(--ink-muted); font-size:0.75rem;">None</span>'}
+          </td>
+          <td style="text-align: right; white-space: nowrap;">
+            <button type="button" class="vintage-btn btn-sm" onclick="window.AdminPanel.editHscItem('${catKey}', '${this.escape(item.id)}')">✏️ Edit</button>
+            <button type="button" class="vintage-btn btn-sm btn-outline btn-danger" onclick="window.AdminPanel.deleteHscItem('${catKey}', '${this.escape(item.id)}')">🗑️</button>
+          </td>
+        </tr>
+      `).join('');
+    } else if (catKey === 'board') {
+      tbody.innerHTML = tableRows.map(item => `
+        <tr>
+          <td>
+            <span class="vintage-tag" style="font-size: 0.72rem; font-weight:700;">${this.escape(item.subject)}</span>
+          </td>
+          <td>
+            <span class="hsc-paper-pill ${String(item.paper).includes('1st') ? 'pill-1st' : 'pill-2nd'}">${this.escape(item.paper)}</span>
+          </td>
+          <td>
+            <div style="font-weight: 700; font-family: var(--font-serif); font-size: 0.92rem;">${this.escape(item.name)}</div>
+            ${item.desc ? `<div style="font-size: 0.75rem; color: var(--ink-muted); margin-top:2px;">${this.escape(item.desc)}</div>` : ''}
+          </td>
+          <td style="font-family: var(--font-mono); font-size: 0.78rem;">
+            ${item.board ? `<div>🏛️ ${this.escape(item.board)}</div>` : ''}
+            <div>📅 ${this.escape(item.year || '—')}</div>
+          </td>
+          <td>
+            ${item.downloadUrl ? `
+              <a href="${this.escape(item.downloadUrl)}" target="_blank" rel="noopener noreferrer" class="vintage-btn btn-sm btn-outline" style="font-size: 0.7rem; padding: 2px 7px;">
+                🔗 PDF ↗
+              </a>
+            ` : '<span style="color:var(--ink-muted); font-size:0.75rem;">None</span>'}
+          </td>
+          <td style="text-align: right; white-space: nowrap;">
+            <button type="button" class="vintage-btn btn-sm" onclick="window.AdminPanel.editHscItem('${catKey}', '${this.escape(item.id)}')">✏️ Edit</button>
+            <button type="button" class="vintage-btn btn-sm btn-outline btn-danger" onclick="window.AdminPanel.deleteHscItem('${catKey}', '${this.escape(item.id)}')">🗑️</button>
+          </td>
+        </tr>
+      `).join('');
+    } else {
+      tbody.innerHTML = tableRows.map(item => `
+        <tr>
+          <td>
+            <div style="font-weight: 700; font-family: var(--font-serif); font-size: 0.95rem;">${this.escape(item.name)}</div>
+            ${item.desc ? `<div style="font-size: 0.78rem; color: var(--ink-muted); line-height: 1.4;">${this.escape(item.desc)}</div>` : ''}
+          </td>
+          <td>
+            <span class="vintage-tag" style="font-size: 0.7rem;">${this.escape(item.subject || 'General')}</span>
+          </td>
+          <td style="font-family: var(--font-mono); font-size: 0.78rem;">${this.escape(item.year || '—')}</td>
+          <td>
+            ${item.downloadUrl ? `
+              <a href="${this.escape(item.downloadUrl)}" target="_blank" rel="noopener noreferrer" class="vintage-btn btn-sm btn-outline" style="font-size: 0.7rem; padding: 2px 7px;">
+                🔗 Link ↗
+              </a>
+            ` : '<span style="color:var(--ink-muted); font-size:0.75rem;">None</span>'}
+          </td>
+          <td style="text-align: right; white-space: nowrap;">
+            <button type="button" class="vintage-btn btn-sm" onclick="window.AdminPanel.editHscItem('${catKey}', '${this.escape(item.id)}')">✏️ Edit</button>
+            <button type="button" class="vintage-btn btn-sm btn-outline btn-danger" onclick="window.AdminPanel.deleteHscItem('${catKey}', '${this.escape(item.id)}')">🗑️</button>
+          </td>
+        </tr>
+      `).join('');
+    }
   },
 
   escape(str) {

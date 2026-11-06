@@ -381,19 +381,19 @@
         <div class="hsc-pane-header">
           <div class="hsc-pane-icon">📖</div>
           <div>
-            <h2>HSC Textbooks &amp; Study Books</h2>
-            <p>Official and supplementary textbooks for all HSC subjects. Click the download button to access any book directly.</p>
+            <h2>HSC Science Textbooks &amp; Reference Books</h2>
+            <p>Official NCTB and renowned professor textbooks for Higher Secondary Science subjects. Tap any subject below to explore 1st Paper and 2nd Paper books with direct PDF download links.</p>
           </div>
         </div>
         <div class="hsc-search-bar">
-          <input type="text" class="vintage-input hsc-search-input" placeholder="🔍 Search books by title or subject..." data-target="pane-books" id="searchBooks">
-          <span class="hsc-count-badge" id="countBooks">0 books</span>
+          <input type="text" class="vintage-input hsc-search-input" placeholder="🔍 Search science subjects, authors (Tapan, Hazari, Ketab...), or book titles..." data-target="pane-books" id="searchBooks">
+          <span class="hsc-count-badge" id="countBooks">0 subjects</span>
         </div>
-        <div class="hsc-resource-grid" id="gridBooks">
+        <div class="hsc-subject-grid" id="gridBooks">
           <div class="hsc-empty-state">
             <div class="empty-icon">📖</div>
-            <h3>No Books Added Yet</h3>
-            <p>Admin can add books with download links from the Admin Panel → HSC Academic tab.</p>
+            <h3>Loading Science Books...</h3>
+            <p>Fetching curated NCTB 1st and 2nd Paper textbooks from archive.</p>
           </div>
         </div>
       </div>
@@ -403,19 +403,19 @@
         <div class="hsc-pane-header">
           <div class="hsc-pane-icon">📋</div>
           <div>
-            <h2>Board Solution Books</h2>
-            <p>Official HSC board question solutions, model answers, and annotated answer keys for all major subjects and years.</p>
+            <h2>HSC Board Solution Books</h2>
+            <p>Comprehensive creative question (CQ) and MCQ solutions for all major HSC Science subjects. Select Physics, Chemistry, or Mathematics to view all 1st and 2nd Paper solved PDFs.</p>
           </div>
         </div>
         <div class="hsc-search-bar">
-          <input type="text" class="vintage-input hsc-search-input" placeholder="🔍 Search by subject, year, or board..." data-target="pane-board" id="searchBoard">
-          <span class="hsc-count-badge" id="countBoard">0 solutions</span>
+          <input type="text" class="vintage-input hsc-search-input" placeholder="🔍 Search board solutions by subject, board (Dhaka, All Board), or year..." data-target="pane-board" id="searchBoard">
+          <span class="hsc-count-badge" id="countBoard">0 subjects</span>
         </div>
-        <div class="hsc-resource-grid" id="gridBoard">
+        <div class="hsc-subject-grid" id="gridBoard">
           <div class="hsc-empty-state">
             <div class="empty-icon">📋</div>
-            <h3>No Board Solutions Added Yet</h3>
-            <p>Admin can add board solution books with download links from the Admin Panel → HSC Academic tab.</p>
+            <h3>Loading Board Solution Guides...</h3>
+            <p>Fetching Physics, Chemistry, and Math board question solutions.</p>
           </div>
         </div>
       </div>
@@ -447,12 +447,12 @@
         <div class="hsc-pane-header">
           <div class="hsc-pane-icon">📝</div>
           <div>
-            <h2>Test Papers &amp; Past Exams</h2>
-            <p>Previous HSC board question papers, model test sets, and practice exams organized by subject and examination year.</p>
+            <h2>Test Papers &amp; Past College Exams</h2>
+            <p>Previous HSC board question papers, top college model test sets (NDC, DRMC, Rajuk), and practice exams organized by subject.</p>
           </div>
         </div>
         <div class="hsc-search-bar">
-          <input type="text" class="vintage-input hsc-search-input" placeholder="🔍 Search papers by subject, year, or board..." data-target="pane-tests" id="searchTests">
+          <input type="text" class="vintage-input hsc-search-input" placeholder="🔍 Search papers by college, subject, or year..." data-target="pane-tests" id="searchTests">
           <span class="hsc-count-badge" id="countTests">0 papers</span>
         </div>
         <div class="hsc-resource-grid" id="gridTests">
@@ -466,6 +466,46 @@
 
     </div>
   </main>
+
+  <!-- HSC Hierarchical Science Resource Pop-up Modal -->
+  <div class="hsc-modal-overlay" id="hscSubjectModal" aria-hidden="true">
+    <div class="hsc-modal-container parchment-paper" role="dialog" aria-modal="true" aria-labelledby="hscModalTitle">
+      <div class="hsc-modal-header">
+        <div class="hsc-modal-title-group">
+          <div class="hsc-modal-header-icon" id="hscModalIcon">⚛️</div>
+          <div>
+            <div class="hsc-modal-stamp" id="hscModalStamp">HSC SCIENCE RESOURCE ARCHIVE</div>
+            <h2 class="hsc-modal-title" id="hscModalTitle">Physics 1st &amp; 2nd Paper</h2>
+            <div class="hsc-modal-subtitle" id="hscModalSubtitle">পদার্থবিজ্ঞান • NCTB Approved Textbooks &amp; Reference Guides</div>
+          </div>
+        </div>
+        <button class="hsc-modal-close-btn" id="hscModalCloseBtn" aria-label="Close dialog">✕</button>
+      </div>
+
+      <!-- Paper Filter Controls & Instant Search Inside Modal -->
+      <div class="hsc-modal-controls">
+        <div class="hsc-modal-filter-tabs" id="hscModalFilterTabs">
+          <button class="hsc-modal-filter-tab active" data-paper-filter="all">All Papers (<span id="countModalAll">0</span>)</button>
+          <button class="hsc-modal-filter-tab" data-paper-filter="1st Paper">1st Paper (<span id="countModal1st">0</span>)</button>
+          <button class="hsc-modal-filter-tab" data-paper-filter="2nd Paper">2nd Paper (<span id="countModal2nd">0</span>)</button>
+        </div>
+        <div class="hsc-modal-search-box">
+          <input type="text" id="hscModalSearchInput" class="vintage-input" placeholder="🔍 Search this subject..." aria-label="Search within subject">
+        </div>
+      </div>
+
+      <!-- Modal Body (Paper Resource Cards) -->
+      <div class="hsc-modal-body" id="hscModalBody">
+        <!-- Dynamically rendered by controller -->
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="hsc-modal-footer">
+        <span class="hsc-modal-footer-info" id="hscModalFooterInfo">Showing all available resources</span>
+        <button type="button" class="vintage-btn btn-sm btn-outline" id="hscModalFooterCloseBtn">✕ Close Hub</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer class="vintage-footer">
@@ -497,7 +537,7 @@
 
   <script src="script.js"></script>
   <script>
-  // HSC Page Controller
+  // HSC Page Controller - Hierarchical Science Books & Board Solutions
   (function() {
     // ---- Tab switching with query/hash support ----
     const tabs = document.querySelectorAll('.hsc-tab-btn');
@@ -538,32 +578,330 @@
     applyUrlTab();
     window.addEventListener('hashchange', applyUrlTab);
 
-    // ---- Category config ----
-    const CATEGORIES = {
-      books:  { key: 'hscBooks',  gridId: 'gridBooks',  countId: 'countBooks',  icon: '📖', label: 'Book',     catClass: 'cat-books' },
-      board:  { key: 'hscBoard',  gridId: 'gridBoard',  countId: 'countBoard',  icon: '📋', label: 'Solution', catClass: 'cat-board' },
-      tricks: { key: 'hscTricks', gridId: 'gridTricks', countId: 'countTricks', icon: '⚡', label: 'Trick',    catClass: 'cat-tricks' },
-      tests:  { key: 'hscTests',  gridId: 'gridTests',  countId: 'countTests',  icon: '📝', label: 'Paper',    catClass: 'cat-test'  }
+    // Global state
+    let hscLiveState = null;
+    let activeModalSubject = null;
+    let activeModalCategory = 'books';
+    let currentPaperFilter = 'all';
+
+    // Subject Icon & Bengali Title Dictionary
+    const SUBJECT_METADATA = {
+      'Physics': { icon: '⚛️', bangla: 'পদার্থবিজ্ঞান', subtitle: 'NCTB Curriculum • 1st & 2nd Paper' },
+      'Chemistry': { icon: '🧪', bangla: 'রসায়ন', subtitle: 'NCTB Curriculum • 1st & 2nd Paper' },
+      'Higher Mathematics': { icon: '📐', bangla: 'উচ্চতর গণিত', subtitle: 'Calculus, Vectors, Geometry & Algebra' },
+      'Biology': { icon: '🧬', bangla: 'জীববিজ্ঞান', subtitle: '1st Paper (Botany) & 2nd Paper (Zoology)' },
+      'Information & Comm. Technology': { icon: '💻', bangla: 'তথ্য ও যোগাযোগ প্রযুক্তি', subtitle: 'C Programming, HTML & Logic Gates' }
     };
 
-    const EMPTY_ICONS  = { books: '📖', board: '📋', tricks: '⚡', tests: '📝' };
-    const EMPTY_LABELS = {
-      books:  'No Books Added Yet',
-      board:  'No Board Solutions Added Yet',
-      tricks: 'No Short Tricks Added Yet',
-      tests:  'No Test Papers Added Yet'
-    };
+    function escH(str) {
+      if (!str) return '';
+      return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
 
-    // ---- Build a resource card ----
-    function buildCard(item, catKey) {
-      const cfg = CATEGORIES[catKey];
+    // Modal Elements
+    const modalOverlay = document.getElementById('hscSubjectModal');
+    const modalIcon = document.getElementById('hscModalIcon');
+    const modalStamp = document.getElementById('hscModalStamp');
+    const modalTitle = document.getElementById('hscModalTitle');
+    const modalSubtitle = document.getElementById('hscModalSubtitle');
+    const modalBody = document.getElementById('hscModalBody');
+    const modalCloseBtn = document.getElementById('hscModalCloseBtn');
+    const modalFooterCloseBtn = document.getElementById('hscModalFooterCloseBtn');
+    const modalSearchInput = document.getElementById('hscModalSearchInput');
+    const modalFilterTabs = document.querySelectorAll('.hsc-modal-filter-tab');
+    const countModalAll = document.getElementById('countModalAll');
+    const countModal1st = document.getElementById('countModal1st');
+    const countModal2nd = document.getElementById('countModal2nd');
+    const modalFooterInfo = document.getElementById('hscModalFooterInfo');
+
+    function openSubjectModal(subjectGroup, category) {
+      if (!subjectGroup) return;
+      activeModalSubject = subjectGroup;
+      activeModalCategory = category;
+      currentPaperFilter = 'all';
+
+      // Set Header
+      const meta = SUBJECT_METADATA[subjectGroup.subject] || {
+        icon: subjectGroup.icon || (category === 'books' ? '📖' : '📋'),
+        bangla: subjectGroup.banglaName || subjectGroup.subject,
+        subtitle: subjectGroup.desc || ''
+      };
+
+      modalIcon.textContent = subjectGroup.icon || meta.icon;
+      modalStamp.textContent = category === 'books' 
+        ? `HSC SCIENCE TEXTBOOK ARCHIVE • ${subjectGroup.subject.toUpperCase()}`
+        : `HSC BOARD QUESTION SOLUTIONS • ${subjectGroup.subject.toUpperCase()}`;
+      modalTitle.textContent = `${subjectGroup.subject} 1st & 2nd Paper`;
+      modalSubtitle.textContent = `${subjectGroup.banglaName || meta.bangla} • ${subjectGroup.desc || meta.subtitle}`;
+
+      // Reset filters & search
+      modalFilterTabs.forEach(tab => {
+        tab.classList.toggle('active', tab.getAttribute('data-paper-filter') === 'all');
+      });
+      if (modalSearchInput) modalSearchInput.value = '';
+
+      renderModalItems();
+
+      // Show modal
+      modalOverlay.classList.add('active');
+      modalOverlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      if (modalSearchInput) modalSearchInput.focus();
+    }
+
+    function closeSubjectModal() {
+      modalOverlay.classList.remove('active');
+      modalOverlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      activeModalSubject = null;
+    }
+
+    if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeSubjectModal);
+    if (modalFooterCloseBtn) modalFooterCloseBtn.addEventListener('click', closeSubjectModal);
+
+    modalOverlay.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) closeSubjectModal();
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+        closeSubjectModal();
+      }
+    });
+
+    // Modal filter tabs
+    modalFilterTabs.forEach(btn => {
+      btn.addEventListener('click', () => {
+        modalFilterTabs.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentPaperFilter = btn.getAttribute('data-paper-filter');
+        renderModalItems();
+      });
+    });
+
+    if (modalSearchInput) {
+      modalSearchInput.addEventListener('input', () => {
+        renderModalItems();
+      });
+    }
+
+    function renderModalItems() {
+      if (!activeModalSubject || !modalBody) return;
+      const papers = Array.isArray(activeModalSubject.papers) ? activeModalSubject.papers : [];
+
+      // Count stats for filter pills
+      const count1st = papers.filter(p => (p.paper || '').toLowerCase().includes('1st')).length;
+      const count2nd = papers.filter(p => (p.paper || '').toLowerCase().includes('2nd')).length;
+      if (countModalAll) countModalAll.textContent = papers.length;
+      if (countModal1st) countModal1st.textContent = count1st;
+      if (countModal2nd) countModal2nd.textContent = count2nd;
+
+      // Filter by paper tab
+      let list = papers;
+      if (currentPaperFilter === '1st Paper') {
+        list = papers.filter(p => (p.paper || '').toLowerCase().includes('1st'));
+      } else if (currentPaperFilter === '2nd Paper') {
+        list = papers.filter(p => (p.paper || '').toLowerCase().includes('2nd'));
+      }
+
+      // Filter by search query
+      const q = (modalSearchInput ? modalSearchInput.value : '').toLowerCase().trim();
+      if (q) {
+        list = list.filter(p =>
+          (p.name || '').toLowerCase().includes(q) ||
+          (p.author || '').toLowerCase().includes(q) ||
+          (p.board || '').toLowerCase().includes(q) ||
+          (p.year || '').toLowerCase().includes(q) ||
+          (p.edition || '').toLowerCase().includes(q) ||
+          (p.desc || '').toLowerCase().includes(q)
+        );
+      }
+
+      if (modalFooterInfo) {
+        modalFooterInfo.textContent = `Showing ${list.length} of ${papers.length} resources in ${activeModalSubject.subject}`;
+      }
+
+      if (list.length === 0) {
+        modalBody.innerHTML = `
+          <div class="hsc-empty-state" style="padding: 2.5rem 1rem;">
+            <div class="empty-icon">🔍</div>
+            <h3>No matching resources found</h3>
+            <p>Try switching filter tabs or clearing the search box.</p>
+          </div>
+        `;
+        return;
+      }
+
+      modalBody.innerHTML = list.map(item => {
+        const is1st = (item.paper || '').toLowerCase().includes('1st');
+        const tagClass = is1st ? 'tag-1st' : 'tag-2nd';
+        const authorOrBoard = item.author || item.board || '';
+        const yearOrEdition = item.edition || item.year || '';
+
+        return `
+          <div class="hsc-modal-item">
+            <div class="hsc-modal-item-header">
+              <div class="hsc-modal-item-title-col">
+                <span class="hsc-modal-item-paper-tag ${tagClass}">📄 ${escH(item.paper || 'Full Paper')}</span>
+                <h3 class="hsc-modal-item-name">${escH(item.name)}</h3>
+                ${authorOrBoard ? `<div class="hsc-modal-item-author">✍️ ${escH(authorOrBoard)}</div>` : ''}
+              </div>
+            </div>
+            ${item.desc ? `<div class="hsc-modal-item-desc">${escH(item.desc)}</div>` : ''}
+            <div class="hsc-modal-item-footer">
+              <div class="hsc-modal-item-meta">
+                ${yearOrEdition ? `<span class="hsc-modal-item-badge">📅 ${escH(yearOrEdition)}</span>` : ''}
+                ${item.board && item.board !== authorOrBoard ? `<span class="hsc-modal-item-badge">🏛️ ${escH(item.board)}</span>` : ''}
+              </div>
+              ${item.downloadUrl ? `
+                <a class="hsc-modal-download-btn" href="${escH(item.downloadUrl)}" target="_blank" rel="noopener noreferrer">
+                  <span>⬇</span> Download PDF
+                </a>
+              ` : '<span style="font-family:var(--font-mono);font-size:0.75rem;color:var(--ink-muted);">Link unavailable</span>'}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // ---- Render Subject Cards for Books & Board Solutions ----
+    function renderSubjectGrid(categoryKey, containerId, countId, searchFilter = '') {
+      const container = document.getElementById(containerId);
+      const countEl = document.getElementById(countId);
+      if (!container) return;
+
+      const rawItems = (hscLiveState && hscLiveState[categoryKey]) || [];
+      const q = searchFilter.toLowerCase().trim();
+
+      // Normalize into subject groups
+      let groups = [];
+      if (rawItems.length > 0 && rawItems[0].papers) {
+        // Already hierarchical subject groups
+        groups = rawItems;
+      } else {
+        // Group flat items by subject
+        const map = new Map();
+        rawItems.forEach(item => {
+          const sub = item.subject || 'General Science';
+          if (!map.has(sub)) {
+            const meta = SUBJECT_METADATA[sub] || { icon: '📚', bangla: sub, subtitle: '' };
+            map.set(sub, {
+              id: 'group-' + sub.toLowerCase().replace(/[^a-z0-9]/g, '-'),
+              subject: sub,
+              banglaName: meta.bangla,
+              icon: meta.icon,
+              desc: meta.subtitle,
+              papers: []
+            });
+          }
+          map.get(sub).papers.push(item);
+        });
+        groups = Array.from(map.values());
+      }
+
+      // Filter groups
+      const filteredGroups = q ? groups.filter(g => {
+        const subMatch = (g.subject || '').toLowerCase().includes(q) ||
+                         (g.banglaName || '').toLowerCase().includes(q) ||
+                         (g.desc || '').toLowerCase().includes(q);
+        if (subMatch) return true;
+        // Also check if any paper inside matches
+        return Array.isArray(g.papers) && g.papers.some(p =>
+          (p.name || '').toLowerCase().includes(q) ||
+          (p.author || '').toLowerCase().includes(q) ||
+          (p.board || '').toLowerCase().includes(q) ||
+          (p.year || '').toLowerCase().includes(q) ||
+          (p.desc || '').toLowerCase().includes(q)
+        );
+      }) : groups;
+
+      // Calculate total resource count across all groups
+      let totalPaperCount = 0;
+      groups.forEach(g => { totalPaperCount += (g.papers || []).length; });
+
+      if (countEl) {
+        countEl.textContent = `${filteredGroups.length} Subjects • ${totalPaperCount} PDFs`;
+      }
+
+      if (filteredGroups.length === 0) {
+        container.innerHTML = `
+          <div class="hsc-empty-state" style="grid-column: 1 / -1;">
+            <div class="empty-icon">${categoryKey === 'books' ? '📖' : '📋'}</div>
+            <h3>${q ? 'No matching subjects found' : 'No subjects cataloged yet'}</h3>
+            <p>${q ? `No subjects or books match "${escH(q)}". Try another keyword.` : 'Admin can add resources via the Admin Panel.'}</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = '';
+      filteredGroups.forEach(group => {
+        const meta = SUBJECT_METADATA[group.subject] || {
+          icon: group.icon || (categoryKey === 'books' ? '📖' : '📋'),
+          bangla: group.banglaName || group.subject,
+          subtitle: group.desc || 'Curated NCTB Resources'
+        };
+
+        const paperCount = Array.isArray(group.papers) ? group.papers.length : 0;
+        const has1st = (group.papers || []).some(p => (p.paper || '').toLowerCase().includes('1st'));
+        const has2nd = (group.papers || []).some(p => (p.paper || '').toLowerCase().includes('2nd'));
+
+        const card = document.createElement('div');
+        card.className = 'hsc-subject-card';
+        card.setAttribute('role', 'button');
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('aria-label', `View ${group.subject} 1st and 2nd Paper`);
+
+        card.innerHTML = `
+          <div class="hsc-subject-card-header">
+            <div class="hsc-subject-icon">${group.icon || meta.icon}</div>
+            <div class="hsc-subject-meta">
+              <div class="hsc-subject-title-row">
+                <h3 class="hsc-subject-title">${escH(group.subject)}</h3>
+                <span class="hsc-subject-bangla">${escH(group.banglaName || meta.bangla)}</span>
+              </div>
+              <div class="hsc-paper-badges">
+                ${has1st ? `<span class="hsc-paper-pill pill-1st">1st Paper</span>` : ''}
+                ${has2nd ? `<span class="hsc-paper-pill pill-2nd">2nd Paper</span>` : ''}
+                ${!has1st && !has2nd ? `<span class="hsc-paper-pill">Complete Guide</span>` : ''}
+              </div>
+            </div>
+          </div>
+          <div class="hsc-subject-desc">${escH(group.desc || meta.subtitle)}</div>
+          <div class="hsc-subject-footer">
+            <span class="hsc-subject-count">📚 ${paperCount} ${categoryKey === 'books' ? 'Books' : 'Solved PDFs'} (1st & 2nd)</span>
+            <span class="hsc-subject-btn">
+              <span>${categoryKey === 'books' ? '📖 View Books' : '📋 View Solutions'}</span>
+              <span>→</span>
+            </span>
+          </div>
+        `;
+
+        // Interactive tap / click opens modal
+        const handleOpen = () => openSubjectModal(group, categoryKey);
+        card.addEventListener('click', handleOpen);
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            handleOpen();
+          }
+        });
+
+        container.appendChild(card);
+      });
+    }
+
+    // ---- Flat Resource Card for Tricks & Tests ----
+    function buildSimpleCard(item, catKey) {
       const card = document.createElement('div');
       card.className = 'hsc-resource-card';
+      const icon = catKey === 'tricks' ? '⚡' : '📝';
+      const tagClass = catKey === 'tricks' ? 'cat-tricks' : 'cat-test';
       card.innerHTML = `
         <div class="hsc-card-header">
-          <div class="hsc-card-icon ${cfg.catClass}">${cfg.icon}</div>
+          <div class="hsc-card-icon ${tagClass}">${icon}</div>
           <div class="hsc-card-meta">
-            <div class="hsc-card-category">${item.subject || cfg.label}</div>
+            <div class="hsc-card-category">${escH(item.subject || 'HSC Resource')}</div>
             <div class="hsc-card-title">${escH(item.name)}</div>
           </div>
         </div>
@@ -573,134 +911,133 @@
             ${item.year ? `<span class="hsc-card-tag">📅 ${escH(item.year)}</span>` : ''}
             ${item.subject ? `<span class="hsc-card-tag">📌 ${escH(item.subject)}</span>` : ''}
           </div>
-          ${item.downloadUrl ? `<a class="hsc-download-btn" href="${escH(item.downloadUrl)}" target="_blank" rel="noopener noreferrer">⬇ Download</a>` : '<span style="font-family:var(--font-mono);font-size:0.72rem;color:var(--ink-muted);">No link yet</span>'}
+          ${item.downloadUrl ? `
+            <a class="hsc-download-btn" href="${escH(item.downloadUrl)}" target="_blank" rel="noopener noreferrer">
+              <span>⬇</span> Download
+            </a>
+          ` : '<span style="font-family:var(--font-mono);font-size:0.72rem;color:var(--ink-muted);">Link unavailable</span>'}
         </div>
       `;
       return card;
     }
 
-    function escH(str) {
-      if (!str) return '';
-      return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-    }
-
-    // ---- Render a category grid ----
-    function renderCategory(catKey, filter = '') {
-      const cfg = CATEGORIES[catKey];
-      const grid = document.getElementById(cfg.gridId);
-      const countEl = document.getElementById(cfg.countId);
+    function renderFlatCategory(catKey, gridId, countId, filter = '') {
+      const grid = document.getElementById(gridId);
+      const countEl = document.getElementById(countId);
       if (!grid) return;
 
-      let items = [];
-      try {
-        items = JSON.parse(localStorage.getItem(cfg.key) || '[]');
-      } catch(e) { items = []; }
-
-      // Try live server API data first, then window.PortfolioState.data
-      if (window._hscLive && Array.isArray(window._hscLive[catKey]) && window._hscLive[catKey].length > 0) {
-        items = window._hscLive[catKey];
-      } else {
-        const serverData = window.PortfolioState && window.PortfolioState.data && window.PortfolioState.data.hsc;
-        if (serverData && Array.isArray(serverData[catKey]) && serverData[catKey].length > 0) {
-          items = serverData[catKey];
-        }
-      }
-
-      // Filter
+      const items = (hscLiveState && hscLiveState[catKey]) || [];
       const q = filter.toLowerCase().trim();
       const filtered = q ? items.filter(it =>
-        (it.name||'').toLowerCase().includes(q) ||
-        (it.subject||'').toLowerCase().includes(q) ||
-        (it.year||'').toLowerCase().includes(q) ||
-        (it.desc||'').toLowerCase().includes(q)
+        (it.name || '').toLowerCase().includes(q) ||
+        (it.subject || '').toLowerCase().includes(q) ||
+        (it.year || '').toLowerCase().includes(q) ||
+        (it.desc || '').toLowerCase().includes(q)
       ) : items;
 
-      grid.innerHTML = '';
-      const plural = { books: 'books', board: 'solutions', tricks: 'tricks', tests: 'papers' };
-      if (countEl) countEl.textContent = `${filtered.length} ${plural[catKey]}`;
+      if (countEl) countEl.textContent = `${filtered.length} ${catKey === 'tricks' ? 'tricks' : 'papers'}`;
 
       if (filtered.length === 0) {
-        grid.innerHTML = `<div class="hsc-empty-state">
-          <div class="empty-icon">${EMPTY_ICONS[catKey]}</div>
-          <h3>${q ? 'No matches found' : EMPTY_LABELS[catKey]}</h3>
-          <p>${q ? `No results for "${escH(q)}"` : 'Admin can add resources from the Admin Panel → HSC Academic tab.'}</p>
-        </div>`;
+        grid.innerHTML = `
+          <div class="hsc-empty-state">
+            <div class="empty-icon">${catKey === 'tricks' ? '⚡' : '📝'}</div>
+            <h3>${q ? 'No matches found' : 'No items cataloged yet'}</h3>
+            <p>${q ? `No results for "${escH(q)}"` : 'Admin can add resources from the Admin Panel → HSC Academic tab.'}</p>
+          </div>
+        `;
         return;
       }
 
-      filtered.forEach(item => grid.appendChild(buildCard(item, catKey)));
-      // Update total telemetry
-      updateTotal();
+      grid.innerHTML = '';
+      filtered.forEach(it => grid.appendChild(buildSimpleCard(it, catKey)));
     }
 
-    function updateTotal() {
+    // ---- Update Telemetry Total ----
+    function updateTelemetry() {
+      if (!hscLiveState) return;
       let total = 0;
-      Object.values(CATEGORIES).forEach(cfg => {
-        try { total += JSON.parse(localStorage.getItem(cfg.key) || '[]').length; } catch(e) {}
-      });
+      // books
+      (hscLiveState.books || []).forEach(b => { total += (b.papers ? b.papers.length : 1); });
+      // board
+      (hscLiveState.board || []).forEach(b => { total += (b.papers ? b.papers.length : 1); });
+      // tricks
+      total += (hscLiveState.tricks || []).length;
+      // tests
+      total += (hscLiveState.tests || []).length;
+
       const el = document.getElementById('telemTotal');
       if (el) el.textContent = total;
     }
 
-    // ---- Search inputs ----
-    ['Books','Board','Tricks','Tests'].forEach(name => {
-      const input = document.getElementById('search' + name);
-      if (!input) return;
-      input.addEventListener('input', () => {
-        renderCategory(name.toLowerCase(), input.value);
-      });
-    });
-
-    // ---- Initial render ----
+    // ---- Render All Panes ----
     function renderAll() {
-      Object.keys(CATEGORIES).forEach(k => renderCategory(k));
+      const searchB = document.getElementById('searchBooks')?.value || '';
+      const searchBd = document.getElementById('searchBoard')?.value || '';
+      const searchTr = document.getElementById('searchTricks')?.value || '';
+      const searchTs = document.getElementById('searchTests')?.value || '';
+
+      renderSubjectGrid('books', 'gridBooks', 'countBooks', searchB);
+      renderSubjectGrid('board', 'gridBoard', 'countBoard', searchBd);
+      renderFlatCategory('tricks', 'gridTricks', 'countTricks', searchTr);
+      renderFlatCategory('tests', 'gridTests', 'countTests', searchTs);
+      updateTelemetry();
     }
 
+    // ---- Search Input Handlers ----
+    const searchBooksEl = document.getElementById('searchBooks');
+    if (searchBooksEl) {
+      searchBooksEl.addEventListener('input', () => {
+        renderSubjectGrid('books', 'gridBooks', 'countBooks', searchBooksEl.value);
+      });
+    }
+
+    const searchBoardEl = document.getElementById('searchBoard');
+    if (searchBoardEl) {
+      searchBoardEl.addEventListener('input', () => {
+        renderSubjectGrid('board', 'gridBoard', 'countBoard', searchBoardEl.value);
+      });
+    }
+
+    const searchTricksEl = document.getElementById('searchTricks');
+    if (searchTricksEl) {
+      searchTricksEl.addEventListener('input', () => {
+        renderFlatCategory('tricks', 'gridTricks', 'countTricks', searchTricksEl.value);
+      });
+    }
+
+    const searchTestsEl = document.getElementById('searchTests');
+    if (searchTestsEl) {
+      searchTestsEl.addEventListener('input', () => {
+        renderFlatCategory('tests', 'gridTests', 'countTests', searchTestsEl.value);
+      });
+    }
+
+    // ---- Fetch HSC Data ----
     async function loadHscData() {
       try {
         let res = await fetch('/api/hsc');
-        if (!res.ok) {
-          res = await fetch('data/portfolio.json');
-          if (res.ok) {
-            const full = await res.json();
-            if (full.hsc) {
-              window._hscLive = full.hsc;
-              renderAll();
-              return;
-            }
-          }
-        } else {
-          window._hscLive = await res.json();
+        if (res.ok) {
+          hscLiveState = await res.json();
           renderAll();
+          return;
         }
       } catch (e) {
-        try {
-          const fbRes = await fetch('data/portfolio.json');
-          if (fbRes.ok) {
-            const full = await fbRes.json();
-            if (full.hsc) {
-              window._hscLive = full.hsc;
-              renderAll();
-            }
+        console.warn('HSC API fetch failed, falling back to portfolio.json', e);
+      }
+
+      try {
+        const res = await fetch('data/portfolio.json');
+        if (res.ok) {
+          const full = await res.json();
+          if (full.hsc) {
+            hscLiveState = full.hsc;
+            renderAll();
           }
-        } catch(err) {}
+        }
+      } catch (err) {
+        console.error('Failed to load HSC data:', err);
       }
     }
-
-    // Wait for portfolio data to load, then re-render
-    document.addEventListener('DOMContentLoaded', () => {
-      renderAll();
-      loadHscData();
-      // Re-render after portfolio data loads (may include hsc from server)
-      const origLoad = window.loadPortfolioData;
-      if (origLoad) {
-        const orig = window.renderPortfolio;
-        window.renderPortfolio = function() {
-          if (orig) orig.apply(this, arguments);
-          renderAll();
-        };
-      }
-    });
 
     // Clock
     function updateClock() {
@@ -709,6 +1046,11 @@
     }
     updateClock();
     setInterval(updateClock, 1000);
+
+    // Initial load
+    document.addEventListener('DOMContentLoaded', () => {
+      loadHscData();
+    });
 
   })();
   </script>

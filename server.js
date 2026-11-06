@@ -189,8 +189,8 @@ app.use((req, res, next) => {
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
     "font-src 'self' https://fonts.gstatic.com data:; " +
     "img-src 'self' data: blob: https:; " +
-    "media-src 'self' data: blob:; " +
-    "connect-src 'self'; " +
+    "media-src 'self' data: blob: https:; " +
+    "connect-src 'self' https:; " +
     "frame-ancestors 'self'; " +
     "base-uri 'self'; " +
     "form-action 'self';"
@@ -630,6 +630,21 @@ app.get('/api/hsc', (req, res) => {
   res.json(data.hsc || { books: [], board: [], tricks: [], tests: [] });
 });
 
+app.put('/api/hsc', requireAdminAuth, (req, res) => {
+  const newHsc = req.body;
+  if (!newHsc || typeof newHsc !== 'object') {
+    return res.status(400).json({ error: 'Invalid HSC data structure' });
+  }
+  const data = readJSON(PORTFOLIO_FILE, {});
+  data.hsc = newHsc;
+  const success = writeJSON(PORTFOLIO_FILE, data);
+  if (success) {
+    res.json({ success: true, message: 'HSC resources synced', hsc: data.hsc });
+  } else {
+    res.status(500).json({ error: 'Failed to save HSC data' });
+  }
+});
+
 app.post('/api/hsc/:category', requireAdminAuth, (req, res) => {
   const { category } = req.params;
   const validCategories = ['books', 'board', 'tricks', 'tests'];
@@ -637,26 +652,93 @@ app.post('/api/hsc/:category', requireAdminAuth, (req, res) => {
     return res.status(400).json({ error: 'Invalid HSC category' });
   }
 
-  const { id, name, subject, downloadUrl, year, desc } = req.body || {};
+  const { id, name, subject, downloadUrl, year, edition, board, author, paper, desc } = req.body || {};
   if (!name || !downloadUrl) {
-    return res.status(400).json({ error: 'Name and downloadUrl are required' });
+    return res.status(400).json({ error: 'Name and download link are required' });
   }
 
   const data = readJSON(PORTFOLIO_FILE, {});
   if (!data.hsc) data.hsc = { books: [], board: [], tricks: [], tests: [] };
   if (!Array.isArray(data.hsc[category])) data.hsc[category] = [];
 
-  const existingIdx = id ? data.hsc[category].findIndex(item => item.id === id) : -1;
+  const subName = String(subject || 'Physics').trim();
+  const safeId = id || `hsc-${category}-${Date.now()}`;
+
+  if (category === 'books' || category === 'board') {
+    // Subject icons and bangla map
+    const subjectMeta = {
+      'Physics': { icon: '⚛️', bangla: category === 'books' ? 'পদার্থবিজ্ঞান' : 'পদার্থবিজ্ঞান বোর্ড সমাধান' },
+      'Chemistry': { icon: '🧪', bangla: category === 'books' ? 'রসায়ন' : 'রসায়ন বোর্ড সমাধান' },
+      'Higher Mathematics': { icon: '📐', bangla: category === 'books' ? 'উচ্চতর গণিত' : 'উচ্চতর গণিত বোর্ড সমাধান' },
+      'Biology': { icon: '🧬', bangla: category === 'books' ? 'জীববিজ্ঞান' : 'জীববিজ্ঞান বোর্ড সমাধান' },
+      'Information & Comm. Technology': { icon: '💻', bangla: 'তথ্য ও যোগাযোগ প্রযুক্তি' }
+    };
+    const meta = subjectMeta[subName] || { icon: '📚', bangla: subName };
+
+    // Find or create subject group
+    let group = data.hsc[category].find(g => g.subject && g.subject.toLowerCase() === subName.toLowerCase());
+    if (!group) {
+      group = {
+        id: `group-${category}-${subName.toLowerCase().replace(/[^a-z0-9]/g, '-')}`,
+        subject: subName,
+        banglaName: meta.bangla,
+        icon: meta.icon,
+        desc: `Curated ${subName} ${category === 'books' ? 'Textbooks' : 'Board Solutions'}.`,
+        papers: []
+      };
+      data.hsc[category].push(group);
+    }
+    if (!Array.isArray(group.papers)) group.papers = [];
+
+    const paperItem = {
+      id: safeId,
+      paper: String(paper || '1st Paper').trim(),
+      name: String(name).trim(),
+      author: String(author || edition || board || '').trim(),
+      edition: String(edition || year || '').trim(),
+      board: String(board || year || '').trim(),
+      year: String(year || edition || '').trim(),
+      downloadUrl: String(downloadUrl).trim(),
+      desc: String(desc || '').trim(),
+      updatedAt: new Date().toISOString()
+    };
+
+    // If updating an existing item that might have been under another subject previously, remove it from other groups
+    if (id) {
+      data.hsc[category].forEach(g => {
+        if (g !== group && Array.isArray(g.papers)) {
+          g.papers = g.papers.filter(p => p.id !== safeId);
+        }
+      });
+    }
+
+    const pIdx = group.papers.findIndex(p => p.id === safeId);
+    if (pIdx >= 0) {
+      group.papers[pIdx] = paperItem;
+    } else {
+      group.papers.push(paperItem);
+    }
+
+    const success = writeJSON(PORTFOLIO_FILE, data);
+    if (success) {
+      return res.json({ success: true, item: paperItem, data: data.hsc[category] });
+    } else {
+      return res.status(500).json({ error: 'Failed to save resource' });
+    }
+  }
+
+  // Simple item for tricks or tests
   const resourceItem = {
-    id: id || `hsc-${category}-${Date.now()}`,
+    id: safeId,
     name: String(name).trim(),
-    subject: String(subject || '').trim(),
+    subject: subName,
     downloadUrl: String(downloadUrl).trim(),
-    year: String(year || '').trim(),
+    year: String(year || edition || '').trim(),
     desc: String(desc || '').trim(),
     updatedAt: new Date().toISOString()
   };
 
+  const existingIdx = data.hsc[category].findIndex(item => item.id === safeId);
   if (existingIdx >= 0) {
     data.hsc[category][existingIdx] = resourceItem;
   } else {
@@ -667,7 +749,7 @@ app.post('/api/hsc/:category', requireAdminAuth, (req, res) => {
   if (success) {
     res.json({ success: true, item: resourceItem, data: data.hsc[category] });
   } else {
-    res.status(500).json({ error: 'Failed to save resource to database' });
+    res.status(500).json({ error: 'Failed to save resource' });
   }
 });
 
@@ -681,6 +763,32 @@ app.delete('/api/hsc/:category/:id', requireAdminAuth, (req, res) => {
   const data = readJSON(PORTFOLIO_FILE, {});
   if (!data.hsc || !Array.isArray(data.hsc[category])) {
     return res.status(404).json({ error: 'Category not found or empty' });
+  }
+
+  if (category === 'books' || category === 'board') {
+    let deleted = false;
+    data.hsc[category].forEach(group => {
+      if (Array.isArray(group.papers)) {
+        const initialLen = group.papers.length;
+        group.papers = group.papers.filter(p => p.id !== id);
+        if (group.papers.length < initialLen) deleted = true;
+      }
+    });
+    // Also check if id is a whole subject group id
+    const initialGroups = data.hsc[category].length;
+    data.hsc[category] = data.hsc[category].filter(g => g.id !== id);
+    if (data.hsc[category].length < initialGroups) deleted = true;
+
+    if (!deleted) {
+      return res.status(404).json({ error: 'Resource item not found' });
+    }
+
+    const success = writeJSON(PORTFOLIO_FILE, data);
+    if (success) {
+      return res.json({ success: true, message: 'Resource removed', data: data.hsc[category] });
+    } else {
+      return res.status(500).json({ error: 'Failed to write update' });
+    }
   }
 
   const prevLen = data.hsc[category].length;

@@ -446,62 +446,330 @@
   "hsc": {
     "books": [
       {
-        "id": "book-1",
-        "name": "HSC Physics 1st Paper (Dr. Shahjahan Tapan)",
+        "id": "book-phys",
         "subject": "Physics",
-        "year": "2024 Edition",
-        "downloadUrl": "https://drive.google.com/file/d/example_physics1/view",
-        "desc": "Comprehensive textbook covering Mechanics, Periodic Motion, Waves, and Thermodynamics with exercise problems."
+        "banglaName": "পদার্থবিজ্ঞান",
+        "icon": "⚛️",
+        "desc": "NCTB Approved Higher Secondary Physics 1st & 2nd Paper Textbooks and Reference Guides.",
+        "papers": [
+          {
+            "id": "phys-1st",
+            "paper": "1st Paper",
+            "name": "HSC Physics 1st Paper (Dr. Shahjahan Tapan)",
+            "author": "Dr. Shahjahan Tapan, Muhammad Aziz Hasan, Dr. Rana Chowdhury",
+            "edition": "Latest Edition",
+            "downloadUrl": "https://drive.google.com/file/d/example_physics1/view",
+            "desc": "Mechanics, Periodic Motion, Waves, Properties of Matter, Ideal Gas & Thermodynamics."
+          },
+          {
+            "id": "phys-1st-alt",
+            "paper": "1st Paper",
+            "name": "HSC Physics 1st Paper (Prof. Isahaque Sir)",
+            "author": "Prof. Md. Golam Hossain Pramanik & Md. Isahaque",
+            "edition": "Reference Edition",
+            "downloadUrl": "https://drive.google.com/file/d/example_physics1_isahaque/view",
+            "desc": "Comprehensive mathematical problems, conceptual derivations, and chapter-wise MCQs."
+          },
+          {
+            "id": "phys-2nd",
+            "paper": "2nd Paper",
+            "name": "HSC Physics 2nd Paper (Dr. Shahjahan Tapan)",
+            "author": "Dr. Shahjahan Tapan, Muhammad Aziz Hasan",
+            "edition": "Latest Edition",
+            "downloadUrl": "https://drive.google.com/file/d/example_physics2/view",
+            "desc": "Thermal Physics, Static & Current Electricity, Modern Physics, Optics, and Semiconductor Electronics."
+          },
+          {
+            "id": "phys-2nd-alt",
+            "paper": "2nd Paper",
+            "name": "HSC Physics 2nd Paper (Prof. Isahaque Sir)",
+            "author": "Md. Isahaque & Pramanik",
+            "edition": "Reference Edition",
+            "downloadUrl": "https://drive.google.com/file/d/example_physics2_isahaque/view",
+            "desc": "In-depth derivations, circuit problems, atomic physics, and nuclear reaction formulas."
+          }
+        ]
       },
       {
-        "id": "book-2",
-        "name": "HSC Higher Mathematics 1st Paper (S.U. Ahmed & M.A. Jabbar)",
-        "subject": "Higher Math",
-        "year": "2024 Edition",
-        "downloadUrl": "https://drive.google.com/file/d/example_higher_math1/view",
-        "desc": "Complete textbook with Matrix & Determinants, Coordinate Geometry, Trigonometry, and Calculus."
-      },
-      {
-        "id": "book-3",
-        "name": "HSC Chemistry 1st Paper (Dr. Saroj Kanti Singha Hazari)",
+        "id": "book-chem",
         "subject": "Chemistry",
-        "year": "2024 Edition",
-        "downloadUrl": "https://drive.google.com/file/d/example_chem1/view",
-        "desc": "Atomic Structure, Periodic Table & Chemical Bonding, Qualitative & Quantitative Analysis."
+        "banglaName": "রসায়ন",
+        "icon": "🧪",
+        "desc": "NCTB Approved Higher Secondary Chemistry 1st & 2nd Paper Reference Textbooks.",
+        "papers": [
+          {
+            "id": "chem-1st",
+            "paper": "1st Paper",
+            "name": "HSC Chemistry 1st Paper (Dr. Saroj Kanti Singha Hazari)",
+            "author": "Dr. Saroj Kanti Singha Hazari & Haradhan Nag",
+            "edition": "Standard Curriculum Edition",
+            "downloadUrl": "https://drive.google.com/file/d/example_chem1/view",
+            "desc": "Safe Laboratory Use, Qualitative Chemistry, Periodic Table, Chemical Bonding, and Chemical Changes."
+          },
+          {
+            "id": "chem-1st-alt",
+            "paper": "1st Paper",
+            "name": "HSC Chemistry 1st Paper (Sanjit Kumar Guha)",
+            "author": "Sanjit Kumar Guha",
+            "edition": "Reference Edition",
+            "downloadUrl": "https://drive.google.com/file/d/example_chem1_guha/view",
+            "desc": "Atomic Structure, Quantum Numbers, Orbitals, and Solution Math with worked examples."
+          },
+          {
+            "id": "chem-2nd",
+            "paper": "2nd Paper",
+            "name": "HSC Chemistry 2nd Paper (Dr. Saroj Kanti Singha Hazari)",
+            "author": "Dr. Saroj Kanti Singha Hazari & Haradhan Nag",
+            "edition": "Standard Curriculum Edition",
+            "downloadUrl": "https://drive.google.com/file/d/example_chem2/view",
+            "desc": "Environmental Chemistry, Organic Chemistry Roadmap, Quantitative Chemistry, and Electrochemistry."
+          },
+          {
+            "id": "chem-2nd-alt",
+            "paper": "2nd Paper",
+            "name": "HSC Chemistry 2nd Paper (Sanjit Kumar Guha)",
+            "author": "Sanjit Kumar Guha",
+            "edition": "Organic Chemistry Special",
+            "downloadUrl": "https://drive.google.com/file/d/example_chem2_guha/view",
+            "desc": "Mechanisms of Organic Reactions, Name Reactions, Polymer Chemistry, and Industrial Chemical Math."
+          }
+        ]
       },
       {
-        "id": "book-4",
-        "name": "HSC Information & Communication Technology (NCTB)",
-        "subject": "ICT",
-        "year": "2024 Edition",
-        "downloadUrl": "https://drive.google.com/file/d/example_ict/view",
-        "desc": "Official NCTB textbook covering Number Systems, Digital Devices, Web Design (HTML), and C Programming."
+        "id": "book-math",
+        "subject": "Higher Mathematics",
+        "banglaName": "উচ্চতর গণিত",
+        "icon": "📐",
+        "desc": "NCTB Approved Higher Mathematics 1st & 2nd Paper Textbooks with Calculus and Vectors.",
+        "papers": [
+          {
+            "id": "math-1st",
+            "paper": "1st Paper",
+            "name": "HSC Higher Math 1st Paper (S.U. Ahmed & M.A. Jabbar)",
+            "author": "S.U. Ahmed & M.A. Jabbar",
+            "edition": "Standard Edition",
+            "downloadUrl": "https://drive.google.com/file/d/example_math1/view",
+            "desc": "Matrices & Determinants, Vectors, Straight Lines, Circles, Trigonometry, and Differential & Integral Calculus."
+          },
+          {
+            "id": "math-1st-alt",
+            "paper": "1st Paper",
+            "name": "HSC Higher Math 1st Paper (Ketab Uddin Sir)",
+            "author": "A.K.M. Shahidullah & Ketab Uddin",
+            "edition": "Advanced Problem Solving",
+            "downloadUrl": "https://drive.google.com/file/d/example_math1_ketab/view",
+            "desc": "Rigorous engineering admission prep problems, calculus tricks, and coordinate geometry proofs."
+          },
+          {
+            "id": "math-2nd",
+            "paper": "2nd Paper",
+            "name": "HSC Higher Math 2nd Paper (S.U. Ahmed & M.A. Jabbar)",
+            "author": "S.U. Ahmed & M.A. Jabbar",
+            "edition": "Standard Edition",
+            "downloadUrl": "https://drive.google.com/file/d/example_math2/view",
+            "desc": "Real Numbers, Polynomials, Complex Numbers, Conics, Inverse Trigonometry, and Statics & Dynamics."
+          },
+          {
+            "id": "math-2nd-alt",
+            "paper": "2nd Paper",
+            "name": "HSC Higher Math 2nd Paper (Ketab Uddin Sir)",
+            "author": "Ketab Uddin",
+            "edition": "Advanced Problem Solving",
+            "downloadUrl": "https://drive.google.com/file/d/example_math2_ketab/view",
+            "desc": "Statics equilibrium, coplanar forces, projectile equations, and binomial theorem expansions."
+          }
+        ]
+      },
+      {
+        "id": "book-bio",
+        "subject": "Biology",
+        "banglaName": "জীববিজ্ঞান",
+        "icon": "🧬",
+        "desc": "Higher Secondary Biology 1st Paper (Botany) and 2nd Paper (Zoology).",
+        "papers": [
+          {
+            "id": "bio-1st",
+            "paper": "1st Paper (Botany)",
+            "name": "HSC Biology 1st Paper (Dr. Abul Hasan)",
+            "author": "Dr. Md. Abul Hasan",
+            "edition": "Official NCTB Approved",
+            "downloadUrl": "https://drive.google.com/file/d/example_bio1/view",
+            "desc": "Cell Structure, Cell Division, Genetics, Plant Physiology (Photosynthesis, Respiration), and Biotechnology."
+          },
+          {
+            "id": "bio-2nd",
+            "paper": "2nd Paper (Zoology)",
+            "name": "HSC Biology 2nd Paper (Gazi Azmal)",
+            "author": "Gazi S.M. Azmal & Gazi Md. Asmat",
+            "edition": "Official NCTB Approved",
+            "downloadUrl": "https://drive.google.com/file/d/example_bio2/view",
+            "desc": "Animal Diversity, Human Physiology (Digestion, Blood, Respiration, Excretion), Genetics and Evolution."
+          }
+        ]
+      },
+      {
+        "id": "book-ict",
+        "subject": "Information & Comm. Technology",
+        "banglaName": "তথ্য ও যোগাযোগ প্রযুক্তি",
+        "icon": "💻",
+        "desc": "HSC ICT Official NCTB Curriculum covering C Programming, HTML Web Design, and Database Systems.",
+        "papers": [
+          {
+            "id": "ict-main",
+            "paper": "Full Paper",
+            "name": "HSC ICT Textbook (NCTB Official)",
+            "author": "National Curriculum and Textbook Board Bangladesh",
+            "edition": "Latest Edition",
+            "downloadUrl": "https://drive.google.com/file/d/example_ict/view",
+            "desc": "Number Systems, Logic Gates, HTML Web Design, C Programming Fundamentals, and Database Management."
+          }
+        ]
       }
     ],
     "board": [
       {
-        "id": "board-1",
-        "name": "HSC Higher Math Board Question Solutions (2018–2023)",
-        "subject": "Higher Math",
-        "year": "All Boards (2018-2023)",
-        "downloadUrl": "https://drive.google.com/file/d/example_board_math/view",
-        "desc": "Step-by-step solved Creative Questions (CQ) & MCQs across all education boards with mark distribution."
-      },
-      {
-        "id": "board-2",
-        "name": "HSC Physics Board Question Complete Solutions (CQ + MCQ)",
+        "id": "board-phys",
         "subject": "Physics",
-        "year": "Dhaka & Rajshahi Board 2023",
-        "downloadUrl": "https://drive.google.com/file/d/example_board_physics/view",
-        "desc": "Full mathematical derivations, diagram explanations, and fast calculation techniques."
+        "banglaName": "পদার্থবিজ্ঞান বোর্ড সমাধান",
+        "icon": "⚛️",
+        "desc": "Complete HSC Physics 1st Paper & 2nd Paper Board Exam Solutions (CQ + MCQ) with detailed step-by-step answers.",
+        "papers": [
+          {
+            "id": "board-phys-1st-all",
+            "paper": "1st Paper",
+            "name": "HSC Physics 1st Paper All Board Question Solutions (2018–2023)",
+            "board": "All Education Boards Combined",
+            "year": "2018–2023",
+            "downloadUrl": "https://drive.google.com/file/d/example_phys1_allboard/view",
+            "desc": "Creative Questions (CQ) & MCQs solved with mathematical derivations and marks distribution breakdown."
+          },
+          {
+            "id": "board-phys-1st-dhaka",
+            "paper": "1st Paper",
+            "name": "Dhaka Board Physics 1st Paper Special Solved CQ Set",
+            "board": "Dhaka Board",
+            "year": "2023",
+            "downloadUrl": "https://drive.google.com/file/d/example_phys1_dhaka/view",
+            "desc": "Official model solution set for Dhaka Board with examiner notes and fast calculation methods."
+          },
+          {
+            "id": "board-phys-2nd-all",
+            "paper": "2nd Paper",
+            "name": "HSC Physics 2nd Paper All Board Solutions (2018–2023)",
+            "board": "All Education Boards Combined",
+            "year": "2018–2023",
+            "downloadUrl": "https://drive.google.com/file/d/example_phys2_allboard/view",
+            "desc": "Thermodynamics, Current Electricity, Optics, and Modern Physics complete CQ & MCQ answer bank."
+          },
+          {
+            "id": "board-phys-2nd-dhaka",
+            "paper": "2nd Paper",
+            "name": "Dhaka Board Physics 2nd Paper Special Solved CQ Set",
+            "board": "Dhaka Board",
+            "year": "2023",
+            "downloadUrl": "https://drive.google.com/file/d/example_phys2_dhaka/view",
+            "desc": "High-scoring solution guide with clean circuit diagrams and formula explanations."
+          }
+        ]
       },
       {
-        "id": "board-3",
-        "name": "HSC Chemistry Board Solution & Model Test Answers",
+        "id": "board-chem",
         "subject": "Chemistry",
-        "year": "All Education Boards 2023",
-        "downloadUrl": "https://drive.google.com/file/d/example_board_chem/view",
-        "desc": "Organic conversion pathway answers, stoichiometry equations, and electrochemistry solved papers."
+        "banglaName": "রসায়ন বোর্ড সমাধান",
+        "icon": "🧪",
+        "desc": "Complete HSC Chemistry 1st Paper & 2nd Paper Board Question Solutions with full reaction mechanisms.",
+        "papers": [
+          {
+            "id": "board-chem-1st-all",
+            "paper": "1st Paper",
+            "name": "HSC Chemistry 1st Paper All Board Solutions (2018–2023)",
+            "board": "All Education Boards Combined",
+            "year": "2018–2023",
+            "downloadUrl": "https://drive.google.com/file/d/example_chem1_allboard/view",
+            "desc": "Solved CQ equations, qualitative analysis flowcharts, and 25-MCQ explanation sets."
+          },
+          {
+            "id": "board-chem-1st-dhaka",
+            "paper": "1st Paper",
+            "name": "Dhaka Board Chemistry 1st Paper Board Solution",
+            "board": "Dhaka Board",
+            "year": "2023",
+            "downloadUrl": "https://drive.google.com/file/d/example_chem1_dhaka/view",
+            "desc": "Step-by-step chemical equations, molarity calculations, and orbital diagrams."
+          },
+          {
+            "id": "board-chem-2nd-all",
+            "paper": "2nd Paper",
+            "name": "HSC Chemistry 2nd Paper All Board Solutions (2018–2023)",
+            "board": "All Education Boards Combined",
+            "year": "2018–2023",
+            "downloadUrl": "https://drive.google.com/file/d/example_chem2_allboard/view",
+            "desc": "Complete organic reaction conversions, stoichiometry math, and electrochemical cell calculations."
+          },
+          {
+            "id": "board-chem-2nd-dhaka",
+            "paper": "2nd Paper",
+            "name": "Dhaka Board Chemistry 2nd Paper Board Solution",
+            "board": "Dhaka Board",
+            "year": "2023",
+            "downloadUrl": "https://drive.google.com/file/d/example_chem2_dhaka/view",
+            "desc": "Organic compound identification pathways, acid-base balance, and environmental chemistry answers."
+          }
+        ]
+      },
+      {
+        "id": "board-math",
+        "subject": "Higher Mathematics",
+        "banglaName": "উচ্চতর গণিত বোর্ড সমাধান",
+        "icon": "📐",
+        "desc": "Complete HSC Higher Math 1st Paper & 2nd Paper Board Solutions with calculus and geometry proofs.",
+        "papers": [
+          {
+            "id": "board-math-1st-all",
+            "paper": "1st Paper",
+            "name": "HSC Higher Math 1st Paper All Board Solutions (2018–2023)",
+            "board": "All Education Boards Combined",
+            "year": "2018–2023",
+            "downloadUrl": "https://drive.google.com/file/d/example_math1_allboard/view",
+            "desc": "Matrices, Straight Lines, Trigonometric identities, and complete Differentiation & Integration CQ solutions."
+          },
+          {
+            "id": "board-math-2nd-all",
+            "paper": "2nd Paper",
+            "name": "HSC Higher Math 2nd Paper All Board Solutions (2018–2023)",
+            "board": "All Education Boards Combined",
+            "year": "2018–2023",
+            "downloadUrl": "https://drive.google.com/file/d/example_math2_allboard/view",
+            "desc": "Conics, Complex Numbers, Polynomials, and Statics/Dynamics full mathematical solutions."
+          }
+        ]
+      },
+      {
+        "id": "board-bio",
+        "subject": "Biology",
+        "banglaName": "জীববিজ্ঞান বোর্ড সমাধান",
+        "icon": "🧬",
+        "desc": "Complete HSC Biology 1st Paper (Botany) & 2nd Paper (Zoology) Board Exam Solutions.",
+        "papers": [
+          {
+            "id": "board-bio-1st-all",
+            "paper": "1st Paper (Botany)",
+            "name": "HSC Biology 1st Paper All Board Solutions (2018–2023)",
+            "board": "All Education Boards Combined",
+            "year": "2018–2023",
+            "downloadUrl": "https://drive.google.com/file/d/example_bio1_allboard/view",
+            "desc": "Botany CQ diagram solutions, physiology cycle answers, and botanical classification."
+          },
+          {
+            "id": "board-bio-2nd-all",
+            "paper": "2nd Paper (Zoology)",
+            "name": "HSC Biology 2nd Paper All Board Solutions (2018–2023)",
+            "board": "All Education Boards Combined",
+            "year": "2018–2023",
+            "downloadUrl": "https://drive.google.com/file/d/example_bio2_allboard/view",
+            "desc": "Human physiology systems, genetics cross problems, and heart/brain/kidney diagram solutions."
+          }
+        ]
       }
     ],
     "tricks": [
@@ -528,6 +796,14 @@
         "year": "HSC Quick Sheet",
         "downloadUrl": "https://drive.google.com/file/d/example_physics_shortcuts/view",
         "desc": "Fast problem-solving techniques for river-boat, projectile motion, and collision problems without long equations."
+      },
+      {
+        "id": "trick-4",
+        "name": "Chemistry Periodic Trends & Electron Configuration Mnemonics",
+        "subject": "Chemistry",
+        "year": "HSC Quick Sheet",
+        "downloadUrl": "https://drive.google.com/file/d/example_chem_periodic_tricks/view",
+        "desc": "Quick rules for ionization energy, electronegativity, flame test colors, and coordination numbers."
       }
     ],
     "tests": [
@@ -554,6 +830,14 @@
         "year": "Test Exam 2023",
         "downloadUrl": "https://drive.google.com/file/d/example_rumc_test/view",
         "desc": "Rigorous practice papers covering Botany, Zoology, and Chemistry 1st & 2nd paper."
+      },
+      {
+        "id": "test-4",
+        "name": "Viqarunnisa Noon College & Holy Cross Model Test Set",
+        "subject": "Science Combined",
+        "year": "Test Exam 2023",
+        "downloadUrl": "https://drive.google.com/file/d/example_vnc_test/view",
+        "desc": "Model exam papers with creative questions and detailed answer key solutions."
       }
     ]
   }
