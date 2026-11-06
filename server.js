@@ -236,6 +236,7 @@ app.use((req, res, next) => {
     "img-src 'self' data: blob: https:; " +
     "media-src 'self' data: blob: https:; " +
     "connect-src 'self' https:; " +
+    "frame-src 'self' https: data: blob:; " +
     "frame-ancestors 'self'; " +
     "base-uri 'self'; " +
     "form-action 'self';"

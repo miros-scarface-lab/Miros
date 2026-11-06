@@ -537,6 +537,377 @@
       background: var(--bg-subtle);
       color: var(--accent-rust);
     }
+  
+    /* Hub Navigation Tabs */
+    .hub-tabs-container {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.75rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .hub-tabs-container::-webkit-scrollbar { display: none; }
+
+    .hub-tab-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.75rem 1.4rem;
+      background: rgba(14, 20, 38, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 9999px;
+      color: #94a3b8;
+      font-family: var(--font-bengali);
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      backdrop-filter: blur(16px);
+    }
+    .hub-tab-btn:hover {
+      color: #ffffff;
+      border-color: rgba(0, 240, 255, 0.4);
+      background: rgba(0, 240, 255, 0.08);
+      transform: translateY(-2px);
+    }
+    .hub-tab-btn.active {
+      background: linear-gradient(135deg, rgba(0, 240, 255, 0.2) 0%, rgba(99, 102, 241, 0.25) 100%);
+      color: #00f0ff;
+      border-color: #00f0ff;
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.25);
+    }
+    .hub-tab-icon {
+      font-size: 1.15rem;
+    }
+    .hub-tab-pill {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #cbd5e1;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .hub-tab-btn.active .hub-tab-pill {
+      background: rgba(0, 240, 255, 0.2);
+      color: #00f0ff;
+      border-color: rgba(0, 240, 255, 0.4);
+    }
+
+    /* Mulboi Control Toolbar */
+    .mulboi-controls {
+      background: rgba(14, 20, 38, 0.72);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+    }
+
+    .mulboi-search-row {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .mulboi-search-box {
+      flex: 1;
+      min-width: 280px;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .mulboi-search-icon {
+      position: absolute;
+      left: 1rem;
+      font-size: 1.1rem;
+      color: #64748b;
+      pointer-events: none;
+    }
+    .mulboi-search-input {
+      width: 100%;
+      padding: 0.7rem 2.8rem 0.7rem 2.75rem;
+      font-family: var(--font-bengali);
+      font-size: 0.95rem;
+      background: rgba(8, 12, 26, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 9999px;
+      color: #f8fafc;
+      transition: all 0.2s ease;
+    }
+    .mulboi-search-input:focus {
+      outline: none;
+      border-color: #00f0ff;
+      box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.2), 0 0 15px rgba(0, 240, 255, 0.2);
+    }
+    .mulboi-search-clear {
+      position: absolute;
+      right: 0.8rem;
+      background: transparent;
+      border: none;
+      color: #64748b;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: none;
+      border-radius: 50%;
+      padding: 0.2rem 0.4rem;
+    }
+    .mulboi-search-clear:hover {
+      color: #f8fafc;
+    }
+
+    /* Filter Pills Scrollable Row */
+    .filter-pills-row {
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding-bottom: 0.25rem;
+    }
+    .filter-pills-row::-webkit-scrollbar { display: none; }
+
+    .filter-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.4rem 0.9rem;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #94a3b8;
+      font-family: var(--font-bengali);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+    .filter-pill:hover {
+      color: #f8fafc;
+      border-color: rgba(0, 240, 255, 0.4);
+      background: rgba(0, 240, 255, 0.08);
+    }
+    .filter-pill.active {
+      background: rgba(0, 240, 255, 0.15);
+      color: #00f0ff;
+      border-color: #00f0ff;
+      box-shadow: 0 0 12px rgba(0, 240, 255, 0.2);
+      font-weight: 600;
+    }
+    .filter-pill .pill-count {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      padding: 0.1rem 0.4rem;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #cbd5e1;
+    }
+    .filter-pill.active .pill-count {
+      background: rgba(0, 240, 255, 0.25);
+      color: #00f0ff;
+    }
+
+    /* Mulboi Cards Grid */
+    .mulboi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    /* Individual Book Card */
+    .mulboi-card {
+      background: rgba(14, 20, 38, 0.72);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.55), 0 0 1px 1px rgba(255, 255, 255, 0.08);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.2s ease;
+      position: relative;
+    }
+    .mulboi-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(0, 240, 255, 0.4);
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 25px rgba(0, 240, 255, 0.22);
+    }
+
+    .mulboi-card-cover {
+      height: 190px;
+      background: linear-gradient(135deg, rgba(8, 14, 30, 0.95), rgba(18, 28, 54, 0.9));
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .mulboi-cover-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      transition: transform 0.35s ease;
+    }
+    .mulboi-card:hover .mulboi-cover-img {
+      transform: scale(1.05);
+    }
+    .mulboi-cover-fallback {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.12), transparent 70%);
+    }
+    .mulboi-cover-emblem {
+      font-size: 3.2rem;
+      filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.4));
+    }
+    .mulboi-cover-watermark {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.4);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .mulboi-card-body {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 0.65rem;
+    }
+
+    .mulboi-card-badges {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+    .badge-subject {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-family: var(--font-bengali);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
+      background: rgba(0, 240, 255, 0.1);
+      color: #00f0ff;
+      border: 1px solid rgba(0, 240, 255, 0.3);
+    }
+    .badge-category {
+      font-family: var(--font-bengali);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.2rem 0.55rem;
+      border-radius: 9999px;
+      background: rgba(168, 85, 247, 0.12);
+      color: #c084fc;
+      border: 1px solid rgba(168, 85, 247, 0.3);
+    }
+    .badge-edition {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.06);
+      color: #94a3b8;
+    }
+
+    .mulboi-book-title {
+      font-family: var(--font-bengali);
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: #f8fafc;
+      line-height: 1.4;
+      margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .mulboi-book-author {
+      font-family: var(--font-bengali);
+      font-size: 0.88rem;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin: 0;
+    }
+
+    .mulboi-card-actions {
+      margin-top: auto;
+      padding-top: 0.75rem;
+      display: flex;
+      gap: 0.5rem;
+    }
+    .btn-read-online {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1rem;
+      border-radius: 9999px;
+      background: linear-gradient(135deg, #00f0ff 0%, #6366f1 100%);
+      color: #040814;
+      font-family: var(--font-bengali);
+      font-weight: 700;
+      font-size: 0.88rem;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 240, 255, 0.35);
+      transition: all 0.2s ease;
+    }
+    .btn-read-online:hover {
+      box-shadow: 0 6px 24px rgba(0, 240, 255, 0.6);
+      transform: translateY(-2px);
+      color: #040814;
+    }
+    .btn-open-tab {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #cbd5e1;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .btn-open-tab:hover {
+      background: rgba(0, 240, 255, 0.15);
+      border-color: #00f0ff;
+      color: #00f0ff;
+      transform: translateY(-2px);
+    }
+
+    .mulboi-load-more-wrap {
+      text-align: center;
+      margin-top: 2.5rem;
+    }
+
   </style>
 </head>
 <body class="vintage-body">
@@ -592,11 +963,27 @@
             <span class="dots-symbol">⋮</span>
           </button>
           <div class="dropdown-menu" id="dotsMenu">
-            <a href="hsc.html" class="dots-menu-item dots-menu-highlight">
-              <span class="dots-icon">📚</span>
-              <strong>একাডেমিক লাইব্রেরি (HSC Academic)</strong>
+            <a href="hsc.html?tab=mulboi" class="dots-menu-item dots-menu-highlight">
+              <span class="dots-icon">📖</span>
+              <strong>মূল বই ও দাগানো বই (Mulboi.com)</strong>
             </a>
+            <a href="hsc.html?tab=mulboi&cat=textbooks" class="dots-menu-subitem">📖 মূল পাঠ্যবই (২০২৬)</a>
+            <a href="hsc.html?tab=mulboi&cat=highlighted" class="dots-menu-subitem">🎯 দাগানো বই (Medical & Eng)</a>
+            <a href="hsc.html?tab=mulboi&cat=exercises" class="dots-menu-subitem">📝 অনুশীলনী সমাধান</a>
+            <a href="hsc.html?tab=mulboi&cat=formulas" class="dots-menu-subitem">⚡ এক নজরে সুত্র</a>
             <div class="dots-divider"></div>
+            <a href="hsc.html?tab=aapathshala" class="dots-menu-item dots-menu-highlight">
+              <span class="dots-icon">📁</span>
+              <strong>টেস্ট পেপার ও বোর্ড আর্কাইভ</strong>
+            </a>
+            <a href="hsc.html?folder=folder-test-papers" class="dots-menu-subitem">📁 টেস্ট পেপার</a>
+            <a href="hsc.html?folder=folder-question-banks" class="dots-menu-subitem">📁 প্রশ্নব্যাংক</a>
+            <a href="hsc.html?folder=folder-final-model-tests" class="dots-menu-subitem">📁 ফাইনাল মডেল টেস্ট</a>
+            <a href="hsc.html?folder=folder-board-solved-22" class="dots-menu-subitem">📁 বোর্ড প্রশ্ন সলভ-২২</a>
+            <a href="hsc.html?folder=folder-board-solution-books" class="dots-menu-subitem">📁 বোর্ড সল্যুশন বুক</a>
+            <div class="dots-divider"></div>
+            <a href="admin.html#tab-hsc" class="dots-menu-subitem">⚙️ Manage Library (Admin)</a>
+          </div>
             <a href="hsc.html?folder=folder-test-papers" class="dots-menu-subitem">📁 টেস্ট পেপার</a>
             <a href="hsc.html?folder=folder-question-banks" class="dots-menu-subitem">📁 প্রশ্নব্যাংক</a>
             <a href="hsc.html?folder=folder-final-model-tests" class="dots-menu-subitem">📁 ফাইনাল মডেল টেস্ট</a>
@@ -642,7 +1029,90 @@
         <p>উচ্চ মাধ্যমিক বোর্ড পরীক্ষার পূর্ণাঙ্গ প্রস্তুতি সামগ্রী — বিগত বছরের টেস্ট পেপার, চ্যাপ্টারওয়াইজ প্রশ্নব্যাংক, মডেল টেস্ট, বোর্ড প্রশ্ন ও পূর্ণাঙ্গ সল্যুশন বুকের অফিশিয়াল ড্রাইভ সংগ্রহ।</p>
       </div>
 
-      <!-- Main Explorer Container -->
+      
+      <!-- Hub Source Switcher Tabs -->
+      <div class="hub-tabs-container">
+        <button type="button" class="hub-tab-btn active" id="hubTabMulboi">
+          <span class="hub-tab-icon">📖</span>
+          <span class="hub-tab-text">মূল বই ও দাগানো বই (Mulboi.com)</span>
+          <span class="hub-tab-pill">৩০০টি বই</span>
+        </button>
+        <button type="button" class="hub-tab-btn" id="hubTabAapathshala">
+          <span class="hub-tab-icon">📁</span>
+          <span class="hub-tab-text">টেস্ট পেপার ও বোর্ড আর্কাইভ (AAPathshala)</span>
+          <span class="hub-tab-pill">৬২০টি ফাইল</span>
+        </button>
+      </div>
+
+      <!-- MULBOI SECTION (Active by Default) -->
+      <section id="mulboiSection">
+        <!-- Controls: Search, Category Pills, Subject Pills -->
+        <div class="mulboi-controls">
+          <div class="mulboi-search-row">
+            <div class="mulboi-search-box">
+              <span class="mulboi-search-icon">🔍</span>
+              <input type="text" id="mulboiSearchInput" class="mulboi-search-input" placeholder="বইয়ের নাম, লেখক বা বিষয় খুঁজুন (যেমন: ইসহাক, হাজারী, তপন, কবীর, কেতাব, আজমল)..." autocomplete="off" aria-label="Search Mulboi books">
+              <button type="button" id="mulboiSearchClearBtn" class="mulboi-search-clear" title="Clear search">✕</button>
+            </div>
+            <div style="font-family:var(--font-mono); font-size:0.8rem; color:var(--ink-muted);" id="mulboiResultsCount">
+              প্রদর্শিত: <span style="color:#00f0ff; font-weight:700;" id="mulboiCountNum">300</span>টি বই
+            </div>
+          </div>
+
+          <!-- Category Filter Pills -->
+          <div>
+            <div style="font-family:var(--font-mono); font-size:0.75rem; color:var(--ink-muted); margin-bottom:0.4rem; text-transform:uppercase; letter-spacing:0.05em;">ক্যাটেগরি নির্বাচন করুন:</div>
+            <div class="filter-pills-row" id="mulboiCatPills">
+              <button type="button" class="filter-pill active" data-cat="all">✨ সকল বই <span class="pill-count">300</span></button>
+              <button type="button" class="filter-pill" data-cat="textbooks">📖 মূল বই <span class="pill-count">52</span></button>
+              <button type="button" class="filter-pill" data-cat="highlighted">🎯 দাগানো বই <span class="pill-count">105</span></button>
+              <button type="button" class="filter-pill" data-cat="exercises">📝 অনুশীলনী সমাধান <span class="pill-count">64</span></button>
+              <button type="button" class="filter-pill" data-cat="formulas">⚡ এক নজরে সুত্র <span class="pill-count">24</span></button>
+              <button type="button" class="filter-pill" data-cat="summaries">📑 সারসংক্ষেপ <span class="pill-count">23</span></button>
+              <button type="button" class="filter-pill" data-cat="practicals">🔬 ব্যবহারিক গাইড <span class="pill-count">32</span></button>
+            </div>
+          </div>
+
+          <!-- Subject Filter Pills -->
+          <div>
+            <div style="font-family:var(--font-mono); font-size:0.75rem; color:var(--ink-muted); margin-bottom:0.4rem; text-transform:uppercase; letter-spacing:0.05em;">বিষয় ও পত্র নির্বাচন:</div>
+            <div class="filter-pills-row" id="mulboiSubPills">
+              <button type="button" class="filter-pill active" data-sub="all">সকল বিষয়</button>
+              <button type="button" class="filter-pill" data-sub="physics">⚛️ পদার্থবিজ্ঞান</button>
+              <button type="button" class="filter-pill" data-sub="chemistry">🧪 রসায়ন</button>
+              <button type="button" class="filter-pill" data-sub="math">📐 উচ্চতর গণিত</button>
+              <button type="button" class="filter-pill" data-sub="biology">🧬 জীববিজ্ঞান</button>
+              <button type="button" class="filter-pill" data-sub="english">🇬🇧 ইংরেজি</button>
+              <button type="button" class="filter-pill" data-sub="gk">🌐 সাধারণ জ্ঞান</button>
+              <button type="button" class="filter-pill" data-sub="bangla">🇧🇩 বাংলা</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Book Cards Grid -->
+        <div class="mulboi-grid" id="mulboiGrid">
+          <!-- Dynamically populated book cards -->
+        </div>
+
+        <!-- Empty Results -->
+        <div id="mulboiEmptyState" class="lib-empty" style="display: none;">
+          <div class="lib-empty-icon">🔍</div>
+          <h3>কোনো বই পাওয়া যায়নি</h3>
+          <p>আপনার সার্চ কীওয়ার্ড অথবা ফিল্টারের সাথে মিলে এমন কোনো বই খুঁজে পাওয়া যায়নি।</p>
+        </div>
+
+        <!-- Load More Button -->
+        <div class="mulboi-load-more-wrap" id="mulboiLoadMoreWrap" style="display: none;">
+          <button type="button" class="vintage-btn btn-outline" id="mulboiLoadMoreBtn">
+            <span>➕ আরও বই দেখুন (+Load More)</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- AAPATHSHALA SECTION (Toggleable) -->
+      <section id="aapathshalaSection" style="display: none;">
+
+        <!-- Main Explorer Container -->
       <div class="lib-explorer-box">
         
         <!-- Top Toolbar: Search & Statistics -->
@@ -685,6 +1155,7 @@
         </div>
 
       </div>
+      </section>
 
     </div>
   </main>
@@ -714,6 +1185,32 @@
             <span>⬇</span> সরাসরি ডাউনলোড
           </a>
         </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- Mulboi Interactive Reader Modal -->
+  <div class="pdf-modal-overlay" id="mulboiReaderModal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="pdf-modal-box parchment-paper" style="max-width: 1100px; height: 92vh;">
+      <div class="pdf-modal-header">
+        <div class="pdf-modal-title-wrap">
+          <span class="pdf-badge-icon" style="background:#00f0ff; color:#040814; font-weight:800;">BOOK</span>
+          <div>
+            <h2 class="pdf-modal-title" id="mulboiReaderTitle" style="font-size:1.05rem;">Digital Book Reader</h2>
+            <div style="font-family:var(--font-bengali); font-size:0.8rem; color:var(--ink-muted);" id="mulboiReaderAuthor">Mulboi.com Online Edition</div>
+          </div>
+        </div>
+        <div style="display:flex; gap:0.5rem; align-items:center;">
+          <a href="#" target="_blank" rel="noopener noreferrer" class="pdf-btn-drive" id="mulboiDirectTabBtn" title="নতুন ট্যাবে সরাসরি খুলুন">
+            <span>↗</span> নতুন ট্যাবে খুলুন
+          </a>
+          <button type="button" class="pdf-modal-close" id="mulboiReaderCloseBtn" aria-label="Close Reader">✕</button>
+        </div>
+      </div>
+
+      <div class="pdf-modal-frame-wrap" style="flex:1; background:#040712;">
+        <iframe id="mulboiReaderIframe" class="pdf-modal-frame" src="about:blank" title="Digital Book Reader" allow="autoplay; fullscreen"></iframe>
       </div>
     </div>
   </div>
@@ -779,6 +1276,244 @@
     const pdfModalDownloadBtn = document.getElementById('pdfModalDownloadBtn');
     const pdfModalCloseBtn = document.getElementById('pdfModalCloseBtn');
     const pdfModalMeta = document.getElementById('pdfModalMeta');
+
+    
+    // Embedded Mulboi Catalog (Fallback & Instant Render)
+    const EMBEDDED_MULBOI_BOOKS = [{"id":"mb-slide-1","title":"পদার্থবিজ্ঞান প্রথম পত্র","author":"প্রফেসর মোহাম্মদ ইসহাক","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/1pdaarthbijnyaan-prthm-ptr_RIXnVXV.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/15","source":"Mulboi.com"},{"id":"mb-slide-2","title":"পদার্থবিজ্ঞান দ্বিতীয় পত্র","author":"প্রফেসর মোহাম্মদ ইসহাক","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/2pdaarthbijnyaan-dbitiiy-ptr_TVpXqZu.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/129","source":"Mulboi.com"},{"id":"mb-slide-3","title":"পদার্থবিজ্ঞান প্রথম পত্র","author":"ড. শাহজাহান তপন","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-prthm-ptr.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/16","source":"Mulboi.com"},{"id":"mb-slide-4","title":"পদার্থবিজ্ঞান দ্বিতীয় পত্র","author":"ড. শাহজাহান তপন","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/10pdaarthbijnyaan-dbitiiy-ptr.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/130","source":"Mulboi.com"},{"id":"mb-slide-5","title":"পদার্থবিজ্ঞান প্রথম পত্র","author":"এ টি এম শামসুর রহমান সেলু","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-prthm-ptr_oXSLsVJ.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/18","source":"Mulboi.com"},{"id":"mb-slide-6","title":"পদার্থবিজ্ঞান দ্বিতীয় পত্র","author":"এ টি এম শামসুর রহমান সেলু","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-dbitiiy-ptr_UCp6FDL.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/19","source":"Mulboi.com"},{"id":"mb-slide-7","title":"পদার্থবিজ্ঞান প্রথম পত্র","author":"মোঃ গোলাম হোসেন প্রামানিক","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-prthm-ptr_xO4oLzg.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/17","source":"Mulboi.com"},{"id":"mb-slide-8","title":"পদার্থবিজ্ঞান দ���বিতীয় পত্র","author":"মোঃ গোলাম হোসেন প্রামানিক","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"Complete","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-dbitiiy-ptr.jpeg","readUrl":"https://www.mulboi.com/book_bank/private_link/20","source":"Mulboi.com"},{"id":"mb-slide-9","title":"পদার্থবিজ্ঞান প্রথম পত্র","author":"ড. তফাজ্জল হোসেন","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-prthm-ptr_nAwMZtP.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/650","source":"Mulboi.com"},{"id":"mb-slide-10","title":"পদার্থবিজ্ঞান দ্বিতীয় পত্র","author":"ড. তফাজ্জল হোসেন","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-dbitiiy-ptr_pRYzwGy.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/651","source":"Mulboi.com"},{"id":"mb-slide-11","title":"রসায়ন প্রথম পত্র","author":"ড. সরোজ কান্তি সিংহ হাজারী","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"1st Paper","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-prthm-ptr.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/23","source":"Mulboi.com"},{"id":"mb-slide-12","title":"রসায়ন দ্বিতীয় পত্র","author":"ড. সরোজ কান্তি সিংহ হাজারী","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-dbitiiy-ptr.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/31","source":"Mulboi.com"},{"id":"mb-slide-13","title":"রসায়ন প্রথম পত্র","author":"মোঃ আহসানুল কবীর","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"1st Paper","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-prthm-ptr_0FRwWQS.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/24","source":"Mulboi.com"},{"id":"mb-slide-14","title":"রসায়ন দ্বিতীয় পত্র","author":"মোঃ আহসানুল কবীর","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-dbitiiy-ptr_hRTwffy.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/30","source":"Mulboi.com"},{"id":"mb-slide-15","title":"রসায়ন প্রথম পত্র","author":"সঞ্জিত কুমার গুহ","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"1st Paper","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-prthm-ptr_qsaqyrB.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/25","source":"Mulboi.com"},{"id":"mb-slide-16","title":"রসায়ন দ্বিতীয় পত্র","author":"সঞ্জিত কুমার গুহ","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-dbitiiy-ptr_PNob3xJ.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/29","source":"Mulboi.com"},{"id":"mb-slide-17","title":"রসায়ন প্রথম পত্র","author":"মাহবুব হাসান লিংকন","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"1st Paper","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-prthm-ptr_0qz89wu.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/26","source":"Mulboi.com"},{"id":"mb-slide-18","title":"রসায়ন দ্বিতীয় পত্র","author":"মাহবুব হাসান লিংকন","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-dbitiiy-ptr_0pN0bu2.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/28","source":"Mulboi.com"},{"id":"mb-slide-19","title":"উচ্চতর গণিত প্রথম পত্র","author":"মোঃ কেতাব উদ্দীন","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"1st Paper","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-prthm-ptr.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/32","source":"Mulboi.com"},{"id":"mb-slide-20","title":"উচ্চতর গণিত দ্বিতীয় পত্র","author":"মোঃ কেতাব উদ্দীন","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"2nd Paper","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-dbitiiy-ptr.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/38","source":"Mulboi.com"},{"id":"mb-slide-21","title":"উচ্চতর গণিত প্রথম পত্র","author":"অসীম কুমার সাহা","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"1st Paper","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-prthm-ptr_alY1EGz.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/33","source":"Mulboi.com"},{"id":"mb-slide-22","title":"উচ্চতর গণিত দ্বিতীয় পত্র","author":"অসীম কুমার সাহা","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"2nd Paper","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-dbitiiy-ptr_YbDP5F6.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/414","source":"Mulboi.com"},{"id":"mb-slide-23","title":"উচ্চতর গণিত প্রথম পত্র","author":"এস ইউ আহাম্মদ","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"1st Paper","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-prthm-ptr_CGFZGBb.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/34","source":"Mulboi.com"},{"id":"mb-slide-24","title":"উচ্চতর গণিত দ্বিতীয় পত্র","author":"এস ইউ আহাম্মদ","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"2nd Paper","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-dbitiiy-ptr_QdnakEd.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/37","source":"Mulboi.com"},{"id":"mb-slide-25","title":"উচ্চতর গণিত প্রথম পত্র","author":"মোঃ রফিকুল ইসলাম","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"1st Paper","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-prthm-ptr_fA7Go3Z.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/35","source":"Mulboi.com"},{"id":"mb-slide-26","title":"উচ্চতর গণিত দ্বিতীয় পত্র","author":"মোঃ রফিকুল ইসলাম","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"2nd Paper","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-dbitiiy-ptr_Txy4bEr.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/36","source":"Mulboi.com"},{"id":"mb-slide-27","title":"জীববিজ্ঞান প্রথম পত্র","author":"ড. মোহাম্মদ আবুল হাসান","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"1st Paper","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonejiibbijnyaan-prthm-ptr.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/39","source":"Mulboi.com"},{"id":"mb-slide-28","title":"জীববিজ্ঞান দ্বিতীয় পত্র","author":"গাজী আজমল","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"2nd Paper","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonejiibbijnyaan-dbitiiy-ptr.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/44","source":"Mulboi.com"},{"id":"mb-slide-29","title":"জীববিজ্ঞান প্রথম পত্র","author":"গাজী আজমল","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"1st Paper","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonejiibbijnyaan-prthm-ptr_2TAeqyl.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/40","source":"Mulboi.com"},{"id":"mb-slide-30","title":"জীববিজ্ঞান প্রথম পত্র","author":"মোঃ আব্দুল আলীম","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"1st Paper","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonejiibbijnyaan-prthm-ptr_V8fjpxj.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/41","source":"Mulboi.com"},{"id":"mb-slide-31","title":"জীববিজ্ঞান দ্বিতীয় পত্র","author":"মোঃ আব্দুল আলীম","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"2nd Paper","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonejiibbijnyaan-dbitiiy-ptr_YLUmipM.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/45","source":"Mulboi.com"},{"id":"mb-slide-32","title":"জীববিজ্ঞান প্রথম পত্র","author":"মোঃ আজিবুর রহমান","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"1st Paper","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonejiibbijnyaan-prthm-ptr_JkA2BkH.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/42","source":"Mulboi.com"},{"id":"mb-slide-33","title":"জীববিজ্ঞান দ্বিতীয় পত্র","author":"নূর-ই-পারভীন খানম","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"2nd Paper","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonejiibbijnyaan-dbitiiy-ptr_NOHULWO.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/47","source":"Mulboi.com"},{"id":"mb-slide-34","title":"জীববিজ্ঞান প্রথম পত্র","author":"মাজেদা বেগম","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"1st Paper","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonejiibbijnyaan-prthm-ptr_WHbOg3Y.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/43","source":"Mulboi.com"},{"id":"mb-slide-35","title":"জীববিজ্ঞান দ্বিতীয় পত্র","author":"মাজেদা বেগম","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"2nd Paper","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonejiibbijnyaan-dbitiiy-ptr_3tFmK0E.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/46","source":"Mulboi.com"},{"id":"mb-slide-36","title":"Master English","author":"মোঃ জাহাঙ্গীর আলম","subject":"ইংরেজি","subjectKey":"english","subjectIcon":"🇬🇧","paper":"Complete","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonemaster-english.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/652","source":"Mulboi.com"},{"id":"mb-slide-37","title":"বেসিক ইংরেজি গ্রামার","author":"মো.  বাপ্পী হোসেন","subject":"ইংরেজি","subjectKey":"english","subjectIcon":"🇬🇧","paper":"Complete","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonebesik-inreji-graamaar-bi.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/419","source":"Mulboi.com"},{"id":"mb-slide-38","title":"বেসিক ইংরেজি ভোকাবুলারি","author":"মো.  বাপ্পী হোসেন","subject":"ইংরেজি","subjectKey":"english","subjectIcon":"🇬🇧","paper":"Complete","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonebesik-inreji-bheaakaabulaari_xaSLQ4b.png","readUrl":"https://www.mulboi.com/book_bank/private_link/298","source":"Mulboi.com"},{"id":"mb-slide-39","title":"মেডিকেল ইংরেজি","author":"মো.  বাপ্পী হোসেন","subject":"ইংরেজি","subjectKey":"english","subjectIcon":"🇬🇧","paper":"Complete","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonemeddikel-inreji.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/299","source":"Mulboi.com"},{"id":"mb-slide-40","title":"মেডিকেল ইংরেজি প্রস্তুতি","author":"সেরা লেখক","subject":"ইংরেজি","subjectKey":"english","subjectIcon":"🇬🇧","paper":"Complete","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonemeddikel-inreji-prstuti.png","readUrl":"https://www.mulboi.com/book_bank/private_link/300","source":"Mulboi.com"},{"id":"mb-slide-41","title":"জোবায়েরস জিকে","author":"জোবায়ের আহমেদ","subject":"সাধারণ জ্ঞান","subjectKey":"gk","subjectIcon":"🌐","paper":"Complete","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonejeaabaayers-jike.jpeg","readUrl":"https://www.mulboi.com/book_bank/private_link/647","source":"Mulboi.com"},{"id":"mb-slide-42","title":"আলাল সাম্প্রতিক আওয়ার","author":"শরিফুল ইসলাম আলাল","subject":"সাধারণ জ্ঞান","subjectKey":"gk","subjectIcon":"🌐","paper":"Complete","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneaalaal-saamprtik-aaoyaar.png","readUrl":"https://www.mulboi.com/book_bank/private_link/653","source":"Mulboi.com"},{"id":"mb-slide-43","title":"মিহির জিকে ফাইনাল সাজেশন","author":"এম. এ মোত্তালিব মিহির","subject":"সাধারণ জ্ঞান","subjectKey":"gk","subjectIcon":"🌐","paper":"Complete","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonemihir-jike-phaainaal-saajeshn.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/654","source":"Mulboi.com"},{"id":"mb-slide-44","title":"MP3 সাধারন জ্ঞান - বাংলাদেশ","author":"ড. মোঃ শাহনেওয়াজ হোসেন","subject":"সাধারণ জ্ঞান","subjectKey":"gk","subjectIcon":"🌐","paper":"Complete","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonemp3-saadhaarn-jnyaan-baanlaadesh.png","readUrl":"https://www.mulboi.com/book_bank/private_link/648","source":"Mulboi.com"},{"id":"mb-slide-45","title":"MP3 সাধারন জ্ঞান - আন্তর্জাতিক","author":"ড. মোঃ শাহনেওয়াজ হোসেন","subject":"সাধারণ জ্ঞান","subjectKey":"gk","subjectIcon":"🌐","paper":"Complete","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonemp3-saadhaarn-jnyaan-aantrjaatik.webp","readUrl":"https://www.mulboi.com/book_bank/private_link/649","source":"Mulboi.com"},{"id":"mb-slide-46","title":"মেডিকেল প্রস্তুতি বই","author":"এনসিটিবি অনুমোদিত","subject":"সাধারণ জ্ঞান","subjectKey":"gk","subjectIcon":"🌐","paper":"Complete","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/187meddikel-prstuti-bi.jpeg","readUrl":"https://www.mulboi.com/book_bank/private_link/516","source":"Mulboi.com"},{"id":"mb-slide-47","title":"বিএসসি","author":"এনসিটিবি অনুমোদিত","subject":"সাধারণ জ্ঞান","subjectKey":"gk","subjectIcon":"🌐","paper":"Complete","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonebiessi.jpeg","readUrl":"https://www.mulboi.com/book_bank/private_link/517","source":"Mulboi.com"},{"id":"mb-slide-48","title":"ডিপ্লোমা","author":"এনসিটিবি অনুমোদিত","subject":"সাধারণ জ্ঞান","subjectKey":"gk","subjectIcon":"🌐","paper":"Complete","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneddipleaamaa.jpeg","readUrl":"https://www.mulboi.com/book_bank/private_link/518","source":"Mulboi.com"},{"id":"mb-slide-49","title":"সাম্প্রতিক বিষয়াবলি","author":"তুষার হাসান","subject":"সাধারণ জ্ঞান","subjectKey":"gk","subjectIcon":"🌐","paper":"Complete","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonesaamprtik-bissyaabli.jpeg","readUrl":"https://www.mulboi.com/book_bank/private_link/519","source":"Mulboi.com"},{"id":"mb-slide-50","title":"বাংলা","author":"এনসিটিবি অনুমোদিত","subject":"বাংলা","subjectKey":"bangla","subjectIcon":"🇧🇩","paper":"Complete","category":"textbooks","categoryName":"মূল বই","edition":"২০২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonebaanlaa-saahity.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/515","source":"Mulboi.com"},{"id":"mb-slide-51","title":"আসপেক্ট সিরিজ","author":"এনসিটিবি অনুমোদিত","subject":"অন্যান্য","subjectKey":"other","subjectIcon":"📚","paper":"Complete","category":"textbooks","categoryName":"মূল বই","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/184aaspektt-sirij.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/491","source":"Mulboi.com"},{"id":"mb-slide-52","title":"আসপেক্ট সিরিজ","author":"এনসিটিবি অনুমোদিত","subject":"অন্যান্য","subjectKey":"other","subjectIcon":"📚","paper":"Complete","category":"textbooks","categoryName":"মূল বই","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneaaspektt-sirij.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/490","source":"Mulboi.com"},{"id":"mb-slide-53","title":"পদার্থবিজ্ঞান প্রথম পত্র  অনুশীলনী MCQ","author":"প্রফেসর মোহাম্মদ ইসহাক","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/162pdaarthbijnyaan-prthm-ptr-anushiilnii-mcq.png","readUrl":"https://www.mulboi.com/book_bank/private_link/350","source":"Mulboi.com"},{"id":"mb-slide-54","title":"পদার্থবিজ্ঞান ২য় পত্র অনুশীলনী MCQ","author":"প্রফেসর মোহাম্মদ ইসহাক","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/163pdaarthbijnyaan-2y-ptr-anushiilnii-mcq.png","readUrl":"https://www.mulboi.com/book_bank/private_link/351","source":"Mulboi.com"},{"id":"mb-slide-55","title":"পদার্থবিজ্ঞান ১ম পত্র অনুশীলনী CQ","author":"প্রফেসর মোহাম্মদ ইসহাক","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-1m-ptr-anushiilnii-cq.png","readUrl":"https://www.mulboi.com/book_bank/private_link/359","source":"Mulboi.com"},{"id":"mb-slide-56","title":"পদার্থবিজ্ঞান ২য় পত্র অনুশীলনী CQ","author":"প্রফেসর মোহাম্মদ ইসহাক","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-2y-ptr-anushiilnii-cq.png","readUrl":"https://www.mulboi.com/book_bank/private_link/360","source":"Mulboi.com"},{"id":"mb-slide-57","title":"পদার্থবিজ্ঞান প্রথম পত্র  অনুশীলনী MCQ","author":"ড. শাহজাহান তপন","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-1m-anushiilnii-mcq.png","readUrl":"https://www.mulboi.com/book_bank/private_link/138","source":"Mulboi.com"},{"id":"mb-slide-58","title":"পদার্থবিজ্ঞান প্রথম পত্র অনুশীলনী CQ","author":"ড. শাহজাহান তপন","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-1m-anushiilnii-cq.png","readUrl":"https://www.mulboi.com/book_bank/private_link/178","source":"Mulboi.com"},{"id":"mb-slide-59","title":"পদার্থবিজ্ঞান দ্বিতীয় পত্র - অনুশীলনী MCQ","author":"ড. শাহজাহান তপন","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-2y-anushiilnii-mcq.png","readUrl":"https://www.mulboi.com/book_bank/private_link/144","source":"Mulboi.com"},{"id":"mb-slide-60","title":"পদার্থবিজ্ঞান দ্বিতীয় পত্র - অনুশীলনী CQ","author":"ড. শাহজাহান তপন","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-2y-anushiilnii-cq.png","readUrl":"https://www.mulboi.com/book_bank/private_link/184","source":"Mulboi.com"},{"id":"mb-slide-61","title":"পদার্থবিজ্ঞান প্রথম পত্র - অনুশীলনী MCQ","author":"মোঃ গোলাম হোসেন প্রামানিক","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/37pdaarthbijnyaan-1m-anushiilnii-mcq.png","readUrl":"https://www.mulboi.com/book_bank/private_link/139","source":"Mulboi.com"},{"id":"mb-slide-62","title":"পদার্থবিজ্ঞান প্রথম পত্র - অনুশীলনী CQ","author":"মোঃ গোলাম হোসেন প্রামানিক","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-1m-anushiilnii-cq_laivhnY.png","readUrl":"https://www.mulboi.com/book_bank/private_link/179","source":"Mulboi.com"},{"id":"mb-slide-63","title":"পদার্থবিজ্ঞান দ্বিতীয় পত্র - অনুশীলনী MCQ","author":"মোঃ গোলাম হোসেন প্রামানিক","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-2y-anushiilnii-mcq_CY4T1bA.png","readUrl":"https://www.mulboi.com/book_bank/private_link/145","source":"Mulboi.com"},{"id":"mb-slide-64","title":"পদার্থবিজ্ঞান দ্বিতীয় পত্র - অনুশীলনী CQ","author":"মোঃ গোলাম হোসেন প্রামানিক","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-2y-anushiilnii-cq_wKPglow.png","readUrl":"https://www.mulboi.com/book_bank/private_link/185","source":"Mulboi.com"},{"id":"mb-slide-65","title":"পদার্থবিজ্ঞান প্রথম পত্র - অনুশীলনী MCQ","author":"এ টি এম শামসুর রহমান সেলু","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-1m-anushiilnii-mcq_00aoBwF.png","readUrl":"https://www.mulboi.com/book_bank/private_link/140","source":"Mulboi.com"},{"id":"mb-slide-66","title":"পদার্থবিজ্ঞান প্রথম পত্র - অনুশীলনী CQ","author":"এ টি এম শামসুর রহমান সেলু","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-1m-anushiilnii-cq_2QsBVVt.png","readUrl":"https://www.mulboi.com/book_bank/private_link/180","source":"Mulboi.com"},{"id":"mb-slide-67","title":"পদার্থবিজ্ঞান দ্বিতীয় পত্র - অনুশীলনী MCQ","author":"এ টি এম শামসুর রহমান সেলু","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-2y-anushiilnii-mcq_D0lTnj3.png","readUrl":"https://www.mulboi.com/book_bank/private_link/146","source":"Mulboi.com"},{"id":"mb-slide-68","title":"পদার্থবিজ্ঞান দ্বিতীয় পত্র - অনুশীলনী CQ","author":"এ টি এম শামসুর রহমান সেলু","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-2y-anushiilnii-cq_GaGXLfQ.png","readUrl":"https://www.mulboi.com/book_bank/private_link/186","source":"Mulboi.com"},{"id":"mb-slide-69","title":"রসায়ন ১ম পত্র অনুশীলনী CQ","author":"ড. সরোজ কান্তি সিংহ হাজারী","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"1st Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-1m-ptr-anushiilnii-cq.png","readUrl":"https://www.mulboi.com/book_bank/private_link/361","source":"Mulboi.com"},{"id":"mb-slide-70","title":"রসায়ন ২য় পত্র অনুশীলনী CQ","author":"ড. সরোজ কান্তি সিংহ হাজারী","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-2y-ptr-anushiilnii-cq.png","readUrl":"https://www.mulboi.com/book_bank/private_link/363","source":"Mulboi.com"},{"id":"mb-slide-71","title":"রসায়ন প্রথম পত্র - অনুশীলনী MCQ","author":"ড. সরোজ কান্তি সিংহ হাজারী","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"1st Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-prthm-ptr-anushiilnii-mcq.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/352","source":"Mulboi.com"},{"id":"mb-slide-72","title":"রসায়ন দ্বিতীয় পত্র - অনুশীলনী MCQ","author":"ড. সরোজ কান্তি সিংহ হাজারী","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-dbitiiy-ptr-anushiilnii-mcq.jpg","readUrl":"https://www.mulboi.com/book_bank/private_link/353","source":"Mulboi.com"},{"id":"mb-slide-73","title":"রসায়ন প্রথম পত্র - অনুশীলনী MCQ","author":"মোঃ আহসানুল কবীর","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"1st Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-1m-anushiilnii-mcq.png","readUrl":"https://www.mulboi.com/book_bank/private_link/147","source":"Mulboi.com"},{"id":"mb-slide-74","title":"রসায়ন প্রথম পত্র - অনুশীলনী CQ","author":"মোঃ আহসানুল কবীর","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"1st Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-1m-anushiilnii-cq.png","readUrl":"https://www.mulboi.com/book_bank/private_link/188","source":"Mulboi.com"},{"id":"mb-slide-75","title":"রসায়ন দ্বিতীয় পত্র - অনুশীলনী MCQ","author":"মোঃ আহসানুল কবীর","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-2y-anushiilnii-mcq.png","readUrl":"https://www.mulboi.com/book_bank/private_link/155","source":"Mulboi.com"},{"id":"mb-slide-76","title":"রসায়ন দ্বিতীয় পত্র - অনুশীলনী CQ","author":"মোঃ আহসানুল কবীর","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-2y-anushiilnii-mcq_2ekGR3P.png","readUrl":"https://www.mulboi.com/book_bank/private_link/191","source":"Mulboi.com"},{"id":"mb-slide-77","title":"রসায়ন প্রথম পত্র - অনুশীলনী MCQ","author":"সঞ্জিত কুমার গুহ","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"1st Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-1m-anushiilnii-mcq_DYVxKVA.png","readUrl":"https://www.mulboi.com/book_bank/private_link/148","source":"Mulboi.com"},{"id":"mb-slide-78","title":"রসায়ন দ্বিতীয় পত্র - অনুশীলনী CQ","author":"সঞ্জিত কুমার গুহ","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-1m-anushiilnii-cq_Babzgou.png","readUrl":"https://www.mulboi.com/book_bank/private_link/189","source":"Mulboi.com"},{"id":"mb-slide-79","title":"রসায়ন দ্বিতীয় পত্র - অনুশীলনী MCQ","author":"সঞ্জিত কুমার গুহ","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-2y-anushiilnii-mcq_7AinuQU.png","readUrl":"https://www.mulboi.com/book_bank/private_link/154","source":"Mulboi.com"},{"id":"mb-slide-80","title":"রসায়ন দ্বিতীয় পত্র - অনুশীলনী CQ","author":"সঞ্জিত কুমার গুহ","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-2y-anushiilnii-mcq_41ghsST.png","readUrl":"https://www.mulboi.com/book_bank/private_link/192","source":"Mulboi.com"},{"id":"mb-slide-81","title":"রসায়ন প্রথম পত্র - অনুশীলনী MCQ","author":"মাহবুব হাসান লিংকন","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"1st Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-1m-anushiilnii-mcq_r5cz1Gl.png","readUrl":"https://www.mulboi.com/book_bank/private_link/149","source":"Mulboi.com"},{"id":"mb-slide-82","title":"রসায়ন প্রথম পত্র - অনুশীলনী CQ","author":"মাহবুব হাসান লিংকন","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"1st Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-1m-anushiilnii-cq_1QvIQtT.png","readUrl":"https://www.mulboi.com/book_bank/private_link/190","source":"Mulboi.com"},{"id":"mb-slide-83","title":"রসায়ন দ্বিতীয় পত্র - অনুশীলনী MCQ","author":"মাহবুব হাসান লিংকন","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-2y-anushiilnii-mcq_w1M4gEG.png","readUrl":"https://www.mulboi.com/book_bank/private_link/153","source":"Mulboi.com"},{"id":"mb-slide-84","title":"রসায়ন দ্বিতীয় পত্র - অনুশীলনী CQ","author":"মাহবুব হাসান লিংকন","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-2y-anushiilnii-mcq_mX1T01W.png","readUrl":"https://www.mulboi.com/book_bank/private_link/193","source":"Mulboi.com"},{"id":"mb-slide-85","title":"উচ্চতর গণিত প্রথম পত্র - অনুশীলনী MCQ","author":"মোঃ কেতাব উদ্দীন","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"1st Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-1m-anushiilnii-mcq.png","readUrl":"https://www.mulboi.com/book_bank/private_link/156","source":"Mulboi.com"},{"id":"mb-slide-86","title":"উচ্চতর গণিত প্রথম পত্র - অনুশীলনী CQ","author":"মোঃ কেতাব উদ্দীন","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"1st Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-1m-anushiilnii-cq_1Zu7aLg.png","readUrl":"https://www.mulboi.com/book_bank/private_link/194","source":"Mulboi.com"},{"id":"mb-slide-87","title":"উচ্চতর গণিত দ্বিতীয় পত্র - অনুশীলনী MCQ","author":"মোঃ কেতাব উদ্দীন","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"2nd Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-2y-anushiilnii-mcq.png","readUrl":"https://www.mulboi.com/book_bank/private_link/160","source":"Mulboi.com"},{"id":"mb-slide-88","title":"উচ্চতর গণিত দ্বিতীয় পত্র - অনুশীলনী CQ","author":"মোঃ কেতাব উদ্দীন","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"2nd Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-2y-anushiilnii-cq_VSghfJT.png","readUrl":"https://www.mulboi.com/book_bank/private_link/198","source":"Mulboi.com"},{"id":"mb-slide-89","title":"উচ্চতর গণিত প্রথম পত্র - অনুশীলনী MCQ","author":"অসীম কুমার সাহা","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"1st Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-1m-anushiilnii-mcq_FlPmQcJ.png","readUrl":"https://www.mulboi.com/book_bank/private_link/157","source":"Mulboi.com"},{"id":"mb-slide-90","title":"উচ্চতর গণিত প্রথম পত্র - অনুশীলনী CQ","author":"অসীম কুমার সাহা","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"1st Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-1m-anushiilnii-cq_jcpBucz.png","readUrl":"https://www.mulboi.com/book_bank/private_link/195","source":"Mulboi.com"},{"id":"mb-slide-91","title":"উচ্চতর গণিত দ্বিতীয় পত্র - অনুশীলনী MCQ","author":"অসীম কুমার সাহা","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"2nd Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-2y-anushiilnii-mcq_j3BsAiC.png","readUrl":"https://www.mulboi.com/book_bank/private_link/161","source":"Mulboi.com"},{"id":"mb-slide-92","title":"উচ্চতর গণিত দ্বিতীয় পত্র - অনুশীলনী CQ","author":"অসীম কুমার সাহা","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"2nd Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-2y-anushiilnii-cq_0qRZRWj.png","readUrl":"https://www.mulboi.com/book_bank/private_link/199","source":"Mulboi.com"},{"id":"mb-slide-93","title":"উচ্চতর গণিত প্রথম পত্র - অনুশীলনী MCQ","author":"এস ইউ আহাম্মদ","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"1st Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-1m-anushiilnii-mcq_gQUtnr9.png","readUrl":"https://www.mulboi.com/book_bank/private_link/158","source":"Mulboi.com"},{"id":"mb-slide-94","title":"উচ্চতর গণিত প্রথম পত্র - অনুশীলনী CQ","author":"এস ইউ আহাম্মদ","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"1st Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-1m-anushiilnii-cq_JrNPEBA.png","readUrl":"https://www.mulboi.com/book_bank/private_link/196","source":"Mulboi.com"},{"id":"mb-slide-95","title":"উচ্চতর গণিত দ্বিতীয় পত্র - অনুশীলনী MCQ","author":"এস ইউ আহাম্মদ","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"2nd Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-2y-anushiilnii-mcq_kUivKzc.png","readUrl":"https://www.mulboi.com/book_bank/private_link/162","source":"Mulboi.com"},{"id":"mb-slide-96","title":"উচ্চতর গণিত দ্বিতীয় পত্র - অনুশীলনী CQ","author":"এস ইউ আহাম্মদ","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"2nd Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-2y-anushiilnii-cq_jlrFBNN.png","readUrl":"https://www.mulboi.com/book_bank/private_link/200","source":"Mulboi.com"},{"id":"mb-slide-97","title":"উচ্চতর গণিত প্রথম পত্র - অনুশীলনী MCQ","author":"মোঃ রফিকুল ইসলাম","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"1st Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-1m-anushiilnii-mcq_qxalocC.png","readUrl":"https://www.mulboi.com/book_bank/private_link/159","source":"Mulboi.com"},{"id":"mb-slide-98","title":"উচ্চতর গণিত প্রথম পত্র - অনুশীলনী CQ","author":"মোঃ রফিকুল ইসলাম","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"1st Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-1m-anushiilnii-cq.png","readUrl":"https://www.mulboi.com/book_bank/private_link/197","source":"Mulboi.com"},{"id":"mb-slide-99","title":"উচ্চতর গণিত ২য় - অনুশীলনী MCQ","author":"মোঃ রফিকুল ইসলাম","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"2nd Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-2y-anushiilnii-mcq_jNZPNqo.png","readUrl":"https://www.mulboi.com/book_bank/private_link/163","source":"Mulboi.com"},{"id":"mb-slide-100","title":"উচ্চতর গণিত দ্বিতীয় পত্র - অনুশীলনী CQ","author":"মোঃ রফিকুল ইসলাম","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"2nd Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-2y-anushiilnii-cq.png","readUrl":"https://www.mulboi.com/book_bank/private_link/201","source":"Mulboi.com"},{"id":"mb-slide-101","title":"জীববিজ্ঞান প্রথম পত্র - অনুশীলনী MCQ","author":"মোহাম্মদ আবুল হাসান","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"1st Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonejiibbijnyaan-1m-anushiilnii-mcq.png","readUrl":"https://www.mulboi.com/book_bank/private_link/165","source":"Mulboi.com"},{"id":"mb-slide-102","title":"জীববিজ্ঞান প্রথম পত্র - অনুশীলনী CQ","author":"মোহাম্মদ আবুল হাসান","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"1st Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonejiibbijnyaan-1m-anushiilnii-cq.png","readUrl":"https://www.mulboi.com/book_bank/private_link/202","source":"Mulboi.com"},{"id":"mb-slide-103","title":"জীববিজ্ঞান দ্বিতীয় পত্র - অনুশীলনী MCQ","author":"গাজী আজমল","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"2nd Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonejiibbijnyaan-2y-anushiilnii-mcq.png","readUrl":"https://www.mulboi.com/book_bank/private_link/174","source":"Mulboi.com"},{"id":"mb-slide-104","title":"জীববিজ্ঞান দ্বিতীয় পত্র - অনুশীলনী CQ","author":"গাজী আজমল","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"2nd Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonejiibbijnyaan-2y-anushiilnii-cq.png","readUrl":"https://www.mulboi.com/book_bank/private_link/207","source":"Mulboi.com"},{"id":"mb-slide-105","title":"জীববিজ্ঞান প্রথম পত্র - অনুশীলনী MCQ","author":"মোঃ আব্দুল আলীম","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"1st Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonejiibbijnyaan-1m-anushiilnii-mcq_jOi5shU.png","readUrl":"https://www.mulboi.com/book_bank/private_link/167","source":"Mulboi.com"},{"id":"mb-slide-106","title":"জীববিজ্ঞান প্রথম পত্র - অনুশীলনী CQ","author":"মোঃ আব্দুল আলীম","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"1st Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonejiibbijnyaan-1m-anushiilnii-cq_u8w7Da5.png","readUrl":"https://www.mulboi.com/book_bank/private_link/204","source":"Mulboi.com"},{"id":"mb-slide-107","title":"জীববিজ্ঞান দ্বিতীয় পত্র - অনুশীলনী MCQ","author":"মোঃ আব্দুল আলীম","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"2nd Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonejiibbijnyaan-2y-anushiilnii-mcq_lQISlg5.png","readUrl":"https://www.mulboi.com/book_bank/private_link/175","source":"Mulboi.com"},{"id":"mb-slide-108","title":"জীববিজ্ঞান দ্বিতীয় পত্র - অনুশীলনী CQ","author":"মোঃ আব্দুল আলীম","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"2nd Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonejiibbijnyaan-2y-anushiilnii-cq_2ReL6Bt.png","readUrl":"https://www.mulboi.com/book_bank/private_link/208","source":"Mulboi.com"},{"id":"mb-slide-109","title":"জীববিজ্ঞান প্রথম পত্র - অনুশীলনী MCQ","author":"মাজেদা বেগম","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"1st Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonejiibbijnyaan-1m-anushiilnii-mcq_6FMpB9Q.png","readUrl":"https://www.mulboi.com/book_bank/private_link/169","source":"Mulboi.com"},{"id":"mb-slide-110","title":"জীববিজ্ঞান প্রথম পত্র - অনুশীলনী CQ","author":"মাজেদা বেগম","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"1st Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/86jiibbijnyaan-1m-anushiilnii-cq.png","readUrl":"https://www.mulboi.com/book_bank/private_link/206","source":"Mulboi.com"},{"id":"mb-slide-111","title":"জীববিজ্ঞান দ্বিতীয় পত্র - অনুশীলনী MCQ","author":"মাজেদা বেগম","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"2nd Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonejiibbijnyaan-2y-anushiilnii-mcq_AgjlChJ.png","readUrl":"https://www.mulboi.com/book_bank/private_link/177","source":"Mulboi.com"},{"id":"mb-slide-112","title":"জীববিজ্ঞান দ্বিতীয় পত্র - অনুশীলনী CQ","author":"মাজেদা বেগম","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"2nd Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonejiibbijnyaan-2y-anushiilnii-cq_zbxVYWy.png","readUrl":"https://www.mulboi.com/book_bank/private_link/210","source":"Mulboi.com"},{"id":"mb-slide-113","title":"জীববিজ্ঞান প্রথম পত্র - অনুশীলনী MCQ","author":"মোঃ আজিবুর রহমান","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"1st Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonejiibbijnyaan-1m-anushiilnii-mcq_9vvM6X9.png","readUrl":"https://www.mulboi.com/book_bank/private_link/168","source":"Mulboi.com"},{"id":"mb-slide-114","title":"জীববিজ্ঞান প্রথম পত্র - অনুশীলনী CQ","author":"মোঃ আজিবুর রহমান","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"1st Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonejiibbijnyaan-1m-anushiilnii-cq_wfholiN.png","readUrl":"https://www.mulboi.com/book_bank/private_link/205","source":"Mulboi.com"},{"id":"mb-slide-115","title":"জীববিজ্ঞান দ্বিতীয় পত্র - অনুশীলনী MCQ","author":"নূর-ই-পারভীন খানম","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"2nd Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonejiibbijnyaan-2y-anushiilnii-mcq_XtZaG3h.png","readUrl":"https://www.mulboi.com/book_bank/private_link/176","source":"Mulboi.com"},{"id":"mb-slide-116","title":"জীববিজ্ঞান দ্বিতীয় পত্র - অনুশীলনী CQ","author":"নূর-ই-পারভীন খানম","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"2nd Paper","category":"exercises","categoryName":"অনুশীলনী সমাধান","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonejiibbijnyaan-2y-anushiilnii-cq_RoVAx2k.png","readUrl":"https://www.mulboi.com/book_bank/private_link/209","source":"Mulboi.com"},{"id":"mb-slide-117","title":"পদার্থবিজ্ঞান ১ম পত্র সকল সূত্র","author":"প্রফেসর মোহাম্মদ ইসহাক","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"formulas","categoryName":"এক নজরে সুত্র","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-1m-ptr-skl-suutr.png","readUrl":"https://www.mulboi.com/book_bank/private_link/377","source":"Mulboi.com"},{"id":"mb-slide-118","title":"পদার্থবিজ্ঞান ২য় পত্র সকল সূত্র","author":"প্রফেসর মোহাম্মদ ইসহাক","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"formulas","categoryName":"এক নজরে সুত্র","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-2y-ptr-skl-suutr.png","readUrl":"https://www.mulboi.com/book_bank/private_link/378","source":"Mulboi.com"},{"id":"mb-slide-119","title":"পদার্থবিজ্ঞান প্রথম পত্র - সূত্রাবলি","author":"ড. শাহজাহান তপন","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"formulas","categoryName":"এক নজরে সুত্র","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-1m-suutraabli_u9xkUea.png","readUrl":"https://www.mulboi.com/book_bank/private_link/380","source":"Mulboi.com"},{"id":"mb-slide-120","title":"পদার্থবিজ্ঞান দ্বিতীয় পত্র - সূত্রাবলি","author":"ড. শাহজাহান তপন","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"formulas","categoryName":"এক নজরে সুত্র","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-2y-suutraabli_CAaC8Br.png","readUrl":"https://www.mulboi.com/book_bank/private_link/403","source":"Mulboi.com"},{"id":"mb-slide-121","title":"পদার্থবিজ্ঞান প্রথম পত্র - সূত্রাবলি","author":"মোঃ গোলাম হোসেন প্রামানিক","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"formulas","categoryName":"এক নজরে সুত্র","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-1m-suutraabli_CciFSiW.png","readUrl":"https://www.mulboi.com/book_bank/private_link/404","source":"Mulboi.com"},{"id":"mb-slide-122","title":"পদার্থবিজ্ঞান দ্বিতীয় পত্র - সূত্রাবলি","author":"মোঃ গোলাম হোসেন প্রামানিক","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"formulas","categoryName":"এক নজরে সুত্র","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-2y-suutraabli_5d45oe2.png","readUrl":"https://www.mulboi.com/book_bank/private_link/405","source":"Mulboi.com"},{"id":"mb-slide-123","title":"পদার্থবিজ্ঞান প্রথম পত্র - সূত্রাবলি","author":"এ টি এম শামসুর রহমান সেলু","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"formulas","categoryName":"এক নজরে সুত্র","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-1m-suutraabli.png","readUrl":"https://www.mulboi.com/book_bank/private_link/402","source":"Mulboi.com"},{"id":"mb-slide-124","title":"পদার্থবিজ্ঞান দ্বিতীয় পত্র - সূত্রাবলি","author":"এ টি এম শামসুর রহমান সেলু","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"formulas","categoryName":"এক নজরে সুত্র","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-2y-suutraabli.png","readUrl":"https://www.mulboi.com/book_bank/private_link/401","source":"Mulboi.com"},{"id":"mb-slide-125","title":"রসায়ন ১ম পত্র","author":"ড. সরোজ কান্তি সিংহ হাজারী","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"1st Paper","category":"formulas","categoryName":"এক নজরে সুত্র","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-1m-ptr.png","readUrl":"https://www.mulboi.com/book_bank/private_link/379","source":"Mulboi.com"},{"id":"mb-slide-126","title":"রসায়ন ২য় পত্র","author":"ড. সরোজ কান্তি সিংহ হাজারী","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"formulas","categoryName":"এক নজরে সুত্র","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-2y-ptr.png","readUrl":"https://www.mulboi.com/book_bank/private_link/408","source":"Mulboi.com"},{"id":"mb-slide-127","title":"রসায়ন প্রথম পত্র - সূত্রাবলি","author":"মোঃ আহসানুল কবীর","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"1st Paper","category":"formulas","categoryName":"এক নজরে সুত্র","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-1m-suutraabli_1zspiyZ.png","readUrl":"https://www.mulboi.com/book_bank/private_link/279","source":"Mulboi.com"},{"id":"mb-slide-128","title":"রসায়ন দ্বিতীয় পত্র - সূত্রাবলি","author":"মোঃ আহসানুল কবীর","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"formulas","categoryName":"এক নজরে সুত্র","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-2y-suutraabli_lyn3993.png","readUrl":"https://www.mulboi.com/book_bank/private_link/276","source":"Mulboi.com"},{"id":"mb-slide-129","title":"রসায়ন প্রথম পত্র - সূত্রাবলি","author":"সঞ্জিত কুমার গুহ","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"1st Paper","category":"formulas","categoryName":"এক নজরে সুত্র","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-1m-suutraabli_5ACOV2g.png","readUrl":"https://www.mulboi.com/book_bank/private_link/409","source":"Mulboi.com"},{"id":"mb-slide-130","title":"রসায়ন দ্বিতীয় পত্র - সূত্রাবলি","author":"সঞ্জিত কুমার গুহ","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"formulas","categoryName":"এক নজরে সুত্র","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-2y-suutraabli_Q5R53YM.png","readUrl":"https://www.mulboi.com/book_bank/private_link/275","source":"Mulboi.com"},{"id":"mb-slide-131","title":"রসায়ন প্রথম পত্র - সূত্রাবলি","author":"মাহবুব হাসান লিংকন","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"1st Paper","category":"formulas","categoryName":"এক নজরে সুত্র","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-1m-suutraabli.png","readUrl":"https://www.mulboi.com/book_bank/private_link/406","source":"Mulboi.com"},{"id":"mb-slide-132","title":"রসায়ন দ্বিতীয় পত্র - সূত্রাবলি","author":"মাহবুব হাসান লিংকন","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"formulas","categoryName":"এক নজরে সুত্র","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/143rsaayn-2y-suutraabli_3m7Emfr.png","readUrl":"https://www.mulboi.com/book_bank/private_link/410","source":"Mulboi.com"},{"id":"mb-slide-133","title":"উচ্চতর গণিত প্রথম পত্র - সূত্রাবলি","author":"মোঃ কেতাব উদ্দীন","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"1st Paper","category":"formulas","categoryName":"এক নজরে সুত্র","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-1m-suutraabli_EYjsz1c.png","readUrl":"https://www.mulboi.com/book_bank/private_link/393","source":"Mulboi.com"},{"id":"mb-slide-134","title":"উচ্চতর গণিত দ্বিতীয় পত্র - সূত্রাবলি","author":"মোঃ কেতাব উদ্দীন","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"2nd Paper","category":"formulas","categoryName":"এক নজরে সুত্র","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-2y-suutraabli_QTEwEMZ.png","readUrl":"https://www.mulboi.com/book_bank/private_link/394","source":"Mulboi.com"},{"id":"mb-slide-135","title":"উচ্চতর গণিত প্রথম পত্র - সূত্রাবলি","author":"অসীম কুমার সাহা","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"1st Paper","category":"formulas","categoryName":"এক নজরে সুত্র","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-1m-suutraabli_Z5BjlHR.png","readUrl":"https://www.mulboi.com/book_bank/private_link/396","source":"Mulboi.com"},{"id":"mb-slide-136","title":"উচ্চতর গণিত দ্বিতীয় পত্র - সূত্রাবলি","author":"অসীম কুমার সাহা","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"2nd Paper","category":"formulas","categoryName":"এক নজরে সুত্র","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-2y-suutraabli_oBzS9Nr.png","readUrl":"https://www.mulboi.com/book_bank/private_link/397","source":"Mulboi.com"},{"id":"mb-slide-137","title":"উচ্চতর গণিত প্রথম পত্র - সূত্রাবলি","author":"এস ইউ আহাম্মদ","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"1st Paper","category":"formulas","categoryName":"এক নজরে সুত্র","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-1m-suutraabli.png","readUrl":"https://www.mulboi.com/book_bank/private_link/271","source":"Mulboi.com"},{"id":"mb-slide-138","title":"উচ্চতর গণিত দ্বিতীয় পত্র - সূত্রাবলি","author":"এস ইউ আহাম্মদ","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"2nd Paper","category":"formulas","categoryName":"এক নজরে সুত্র","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-2y-suutraabli.png","readUrl":"https://www.mulboi.com/book_bank/private_link/400","source":"Mulboi.com"},{"id":"mb-slide-139","title":"উচ্চতর গণিত প্রথম পত্র - সূত্রাবলি","author":"মোঃ রফিকুল ইসলাম","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"1st Paper","category":"formulas","categoryName":"এক নজরে সুত্র","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-1m-suutraabli_xnb56DP.png","readUrl":"https://www.mulboi.com/book_bank/private_link/398","source":"Mulboi.com"},{"id":"mb-slide-140","title":"উচ্চতর গণিত দ্বিতীয় পত্র - সূত্রাবলি","author":"মোঃ রফিকুল ইসলাম","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"2nd Paper","category":"formulas","categoryName":"এক নজরে সুত্র","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-2y-suutraabli_Wu3ibHm.png","readUrl":"https://www.mulboi.com/book_bank/private_link/399","source":"Mulboi.com"},{"id":"mb-slide-141","title":"পদার্থবিজ্ঞান ২য় পত্র সারসংক্ষেপ","author":"প্রফেসর মোহাম্মদ ইসহাক","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"summaries","categoryName":"সারসংক্ষেপ","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-2y-ptr-saarsnkssep.png","readUrl":"https://www.mulboi.com/book_bank/private_link/365","source":"Mulboi.com"},{"id":"mb-slide-142","title":"পদার্থবিজ্ঞান ১ম পত্র সারসংক্ষেপ","author":"প্রফেসর মোহাম্মদ ইসহাক","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"summaries","categoryName":"সারসংক্ষেপ","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-1m-ptr-saarsnkssep.png","readUrl":"https://www.mulboi.com/book_bank/private_link/364","source":"Mulboi.com"},{"id":"mb-slide-143","title":"পদার্থবিজ্ঞান প্রথম পত্র -  সারসংক্ষেপ","author":"ড. শাহজাহান তপন","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"summaries","categoryName":"সারসংক্ষেপ","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-1m-saarsnkssep.png","readUrl":"https://www.mulboi.com/book_bank/private_link/211","source":"Mulboi.com"},{"id":"mb-slide-144","title":"পদার্থবিজ্ঞান দ্বিতীয় পত্র -  সারসংক্ষেপ","author":"ড. শাহজাহান তপন","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"summaries","categoryName":"সারসংক্ষেপ","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-2y-saarsnkssep_LE8tCbh.png","readUrl":"https://www.mulboi.com/book_bank/private_link/215","source":"Mulboi.com"},{"id":"mb-slide-145","title":"পদার্থবিজ্ঞান প্রথম পত্র -  সারসংক্ষেপ","author":"মোঃ গোলাম হোসেন প্রামানিক","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"summaries","categoryName":"সারসংক্ষেপ","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-1m-saarsnkssep_gzhyHSY.png","readUrl":"https://www.mulboi.com/book_bank/private_link/212","source":"Mulboi.com"},{"id":"mb-slide-146","title":"পদার্থবিজ্ঞান দ্বিতীয় পত্র -  সারসংক্ষেপ","author":"মোঃ গোলাম হোসেন প্রামানিক","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"summaries","categoryName":"সারসংক্ষেপ","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-2y-saarsnkssep_VxzKy6H.png","readUrl":"https://www.mulboi.com/book_bank/private_link/216","source":"Mulboi.com"},{"id":"mb-slide-147","title":"পদার্থবিজ্ঞান প্রথম পত্র -  সারসংক্ষেপ","author":"এ টি এম শামসুর রহমান সেলু","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"summaries","categoryName":"সারসংক্ষেপ","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-1m-saarsnkssep_FM8S8TN.png","readUrl":"https://www.mulboi.com/book_bank/private_link/214","source":"Mulboi.com"},{"id":"mb-slide-148","title":"পদার্থবিজ্ঞান দ্বিতীয় পত্র -  সারসংক্ষেপ","author":"এ টি এম শামসুর রহমান সেলু","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"summaries","categoryName":"সারসংক্ষেপ","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-2y-saarsnkssep.png","readUrl":"https://www.mulboi.com/book_bank/private_link/218","source":"Mulboi.com"},{"id":"mb-slide-149","title":"পদার্থবিজ্ঞান ২য় পত্র ব্যবহারিক","author":"প্রফেসর মোহাম্মদ ইসহাক","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"summaries","categoryName":"সারসংক্ষেপ","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-2y-ptr-bybhaarik.png","readUrl":"https://www.mulboi.com/book_bank/private_link/372","source":"Mulboi.com"},{"id":"mb-slide-150","title":"রসায়ন ২য় পত্র সারসংক্ষেপ","author":"ড. সরোজ কান্তি সিংহ হাজারী","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"summaries","categoryName":"সারসংক্ষেপ","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-2y-ptr-saarsnkssep.png","readUrl":"https://www.mulboi.com/book_bank/private_link/367","source":"Mulboi.com"},{"id":"mb-slide-151","title":"রসায়ন ১ম পত্র সারসংক্ষেপ","author":"ড. সরোজ কান্তি সিংহ হাজারী","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"1st Paper","category":"summaries","categoryName":"সারসংক্ষেপ","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-1m-ptr-saarsnkssep.png","readUrl":"https://www.mulboi.com/book_bank/private_link/366","source":"Mulboi.com"},{"id":"mb-slide-152","title":"রসায়ন প্রথম পত্র - সারসংক্ষেপ","author":"মোঃ আহসানুল কবীর","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"1st Paper","category":"summaries","categoryName":"সারসংক্ষেপ","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-1m-saarsnkssep.png","readUrl":"https://www.mulboi.com/book_bank/private_link/232","source":"Mulboi.com"},{"id":"mb-slide-153","title":"রসায়ন দ্বিতীয় পত্র - সারসংক্ষেপ","author":"মোঃ আহসানুল কবীর","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"summaries","categoryName":"সারসংক্ষেপ","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-2y-saarsnkssep_LT5s60X.png","readUrl":"https://www.mulboi.com/book_bank/private_link/221","source":"Mulboi.com"},{"id":"mb-slide-154","title":"রসায়ন প্রথম পত্র - সারসংক্ষেপ","author":"মাহবুব হাসান লিংকন","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"1st Paper","category":"summaries","categoryName":"সারসংক্ষেপ","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-2y-saarsnkssep.png","readUrl":"https://www.mulboi.com/book_bank/private_link/220","source":"Mulboi.com"},{"id":"mb-slide-155","title":"রসায়ন দ্বিতীয় পত্র - সারসংক্ষেপ","author":"মাহবুব হাসান লিংকন","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"summaries","categoryName":"সারসংক্ষেপ","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-2y-saarsnkssep_GUKDUtJ.png","readUrl":"https://www.mulboi.com/book_bank/private_link/222","source":"Mulboi.com"},{"id":"mb-slide-156","title":"জীববিজ্ঞান প্রথম পত্র - সারসংক্ষেপ","author":"মোহাম্মদ আবুল হাসান","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"1st Paper","category":"summaries","categoryName":"সারসংক্ষেপ","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonejiibbijnyaan-1m-saarsnkssep.png","readUrl":"https://www.mulboi.com/book_bank/private_link/223","source":"Mulboi.com"},{"id":"mb-slide-157","title":"জীববিজ্ঞান দ্বিতীয় পত্র - সারসংক্ষেপ","author":"গাজী আজমল","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"2nd Paper","category":"summaries","categoryName":"সারসংক্ষেপ","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonejiibbijnyaan-2y-saarsnkssep.png","readUrl":"https://www.mulboi.com/book_bank/private_link/228","source":"Mulboi.com"},{"id":"mb-slide-158","title":"জীববিজ্ঞান প্রথম পত্র - সারসংক্ষেপ","author":"মোঃ আব্দুল আলীম","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"1st Paper","category":"summaries","categoryName":"সারসংক্ষেপ","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonejiibbijnyaan-1m-saarsnkssep_dsdd05r.png","readUrl":"https://www.mulboi.com/book_bank/private_link/225","source":"Mulboi.com"},{"id":"mb-slide-159","title":"জীববিজ্ঞান দ্বিতীয় পত্র - সারসংক্ষেপ","author":"মোঃ আব্দুল আলীম","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"2nd Paper","category":"summaries","categoryName":"সারসংক্ষেপ","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonejiibbijnyaan-2y-saarsnkssep_gbgGdzU.png","readUrl":"https://www.mulboi.com/book_bank/private_link/229","source":"Mulboi.com"},{"id":"mb-slide-160","title":"জীববিজ্ঞান প্রথম পত্র - সারসংক্ষেপ","author":"মাজেদা বেগম","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"1st Paper","category":"summaries","categoryName":"সারসংক্ষেপ","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonejiibbijnyaan-1m-saarsnkssep_2hNoObp.png","readUrl":"https://www.mulboi.com/book_bank/private_link/227","source":"Mulboi.com"},{"id":"mb-slide-161","title":"জীববিজ্ঞান দ্বিতীয় পত্র - সারসংক্ষেপ","author":"মাজেদা বেগম","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"2nd Paper","category":"summaries","categoryName":"সারসংক্ষেপ","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonejiibbijnyaan-2y-saarsnkssep_ICO9jnE.png","readUrl":"https://www.mulboi.com/book_bank/private_link/231","source":"Mulboi.com"},{"id":"mb-slide-162","title":"জীববিজ্ঞান প্রথম পত্র - সারসংক্ষেপ","author":"মোঃ আজিবুর রহমান","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"1st Paper","category":"summaries","categoryName":"সারসংক্ষেপ","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonejiibbijnyaan-1m-saarsnkssep_bGvMjFq.png","readUrl":"https://www.mulboi.com/book_bank/private_link/226","source":"Mulboi.com"},{"id":"mb-slide-163","title":"জীববিজ্ঞান দ্বিতীয় পত্র - সারসংক্ষেপ","author":"নূর-ই-পারভীন খানম","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"2nd Paper","category":"summaries","categoryName":"সারসংক্ষেপ","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonejiibbijnyaan-2y-saarsnkssep_ZePDh5e.png","readUrl":"https://www.mulboi.com/book_bank/private_link/230","source":"Mulboi.com"},{"id":"mb-slide-164","title":"পদার্থবিজ্ঞান ১ম পত্র ব্যবহারিক","author":"প্রফেসর মোহাম্মদ ইসহাক","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"practicals","categoryName":"ব্যবহারিক গাইড","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-1m-ptr-bybhaarik.png","readUrl":"https://www.mulboi.com/book_bank/private_link/371","source":"Mulboi.com"},{"id":"mb-slide-165","title":"পদার্থবিজ্ঞান ২য় পত্র ব্যবহারিক","author":"প্রফেসর মোহাম্মদ ইসহাক","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"practicals","categoryName":"ব্যবহারিক গাইড","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-2y-ptr-bybhaarik_7JIofFt.png","readUrl":"https://www.mulboi.com/book_bank/private_link/372","source":"Mulboi.com"},{"id":"mb-slide-166","title":"পদার্থবিজ্ঞান প্রথম পত্র - ব্যবহারিক","author":"ড. শাহজাহান তপন","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"practicals","categoryName":"ব্যবহারিক গাইড","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-1m-bybhaarik.png","readUrl":"https://www.mulboi.com/book_bank/private_link/233","source":"Mulboi.com"},{"id":"mb-slide-167","title":"পদার্থবিজ্ঞান দ্বিতীয় পত্র - ব্যবহারিক","author":"ড. শাহজাহান তপন","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"practicals","categoryName":"ব্যবহারিক গাইড","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-2y-bybhaarik.png","readUrl":"https://www.mulboi.com/book_bank/private_link/237","source":"Mulboi.com"},{"id":"mb-slide-168","title":"পদার্থবিজ্ঞান প্রথম পত্র - ব্যবহারিক","author":"মোঃ গোলাম হোসেন প্রামানিক","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"practicals","categoryName":"ব্যবহারিক গাইড","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-1m-bybhaarik_PhXCNm7.png","readUrl":"https://www.mulboi.com/book_bank/private_link/235","source":"Mulboi.com"},{"id":"mb-slide-169","title":"পদার্থবিজ্ঞান দ্বিতীয় পত্র - ব্যবহারিক","author":"মোঃ গোলাম হোসেন প্রামানিক","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"practicals","categoryName":"ব্যবহারিক গাইড","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-2y-bybhaarik_lcgilYj.png","readUrl":"https://www.mulboi.com/book_bank/private_link/238","source":"Mulboi.com"},{"id":"mb-slide-170","title":"পদার্থবিজ্ঞান প্রথম পত্র - ব্যবহারিক","author":"এ টি এম শামসুর রহমান সেলু","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"practicals","categoryName":"ব্যবহারিক গাইড","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-1m-bybhaarik_K0HVUep.png","readUrl":"https://www.mulboi.com/book_bank/private_link/236","source":"Mulboi.com"},{"id":"mb-slide-171","title":"পদার্থবিজ্ঞান দ্বিতীয় পত্র - ব্যবহারিক","author":"এ টি এম শামসুর রহমান সেলু","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"practicals","categoryName":"ব্যবহারিক গাইড","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonepdaarthbijnyaan-2y-bybhaarik_ehKPVUB.png","readUrl":"https://www.mulboi.com/book_bank/private_link/239","source":"Mulboi.com"},{"id":"mb-slide-172","title":"রসায়ন ১ম পত্র ব্যবহারিক","author":"ড. সরোজ কান্তি সিংহ হাজারী","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"1st Paper","category":"practicals","categoryName":"ব্যবহারিক গাইড","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-1m-ptr-bybhaarik.png","readUrl":"https://www.mulboi.com/book_bank/private_link/373","source":"Mulboi.com"},{"id":"mb-slide-173","title":"রসায়ন ২য় পত্র - ব্যবহারিক","author":"ড. সরোজ কান্তি সিংহ হাজারী","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"practicals","categoryName":"ব্যবহারিক গাইড","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-2y-ptr-bybhaarik.png","readUrl":"https://www.mulboi.com/book_bank/private_link/374","source":"Mulboi.com"},{"id":"mb-slide-174","title":"রসায়ন প্রথম পত্র - ব্যবহারিক","author":"মোঃ আহসানুল কবীর","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"1st Paper","category":"practicals","categoryName":"ব্যবহারিক গাইড","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-1m-bybhaarik.png","readUrl":"https://www.mulboi.com/book_bank/private_link/240","source":"Mulboi.com"},{"id":"mb-slide-175","title":"রসায়ন দ্বিতীয় পত্র - ব্যবহারিক","author":"মোঃ আহসানুল কবীর","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"practicals","categoryName":"ব্যবহারিক গাইড","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-2y-bybhaarik.png","readUrl":"https://www.mulboi.com/book_bank/private_link/243","source":"Mulboi.com"},{"id":"mb-slide-176","title":"রসায়ন প্রথম পত্র - ব্যবহারিক","author":"সঞ্জিত কুমার গুহ","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"1st Paper","category":"practicals","categoryName":"ব্যবহারিক গাইড","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-1m-bybhaarik_dLvQE1B.png","readUrl":"https://www.mulboi.com/book_bank/private_link/241","source":"Mulboi.com"},{"id":"mb-slide-177","title":"রসায়ন দ্বিতীয় পত্র - ব্যবহারিক","author":"সঞ্জিত কুমার গুহ","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"practicals","categoryName":"ব্যবহারিক গাইড","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-2y-bybhaarik_Qh6DoeD.png","readUrl":"https://www.mulboi.com/book_bank/private_link/244","source":"Mulboi.com"},{"id":"mb-slide-178","title":"রসায়ন প্রথম পত্র - ব্যবহারিক","author":"মাহবুব হাসান লিংকন","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"1st Paper","category":"practicals","categoryName":"ব্যবহারিক গাইড","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-1m-bybhaarik_T0m2VWP.png","readUrl":"https://www.mulboi.com/book_bank/private_link/242","source":"Mulboi.com"},{"id":"mb-slide-179","title":"রসায়ন দ্বিতীয় পত্র - ব্যবহারিক","author":"মাহবুব হাসান লিংকন","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"practicals","categoryName":"ব্যবহারিক গাইড","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonersaayn-2y-bybhaarik_5Z7KW3e.png","readUrl":"https://www.mulboi.com/book_bank/private_link/245","source":"Mulboi.com"},{"id":"mb-slide-180","title":"উচ্চতর গণিত প্রথম পত্র - ব্যবহারিক","author":"মোঃ কেতাব উদ্দীন","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"1st Paper","category":"practicals","categoryName":"ব্যবহারিক গাইড","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-1m-bybhaarik.png","readUrl":"https://www.mulboi.com/book_bank/private_link/246","source":"Mulboi.com"},{"id":"mb-slide-181","title":"উচ্চতর গণিত দ্বিতীয় পত্র - ব্যবহারিক","author":"মোঃ কেতাব উদ্দীন","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"2nd Paper","category":"practicals","categoryName":"ব্যবহারিক গাইড","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-2y-bybhaarik.png","readUrl":"https://www.mulboi.com/book_bank/private_link/250","source":"Mulboi.com"},{"id":"mb-slide-182","title":"উচ্চতর গণিত প্রথম পত্র - ব্যবহারিক","author":"অসীম কুমার সাহা","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"1st Paper","category":"practicals","categoryName":"ব্যবহারিক গাইড","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-1m-bybhaarik_aket3bO.png","readUrl":"https://www.mulboi.com/book_bank/private_link/247","source":"Mulboi.com"},{"id":"mb-slide-183","title":"উচ্চতর গণিত দ্বিতীয় পত্র - ব্যবহারিক","author":"অসীম কুমার সাহা","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"2nd Paper","category":"practicals","categoryName":"ব্যবহারিক গাইড","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-2y-bybhaarik_3WNxyHh.png","readUrl":"https://www.mulboi.com/book_bank/private_link/251","source":"Mulboi.com"},{"id":"mb-slide-184","title":"উচ্চতর গণিত প্রথম পত্র - ব্যবহারিক","author":"এস ইউ আহাম্মদ","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"1st Paper","category":"practicals","categoryName":"ব্যবহারিক গাইড","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-1m-bybhaarik_fM0Y0c4.png","readUrl":"https://www.mulboi.com/book_bank/private_link/248","source":"Mulboi.com"},{"id":"mb-slide-185","title":"উচ্চতর গণিত দ্বিতীয় পত্র - ব্যবহারিক","author":"এস ইউ আহাম্মদ","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"2nd Paper","category":"practicals","categoryName":"ব্যবহারিক গাইড","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-2y-bybhaarik_45EevBZ.png","readUrl":"https://www.mulboi.com/book_bank/private_link/252","source":"Mulboi.com"},{"id":"mb-slide-186","title":"উচ্চতর গণিত প্রথম পত্র - ব্যবহারিক","author":"মোঃ রফিকুল ইসলাম","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"1st Paper","category":"practicals","categoryName":"ব্যবহারিক গাইড","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-1m-bybhaarik_rfCfoR4.png","readUrl":"https://www.mulboi.com/book_bank/private_link/249","source":"Mulboi.com"},{"id":"mb-slide-187","title":"উচ্চতর গণিত দ্বিতীয় পত্র - ব্যবহারিক","author":"মোঃ রফিকুল ইসলাম","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"2nd Paper","category":"practicals","categoryName":"ব্যবহারিক গাইড","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Noneucctr-gnnit-2y-bybhaarik_3SfecSh.png","readUrl":"https://www.mulboi.com/book_bank/private_link/253","source":"Mulboi.com"},{"id":"mb-slide-188","title":"জীববিজ্ঞান প্রথম পত্র - ব্যবহারিক","author":"মোহাম্মদ আবুল হাসান","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"1st Paper","category":"practicals","categoryName":"ব্যবহারিক গাইড","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonejiibbijnyaan-1m-bybhaarik.png","readUrl":"https://www.mulboi.com/book_bank/private_link/257","source":"Mulboi.com"},{"id":"mb-slide-189","title":"জীববিজ্ঞান দ্বিতীয় পত্র - ব্যবহারিক","author":"গাজী আজমল","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"2nd Paper","category":"practicals","categoryName":"ব্যবহারিক গাইড","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonejiibbijnyaan-2y-bybhaarik.png","readUrl":"https://www.mulboi.com/book_bank/private_link/261","source":"Mulboi.com"},{"id":"mb-slide-190","title":"জীববিজ্ঞান প্রথম পত্র - ব্যবহারিক","author":"মোঃ আব্দুল আলীম","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"1st Paper","category":"practicals","categoryName":"ব্যবহারিক গাইড","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonejiibbijnyaan-1m-bybhaarik_iwq4ayI.png","readUrl":"https://www.mulboi.com/book_bank/private_link/258","source":"Mulboi.com"},{"id":"mb-slide-191","title":"জীববিজ্ঞান দ্বিতীয় পত্র - ব্যবহারিক","author":"মোঃ আব্দুল আলীম","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"2nd Paper","category":"practicals","categoryName":"ব্যবহারিক গাইড","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/Nonejiibbijnyaan-2y-bybhaarik_8nlt0dx.png","readUrl":"https://www.mulboi.com/book_bank/private_link/262","source":"Mulboi.com"},{"id":"mb-slide-192","title":"জীববিজ্ঞান প্রথম পত্র - ব্যবহারিক","author":"মাজেদা বেগম","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"1st Paper","category":"practicals","categoryName":"ব্যবহারিক গাইড","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/135jiibbijnyaan-1m-bybhaarik_lxlKCRP.png","readUrl":"https://www.mulboi.com/book_bank/private_link/264","source":"Mulboi.com"},{"id":"mb-slide-193","title":"জীববিজ্ঞান দ্বিতীয় পত্র - ব্যবহারিক","author":"মাজেদা বেগম","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"2nd Paper","category":"practicals","categoryName":"ব্যবহারিক গাইড","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/136jiibbijnyaan-2y-bybhaarik.png","readUrl":"https://www.mulboi.com/book_bank/private_link/260","source":"Mulboi.com"},{"id":"mb-slide-194","title":"জীববিজ্ঞান প্রথম পত্র - ব্যবহারিক","author":"মোঃ আজিবুর রহমান","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"1st Paper","category":"practicals","categoryName":"ব্যবহারিক গাইড","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/133jiibbijnyaan-1m-bybhaarik.png","readUrl":"https://www.mulboi.com/book_bank/private_link/259","source":"Mulboi.com"},{"id":"mb-slide-195","title":"জীববিজ্ঞান দ্বিতীয় পত্র - ব্যবহারিক","author":"নূর-ই-পারভীন খানম","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"2nd Paper","category":"practicals","categoryName":"ব্যবহারিক গাইড","edition":"২০২৫-২৬ সংস্করণ","version":"মূল বই ডিজিটাল সংস্করণ","cover":"https://www.mulboi.com/media/books/134jiibbijnyaan-2y-bybhaarik.png","readUrl":"https://www.mulboi.com/book_bank/private_link/263","source":"Mulboi.com"},{"id":"mb-table-196","title":"জীববিজ্ঞান 2nd Paper (দাগানো বই)","author":"মাজেদা ম্যাম","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৫ সংস্করণ","version":"মেডিকেল (V1)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/550","source":"Mulboi.com"},{"id":"mb-table-197","title":"জীববিজ্ঞান 2nd Paper (দাগানো বই)","author":"আলীম স্যার","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৫ সংস্করণ","version":"মেডিকেল (V1)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/549","source":"Mulboi.com"},{"id":"mb-table-198","title":"জীববিজ্ঞান 2nd Paper (দাগানো বই)","author":"আজমল স্যার","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৫ সংস্করণ","version":"মেডিকেল (V3)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/548","source":"Mulboi.com"},{"id":"mb-table-199","title":"জীববিজ্ঞান 2nd Paper (দাগানো বই)","author":"আজমল স্যার","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৫ সংস্করণ","version":"মেডিকেল (V2)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/547","source":"Mulboi.com"},{"id":"mb-table-200","title":"জীববিজ্ঞান 2nd Paper (দাগানো বই)","author":"আজমল স্যার","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৫ সংস্করণ","version":"মেডিকেল (V1)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/546","source":"Mulboi.com"},{"id":"mb-table-201","title":"জীববিজ্ঞান 1st Paper (দাগানো বই)","author":"হাসান স্যার","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৫ সংস্করণ","version":"মেডিকেল (V3)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/545","source":"Mulboi.com"},{"id":"mb-table-202","title":"জীববিজ্ঞান 1st Paper (দাগানো বই)","author":"হাসান স্যার","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৫ সংস্করণ","version":"মেডিকেল (V2)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/544","source":"Mulboi.com"},{"id":"mb-table-203","title":"জীববিজ্ঞান 1st Paper (দাগানো বই)","author":"হাসান স্যার","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৫ সংস্করণ","version":"মেডিকেল (V1)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/543","source":"Mulboi.com"},{"id":"mb-table-204","title":"রসায়ন 1st Paper (দাগানো বই)","author":"লিংকন স্যার","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৫ সংস্করণ","version":"মেডিকেল (V1)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/542","source":"Mulboi.com"},{"id":"mb-table-205","title":"রসায়ন 1st Paper (দাগানো বই)","author":"কবীর স্যার","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৫ সংস্করণ","version":"মেডিকেল (V1)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/540","source":"Mulboi.com"},{"id":"mb-table-206","title":"রসায়ন 2nd Paper (দাগানো বই)","author":"কবীর স্যার","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৫ সংস্করণ","version":"মেডিকেল (V1)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/541","source":"Mulboi.com"},{"id":"mb-table-207","title":"রসায়ন 2nd Paper (দাগানো বই)","author":"হাজারী স্যার","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৫ সংস্করণ","version":"মেডিকেল (V3)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/539","source":"Mulboi.com"},{"id":"mb-table-208","title":"রসায়ন 2nd Paper (দাগানো বই)","author":"হাজারী স্যার","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৫ সংস্করণ","version":"মেডিকেল (V2)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/538","source":"Mulboi.com"},{"id":"mb-table-209","title":"রসায়ন 2nd Paper (দাগানো বই)","author":"হাজারী স্যার","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৫ সংস্করণ","version":"মেডিকেল (V1)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/537","source":"Mulboi.com"},{"id":"mb-table-210","title":"রসায়ন 1st Paper (দাগানো বই)","author":"হাজারী স্যার","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৫ সংস্করণ","version":"মেডিকেল (V3)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/536","source":"Mulboi.com"},{"id":"mb-table-211","title":"রসায়ন 1st Paper (দাগানো বই)","author":"হাজারী স্যার","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৫ সংস্করণ","version":"মেডিকেল (V2)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/535","source":"Mulboi.com"},{"id":"mb-table-212","title":"রসায়ন 1st Paper (দাগানো বই)","author":"হাজারী স্যার","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৫ সংস্করণ","version":"মেডিকেল (V1)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/533","source":"Mulboi.com"},{"id":"mb-table-213","title":"বিজ্ঞান বিভাগ 2nd Paper (দাগানো বই)","author":"প্রামাণিক স্যার","subject":"বিজ্ঞান বিভাগ","subjectKey":"physics","subjectIcon":"🔬","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৫ সংস্করণ","version":"মেডিকেল (V1)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/532","source":"Mulboi.com"},{"id":"mb-table-214","title":"পদার্থবিজ্ঞান 2nd Paper (দাগানো বই)","author":"তপন স্যার","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৫ সংস্করণ","version":"মেডিকেল (V1)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/531","source":"Mulboi.com"},{"id":"mb-table-215","title":"পদার্থবিজ্ঞান 1st Paper (দাগানো বই)","author":"তপন স্যার","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৫ সংস্করণ","version":"মেডিকেল (V1)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/530","source":"Mulboi.com"},{"id":"mb-table-216","title":"পদার্থবিজ্ঞান 2nd Paper (দাগানো বই)","author":"ইসহাক স্যার","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৫ সংস্করণ","version":"মেডিকেল (V3)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/526","source":"Mulboi.com"},{"id":"mb-table-217","title":"পদার্থবিজ্ঞান 2nd Paper (দাগানো বই)","author":"ইসহাক স্যার","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৫ সংস্করণ","version":"মেডিকেল (V2)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/529","source":"Mulboi.com"},{"id":"mb-table-218","title":"পদার্থবিজ্ঞান 2nd Paper (দাগানো বই)","author":"ইসহাক স্যার","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৫ সংস্করণ","version":"মেডিকেল (V1)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/525","source":"Mulboi.com"},{"id":"mb-table-219","title":"পদার্থবিজ্ঞান 1st Paper (দাগানো বই)","author":"ইসহাক স্যার","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৫ সংস্করণ","version":"মেডিকেল (V3)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/527","source":"Mulboi.com"},{"id":"mb-table-220","title":"পদার্থবিজ্ঞান 1st Paper (দাগানো বই)","author":"ইসহাক স্যার","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৫ সংস্করণ","version":"মেডিকেল (V2)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/528","source":"Mulboi.com"},{"id":"mb-table-221","title":"পদার্থবিজ্ঞান 1st Paper (দাগানো বই)","author":"ইসহাক স্যার","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৫ সংস্করণ","version":"মেডিকেল (V1)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/524","source":"Mulboi.com"},{"id":"mb-table-222","title":"বিজ্ঞান বিভাগ 2nd Paper (দাগানো বই)","author":"অসীম স্যার","subject":"বিজ্ঞান বিভাগ","subjectKey":"physics","subjectIcon":"🔬","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৪ সংস্করণ","version":"ফ্রেশ কপি","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/415","source":"Mulboi.com"},{"id":"mb-table-223","title":"জীববিজ্ঞান 2nd Paper (দাগানো বই)","author":"আজমল স্যার","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৪ সংস্করণ","version":"মেডিকেল (V2)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/348","source":"Mulboi.com"},{"id":"mb-table-224","title":"জীববিজ্ঞান 1st Paper (দাগানো বই)","author":"আবুল হাসান স্যার","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৪ সংস্করণ","version":"মেডিকেল (V2)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/347","source":"Mulboi.com"},{"id":"mb-table-225","title":"রসায়ন 2nd Paper (দাগানো বই)","author":"হাজারী স্যার","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৪ সংস্করণ","version":"মেডিকেল (V2)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/422","source":"Mulboi.com"},{"id":"mb-table-226","title":"রসায়ন 1st Paper (দাগানো বই)","author":"হাজারী স্যার","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৪ সংস্করণ","version":"মেডিকেল (V2)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/345","source":"Mulboi.com"},{"id":"mb-table-227","title":"পদার্থবিজ্ঞান 2nd Paper (দাগানো বই)","author":"ইসহাক স্যার","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৪ সংস্করণ","version":"মেডিকেল (V2)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/344","source":"Mulboi.com"},{"id":"mb-table-228","title":"পদার্থবিজ্ঞান 1st Paper (দাগানো বই)","author":"ইসহাক স্যার","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৪ সংস্করণ","version":"মেডিকেল (V1)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/343","source":"Mulboi.com"},{"id":"mb-table-229","title":"জীববিজ্ঞান 2nd Paper (দাগানো বই)","author":"আজমল স্যার","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৪ সংস্করণ","version":"মেডিকেল (V1)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/341","source":"Mulboi.com"},{"id":"mb-table-230","title":"রসায়ন 2nd Paper (দাগানো বই)","author":"হাজারী স্যার ২য় পত্র","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৪ সংস্করণ","version":"মেডিকেল (V1)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/340","source":"Mulboi.com"},{"id":"mb-table-231","title":"রসায়ন 1st Paper (দাগানো বই)","author":"হাজারী স্যার ১ম পত্র","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৪ সংস্করণ","version":"মেডিকেল (V1)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/349","source":"Mulboi.com"},{"id":"mb-table-232","title":"পদার্থবিজ্ঞান 2nd Paper (দাগানো বই)","author":"ইসহাক স্যার","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৪ সংস্করণ","version":"মেডিকেল (V1)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/338","source":"Mulboi.com"},{"id":"mb-table-233","title":"পদার্থবিজ্ঞান 1st Paper (দাগানো বই)","author":"ইসহাক স্যার","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৪ সংস্করণ","version":"মেডিকেল (V2)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/336","source":"Mulboi.com"},{"id":"mb-table-234","title":"জীববিজ্ঞান 1st Paper (দাগানো বই)","author":"আবুল হাসান","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৪ সংস্করণ","version":"মেডিকেল (V1)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/331","source":"Mulboi.com"},{"id":"mb-table-235","title":"জীববিজ্ঞান 1st Paper (দাগানো বই)","author":"হাসান স্যার","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৪ সংস্করণ","version":"ফ্রেশ কপি","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/136","source":"Mulboi.com"},{"id":"mb-table-236","title":"জীববিজ্ঞান 2nd Paper (দাগানো বই)","author":"আজমল স্যার","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৪ সংস্করণ","version":"ফ্রেশ কপি","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/137","source":"Mulboi.com"},{"id":"mb-table-237","title":"পদার্থবিজ্ঞান 1st Paper (দাগানো বই)","author":"সেলু স্যার","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৪ সংস্করণ","version":"ফ্রেশ কপি","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/119","source":"Mulboi.com"},{"id":"mb-table-238","title":"পদার্থবিজ্ঞান 2nd Paper (দাগানো বই)","author":"সেলু স্যার","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৪ সংস্করণ","version":"ফ্রেশ কপি","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/118","source":"Mulboi.com"},{"id":"mb-table-239","title":"রসায়ন 1st Paper (দাগানো বই)","author":"গুহ স্যার","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৪ সংস্করণ","version":"ফ্রেশ কপি","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/103","source":"Mulboi.com"},{"id":"mb-table-240","title":"রসায়ন 1st Paper (দাগানো বই)","author":"লিংকন স্যার","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৪ সংস্করণ","version":"ফ্রেশ কপি","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/102","source":"Mulboi.com"},{"id":"mb-table-241","title":"রসায়ন 2nd Paper (দাগানো বই)","author":"গুহ স্যার","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৪ সংস্করণ","version":"ফ্রেশ কপি","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/100","source":"Mulboi.com"},{"id":"mb-table-242","title":"রসায়ন 2nd Paper (দাগানো বই)","author":"লিংকন স্যার","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৪ সংস্করণ","version":"ফ্রেশ কপি","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/101","source":"Mulboi.com"},{"id":"mb-table-243","title":"উচ্চতর গণিত 1st Paper (দাগানো বই)","author":"কেতাব স্যার","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৪ সংস্করণ","version":"ফ্রেশ কপি","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/85","source":"Mulboi.com"},{"id":"mb-table-244","title":"বিজ্ঞান বিভাগ 1st Paper (দাগানো বই)","author":"অসীম স্যার","subject":"বিজ্ঞান বিভাগ","subjectKey":"physics","subjectIcon":"🔬","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৪ সংস্করণ","version":"ফ্রেশ কপি","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/84","source":"Mulboi.com"},{"id":"mb-table-245","title":"বিজ্ঞান বিভাগ 1st Paper (দাগানো বই)","author":"এস.ইউ স্যার","subject":"বিজ্ঞান বিভাগ","subjectKey":"physics","subjectIcon":"🔬","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৪ সংস্করণ","version":"ফ্রেশ কপি","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/83","source":"Mulboi.com"},{"id":"mb-table-246","title":"উচ্চতর গণিত 1st Paper (দাগানো বই)","author":"রফিকুল স্যার","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৪ সংস্করণ","version":"ফ্রেশ কপি","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/82","source":"Mulboi.com"},{"id":"mb-table-247","title":"উচ্চতর গণিত 2nd Paper (দাগানো বই)","author":"কেতাব স্যার","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৪ সংস্করণ","version":"ফ্রেশ কপি","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/79","source":"Mulboi.com"},{"id":"mb-table-248","title":"বিজ্ঞান বিভাগ 1st Paper (দাগানো বই)","author":"এস.ইউ স্যার","subject":"বিজ্ঞান বিভাগ","subjectKey":"physics","subjectIcon":"🔬","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৪ সংস্করণ","version":"ফ্রেশ কপি","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/80","source":"Mulboi.com"},{"id":"mb-table-249","title":"উচ্চতর গণিত 2nd Paper (দাগানো বই)","author":"রফিকুল স্যার","subject":"উচ্চতর গণিত","subjectKey":"math","subjectIcon":"📐","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৪ সংস্করণ","version":"ফ্রেশ কপি","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/81","source":"Mulboi.com"},{"id":"mb-table-250","title":"জীববিজ্ঞান 1st Paper (দাগানো বই)","author":"মাজেদা ম্যাম","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৪ সংস্করণ","version":"ফ্রেশ কপি","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/63","source":"Mulboi.com"},{"id":"mb-table-251","title":"পদার্থবিজ্ঞান 1st Paper (দাগানো বই)","author":"ইসহাক স্যার","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"মেডিকেল (V1)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/123","source":"Mulboi.com"},{"id":"mb-table-252","title":"পদার্থবিজ্ঞান 1st Paper (দাগানো বই)","author":"ইসহাক স্যার","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"মেডিকেল (V3)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/125","source":"Mulboi.com"},{"id":"mb-table-253","title":"পদার্থবিজ্ঞান 1st Paper (দাগানো বই)","author":"ইসহাক স্যার","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"মেডিকেল (V4)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/126","source":"Mulboi.com"},{"id":"mb-table-254","title":"রসায়ন 1st Paper (দাগানো বই)","author":"হাজারী স্যার","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"মেডিকেল (V2)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/106","source":"Mulboi.com"},{"id":"mb-table-255","title":"রসায়ন 1st Paper (দাগানো বই)","author":"হাজারী স্যার","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"মেডিকেল (V1)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/105","source":"Mulboi.com"},{"id":"mb-table-256","title":"রসায়ন 1st Paper (দাগানো বই)","author":"হাজারী স্যার","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"একাডেমিক","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/109","source":"Mulboi.com"},{"id":"mb-table-257","title":"বিজ্ঞান বিভাগ 2nd Paper (দাগানো বই)","author":"প্রামাণিক স্যার","subject":"বিজ্ঞান বিভাগ","subjectKey":"physics","subjectIcon":"🔬","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"ফ্রেশ কপি","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/117","source":"Mulboi.com"},{"id":"mb-table-258","title":"পদার্থবিজ্ঞান 2nd Paper (দাগানো বই)","author":"তপন স্যার","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"মেডিকেল (V1)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/115","source":"Mulboi.com"},{"id":"mb-table-259","title":"পদার্থবিজ্ঞান 2nd Paper (দাগানো বই)","author":"তপন স্যার","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"ফ্রেশ কপি","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/116","source":"Mulboi.com"},{"id":"mb-table-260","title":"পদার্থবিজ্ঞান 2nd Paper (দাগানো বই)","author":"ইসহাক স্যার","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"মেডিকেল (V4)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/114","source":"Mulboi.com"},{"id":"mb-table-261","title":"পদার্থবিজ্ঞান 2nd Paper (দাগানো বই)","author":"ইসহাক স্যার","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"মেডিকেল (V3)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/113","source":"Mulboi.com"},{"id":"mb-table-262","title":"পদার্থবিজ্ঞান 2nd Paper (দাগানো বই)","author":"ইসহাক স্যার","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"মেডিকেল (V2)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/112","source":"Mulboi.com"},{"id":"mb-table-263","title":"পদার্থবিজ্ঞান 2nd Paper (দাগানো বই)","author":"ইসহাক স্যার","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"মেডিকেল (V1)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/111","source":"Mulboi.com"},{"id":"mb-table-264","title":"পদার্থবিজ্ঞান 2nd Paper (দাগানো বই)","author":"ইসহাক স্যার","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"একাডেমিক","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/110","source":"Mulboi.com"},{"id":"mb-table-265","title":"বিজ্ঞান বিভাগ 1st Paper (দাগানো বই)","author":"প্রামাণিক স্যার","subject":"বিজ্ঞান বিভাগ","subjectKey":"physics","subjectIcon":"🔬","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"ফ্রেশ কপি","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/120","source":"Mulboi.com"},{"id":"mb-table-266","title":"পদার্থবিজ্ঞান 1st Paper (দাগানো বই)","author":"তপন স্যার","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"মেডিকেল (V1)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/122","source":"Mulboi.com"},{"id":"mb-table-267","title":"পদার্থবিজ্ঞান 1st Paper (দাগানো বই)","author":"তপন স্যার","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"ফ্রেশ কপি","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/121","source":"Mulboi.com"},{"id":"mb-table-268","title":"পদার্থবিজ্ঞান 1st Paper (দাগানো বই)","author":"ইসহাক স্যার","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"মেডিকেল (V2)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/124","source":"Mulboi.com"},{"id":"mb-table-269","title":"পদার্থবিজ্ঞান 1st Paper (দাগানো বই)","author":"ইসহাক স্যার","subject":"পদার্থবিজ্ঞান","subjectKey":"physics","subjectIcon":"⚛️","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"একাডেমিক","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/127","source":"Mulboi.com"},{"id":"mb-table-270","title":"রসায়ন 1st Paper (দাগানো বই)","author":"হাজারী স্যার","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"মেডিকেল (V3)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/107","source":"Mulboi.com"},{"id":"mb-table-271","title":"রসায়ন 1st Paper (দাগানো বই)","author":"হাজারী স্যার","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"মেডিকেল (V4)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/108","source":"Mulboi.com"},{"id":"mb-table-272","title":"রসায়ন 1st Paper (দাগানো বই)","author":"কবীর স্যার","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"ফ্রেশ কপি","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/131","source":"Mulboi.com"},{"id":"mb-table-273","title":"রসায়ন 1st Paper (দাগানো বই)","author":"কবীর স্যার","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"মেডিকেল (V1)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/104","source":"Mulboi.com"},{"id":"mb-table-274","title":"রসায়ন 2nd Paper (দাগানো বই)","author":"হাজারী স্যার","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"একাডেমিক","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/94","source":"Mulboi.com"},{"id":"mb-table-275","title":"রসায়ন 2nd Paper (দাগানো বই)","author":"হাজারী স্যার","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"মেডিকেল (V1)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/128","source":"Mulboi.com"},{"id":"mb-table-276","title":"রসায়ন 2nd Paper (দাগানো বই)","author":"হাজারী স্যার","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"মেডিকেল (V2)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/95","source":"Mulboi.com"},{"id":"mb-table-277","title":"রসায়ন 2nd Paper (দাগানো বই)","author":"হাজারী স্যার","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"মেডিকেল (V3)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/96","source":"Mulboi.com"},{"id":"mb-table-278","title":"রসায়ন 2nd Paper (দাগানো বই)","author":"হাজারী স্যার","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"মেডিকেল (V4)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/97","source":"Mulboi.com"},{"id":"mb-table-279","title":"রসায়ন 2nd Paper (দাগানো বই)","author":"কবীর স্যার","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"ফ্রেশ কপি","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/99","source":"Mulboi.com"},{"id":"mb-table-280","title":"রসায়ন 2nd Paper (দাগানো বই)","author":"কবীর স্যার","subject":"রসায়ন","subjectKey":"chemistry","subjectIcon":"🧪","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"মেডিকেল (V1)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/98","source":"Mulboi.com"},{"id":"mb-table-281","title":"বিজ্ঞান বিভাগ 2nd Paper (দাগানো বই)","author":"অসীম স্যার","subject":"বিজ্ঞান বিভাগ","subjectKey":"physics","subjectIcon":"🔬","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৪ সংস্করণ","version":"ফ্রেশ কপি","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/135","source":"Mulboi.com"},{"id":"mb-table-282","title":"জীববিজ্ঞান 1st Paper (দাগানো বই)","author":"হাসান স্যার","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"একাডেমিক","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/78","source":"Mulboi.com"},{"id":"mb-table-283","title":"জীববিজ্ঞান 1st Paper (দাগানো বই)","author":"হাসান স্যার","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"মেডিকেল (V1)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/77","source":"Mulboi.com"},{"id":"mb-table-284","title":"জীববিজ্ঞান 1st Paper (দাগানো বই)","author":"হাসান স্যার","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"মেডিকেল (V2)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/76","source":"Mulboi.com"},{"id":"mb-table-285","title":"জীববিজ্ঞান 1st Paper (দাগানো বই)","author":"হাসান স্যার","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"মে��িকেল (V3)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/75","source":"Mulboi.com"},{"id":"mb-table-286","title":"জীববিজ্ঞান 1st Paper (দাগানো বই)","author":"হাসান স্যার","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"মেডিকেল (V4)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/74","source":"Mulboi.com"},{"id":"mb-table-287","title":"জীববিজ্ঞান 1st Paper (দাগানো বই)","author":"আজমল স্যার","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"ফ্রেশ কপি","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/68","source":"Mulboi.com"},{"id":"mb-table-288","title":"জীববিজ্ঞান 1st Paper (দাগানো বই)","author":"আলীম স্যার","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"ফ্রেশ কপি","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/67","source":"Mulboi.com"},{"id":"mb-table-289","title":"জীববিজ্ঞান 1st Paper (দাগানো বই)","author":"আলীম স্যার","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"মেডিকেল (V1)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/66","source":"Mulboi.com"},{"id":"mb-table-290","title":"বিজ্ঞান বিভাগ 1st Paper (দাগানো বই)","author":"আজীবুর স্যার","subject":"বিজ্ঞান বিভাগ","subjectKey":"physics","subjectIcon":"🔬","paper":"1st Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"ফ্রেশ কপি","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/64","source":"Mulboi.com"},{"id":"mb-table-291","title":"জীববিজ্ঞান 2nd Paper (দাগানো বই)","author":"আজমল স্যার","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"একাডেমিক","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/48","source":"Mulboi.com"},{"id":"mb-table-292","title":"জীববিজ্ঞান 2nd Paper (দাগানো বই)","author":"আজমল স্যার","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"মেডিকেল (V1)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/49","source":"Mulboi.com"},{"id":"mb-table-293","title":"জীববিজ্ঞান 2nd Paper (দাগানো বই)","author":"আজমল স্যার","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"মেডিকেল (V2)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/50","source":"Mulboi.com"},{"id":"mb-table-294","title":"জীববিজ্ঞান 2nd Paper (দাগানো বই)","author":"আজমল স্যার","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"মেডিকেল (V3)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/51","source":"Mulboi.com"},{"id":"mb-table-295","title":"জীববিজ্ঞান 2nd Paper (দাগানো বই)","author":"আজমল স্যার","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"মেডিকেল (V4)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/53","source":"Mulboi.com"},{"id":"mb-table-296","title":"জীববিজ্ঞান 2nd Paper (দাগানো বই)","author":"আলীম স্যার","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"ফ্রেশ কপি","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/55","source":"Mulboi.com"},{"id":"mb-table-297","title":"জীববিজ্ঞান 2nd Paper (দাগানো বই)","author":"আলীম স্যার","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"মেডিকেল (V1)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/56","source":"Mulboi.com"},{"id":"mb-table-298","title":"জীববিজ্ঞান 2nd Paper (দাগানো বই)","author":"মাজেদা ম্যাম","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"ফ্রেশ কপি","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/58","source":"Mulboi.com"},{"id":"mb-table-299","title":"জীববিজ্ঞান 2nd Paper (দাগানো বই)","author":"মাজেদা ম্যাম","subject":"জীববিজ্ঞান","subjectKey":"biology","subjectIcon":"🧬","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"মেডিকেল (V1)","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/60","source":"Mulboi.com"},{"id":"mb-table-300","title":"বিজ্ঞান বিভাগ 2nd Paper (দাগানো বই)","author":"পারভীন ম্যাম","subject":"বিজ্ঞান বিভাগ","subjectKey":"physics","subjectIcon":"🔬","paper":"2nd Paper","category":"highlighted","categoryName":"দাগানো বই","edition":"২০২৩ সংস্করণ","version":"ফ্রেশ কপি","cover":null,"readUrl":"https://www.mulboi.com/book_bank/private_link/57","source":"Mulboi.com"}];
+
+    // Mulboi State
+    let mulboiBooks = EMBEDDED_MULBOI_BOOKS;
+    let selectedCat = 'all';
+    let selectedSub = 'all';
+    let mulboiSearchTerm = '';
+    let mulboiRenderLimit = 48; // Paginate for performance
+
+    // Mulboi DOM Elements
+    const mulboiSection = document.getElementById('mulboiSection');
+    const aapathshalaSection = document.getElementById('aapathshalaSection');
+    const hubTabMulboi = document.getElementById('hubTabMulboi');
+    const hubTabAapathshala = document.getElementById('hubTabAapathshala');
+
+    const mulboiGrid = document.getElementById('mulboiGrid');
+    const mulboiEmptyState = document.getElementById('mulboiEmptyState');
+    const mulboiSearchInput = document.getElementById('mulboiSearchInput');
+    const mulboiSearchClearBtn = document.getElementById('mulboiSearchClearBtn');
+    const mulboiCountNum = document.getElementById('mulboiCountNum');
+    const mulboiLoadMoreWrap = document.getElementById('mulboiLoadMoreWrap');
+    const mulboiLoadMoreBtn = document.getElementById('mulboiLoadMoreBtn');
+
+    // Mulboi Reader Modal Elements
+    const mulboiReaderModal = document.getElementById('mulboiReaderModal');
+    const mulboiReaderTitle = document.getElementById('mulboiReaderTitle');
+    const mulboiReaderAuthor = document.getElementById('mulboiReaderAuthor');
+    const mulboiReaderIframe = document.getElementById('mulboiReaderIframe');
+    const mulboiDirectTabBtn = document.getElementById('mulboiDirectTabBtn');
+    const mulboiReaderCloseBtn = document.getElementById('mulboiReaderCloseBtn');
+
+    function initHubSwitcher() {
+      if (hubTabMulboi) {
+        hubTabMulboi.onclick = () => switchHubTab('mulboi');
+      }
+      if (hubTabAapathshala) {
+        hubTabAapathshala.onclick = () => switchHubTab('aapathshala');
+      }
+
+      // Check deep link
+      const p = new URLSearchParams(window.location.search);
+      const tabParam = p.get('tab');
+      const folderParam = p.get('folder');
+      if (tabParam === 'aapathshala' || folderParam) {
+        switchHubTab('aapathshala');
+      } else {
+        switchHubTab('mulboi');
+      }
+
+      if (p.get('cat')) selectedCat = p.get('cat');
+      if (p.get('sub')) selectedSub = p.get('sub');
+      if (p.get('q')) {
+        mulboiSearchTerm = p.get('q');
+        if (mulboiSearchInput) mulboiSearchInput.value = mulboiSearchTerm;
+      }
+    }
+
+    function switchHubTab(tabName) {
+      clickSound();
+      if (tabName === 'mulboi') {
+        hubTabMulboi.classList.add('active');
+        hubTabAapathshala.classList.remove('active');
+        mulboiSection.style.display = 'block';
+        aapathshalaSection.style.display = 'none';
+      } else {
+        hubTabMulboi.classList.remove('active');
+        hubTabAapathshala.classList.add('active');
+        mulboiSection.style.display = 'none';
+        aapathshalaSection.style.display = 'block';
+      }
+    }
+
+    function initMulboiController(books) {
+      mulboiBooks = Array.isArray(books) && books.length ? books : EMBEDDED_MULBOI_BOOKS;
+
+      // Bind category pills
+      document.querySelectorAll('#mulboiCatPills .filter-pill').forEach(btn => {
+        btn.onclick = () => {
+          clickSound();
+          document.querySelectorAll('#mulboiCatPills .filter-pill').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          selectedCat = btn.getAttribute('data-cat') || 'all';
+          mulboiRenderLimit = 48;
+          renderMulboiCards();
+        };
+      });
+
+      // Bind subject pills
+      document.querySelectorAll('#mulboiSubPills .filter-pill').forEach(btn => {
+        btn.onclick = () => {
+          clickSound();
+          document.querySelectorAll('#mulboiSubPills .filter-pill').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          selectedSub = btn.getAttribute('data-sub') || 'all';
+          mulboiRenderLimit = 48;
+          renderMulboiCards();
+        };
+      });
+
+      // Search
+      if (mulboiSearchInput) {
+        mulboiSearchInput.oninput = () => {
+          mulboiSearchTerm = mulboiSearchInput.value.trim().toLowerCase();
+          if (mulboiSearchClearBtn) mulboiSearchClearBtn.style.display = mulboiSearchTerm ? 'block' : 'none';
+          mulboiRenderLimit = 48;
+          renderMulboiCards();
+        };
+      }
+      if (mulboiSearchClearBtn) {
+        mulboiSearchClearBtn.onclick = () => {
+          mulboiSearchInput.value = '';
+          mulboiSearchTerm = '';
+          mulboiSearchClearBtn.style.display = 'none';
+          mulboiRenderLimit = 48;
+          renderMulboiCards();
+        };
+      }
+
+      // Load More
+      if (mulboiLoadMoreBtn) {
+        mulboiLoadMoreBtn.onclick = () => {
+          clickSound();
+          mulboiRenderLimit += 48;
+          renderMulboiCards();
+        };
+      }
+
+      // Reader Modal
+      if (mulboiReaderCloseBtn) {
+        mulboiReaderCloseBtn.onclick = closeMulboiReader;
+      }
+      if (mulboiReaderModal) {
+        mulboiReaderModal.onclick = (e) => {
+          if (e.target === mulboiReaderModal) closeMulboiReader();
+        };
+      }
+
+      renderMulboiCards();
+    }
+
+    function renderMulboiCards() {
+      if (!mulboiGrid) return;
+
+      const filtered = mulboiBooks.filter(b => {
+        // Category filter
+        if (selectedCat !== 'all' && b.category !== selectedCat) return false;
+        // Subject filter
+        if (selectedSub !== 'all' && b.subjectKey !== selectedSub) return false;
+        // Search term
+        if (mulboiSearchTerm) {
+          const matchStr = (b.title + ' ' + b.author + ' ' + b.subject + ' ' + b.categoryName + ' ' + (b.edition || '') + ' ' + (b.version || '')).toLowerCase();
+          if (!matchStr.includes(mulboiSearchTerm)) return false;
+        }
+        return true;
+      });
+
+      if (mulboiCountNum) mulboiCountNum.textContent = filtered.length;
+
+      if (filtered.length === 0) {
+        mulboiGrid.innerHTML = '';
+        if (mulboiEmptyState) mulboiEmptyState.style.display = 'block';
+        if (mulboiLoadMoreWrap) mulboiLoadMoreWrap.style.display = 'none';
+        return;
+      }
+
+      if (mulboiEmptyState) mulboiEmptyState.style.display = 'none';
+
+      const toRender = filtered.slice(0, mulboiRenderLimit);
+      let htmlCards = '';
+
+      toRender.forEach(b => {
+        const coverHtml = b.cover ? `
+          <img src="${esc(b.cover)}" alt="${esc(b.title)}" class="mulboi-cover-img" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="mulboi-cover-fallback" style="display:none;">
+            <div class="mulboi-cover-emblem">${b.subjectIcon || '📚'}</div>
+            <div class="mulboi-cover-watermark">${esc(b.subject)}</div>
+          </div>
+        ` : `
+          <div class="mulboi-cover-fallback">
+            <div class="mulboi-cover-emblem">${b.subjectIcon || '📚'}</div>
+            <div class="mulboi-cover-watermark">${esc(b.subject)}</div>
+          </div>
+        `;
+
+        htmlCards += `
+          <div class="mulboi-card">
+            <div class="mulboi-card-cover">
+              ${coverHtml}
+            </div>
+            <div class="mulboi-card-body">
+              <div class="mulboi-card-badges">
+                <span class="badge-subject">${b.subjectIcon || '📚'} ${esc(b.subject)} ${b.paper && b.paper !== 'Complete' ? '• ' + (b.paper === '1st Paper' ? '১ম পত্র' : '২য় পত্র') : ''}</span>
+                <span class="badge-category">${esc(b.categoryName)}</span>
+                ${b.edition ? `<span class="badge-edition">${esc(b.edition)}</span>` : ''}
+              </div>
+              <h3 class="mulboi-book-title" title="${esc(b.title)}">${esc(b.title)}</h3>
+              <p class="mulboi-book-author">✍️ ${esc(b.author)}</p>
+              ${b.version && b.version !== 'মূল বই ডিজিটাল সংস্করণ' ? `<div style="font-family:var(--font-mono); font-size:0.72rem; color:#38bdf8;">🎯 ${esc(b.version)}</div>` : ''}
+              <div class="mulboi-card-actions">
+                <button type="button" class="btn-read-online" onclick="window.openMulboiBook('${b.id}')">
+                  <span>📖 পড়ুন</span>
+                </button>
+                <a href="${esc(b.readUrl)}" target="_blank" rel="noopener noreferrer" class="btn-open-tab" title="নতুন ট্যাবে সরাসরি পড়ুন">
+                  <span>↗</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+
+      mulboiGrid.innerHTML = htmlCards;
+
+      if (mulboiLoadMoreWrap) {
+        mulboiLoadMoreWrap.style.display = filtered.length > mulboiRenderLimit ? 'block' : 'none';
+      }
+    }
+
+    window.openMulboiBook = function(bookId) {
+      const book = mulboiBooks.find(b => b.id === bookId);
+      if (!book) return;
+      clickSound();
+
+      if (mulboiReaderTitle) mulboiReaderTitle.textContent = book.title;
+      if (mulboiReaderAuthor) mulboiReaderAuthor.textContent = `${book.author} • ${book.subject} • ${book.edition || 'Mulboi Edition'}`;
+      if (mulboiDirectTabBtn) mulboiDirectTabBtn.href = book.readUrl;
+      if (mulboiReaderIframe) mulboiReaderIframe.src = book.readUrl;
+      if (mulboiReaderModal) mulboiReaderModal.classList.add('active');
+    };
+
+    function closeMulboiReader() {
+      clickSound();
+      if (mulboiReaderModal) mulboiReaderModal.classList.remove('active');
+      if (mulboiReaderIframe) mulboiReaderIframe.src = 'about:blank';
+    }
 
     // State
     let libraryData = null;
@@ -1223,6 +1958,8 @@
     });
 
     // Start loading
+    initHubSwitcher();
+    initMulboiController(EMBEDDED_MULBOI_BOOKS);
     loadLibrary();
 
   })();
