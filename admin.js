@@ -2564,6 +2564,93 @@ window.AdminPanel = {
   },
 
 
+  populateCompanionForm() {
+    const data = window.PortfolioState && window.PortfolioState.data;
+    let comp = data && data.settings && data.settings.companion;
+    if (!comp) {
+      try {
+        const local = localStorage.getItem('scarface_companion_settings_v2');
+        if (local) comp = JSON.parse(local);
+      } catch (e) {}
+    }
+    const nickEl = document.getElementById('adminCompNickname');
+    const modelEl = document.getElementById('adminCompModel');
+    const avatarEl = document.getElementById('adminCompAvatar');
+    const avatarPrev = document.getElementById('adminCompAvatarPreview');
+    const personalityEl = document.getElementById('adminCompPersonality');
+    const apiKeyEl = document.getElementById('adminCompApiKey');
+
+    if (nickEl) nickEl.value = comp?.nickname || 'Nova';
+    if (modelEl) modelEl.value = comp?.model || 'gemini-3.5-flash';
+    if (avatarEl) avatarEl.value = comp?.avatar || 'assets/images/avatar-pixel.png';
+    if (avatarPrev) avatarPrev.src = comp?.avatar || 'assets/images/avatar-pixel.png';
+    if (personalityEl) personalityEl.value = comp?.personality || 'You are Nova, an ultra-intelligent, sharp, and helpful companion. You specialize in computer science, systems engineering (C, C++, Rust, Linux, Compilers, OS), and academic problem-solving. Be concise, profound, direct, and helpful. Use clean GitHub-flavored markdown with syntax highlighted code blocks.';
+    if (apiKeyEl) apiKeyEl.value = comp?.apiKey || '';
+  },
+
+  bindCompanionEvents() {
+    const avatarInput = document.getElementById('adminCompAvatar');
+    const avatarPrev = document.getElementById('adminCompAvatarPreview');
+    if (avatarInput && avatarPrev) {
+      avatarInput.addEventListener('input', (e) => {
+        avatarPrev.src = e.target.value.trim() || 'assets/images/avatar-pixel.png';
+      });
+    }
+
+    document.querySelectorAll('.admin-comp-preset-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const url = btn.getAttribute('data-url');
+        if (avatarInput) avatarInput.value = url;
+        if (avatarPrev) avatarPrev.src = url;
+      });
+    });
+
+    const form = document.getElementById('adminCompanionConfigForm');
+    const feedback = document.getElementById('adminCompFeedback');
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const nickname = document.getElementById('adminCompNickname')?.value.trim() || 'Nova';
+        const model = document.getElementById('adminCompModel')?.value.trim() || 'gemini-3.5-flash';
+        const avatar = document.getElementById('adminCompAvatar')?.value.trim() || 'assets/images/avatar-pixel.png';
+        const personality = document.getElementById('adminCompPersonality')?.value.trim() || '';
+        const customKey = document.getElementById('adminCompApiKey')?.value.trim() || '';
+
+        const companionSettings = { nickname, model, avatar, personality };
+        if (customKey) companionSettings.apiKey = customKey;
+
+        try {
+          const current = JSON.parse(localStorage.getItem('scarface_companion_settings_v2') || '{}');
+          localStorage.setItem('scarface_companion_settings_v2', JSON.stringify(Object.assign(current, companionSettings)));
+        } catch (err) {}
+
+        if (window.PortfolioState && window.PortfolioState.data) {
+          if (!window.PortfolioState.data.settings) window.PortfolioState.data.settings = {};
+          window.PortfolioState.data.settings.companion = Object.assign({}, window.PortfolioState.data.settings.companion || {}, companionSettings);
+        }
+
+        try {
+          const res = await this.authFetch('/api/portfolio', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(window.PortfolioState.data)
+          });
+          if (feedback) {
+            feedback.textContent = res && res.ok ? '✅ Companion settings saved to server!' : '✅ Saved locally!';
+            feedback.style.color = '#10b981';
+            setTimeout(() => { feedback.textContent = ''; }, 3000);
+          }
+        } catch (netErr) {
+          if (feedback) {
+            feedback.textContent = '✅ Saved locally!';
+            feedback.style.color = '#10b981';
+            setTimeout(() => { feedback.textContent = ''; }, 3000);
+          }
+        }
+      });
+    }
+  },
+
   escape(str) {
     if (typeof str !== 'string') return str;
     return str.replace(/[&<>'"]/g, 

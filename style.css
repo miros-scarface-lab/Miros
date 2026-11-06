@@ -1,4 +1,451 @@
 /* ==========================================================================
+   ULTRA-MODERN GLASSMORPHISM DESIGN SYSTEM (2026 TECH AESTHETIC)
+   Single Fixed Theme: Modern Dark
+   ========================================================================== */
+
+:root,
+[data-theme],
+[data-theme="modern-dark"],
+[data-theme="vintage-parchment"],
+[data-theme="cyber-futuristic"],
+[data-theme="terminal-phosphor"],
+[data-theme="blueprint-cyan"],
+[data-theme="amber-crt"],
+[data-theme="cyber-deck"],
+[data-theme="solarized-dark"] {
+  /* Core Color Palette: Deep Space, Electric Cyan, Neon Purple, Clean White */
+  --theme-name: "modern-dark";
+  --bg-canvas: #030712;
+  --bg-canvas-translucent: rgba(3, 7, 18, 0.85);
+  --bg-surface: rgba(13, 20, 38, 0.75);
+  --bg-card: rgba(15, 23, 42, 0.65);
+  --bg-card-hover: rgba(20, 32, 60, 0.8);
+  --bg-subtle: rgba(255, 255, 255, 0.04);
+  --bg-glass: rgba(15, 23, 42, 0.7);
+  --bg-terminal: #02040a;
+
+  --ink-primary: #f8fafc;
+  --ink-secondary: #94a3b8;
+  --ink-muted: #64748b;
+  --ink-terminal: #00f0ff;
+
+  --accent-cyan: #00f0ff;
+  --accent-cyan-hover: #38bdf8;
+  --accent-purple: #a855f7;
+  --accent-purple-hover: #c084fc;
+  --accent-emerald: #10b981;
+  --accent-rust: #00f0ff;
+  --accent-rust-hover: #38bdf8;
+  --accent-patina: #10b981;
+  --accent-amber: #f59e0b;
+  --accent-violet: #a855f7;
+  --accent-blueprint: #38bdf8;
+  --accent-pink: #f43f5e;
+
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-glass: rgba(255, 255, 255, 0.12);
+  --border-glow: rgba(0, 240, 255, 0.35);
+  --border-width: 1px;
+  --border-dashed: 1px dashed rgba(0, 240, 255, 0.35);
+
+  --shadow-glass: 0 10px 30px rgba(0, 0, 0, 0.6);
+  --shadow-glass-lg: 0 20px 50px rgba(0, 0, 0, 0.75), 0 0 25px rgba(0, 240, 255, 0.12);
+  --shadow-tactile: 0 10px 30px rgba(0, 0, 0, 0.6);
+  --shadow-tactile-lg: 0 20px 50px rgba(0, 0, 0, 0.75), 0 0 25px rgba(0, 240, 255, 0.12);
+  --shadow-tactile-sm: 0 4px 14px rgba(0, 0, 0, 0.4);
+
+  --font-display: 'Space Grotesk', -apple-system, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Hind Siliguri', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-serif: 'Space Grotesk', sans-serif;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+  --radius-badge: 9999px;
+
+  --theme-glow: 0 0 25px rgba(0, 240, 255, 0.35);
+  --theme-glow-accent: 0 0 25px rgba(168, 85, 247, 0.35);
+  --bg-pattern: radial-gradient(rgba(56, 189, 248, 0.08) 1px, transparent 1px);
+  --bg-pattern-size: 28px 28px;
+}
+
+/* Base Body: Deep Space with Subtle Cyan/Purple Nebula Gradient */
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: #030712;
+}
+
+body,
+.vintage-body,
+.modern-body {
+  background-color: #030712 !important;
+  background-image: 
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(120, 119, 198, 0.15), transparent),
+    radial-gradient(circle at 10% 20%, rgba(0, 240, 255, 0.04), transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.04), transparent 40%) !important;
+  color: #f8fafc !important;
+  font-family: var(--font-body) !important;
+  min-height: 100vh !important;
+  margin: 0 !important;
+  overflow-x: hidden !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+body.vintage-body::before,
+body.modern-body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: var(--bg-pattern);
+  background-size: var(--bg-pattern-size);
+  z-index: 0;
+  opacity: 0.6;
+}
+
+/* Floating Glassmorphic Pill Header */
+.vintage-header,
+.modern-header {
+  position: sticky !important;
+  top: 14px !important;
+  z-index: 1000 !important;
+  margin: 0.75rem auto 1.5rem !important;
+  max-width: 1220px !important;
+  width: 95% !important;
+  background: rgba(8, 12, 28, 0.78) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 9999px !important;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 240, 255, 0.08) !important;
+  padding: 0.4rem 1.25rem !important;
+  transition: all 0.3s ease !important;
+}
+
+.vintage-header:hover,
+.modern-header:hover {
+  border-color: rgba(0, 240, 255, 0.25) !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 240, 255, 0.12) !important;
+}
+
+.header-container {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.brand-link {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 700 !important;
+  color: #f8fafc !important;
+  letter-spacing: 0.04em !important;
+  text-decoration: none !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 2px !important;
+}
+
+.brand-bracket {
+  color: #00f0ff !important;
+  font-family: var(--font-mono) !important;
+}
+
+.brand-text {
+  background: linear-gradient(135deg, #ffffff 40%, #00f0ff 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.status-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.4rem !important;
+  padding: 0.2rem 0.65rem !important;
+  border-radius: 9999px !important;
+  background: rgba(16, 185, 129, 0.1) !important;
+  border: 1px solid rgba(16, 185, 129, 0.25) !important;
+  font-family: var(--font-mono) !important;
+  font-size: 0.68rem !important;
+  color: #10b981 !important;
+}
+
+.nav-links {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.25rem !important;
+}
+
+.nav-item {
+  font-family: var(--font-mono) !important;
+  font-size: 0.76rem !important;
+  color: #94a3b8 !important;
+  text-decoration: none !important;
+  padding: 0.4rem 0.75rem !important;
+  border-radius: 9999px !important;
+  transition: all 0.2s ease !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.35rem !important;
+}
+
+.nav-item span {
+  color: #00f0ff !important;
+  opacity: 0.7 !important;
+}
+
+.nav-item:hover {
+  color: #f8fafc !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  transform: translateY(-1px) !important;
+}
+
+.nav-item.active {
+  color: #ffffff !important;
+  background: rgba(0, 240, 255, 0.12) !important;
+  border: 1px solid rgba(0, 240, 255, 0.3) !important;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.2) !important;
+}
+
+/* Glassmorphism Cards: Clean, Translucent, Glowing Borders */
+.vintage-card,
+.parchment-paper,
+.modern-card,
+.card,
+.project-card,
+.skill-card,
+.academic-card,
+.experience-card,
+.hsc-subject-card,
+.hsc-resource-card {
+  background: rgba(13, 20, 38, 0.65) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+  color: #f8fafc !important;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+.vintage-card:hover,
+.parchment-paper:hover,
+.modern-card:hover,
+.card:hover,
+.project-card:hover,
+.skill-card:hover,
+.academic-card:hover,
+.experience-card:hover,
+.hsc-subject-card:hover,
+.hsc-resource-card:hover {
+  transform: translateY(-4px) !important;
+  border-color: rgba(0, 240, 255, 0.35) !important;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7), 0 0 25px rgba(0, 240, 255, 0.15) !important;
+}
+
+/* Buttons: Modern Pills with Gradient & Glow */
+.vintage-btn,
+.modern-btn,
+.btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.5rem !important;
+  font-family: var(--font-mono) !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  padding: 0.65rem 1.25rem !important;
+  border-radius: 9999px !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  border: 1px solid transparent !important;
+  line-height: 1.2 !important;
+}
+
+.vintage-btn.btn-primary,
+.modern-btn.btn-primary {
+  background: linear-gradient(135deg, #00f0ff, #a855f7) !important;
+  color: #030712 !important;
+  border: none !important;
+  box-shadow: 0 4px 18px rgba(0, 240, 255, 0.3) !important;
+}
+
+.vintage-btn.btn-primary:hover,
+.modern-btn.btn-primary:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 25px rgba(0, 240, 255, 0.5) !important;
+  filter: brightness(1.1) !important;
+}
+
+.vintage-btn.btn-secondary,
+.modern-btn.btn-secondary {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #f8fafc !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+.vintage-btn.btn-secondary:hover,
+.modern-btn.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.14) !important;
+  border-color: #00f0ff !important;
+  color: #00f0ff !important;
+  transform: translateY(-2px) !important;
+}
+
+.vintage-btn.btn-outline,
+.modern-btn.btn-outline {
+  background: transparent !important;
+  color: #94a3b8 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+.vintage-btn.btn-outline:hover,
+.modern-btn.btn-outline:hover {
+  color: #f8fafc !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+  transform: translateY(-2px) !important;
+}
+
+.vintage-btn.btn-sm,
+.modern-btn.btn-sm {
+  padding: 0.35rem 0.85rem !important;
+  font-size: 0.75rem !important;
+}
+
+.btn-icon {
+  width: 36px !important;
+  height: 36px !important;
+  padding: 0 !important;
+  border-radius: 50% !important;
+}
+
+/* Badges & Tags */
+.vintage-tag,
+.modern-tag,
+.vintage-stamp-badge,
+.scarface-badge {
+  border-radius: 9999px !important;
+  background: rgba(0, 240, 255, 0.08) !important;
+  border: 1px solid rgba(0, 240, 255, 0.25) !important;
+  color: #38bdf8 !important;
+  font-family: var(--font-mono) !important;
+  font-size: 0.72rem !important;
+  padding: 0.2rem 0.65rem !important;
+  letter-spacing: 0.02em !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.35rem !important;
+}
+
+/* Modern Typography */
+h1, h2, h3, h4, .page-title, .section-title, .hero-name {
+  font-family: 'Space Grotesk', -apple-system, sans-serif !important;
+  color: #f8fafc !important;
+  letter-spacing: -0.02em !important;
+}
+
+.hero-name {
+  background: linear-gradient(135deg, #ffffff 30%, #00f0ff 75%, #a855f7 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.section-title {
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  background: linear-gradient(135deg, #ffffff 40%, #00f0ff 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.section-subtitle {
+  color: #94a3b8 !important;
+  font-size: 0.95rem !important;
+}
+
+/* Modern Inputs */
+.vintage-input,
+.modern-input,
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="url"],
+textarea,
+select {
+  background: rgba(5, 8, 20, 0.85) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: #f8fafc !important;
+  border-radius: 12px !important;
+  padding: 0.65rem 1rem !important;
+  font-family: var(--font-body) !important;
+  font-size: 0.88rem !important;
+  transition: all 0.2s ease !important;
+  outline: none !important;
+}
+
+.vintage-input:focus,
+.modern-input:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+textarea:focus,
+select:focus {
+  border-color: #00f0ff !important;
+  box-shadow: 0 0 18px rgba(0, 240, 255, 0.3) !important;
+}
+
+/* Modals & Dialogs */
+.vintage-modal-overlay,
+.modal-backdrop {
+  background: rgba(0, 0, 0, 0.75) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+}
+
+.vintage-modal-dialog {
+  background: rgba(10, 15, 30, 0.95) !important;
+  backdrop-filter: blur(25px) !important;
+  -webkit-backdrop-filter: blur(25px) !important;
+  border: 1px solid rgba(0, 240, 255, 0.3) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(0, 240, 255, 0.15) !important;
+  color: #f8fafc !important;
+}
+
+/* Clean Footer */
+.vintage-footer,
+.modern-footer {
+  background: rgba(4, 7, 16, 0.92) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(20px) !important;
+  color: #64748b !important;
+  padding: 2.5rem 0 !important;
+  margin-top: 4rem !important;
+}
+
+.footer-copy {
+  color: #94a3b8 !important;
+}
+
+/* Absolute Elimination of Vintage/Retro Gimmicks */
+.paper-clip,
+.stamp-seal-badge,
+.stamp-seal,
+.section-divider,
+.footer-seal,
+.retro-ticker-tape,
+.vintage-overlay,
+.theme-dropdown,
+.vintage-select-theme {
+  display: none !important;
+}
+
+
+/* ==========================================================================
    VINTAGE 2D DESIGN SYSTEM & STYLESHEET
    Crafted for CSE Developer Portfolio & Interactive Terminal
    ========================================================================== */

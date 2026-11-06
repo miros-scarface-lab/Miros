@@ -588,69 +588,24 @@
           <!-- TAB 6: THEMES & APPEARANCE -->
           <div class="admin-tab-pane" id="tab-appearance">
             <div class="tab-pane-header">
-              <h3 class="pane-title">Appearance & Vintage 2D Styling</h3>
-              <p class="pane-subtitle">Choose between classic paper, vintage CRT phosphor, or engineering blueprint.</p>
+              <h3 class="pane-title">Appearance &amp; Theme Engine</h3>
+              <p class="pane-subtitle">Ultra-Modern 2026 Tech Aesthetic with Deep Space Glassmorphism and Electric Cyan.</p>
             </div>
 
-            <div class="theme-cards-grid">
-              <div class="theme-select-card" data-set-theme="vintage-parchment">
-                <div class="theme-preview-box parchment-prev">
-                  <div class="prev-badge">Aa</div>
-                  <div class="prev-line"></div>
+            <div style="margin-bottom: 1.5rem;">
+              <div class="modern-card" style="padding: 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; border-radius: 18px; background: rgba(13, 20, 38, 0.7); border: 1px solid rgba(0, 240, 255, 0.25);">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                  <div style="width: 50px; height: 50px; border-radius: 14px; background: linear-gradient(135deg, #00f0ff, #a855f7); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);">
+                    🌌
+                  </div>
+                  <div>
+                    <h4 style="margin: 0; font-size: 1.15rem; color: #f8fafc; font-family: var(--font-display);">Modern Dark Theme (Active)</h4>
+                    <p style="margin: 0.25rem 0 0 0; font-size: 0.85rem; color: #94a3b8;">Deep space canvas (#030712), electric cyan (#00f0ff), purple (#a855f7), and frosted glass.</p>
+                  </div>
                 </div>
-                <h4 class="theme-card-name">📜 Parchment & Ink</h4>
-                <p class="theme-card-desc">1920s handcrafted bookprint, warm aged paper, and dark carbon ink.</p>
-                <button class="vintage-btn btn-sm btn-outline select-theme-btn">Activate</button>
-              </div>
-
-              <div class="theme-select-card" data-set-theme="terminal-phosphor">
-                <div class="theme-preview-box phosphor-prev">
-                  <div class="prev-badge">&gt;_</div>
-                  <div class="prev-line"></div>
-                </div>
-                <h4 class="theme-card-name">📟 Terminal Phosphor</h4>
-                <p class="theme-card-desc">1970s mainframe VT-100 green phosphor cathode ray tube aesthetic.</p>
-                <button class="vintage-btn btn-sm btn-outline select-theme-btn">Activate</button>
-              </div>
-
-              <div class="theme-select-card" data-set-theme="blueprint-cyan">
-                <div class="theme-preview-box blueprint-prev">
-                  <div class="prev-badge">📐</div>
-                  <div class="prev-line"></div>
-                </div>
-                <h4 class="theme-card-name">📐 Blueprint Cyan</h4>
-                <p class="theme-card-desc">1960s architectural cyan blueprint with white ink drafts and calipers.</p>
-                <button class="vintage-btn btn-sm btn-outline select-theme-btn">Activate</button>
-              </div>
-
-              <div class="theme-select-card" data-set-theme="amber-crt">
-                <div class="theme-preview-box amber-prev">
-                  <div class="prev-badge">💡</div>
-                  <div class="prev-line"></div>
-                </div>
-                <h4 class="theme-card-name">💡 Amber Gas Discharge</h4>
-                <p class="theme-card-desc">1980s warm amber terminal screen with neon glow and high contrast.</p>
-                <button class="vintage-btn btn-sm btn-outline select-theme-btn">Activate</button>
-              </div>
-
-              <div class="theme-select-card" data-set-theme="cyber-deck">
-                <div class="theme-preview-box cyber-prev">
-                  <div class="prev-badge">⚡</div>
-                  <div class="prev-line"></div>
-                </div>
-                <h4 class="theme-card-name">💜 Cyberdeck Neon</h4>
-                <p class="theme-card-desc">1990s Cyberpunk Gibson matrix with neon magenta and cyan glow.</p>
-                <button class="vintage-btn btn-sm btn-outline select-theme-btn">Activate</button>
-              </div>
-
-              <div class="theme-select-card" data-set-theme="solarized-dark">
-                <div class="theme-preview-box solarized-prev">
-                  <div class="prev-badge">☀️</div>
-                  <div class="prev-line"></div>
-                </div>
-                <h4 class="theme-card-name">☀️ Solarized Dark</h4>
-                <p class="theme-card-desc">Legendary systems programmer oceanic slate palette with cyan accents.</p>
-                <button class="vintage-btn btn-sm btn-outline select-theme-btn">Activate</button>
+                <span class="status-pill" style="font-size: 0.8rem; padding: 0.35rem 0.85rem; border-radius: 9999px;">
+                  <span class="status-indicator"></span> Fixed Modern Theme
+                </span>
               </div>
             </div>
 
@@ -1117,16 +1072,9 @@
                 </div>
               </div>
 
-              <div class="form-grid-2">
-                <div class="form-group">
-                  <label class="form-label">Passphrase to Protect Page (Default: <code>miros</code>)</label>
-                  <input type="text" id="adminCompPassword" class="vintage-input" placeholder="miros" value="miros" required>
-                </div>
-
-                <div class="form-group">
-                  <label class="form-label">Active Gemini API Key</label>
-                  <input type="password" id="adminCompApiKey" class="vintage-input" placeholder="Active (Pre-configured) or enter custom key...">
-                </div>
+              <div class="form-group">
+                <label class="form-label">Active Gemini API Key (Pre-configured with Gemini 3.5 Flash)</label>
+                <input type="password" id="adminCompApiKey" class="vintage-input" placeholder="Pre-configured (Base64) or enter custom Gemini API key...">
               </div>
 
               <div class="form-group">

@@ -7,9 +7,9 @@
 window.PortfolioState = {
   data: null,
   activeFilter: 'all',
-  theme: localStorage.getItem('cse_vintage_theme') || 'vintage-parchment',
+  theme: 'modern-dark',
   audioEnabled: localStorage.getItem('cse_audio_fx') !== 'false',
-  scanlinesEnabled: localStorage.getItem('cse_scanlines') === 'true'
+  scanlinesEnabled: false
 };
 
 // Web Audio API Typewriter Click Sound Synthesizer
@@ -1511,6 +1511,7 @@ function initTypewriter() {
  * Interactive POSIX Linux Terminal & Shell Engine
  */
 function initInteractiveTerminal() {
+  if (window.activeTerminalVM) return;
   const input = document.getElementById('terminalInput');
   const output = document.getElementById('terminalOutput');
   const jumpBtn = document.getElementById('heroTerminalJumpBtn');
