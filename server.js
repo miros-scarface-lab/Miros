@@ -702,6 +702,21 @@ app.delete('/api/hsc/:category/:id', requireAdminAuth, (req, res) => {
 // ============================================================================
 
 // Static assets with smart caching
+app.get('/style.css', (req, res) => {
+  res.setHeader('Content-Type', 'text/css; charset=UTF-8');
+  res.sendFile(path.join(__dirname, 'style.css'));
+});
+
+app.get('/script.js', (req, res) => {
+  res.setHeader('Content-Type', 'application/javascript; charset=UTF-8');
+  res.sendFile(path.join(__dirname, 'script.js'));
+});
+
+app.get('/admin.js', (req, res) => {
+  res.setHeader('Content-Type', 'application/javascript; charset=UTF-8');
+  res.sendFile(path.join(__dirname, 'admin.js'));
+});
+
 app.use('/assets', express.static(path.join(__dirname, 'assets'), {
   maxAge: '1d',
   setHeaders: (res, filePath) => {
@@ -731,8 +746,11 @@ app.get('/contact', (req, res) => res.sendFile(path.join(__dirname, 'contact.htm
 app.get('/hsc', (req, res) => res.sendFile(path.join(__dirname, 'hsc.html')));
 app.get('/admin', (req, res) => res.sendFile(path.join(__dirname, 'admin.html')));
 
-// Fallback to index.html
+// Fallback to index.html (never serve index.html for static asset extensions)
 app.get('*', (req, res) => {
+  if (req.path.match(/\.(css|js|json|png|jpg|jpeg|gif|webp|svg|ico|mp3|wav|ogg|ttf|woff|woff2)$/i)) {
+    return res.status(404).send('Asset Not Found');
+  }
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
