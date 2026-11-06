@@ -206,6 +206,10 @@
       this.renderMessages();
     }
 
+    clearChat() {
+      this.clearHistory();
+    }
+
     renderHeaderInfo() {
       if (typeof document === 'undefined') return;
       if (this.nicknameEl) {
@@ -221,6 +225,7 @@
     }
 
     bindEvents() {
+      if (typeof document === 'undefined') return;
       if (this.sendBtn && this.inputEl) {
         this.sendBtn.addEventListener('click', () => this.handleUserSend());
         this.inputEl.addEventListener('keydown', (e) => {
@@ -237,9 +242,22 @@
         });
       }
 
-      if (this.dotsMenuBtn) {
-        this.dotsMenuBtn.addEventListener('click', () => this.openSettingsModal());
+      // Clear Chat button binding
+      const clearBtn = document.getElementById('companionClearChatBtn') || document.getElementById('drawerCompanionClearBtn');
+      if (clearBtn) {
+        clearBtn.addEventListener('click', () => this.clearChat());
       }
+
+      // Suggestion prompt chips binding
+      document.querySelectorAll('.companion-suggestion-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          const prompt = chip.getAttribute('data-prompt') || chip.textContent.trim();
+          if (this.inputEl && prompt) {
+            this.inputEl.value = prompt;
+            this.handleUserSend();
+          }
+        });
+      });
     }
 
     async handleUserSend() {
@@ -366,6 +384,7 @@
 
       this.saveHistory();
       this.renderMessages();
+      return replyText;
     }
 
     renderThinkingIndicator() {

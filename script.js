@@ -1712,17 +1712,114 @@ function initAudioToggle() {
 }
 
 function initMobileNav() {
-  const toggle = document.getElementById('mobileMenuToggle');
-  const nav = document.getElementById('mainNav');
-  if (!toggle || !nav) return;
+  const trigger = document.getElementById('mobileMenuTrigger');
+  const drawer = document.getElementById('mobileDrawerSheet');
+  const backdrop = document.getElementById('mobileDrawerBackdrop');
+  const closeBtn = document.getElementById('mobileDrawerClose');
+  const dockMenuBtn = document.getElementById('dockMenuBtn');
 
-  toggle.addEventListener('click', () => {
-    nav.classList.toggle('open');
+  function openDrawer() {
+    if (drawer) {
+      drawer.classList.add('open');
+      drawer.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+    if (trigger) {
+      trigger.classList.add('active');
+      trigger.setAttribute('aria-expanded', 'true');
+    }
+  }
+
+  function closeDrawer() {
+    if (drawer) {
+      drawer.classList.remove('open');
+      drawer.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+    if (trigger) {
+      trigger.classList.remove('active');
+      trigger.setAttribute('aria-expanded', 'false');
+    }
+  }
+
+  if (trigger) {
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (drawer && drawer.classList.contains('open')) {
+        closeDrawer();
+      } else {
+        openDrawer();
+      }
+    });
+  }
+
+  if (dockMenuBtn) {
+    dockMenuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openDrawer();
+    });
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeDrawer);
+  }
+
+  if (backdrop) {
+    backdrop.addEventListener('click', closeDrawer);
+  }
+
+  // Close when clicking any link inside the mobile drawer
+  if (drawer) {
+    drawer.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeDrawer);
+    });
+  }
+
+  // Escape key closes mobile drawer
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeDrawer();
   });
 
-  nav.querySelectorAll('.nav-item').forEach(link => {
-    link.addEventListener('click', () => nav.classList.remove('open'));
-  });
+  // Legacy fallback support for older header
+  const oldToggle = document.getElementById('mobileMenuToggle');
+  const oldNav = document.getElementById('mainNav');
+  if (oldToggle && oldNav) {
+    oldToggle.addEventListener('click', () => {
+      oldNav.classList.toggle('open');
+    });
+    oldNav.querySelectorAll('.nav-item').forEach(link => {
+      link.addEventListener('click', () => oldNav.classList.remove('open'));
+    });
+  }
+
+  // Automatic Active Page Detection & Highlighting
+  try {
+    const curPath = window.location.pathname.toLowerCase();
+    const pageKeys = ['about', 'terminal', 'projects', 'skills', 'academics', 'experience', 'contact', 'hsc', 'companion', 'admin'];
+    let matchedKey = 'home';
+    for (const key of pageKeys) {
+      if (curPath.includes(key)) {
+        matchedKey = key;
+        break;
+      }
+    }
+    // Highlight desktop link
+    document.querySelectorAll('.senior-nav-link').forEach(link => {
+      if (link.getAttribute('data-page') === matchedKey) {
+        link.classList.add('active');
+      } else if (matchedKey !== 'home' && link.getAttribute('data-page') === 'home') {
+        link.classList.remove('active');
+      }
+    });
+    // Highlight mobile dock item
+    document.querySelectorAll('.mobile-bottom-dock .dock-item').forEach(item => {
+      if (item.getAttribute('data-page') === matchedKey) {
+        item.classList.add('active');
+      } else if (matchedKey !== 'home' && item.getAttribute('data-page') === 'home') {
+        item.classList.remove('active');
+      }
+    });
+  } catch (err) {}
 }
 
 function initClock() {

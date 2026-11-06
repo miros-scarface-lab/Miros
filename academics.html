@@ -2,7 +2,7 @@
 <html lang="en" data-theme="modern-dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>05. Academic Curriculum & Coursework | Mir A K Sajid CSE</title>
   <meta name="description" content="Academic degree record, undergraduate coursework grades, honors standing, and scholastic achievements of Mir A K Sajid.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,47 +16,142 @@
   
 
   <!-- Header -->
-  <header class="vintage-header" id="header">
-    <div class="header-container">
-      <div class="brand-badge">
-        <a href="index.html" class="brand-link">
-          <span class="brand-bracket">[</span>
-          <span class="brand-text" id="headerBrand">CSE://MIR_SAJID</span>
-          <span class="brand-bracket">]</span>
-        </a>
-        <div class="status-pill" id="systemStatusPill">
-          <span class="status-indicator"></span>
-          <span class="status-label" id="headerStatus">KERNEL READY • OPEN TO WORK</span>
+    <!-- Senior Developer Floating Command Navbar -->
+  <header class="senior-navbar" id="seniorNavbar">
+    <div class="senior-nav-container">
+      <a href="index.html" class="senior-brand" aria-label="Mir A K Sajid - Home">
+        <div class="brand-beacon-wrapper">
+          <span class="beacon-pulse"></span>
+          <span class="beacon-dot"></span>
         </div>
-      </div>
+        <div class="brand-titles">
+          <span class="brand-name">&lt;Sajid /&gt;</span>
+          <span class="brand-tag">SENIOR // CSE</span>
+        </div>
+      </a>
 
-      <nav class="nav-links" id="mainNav">
-        <a href="index.html" class="nav-item"><span>00.</span> Home</a>
-        <a href="about.html" class="nav-item"><span>01.</span> About</a>
-        <a href="terminal.html" class="nav-item"><span>02.</span> Terminal</a>
-        <a href="projects.html" class="nav-item"><span>03.</span> Projects</a>
-        <a href="skills.html" class="nav-item"><span>04.</span> Skills</a>
-        <a href="academics.html" class="nav-item active"><span>05.</span> Academics</a>
-        <a href="experience.html" class="nav-item"><span>06.</span> Experience</a>
-        <a href="contact.html" class="nav-item"><span>07.</span> Dispatch</a>
-        <a href="hsc.html" class="nav-item"><span>08.</span> HSC Academic</a>
-          <a href="companion.html" class="nav-item"><span>09.</span> Companion</a>
+      <nav class="senior-nav-links" id="seniorNavLinks" aria-label="Main Navigation">
+        <a href="index.html" class="senior-nav-link" data-page="home">Home</a>
+        <a href="about.html" class="senior-nav-link" data-page="about">About</a>
+        <a href="projects.html" class="senior-nav-link" data-page="projects">Projects</a>
+        <a href="skills.html" class="senior-nav-link" data-page="skills">Skills</a>
+        <a href="experience.html" class="senior-nav-link" data-page="experience">Experience</a>
+        <a href="academics.html" class="senior-nav-link active" data-page="academics">Academics</a>
+        <a href="contact.html" class="senior-nav-link" data-page="contact">Contact</a>
       </nav>
 
-      <div class="header-controls">
-        
-
-        <!-- 3-Dots Quick Action Menu -->
-        <button class="vintage-btn btn-sm btn-icon" id="audioToggleBtn" title="Toggle Mechanical Audio">
+      <div class="senior-nav-actions">
+        <a href="terminal.html" class="nav-action-pill terminal-pill" title="POSIX Linux Terminal">
+          <span class="action-icon">&gt;_</span>
+          <span class="action-label">Term</span>
+        </a>
+        <a href="companion.html" class="nav-action-pill ai-pill" title="AI Companion (Gemini 3.5)">
+          <span class="action-sparkle">✨</span>
+          <span class="action-label">Nova</span>
+        </a>
+        <button type="button" class="nav-icon-circle" id="audioToggleBtn" title="Toggle Mechanical Audio" aria-label="Toggle Audio">
           <span id="audioIcon">🔊</span>
         </button>
+        <a href="admin.html" class="nav-icon-circle admin-shortcut" title="Station Master Console" aria-label="Admin Console">
+          <span>⚙️</span>
+        </a>
+        <button type="button" class="mobile-menu-trigger" id="mobileMenuTrigger" aria-label="Toggle Mobile Menu" aria-expanded="false">
+          <span class="hamburger-bar top"></span>
+          <span class="hamburger-bar middle"></span>
+          <span class="hamburger-bar bottom"></span>
+        </button>
       </div>
-
-      <button class="mobile-toggle" id="mobileMenuToggle" aria-label="Toggle navigation">
-        <span></span><span></span><span></span>
-      </button>
     </div>
   </header>
+
+  <!-- Mobile Slide-Over Drawer Sheet -->
+  <div class="mobile-drawer-sheet" id="mobileDrawerSheet" aria-hidden="true">
+    <div class="mobile-drawer-backdrop" id="mobileDrawerBackdrop"></div>
+    <div class="mobile-drawer-content">
+      <div class="mobile-drawer-header">
+        <div class="mobile-drawer-brand">
+          <span class="brand-code">&lt;Sajid /&gt;</span>
+          <span class="drawer-status-chip">
+            <span class="status-live-dot"></span> KERNEL ONLINE
+          </span>
+        </div>
+        <button type="button" class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close Navigation">✕</button>
+      </div>
+
+      <div class="mobile-drawer-body">
+        <div class="drawer-nav-group">
+          <div class="drawer-group-label">PORTFOLIO SECTORS</div>
+          <div class="drawer-links-grid">
+            <a href="index.html" class="drawer-link-item"><span class="link-num">00</span><span class="link-text">Home // Overview</span></a>
+            <a href="about.html" class="drawer-link-item"><span class="link-num">01</span><span class="link-text">About // Senior CSE</span></a>
+            <a href="projects.html" class="drawer-link-item"><span class="link-num">02</span><span class="link-text">Projects // Systems & Apps</span></a>
+            <a href="skills.html" class="drawer-link-item"><span class="link-num">03</span><span class="link-text">Skills // Technical Arsenal</span></a>
+            <a href="experience.html" class="drawer-link-item"><span class="link-num">04</span><span class="link-text">Experience // Timeline</span></a>
+            <a href="academics.html" class="drawer-link-item"><span class="link-num">05</span><span class="link-text">Academics // CSE Syllabus</span></a>
+            <a href="contact.html" class="drawer-link-item"><span class="link-num">06</span><span class="link-text">Dispatch // Contact</span></a>
+          </div>
+        </div>
+
+        <div class="drawer-nav-group">
+          <div class="drawer-group-label">CYBER ENGINES</div>
+          <div class="drawer-featured-grid">
+            <a href="terminal.html" class="drawer-feature-card term-feature">
+              <div class="feature-icon">&gt;_</div>
+              <div class="feature-meta">
+                <span class="feature-title">Linux POSIX Shell</span>
+                <span class="feature-sub">In-Browser VM & REPLs</span>
+              </div>
+            </a>
+            <a href="companion.html" class="drawer-feature-card ai-feature">
+              <div class="feature-icon">🤖</div>
+              <div class="feature-meta">
+                <span class="feature-title">Nova AI Companion</span>
+                <span class="feature-sub">Gemini 3.5 Flash Powered</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="drawer-nav-group">
+          <div class="drawer-group-label">ARCHIVES & CONTROL</div>
+          <div class="drawer-links-grid">
+            <a href="hsc.html" class="drawer-link-item"><span class="link-num">📚</span><span class="link-text">HSC Academic Library (620+ Books)</span></a>
+            <a href="admin.html" class="drawer-link-item"><span class="link-num">⚙️</span><span class="link-text">Station Master Console (Admin)</span></a>
+          </div>
+        </div>
+
+        <div class="drawer-telemetry-box">
+          <div class="telem-row"><span>HOST:</span> <code>scarface-arch-linux</code></div>
+          <div class="telem-row"><span>STACK:</span> <code>C++ • Rust • Python • React</code></div>
+          <div class="telem-row"><span>STATUS:</span> <span style="color:#10b981;">● AVAILABLE FOR HIRE</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fixed Mobile Bottom App Dock -->
+  <nav class="mobile-bottom-dock" id="mobileBottomDock" aria-label="Mobile Navigation Dock">
+    <a href="index.html" class="dock-item" data-page="home">
+      <span class="dock-icon">🏠</span>
+      <span class="dock-label">Home</span>
+    </a>
+    <a href="projects.html" class="dock-item" data-page="projects">
+      <span class="dock-icon">💼</span>
+      <span class="dock-label">Projects</span>
+    </a>
+    <a href="terminal.html" class="dock-item" data-page="terminal">
+      <span class="dock-icon">&gt;_</span>
+      <span class="dock-label">Terminal</span>
+    </a>
+    <a href="companion.html" class="dock-item" data-page="companion">
+      <span class="dock-icon">🤖</span>
+      <span class="dock-label">Nova</span>
+    </a>
+    <button type="button" class="dock-item dock-menu-btn" id="dockMenuBtn" aria-label="Open Full Menu">
+      <span class="dock-icon">☰</span>
+      <span class="dock-label">Menu</span>
+    </button>
+  </nav>
 
   <!-- Page Banner -->
   <div class="page-banner">

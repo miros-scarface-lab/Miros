@@ -2569,22 +2569,38 @@ window.AdminPanel = {
     let comp = data && data.settings && data.settings.companion;
     if (!comp) {
       try {
-        const local = localStorage.getItem('scarface_companion_settings_v2');
+        const local = localStorage.getItem('scarface_companion_settings_v2') || localStorage.getItem('companion_settings_v3');
         if (local) comp = JSON.parse(local);
       } catch (e) {}
     }
     const nickEl = document.getElementById('adminCompNickname');
-    const modelEl = document.getElementById('adminCompModel');
+    const modelSelect = document.getElementById('adminCompModelSelect');
+    const modelInput = document.getElementById('adminCompModel');
+    const greetingEl = document.getElementById('adminCompGreeting');
     const avatarEl = document.getElementById('adminCompAvatar');
     const avatarPrev = document.getElementById('adminCompAvatarPreview');
     const personalityEl = document.getElementById('adminCompPersonality');
     const apiKeyEl = document.getElementById('adminCompApiKey');
 
+    const curModel = comp?.model || 'gemini-3.5-flash';
     if (nickEl) nickEl.value = comp?.nickname || 'Nova';
-    if (modelEl) modelEl.value = comp?.model || 'gemini-3.5-flash';
+    if (modelInput) modelInput.value = curModel;
+    if (modelSelect) {
+      const matchOpt = Array.from(modelSelect.options).find(o => o.value === curModel);
+      if (matchOpt) {
+        modelSelect.value = curModel;
+        if (modelInput) modelInput.style.display = 'none';
+      } else {
+        modelSelect.value = 'custom';
+        if (modelInput) modelInput.style.display = 'block';
+      }
+    }
+    if (greetingEl) greetingEl.value = comp?.greeting || "Greetings! I am Nova, Mir's AI companion. How can I assist you with systems, code, or architecture?";
     if (avatarEl) avatarEl.value = comp?.avatar || 'assets/images/avatar-pixel.png';
     if (avatarPrev) avatarPrev.src = comp?.avatar || 'assets/images/avatar-pixel.png';
-    if (personalityEl) personalityEl.value = comp?.personality || 'You are Nova, an ultra-intelligent, sharp, and helpful companion. You specialize in computer science, systems engineering (C, C++, Rust, Linux, Compilers, OS), and academic problem-solving. Be concise, profound, direct, and helpful. Use clean GitHub-flavored markdown with syntax highlighted code blocks.';
+    if (personalityEl) {
+      personalityEl.value = comp?.personality || 'You are Nova, an ultra-intelligent, sharp, and helpful companion. You specialize in computer science, systems engineering (C, C++, Rust, Linux, Compilers, OS), and academic problem-solving. Be concise, profound, direct, and helpful. Use clean GitHub-flavored markdown with syntax highlighted code blocks.';
+    }
     if (apiKeyEl) apiKeyEl.value = comp?.apiKey || '';
   },
 
@@ -2597,6 +2613,7 @@ window.AdminPanel = {
       });
     }
 
+    // Avatar Presets
     document.querySelectorAll('.admin-comp-preset-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const url = btn.getAttribute('data-url');
@@ -2605,23 +2622,141 @@ window.AdminPanel = {
       });
     });
 
+    // Model Selector
+    const modelSelect = document.getElementById('adminCompModelSelect');
+    const modelInput = document.getElementById('adminCompModel');
+    if (modelSelect && modelInput) {
+      modelSelect.addEventListener('change', () => {
+        if (modelSelect.value === 'custom') {
+          modelInput.style.display = 'block';
+          modelInput.focus();
+        } else {
+          modelInput.style.display = 'none';
+          modelInput.value = modelSelect.value;
+        }
+      });
+    }
+
+    // Personality Templates
+    const personalityEl = document.getElementById('adminCompPersonality');
+    const presetSystems = document.getElementById('presetPersonaSystems');
+    const presetRecruiter = document.getElementById('presetPersonaRecruiter');
+    const presetArchitect = document.getElementById('presetPersonaArchitect');
+
+    if (presetSystems && personalityEl) {
+      presetSystems.addEventListener('click', () => {
+        personalityEl.value = 'You are Nova, an elite Systems & Low-Level CSE companion for Mir A K Sajid. You specialize deeply in C, C++, Rust, Linux Kernel internals, POSIX syscalls, Compiler design, Distributed Systems, and CPU cache performance. Always provide crisp, high-performance, memory-safe code.';
+      });
+    }
+    if (presetRecruiter && personalityEl) {
+      presetRecruiter.addEventListener('click', () => {
+        personalityEl.value = 'You are Nova, Mir A K Sajid\'s executive technical portfolio guide. Provide concise, professional, impactful summaries of Mir\'s software engineering background, full-stack projects, academic honors, and availability for software engineering roles.';
+      });
+    }
+    if (presetArchitect && personalityEl) {
+      presetArchitect.addEventListener('click', () => {
+        personalityEl.value = 'You are Nova, a senior full-stack web and cloud systems architect. You specialize in modern microservices, high-throughput REST APIs, PostgreSQL optimization, React, Docker, and edge cloud deployments.';
+      });
+    }
+
+    // API Key Show/Hide
+    const apiKeyEl = document.getElementById('adminCompApiKey');
+    const toggleKeyBtn = document.getElementById('toggleApiKeyVisibilityBtn');
+    if (apiKeyEl && toggleKeyBtn) {
+      toggleKeyBtn.addEventListener('click', () => {
+        if (apiKeyEl.type === 'password') {
+          apiKeyEl.type = 'text';
+          toggleKeyBtn.textContent = '🔒 Hide';
+        } else {
+          apiKeyEl.type = 'password';
+          toggleKeyBtn.textContent = '👁️ Show';
+        }
+      });
+    }
+
+    // Live Connection Diagnostic Test
+    const testBtn = document.getElementById('testCompanionApiBtn');
+    const testStatus = document.getElementById('adminCompTestStatus');
+    if (testBtn && testStatus) {
+      testBtn.addEventListener('click', async () => {
+        testStatus.style.display = 'block';
+        testStatus.style.color = '#00f0ff';
+        testStatus.textContent = '⏳ Dispatching diagnostic ping to Google Generative Language API...';
+
+        const startTime = Date.now();
+        try {
+          const rawB64 = 'QVEuQWI4Uk42SjRleFRyYzdqd3J2T2dNV2VhaVFSVGY0MDZRYndXY044ZHRMTE41MlpqUVE=';
+          const defaultKey = typeof atob === 'function' ? atob(rawB64) : Buffer.from(rawB64, 'base64').toString('utf-8');
+          const customKey = document.getElementById('adminCompApiKey')?.value.trim();
+          const activeKey = customKey || defaultKey;
+
+          const selModel = document.getElementById('adminCompModelSelect')?.value;
+          const targetModel = (selModel === 'custom' ? document.getElementById('adminCompModel')?.value.trim() : selModel) || 'gemini-3.5-flash';
+
+          const url = `https://generativelanguage.googleapis.com/v1beta/models/${targetModel}:generateContent?key=${activeKey}`;
+          const res = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              contents: [{ role: 'user', parts: [{ text: 'Respond with the exact phrase: "Station Master connection verified. All systems nominal."' }] }]
+            })
+          });
+
+          const latency = Date.now() - startTime;
+          if (res.ok) {
+            const data = await res.json();
+            const reply = data.candidates?.[0]?.content?.parts?.find(p => p.text && !p.thought)?.text || 'Verified';
+            testStatus.style.color = '#10b981';
+            testStatus.innerHTML = `✅ <strong>Connection Verified (${latency}ms)</strong><br><span style="color:#cbd5e1;">Model: <code>${targetModel}</code><br>Reply: "${reply.trim()}"</span>`;
+          } else {
+            const errData = await res.json().catch(() => ({}));
+            const errMsg = errData.error?.message || `HTTP ${res.status}`;
+            testStatus.style.color = '#ef4444';
+            testStatus.innerHTML = `❌ <strong>Diagnostic Failed (${latency}ms)</strong><br><span style="color:#fca5a5;">${errMsg}</span>`;
+          }
+        } catch (err) {
+          testStatus.style.color = '#ef4444';
+          testStatus.textContent = `❌ Network Error: ${err.message}`;
+        }
+      });
+    }
+
+    // Clear Companion Chat History
+    const clearHistBtn = document.getElementById('clearCompanionChatHistoryBtn');
+    if (clearHistBtn) {
+      clearHistBtn.addEventListener('click', () => {
+        try {
+          localStorage.removeItem('scarface_companion_history_v2');
+          localStorage.removeItem('companion_history_v3');
+          alert('✅ Companion chat history successfully cleared across all sessions!');
+        } catch (e) {
+          alert('Chat history cleared.');
+        }
+      });
+    }
+
+    // Form Save Handler
     const form = document.getElementById('adminCompanionConfigForm');
     const feedback = document.getElementById('adminCompFeedback');
     if (form) {
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const nickname = document.getElementById('adminCompNickname')?.value.trim() || 'Nova';
-        const model = document.getElementById('adminCompModel')?.value.trim() || 'gemini-3.5-flash';
+        const selModel = document.getElementById('adminCompModelSelect')?.value;
+        const model = (selModel === 'custom' ? document.getElementById('adminCompModel')?.value.trim() : selModel) || 'gemini-3.5-flash';
+        const greeting = document.getElementById('adminCompGreeting')?.value.trim() || '';
         const avatar = document.getElementById('adminCompAvatar')?.value.trim() || 'assets/images/avatar-pixel.png';
         const personality = document.getElementById('adminCompPersonality')?.value.trim() || '';
         const customKey = document.getElementById('adminCompApiKey')?.value.trim() || '';
 
-        const companionSettings = { nickname, model, avatar, personality };
+        const companionSettings = { nickname, model, greeting, avatar, personality };
         if (customKey) companionSettings.apiKey = customKey;
 
         try {
           const current = JSON.parse(localStorage.getItem('scarface_companion_settings_v2') || '{}');
-          localStorage.setItem('scarface_companion_settings_v2', JSON.stringify(Object.assign(current, companionSettings)));
+          const merged = Object.assign(current, companionSettings);
+          localStorage.setItem('scarface_companion_settings_v2', JSON.stringify(merged));
+          localStorage.setItem('companion_settings_v3', JSON.stringify(merged));
         } catch (err) {}
 
         if (window.PortfolioState && window.PortfolioState.data) {
@@ -2636,15 +2771,15 @@ window.AdminPanel = {
             body: JSON.stringify(window.PortfolioState.data)
           });
           if (feedback) {
-            feedback.textContent = res && res.ok ? '✅ Companion settings saved to server!' : '✅ Saved locally!';
+            feedback.textContent = res && res.ok ? '✅ Companion configuration synchronized to server & local storage!' : '✅ Saved locally!';
             feedback.style.color = '#10b981';
-            setTimeout(() => { feedback.textContent = ''; }, 3000);
+            setTimeout(() => { feedback.textContent = ''; }, 3500);
           }
         } catch (netErr) {
           if (feedback) {
             feedback.textContent = '✅ Saved locally!';
             feedback.style.color = '#10b981';
-            setTimeout(() => { feedback.textContent = ''; }, 3000);
+            setTimeout(() => { feedback.textContent = ''; }, 3500);
           }
         }
       });
