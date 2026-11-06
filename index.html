@@ -1,28 +1,24 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="modern-dark">
+<html lang="en" data-theme="github-dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>Mir A K Sajid | Computer Science & Engineering Portfolio</title>
-  <meta name="description" content="Personal portfolio of Mir A K Sajid, Computer Science & Engineering undergraduate specializing in Systems Programming, Compilers, Algorithms, and Full-Stack Architecture. Complete with a vintage 2D aesthetic and real-time Admin Panel.">
-  <meta name="keywords" content="Computer Science, CSE Student, Systems Programming, Compilers, C++, Algorithms, Developer Portfolio, Vintage 2D, Retro Terminal">
+  <title>Mir A K Sajid (miros) | Developer Portfolio</title>
+  <meta name="description" content="Personal portfolio of Mir A K Sajid (miros), Computer Science & Engineering undergraduate specializing in Systems Programming, Compilers, OS Microkernels, and Scalable Web Architecture.">
+  <meta name="keywords" content="Computer Science, CSE, Systems Programming, Compilers, C++, Rust, Linux, Algorithms, Developer Portfolio, GitHub">
   <meta name="author" content="Mir A K Sajid">
 
-  <!-- Google Fonts for Vintage 2D Typography -->
+  <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,300..800;1,300..800&family=Outfit:wght@300..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,300..800;1,300..800&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="assets/images/avatar-pixel.png">
 </head>
-<body class="vintage-body">
+<body class="modern-body">
 
-  <!-- CRT Scanlines Overlay -->
-  
-
-  <!-- Top Vintage Header -->
-    <!-- Senior Developer Floating Command Navbar -->
+  <!-- Senior Developer Floating Command Navbar -->
   <header class="senior-navbar" id="seniorNavbar">
     <div class="senior-nav-container">
       <a href="index.html" class="senior-brand" aria-label="Mir A K Sajid - Home">
@@ -37,9 +33,8 @@
       </a>
 
       <nav class="senior-nav-links" id="seniorNavLinks" aria-label="Main Navigation">
-        <a href="index.html" class="senior-nav-link active" data-page="home">Home</a>
-        <a href="about.html" class="senior-nav-link" data-page="about">About</a>
-        <a href="projects.html" class="senior-nav-link" data-page="projects">Projects</a>
+        <a href="index.html" class="senior-nav-link active" data-page="home">Overview</a>
+        <a href="projects.html" class="senior-nav-link" data-page="projects">Repositories</a>
         <a href="skills.html" class="senior-nav-link" data-page="skills">Skills</a>
         <a href="experience.html" class="senior-nav-link" data-page="experience">Experience</a>
         <a href="academics.html" class="senior-nav-link" data-page="academics">Academics</a>
@@ -51,20 +46,12 @@
           <span class="action-icon">&gt;_</span>
           <span class="action-label">Term</span>
         </a>
-        <a href="companion.html" class="nav-action-pill ai-pill" title="AI Companion (Gemini 3.5)">
+        <a href="companion.html" class="nav-action-pill ai-pill" title="Miros AI Companion (Gemini 3.5)">
           <span class="action-sparkle">✨</span>
           <span class="action-label">Miros AI</span>
         </a>
         <button type="button" class="nav-icon-circle" id="audioToggleBtn" title="Toggle Mechanical Audio" aria-label="Toggle Audio">
           <span id="audioIcon">🔊</span>
-        </button>
-        <a href="admin.html" class="nav-icon-circle admin-shortcut" title="Station Master Console" aria-label="Admin Console">
-          <span>⚙️</span>
-        </a>
-        <button type="button" class="mobile-menu-trigger" id="mobileMenuTrigger" aria-label="Toggle Mobile Menu" aria-expanded="false">
-          <span class="hamburger-bar top"></span>
-          <span class="hamburger-bar middle"></span>
-          <span class="hamburger-bar bottom"></span>
         </button>
       </div>
     </div>
@@ -86,20 +73,20 @@
 
       <div class="mobile-drawer-body">
         <div class="drawer-nav-group">
-          <div class="drawer-group-label">PORTFOLIO SECTORS</div>
+          <div class="drawer-group-label">PRIMARY NAVIGATION</div>
           <div class="drawer-links-grid">
-            <a href="index.html" class="drawer-link-item"><span class="link-num">00</span><span class="link-text">Home // Overview</span></a>
-            <a href="about.html" class="drawer-link-item"><span class="link-num">01</span><span class="link-text">About // Senior CSE</span></a>
-            <a href="projects.html" class="drawer-link-item"><span class="link-num">02</span><span class="link-text">Projects // Systems & Apps</span></a>
-            <a href="skills.html" class="drawer-link-item"><span class="link-num">03</span><span class="link-text">Skills // Technical Arsenal</span></a>
-            <a href="experience.html" class="drawer-link-item"><span class="link-num">04</span><span class="link-text">Experience // Timeline</span></a>
-            <a href="academics.html" class="drawer-link-item"><span class="link-num">05</span><span class="link-text">Academics // CSE Syllabus</span></a>
-            <a href="contact.html" class="drawer-link-item"><span class="link-num">06</span><span class="link-text">Dispatch // Contact</span></a>
+            <a href="index.html" class="drawer-link-item active"><span class="link-num">00</span><span class="link-text">Overview (Home)</span></a>
+            <a href="about.html" class="drawer-link-item"><span class="link-num">01</span><span class="link-text">About & Bio</span></a>
+            <a href="projects.html" class="drawer-link-item"><span class="link-num">02</span><span class="link-text">Repositories (Projects)</span></a>
+            <a href="skills.html" class="drawer-link-item"><span class="link-num">03</span><span class="link-text">Technical Skills</span></a>
+            <a href="experience.html" class="drawer-link-item"><span class="link-num">04</span><span class="link-text">Experience Log</span></a>
+            <a href="academics.html" class="drawer-link-item"><span class="link-num">05</span><span class="link-text">Academics & Honors</span></a>
+            <a href="contact.html" class="drawer-link-item"><span class="link-num">06</span><span class="link-text">Contact Dispatch</span></a>
           </div>
         </div>
 
         <div class="drawer-nav-group">
-          <div class="drawer-group-label">CYBER ENGINES</div>
+          <div class="drawer-group-label">DEV TOOLS & ENGINES</div>
           <div class="drawer-featured-grid">
             <a href="terminal.html" class="drawer-feature-card term-feature">
               <div class="feature-icon">&gt;_</div>
@@ -129,7 +116,7 @@
         <div class="drawer-telemetry-box">
           <div class="telem-row"><span>HOST:</span> <code>scarface-arch-linux</code></div>
           <div class="telem-row"><span>STACK:</span> <code>C++ • Rust • Python • React</code></div>
-          <div class="telem-row"><span>STATUS:</span> <span style="color:#10b981;">● AVAILABLE FOR HIRE</span></div>
+          <div class="telem-row"><span>STATUS:</span> <span style="color:#2ea043;">● AVAILABLE FOR HIRE</span></div>
         </div>
       </div>
     </div>
@@ -159,313 +146,422 @@
     </button>
   </nav>
 
-  <!-- Public Main Content -->
+  <!-- Public Main Content: GitHub Developer Profile Architecture -->
   <main class="portfolio-main">
-
-    <!-- HERO SECTION -->
-    <section class="section hero-section" id="hero" style="position: relative;">
-      <div class="container hero-grid">
-        
-        <!-- Left: Hero Intro & Typewriter Moniker -->
-        <div class="hero-content">
-          <div class="stamp-tag-wrapper">
-            <span class="vintage-stamp-badge" id="heroStampBadge">SCARFACE LAB • CSE SYSTEMS</span>
-            <span class="vintage-tag" id="heroYearTag">CLASS OF '26</span>
-            <span class="scarface-badge"><span class="scarface-badge-icon">🏛️</span> Scarface Lab</span>
+    <div class="github-profile-layout">
+      
+      <!-- Left Column: GitHub Profile Sidebar -->
+      <aside class="github-sidebar" id="hero">
+        <div class="github-avatar-box">
+          <img src="assets/uploads/Mir_jpg.jpg" alt="Mir A K Sajid Profile" id="heroAvatarImg" class="github-avatar-img" onerror="this.onerror=null; this.src='assets/images/avatar-notionist.png';">
+          <div class="github-status-badge">
+            <span class="status-live-dot" style="background:#2ea043; width:8px; height:8px; border-radius:50%; display:inline-block;"></span>
+            <span style="font-size:12px; font-weight:500;">Exploring Compilers</span>
           </div>
-
-          <h1 class="hero-title">
-            <span class="hero-greeting">HELLO WORLD, I'M</span>
-            <span class="hero-name" id="heroName">Mir A K Sajid</span>
-          </h1>
-
-          <div class="typewriter-console">
-            <span class="prompt-prefix">cse@workstation:~$</span>
-            <span class="typewriter-text" id="typewriterText"></span>
-            <span class="typewriter-cursor">█</span>
-          </div>
-
-          <p class="hero-bio" id="heroBio">
-            Third-year CSE undergraduate passionate about exploring computing from silicon transistors to distributed web architectures. Building optimizing bytecode compilers, dissecting OS kernels, and engineering bloat-free systems.
-          </p>
-
-          <!-- Quick Metrics Bar -->
-          <div class="hero-stats-bar" id="heroStatsBar"></div>
-
-          <!-- Hero Action Buttons -->
-          <div class="hero-actions">
-            <a href="projects.html" class="vintage-btn btn-primary">
-              <span class="btn-symbol">❖</span> Inspect Projects
-            </a>
-            <a href="terminal.html" class="vintage-btn btn-secondary">
-              <span class="btn-symbol">&gt;_</span> Launch Terminal
-            </a>
-            <a href="contact.html" class="vintage-btn btn-outline">
-              <span class="btn-symbol">✉</span> Send Dispatch
-            </a>
-            <a href="#" class="vintage-btn btn-outline" id="resumeDownloadBtn" target="_blank" rel="noopener">
-              <span class="btn-symbol">📄</span> Download CV
-            </a>
-          </div>
-
-          <!-- Social Handles Bar -->
-          <div class="hero-social-links" id="heroSocialLinks"></div>
         </div>
 
-        <!-- Right: 2D Vintage Developer Framing & Avatar Card -->
-        <div class="hero-visual" style="position: relative;">
-          <!-- Floating Interactive Retro Boxes -->
-          <button type="button" class="floating-prop prop-vault" id="openVaultFloatingBtn" title="Click to open Personal Directory (Password Protected)">
-            <span>📁</span> [PERSONAL DIRECTORY 🔒]
-          </button>
-          <button type="button" class="floating-prop prop-home" id="openHomeFloatingBtn" title="Station Master Home Portal">
-            <span>🏠</span> [HOME PANEL]
-          </button>
-          <button type="button" class="floating-prop prop-music" id="openMusicBoxFloatingBtn" title="Click to open Genshin BGM Jukebox & Tracklist">
-            <span>🎵</span> [ACOUSTIC JUKEBOX ▾]
-          </button>
-          <button type="button" class="floating-prop prop-snow" id="toggleSnowFloatingBtn" title="Toggle Snowfall Weather (Gentle / Blizzard / Off)">
-            <span>❄️</span> <span id="heroSnowText">[SNOW: ON]</span>
-          </button>
+        <div class="github-profile-names">
+          <h1 class="github-full-name" id="heroName">Mir A K Sajid</h1>
+          <div class="github-username">miros</div>
+        </div>
 
-          <div class="vintage-card polaroid-frame">
-            <div class="paper-clip" aria-hidden="true"></div>
-            <div class="stamp-seal-badge" aria-hidden="true">
-              <span>EST. 2024</span>
-              <span>VERIFIED CSE</span>
+        <p class="github-bio" id="heroBio">
+          Third-year CSE undergraduate passionate about systems programming, optimizing bytecode compilers, OS microkernel internals, and distributed web architectures.
+        </p>
+
+        <!-- Quick Profile Action Buttons -->
+        <div class="github-action-stack">
+          <a href="projects.html" class="github-btn github-btn-primary github-btn-block">
+            <span>❖</span> Inspect Repositories
+          </a>
+          <a href="terminal.html" class="github-btn github-btn-secondary github-btn-block">
+            <span>&gt;_</span> Launch POSIX Shell
+          </a>
+          <a href="contact.html" class="github-btn github-btn-secondary github-btn-block">
+            <span>✉</span> Contact Mir
+          </a>
+          <a href="#" class="github-btn github-btn-secondary github-btn-block" id="resumeDownloadBtn" target="_blank" rel="noopener">
+            <span>📄</span> Download Resume CV
+          </a>
+        </div>
+
+        <!-- GitHub Follower & Metric Stats -->
+        <div style="display:flex; align-items:center; gap:0.5rem; font-size:0.82rem; color:#8b949e; margin-top:0.4rem;">
+          <span style="display:flex; align-items:center; gap:0.25rem;">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M2 5.5a3.5 3.5 0 1 1 5.898 2.549 5.508 5.508 0 0 1 3.034 4.084.75.75 0 1 1-1.482.234 4.002 4.002 0 0 0-7.832 0 .75.75 0 0 1-1.482-.234A5.508 5.508 0 0 1 1.102 8.05 3.49 3.49 0 0 1 2 5.5ZM11 4a3.001 3.001 0 0 1 2.22 5.018 5.01 5.01 0 0 1 2.56 3.012.749.749 0 0 1-.885.954.752.752 0 0 1-.549-.514 3.507 3.507 0 0 0-2.522-2.372.75.75 0 0 1-.574-.73v-.352a.75.75 0 0 1 .416-.672A1.5 1.5 0 0 0 11 5.5.75.75 0 0 1 11 4Zm-5.5-.5a2 2 0 1 0-.001 3.999A2 2 0 0 0 5.5 3.5Z"></path></svg>
+            <strong style="color:#f0f6fc;">520+</strong> Solved
+          </span>
+          <span>•</span>
+          <span><strong style="color:#f0f6fc;">16+</strong> Repos</span>
+          <span>•</span>
+          <span><strong style="color:#f0f6fc;">3.89</strong> GPA</span>
+        </div>
+
+        <!-- Meta Details List -->
+        <div class="github-meta-list">
+          <div class="github-meta-item">
+            <span class="meta-icon">🏢</span>
+            <span>Scarface Systems Lab</span>
+          </div>
+          <div class="github-meta-item">
+            <span class="meta-icon">🎓</span>
+            <span id="polaroidDegree">B.S. Computer Science & Eng.</span>
+          </div>
+          <div class="github-meta-item">
+            <span class="meta-icon">📊</span>
+            <span id="polaroidGpa">GPA: 3.89 / 4.00 (Dean's List)</span>
+          </div>
+          <div class="github-meta-item">
+            <span class="meta-icon">📍</span>
+            <span>Dhaka, Bangladesh</span>
+          </div>
+          <div class="github-meta-item">
+            <span class="meta-icon">✉</span>
+            <a href="mailto:acemaks007@gmail.com">acemaks007@gmail.com</a>
+          </div>
+          <div class="github-meta-item">
+            <span class="meta-icon">🔗</span>
+            <a href="https://miros-snowy.vercel.app" target="_blank" rel="noopener">miros-snowy.vercel.app</a>
+          </div>
+          <div class="github-meta-item">
+            <span class="meta-icon">⏰</span>
+            <span>UTC+06:00 (Dhaka Time)</span>
+          </div>
+        </div>
+
+        <!-- Social Links Hook (populated by script.js) -->
+        <div class="hero-social-links" id="heroSocialLinks" style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.5rem;"></div>
+
+        <!-- Achievements / Highlights -->
+        <div class="github-achievements-box">
+          <div class="github-achievements-title">Achievements & Highlights</div>
+          <div class="github-badge-row">
+            <span class="github-chip">🏛️ Scarface Lab</span>
+            <span class="github-chip">⭐ Pro Developer</span>
+            <span class="github-chip">🏆 3x Hackathon</span>
+            <span class="github-chip">⚡ 520+ LeetCode</span>
+            <span class="github-chip">🔐 Station Master</span>
+          </div>
+        </div>
+
+        <!-- Vault & Jukebox Triggers -->
+        <div style="display:flex; flex-direction:column; gap:0.45rem; margin-top:0.5rem;">
+          <button type="button" class="github-btn github-btn-secondary" id="openVaultFloatingBtn" style="font-size:0.78rem; text-align:left;">
+            <span>📁</span> Open Encrypted Drive Vault 🔒
+          </button>
+          <button type="button" class="github-btn github-btn-secondary" id="openMusicBoxFloatingBtn" style="font-size:0.78rem; text-align:left;">
+            <span>🎵</span> Genshin Impact Acoustic Jukebox ▾
+          </button>
+          <button type="button" id="toggleSnowFloatingBtn" style="display:none;"><span id="heroSnowText">OFF</span></button>
+        </div>
+      </aside>
+
+      <!-- Right Column: GitHub Feed & Repositories -->
+      <div class="github-main-column">
+        
+        <!-- README.md Card -->
+        <div class="github-readme-box">
+          <div class="github-readme-header">
+            <div class="github-readme-title">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="#8b949e"><path d="M0 1.75A.75.75 0 0 1 .75 1h4.253c1.227 0 2.317.59 3 1.501A3.743 3.743 0 0 1 11.006 1h4.244a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-.75.75h-4.244a2.25 2.25 0 0 0-1.756.845.75.75 0 0 1-1.012 0A2.25 2.25 0 0 0 5.003 13H.75a.75.75 0 0 1-.75-.75ZM6.5 3a2.25 2.25 0 0 0-2.25-2.25H1.5v9.75h3.503c.71 0 1.364.247 1.88.663Zm1.5 8.163c.516-.416 1.17-.663 1.88-.663h3.503V1.75H11.006A2.25 2.25 0 0 0 8.75 4Z"></path></svg>
+              <span>mir-sajid / <strong>README.md</strong></span>
+            </div>
+            <span style="font-size:0.75rem; color:#8b949e; font-family:var(--font-mono);">RAW</span>
+          </div>
+
+          <div class="github-readme-body">
+            <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:1rem;">
+              <h2 style="font-size:1.45rem; font-weight:600; color:#f0f6fc; margin:0;">Hi there, I'm Mir A K Sajid 👋</h2>
             </div>
 
-            <div class="avatar-container">
-              <img src="assets/uploads/Mir_jpg.jpg" alt="Mir A K Sajid Profile Picture" id="heroAvatarImg" class="avatar-img" onerror="this.onerror=null; this.src='assets/images/avatar-notionist.png';">
-              <div class="avatar-decorations">
-                <span class="decor-corner top-left">+</span>
-                <span class="decor-corner top-right">+</span>
-                <span class="decor-corner bottom-left">+</span>
-                <span class="decor-corner bottom-right">+</span>
+            <!-- Terminal Typewriter Console -->
+            <div style="background:#161b22; border:1px solid #30363d; border-radius:6px; padding:0.75rem 1rem; font-family:var(--font-mono); font-size:0.85rem; margin-bottom:1.25rem;">
+              <span style="color:#3fb950; font-weight:600;">cse@workstation</span>:<span style="color:#58a6ff;">~</span>$&nbsp;
+              <span id="typewriterText" style="color:#f0f6fc;"></span>
+              <span class="typewriter-cursor" style="color:#58a6ff; font-weight:700;">█</span>
+            </div>
+
+            <p style="color:#c9d1d9; font-size:0.92rem; line-height:1.6; margin-bottom:1.25rem;">
+              I am a third-year Computer Science & Engineering undergraduate focusing on low-level systems programming, optimizing bytecode compilers, OS microkernels, and high-throughput backend services. I engineer memory-safe, bloat-free software systems designed for high computational efficiency.
+            </p>
+
+            <!-- Quick Metrics / Stats Bar (Hook for script.js) -->
+            <div class="hero-stats-bar" id="heroStatsBar" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:0.75rem; margin-bottom:1.5rem;"></div>
+
+            <!-- Core Technical Stack -->
+            <div style="border-top:1px solid #21262d; padding-top:1rem;">
+              <h4 style="font-size:0.85rem; font-weight:600; color:#8b949e; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.75rem;">Core Systems Engineering Stack</h4>
+              <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
+                <span class="github-chip" style="color:#58a6ff; border-color:rgba(88,166,255,0.3); background:rgba(88,166,255,0.08);">● C / C++20</span>
+                <span class="github-chip" style="color:#dea584; border-color:rgba(222,165,132,0.3); background:rgba(222,165,132,0.08);">● Rust</span>
+                <span class="github-chip" style="color:#3572A5; border-color:rgba(53,114,165,0.3); background:rgba(53,114,165,0.08);">● Python 3</span>
+                <span class="github-chip" style="color:#f1e05a; border-color:rgba(241,224,90,0.3); background:rgba(241,224,90,0.08);">● JavaScript / Node.js</span>
+                <span class="github-chip" style="color:#3178c6; border-color:rgba(49,120,198,0.3); background:rgba(49,120,198,0.08);">● TypeScript</span>
+                <span class="github-chip" style="color:#00ADD8; border-color:rgba(0,173,216,0.3); background:rgba(0,173,216,0.08);">● Go</span>
+                <span class="github-chip" style="color:#6e7681; border-color:rgba(110,118,129,0.3); background:rgba(110,118,129,0.08);">● x86/ARM Assembly</span>
+                <span class="github-chip" style="color:#3fb950; border-color:rgba(63,185,80,0.3); background:rgba(63,185,80,0.08);">● Linux Kernel / POSIX</span>
+                <span class="github-chip" style="color:#bc8cff; border-color:rgba(188,140,255,0.3); background:rgba(188,140,255,0.08);">● Compilers & ASTs</span>
+                <span class="github-chip" style="color:#336791; border-color:rgba(51,103,145,0.3); background:rgba(51,103,145,0.08);">● PostgreSQL / Redis</span>
               </div>
             </div>
+          </div>
+        </div>
 
-            <!-- Avatar Switcher Toggles -->
-            <div class="avatar-style-picker">
-              <span class="picker-label">2D Persona:</span>
-              <button class="avatar-pill active" data-avatar="assets/uploads/Mir_jpg.jpg" title="Mir's Portrait Photo">📸 Photo</button>
-              <button class="avatar-pill" data-avatar="assets/images/avatar-notionist.png" title="Hand-Drawn 2D">Hand-Drawn</button>
-              <button class="avatar-pill" data-avatar="assets/images/avatar-pixel.png" title="8-Bit Retro Pixel">8-Bit Pixel</button>
-              <button class="avatar-pill" data-avatar="assets/images/avatar-retro-bot.png" title="Vintage Bot">Robot</button>
-            </div>
+        <!-- Pinned Repositories Grid -->
+        <div>
+          <div class="github-section-header">
+            <h3 class="github-section-title">Pinned Repositories</h3>
+            <span style="font-size:0.78rem; color:#8b949e;">4 public pinned repos</span>
+          </div>
 
-            <div class="polaroid-caption">
-              <div class="caption-title" id="polaroidDegree">B.S. Computer Science & Eng.</div>
-              <div class="caption-sub" id="polaroidGpa">GPA: 3.89 / 4.00 • Systems Focus</div>
+          <div class="github-pinned-grid">
+            <!-- Repo 1: Compiler -->
+            <a href="projects.html" class="github-repo-card">
+              <div>
+                <div class="github-repo-header">
+                  <span class="github-repo-name">
+                    <svg width="15" height="15" viewBox="0 0 16 16" fill="#8b949e"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.6-1.2-1.6 1.2a.25.25 0 0 1-.4-.2Z"></path></svg>
+                    bytecode-compiler-c
+                  </span>
+                  <span class="github-repo-visibility">Public</span>
+                </div>
+                <p class="github-repo-desc">
+                  Optimizing bytecode virtual machine, hand-written recursive descent lexer, AST parser, and bytecode compiler engineered from scratch in pure C.
+                </p>
+              </div>
+              <div class="github-repo-meta">
+                <span class="github-lang-pill"><span class="lang-dot" style="background:#555555;"></span> C</span>
+                <span>★ 48</span>
+                <span>🔀 12</span>
+              </div>
+            </a>
+
+            <!-- Repo 2: POSIX Terminal -->
+            <a href="terminal.html" class="github-repo-card">
+              <div>
+                <div class="github-repo-header">
+                  <span class="github-repo-name">
+                    <svg width="15" height="15" viewBox="0 0 16 16" fill="#8b949e"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.6-1.2-1.6 1.2a.25.25 0 0 1-.4-.2Z"></path></svg>
+                    posix-terminal-vm
+                  </span>
+                  <span class="github-repo-visibility">Public</span>
+                </div>
+                <p class="github-repo-desc">
+                  In-browser Linux VT-100 POSIX shell virtual machine with virtual rootfs, ANSI graphics, Python 3 REPL, cmatrix, neofetch, and filesystem inspector.
+                </p>
+              </div>
+              <div class="github-repo-meta">
+                <span class="github-lang-pill"><span class="lang-dot" style="background:#f1e05a;"></span> JavaScript</span>
+                <span>★ 86</span>
+                <span>🔀 24</span>
+              </div>
+            </a>
+
+            <!-- Repo 3: Miros AI Companion -->
+            <a href="companion.html" class="github-repo-card">
+              <div>
+                <div class="github-repo-header">
+                  <span class="github-repo-name">
+                    <svg width="15" height="15" viewBox="0 0 16 16" fill="#8b949e"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.6-1.2-1.6 1.2a.25.25 0 0 1-.4-.2Z"></path></svg>
+                    miros-companion-ai
+                  </span>
+                  <span class="github-repo-visibility">Public</span>
+                </div>
+                <p class="github-repo-desc">
+                  High-throughput AI Companion engine powered by Gemini 3.5 Flash with fallback resilience, code explanations, and system architecture guidance.
+                </p>
+              </div>
+              <div class="github-repo-meta">
+                <span class="github-lang-pill"><span class="lang-dot" style="background:#3178c6;"></span> TypeScript</span>
+                <span>★ 64</span>
+                <span>🔀 18</span>
+              </div>
+            </a>
+
+            <!-- Repo 4: HSC Academic Vault -->
+            <a href="hsc.html" class="github-repo-card">
+              <div>
+                <div class="github-repo-header">
+                  <span class="github-repo-name">
+                    <svg width="15" height="15" viewBox="0 0 16 16" fill="#8b949e"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.6-1.2-1.6 1.2a.25.25 0 0 1-.4-.2Z"></path></svg>
+                    hsc-academic-vault
+                  </span>
+                  <span class="github-repo-visibility">Public</span>
+                </div>
+                <p class="github-repo-desc">
+                  Curated academic digital library and interactive reader indexing 620+ Higher Secondary textbooks, board question solutions, test papers, and memory notes.
+                </p>
+              </div>
+              <div class="github-repo-meta">
+                <span class="github-lang-pill"><span class="lang-dot" style="background:#e34c26;"></span> HTML</span>
+                <span>★ 142</span>
+                <span>🔀 37</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Yearly Contribution Heatmap -->
+        <div class="github-contrib-box">
+          <div class="github-contrib-header">
+            <span style="font-weight:600;">1,642 contributions in 2026</span>
+            <span style="font-size:0.75rem; color:#8b949e;">Contribution Activity</span>
+          </div>
+
+          <div class="github-heatmap-container">
+            <div class="github-heatmap-grid" id="githubHeatmapGrid">
+              <!-- Dynamically populated 52 columns x 7 days -->
             </div>
+          </div>
+
+          <div class="github-heatmap-legend">
+            <span>Less</span>
+            <span class="heatmap-cell lvl-0"></span>
+            <span class="heatmap-cell lvl-1"></span>
+            <span class="heatmap-cell lvl-2"></span>
+            <span class="heatmap-cell lvl-3"></span>
+            <span class="heatmap-cell lvl-4"></span>
+            <span>More</span>
+          </div>
+        </div>
+
+        <!-- Repository Sectors / File Explorer -->
+        <div class="github-tree-box">
+          <div class="github-tree-header">
+            <span style="font-weight:600; color:#f0f6fc;">Portfolio Sectors & Directory Index</span>
+            <span style="color:#8b949e; font-size:0.75rem;">10 routes available</span>
+          </div>
+
+          <a href="about.html" class="github-tree-row">
+            <div class="github-tree-left">
+              <span class="github-tree-icon">📁</span>
+              <span class="github-tree-name">about.html</span>
+              <span class="github-tree-msg">Sector 01: Engineering Manifesto, Core Philosophy & Low-Level Values</span>
+            </div>
+            <span class="github-tree-date">3 days ago</span>
+          </a>
+
+          <a href="terminal.html" class="github-tree-row">
+            <div class="github-tree-left">
+              <span class="github-tree-icon">💻</span>
+              <span class="github-tree-name">terminal.html</span>
+              <span class="github-tree-msg">Sector 02: POSIX Linux Virtual Terminal, In-Browser REPLs & Diagnostics</span>
+            </div>
+            <span class="github-tree-date">yesterday</span>
+          </a>
+
+          <a href="projects.html" class="github-tree-row">
+            <div class="github-tree-left">
+              <span class="github-tree-icon">📁</span>
+              <span class="github-tree-name">projects.html</span>
+              <span class="github-tree-msg">Sector 03: Production Systems, Microkernels, Bytecode Compilers & Full-Stack</span>
+            </div>
+            <span class="github-tree-date">2 days ago</span>
+          </a>
+
+          <a href="skills.html" class="github-tree-row">
+            <div class="github-tree-left">
+              <span class="github-tree-icon">⚡</span>
+              <span class="github-tree-name">skills.html</span>
+              <span class="github-tree-msg">Sector 04: Technical Proficiencies, Languages, Compilers & Frameworks</span>
+            </div>
+            <span class="github-tree-date">4 days ago</span>
+          </a>
+
+          <a href="experience.html" class="github-tree-row">
+            <div class="github-tree-left">
+              <span class="github-tree-icon">📁</span>
+              <span class="github-tree-name">experience.html</span>
+              <span class="github-tree-msg">Sector 05: Engineering Internships, Teaching Assistantships & Leadership</span>
+            </div>
+            <span class="github-tree-date">1 week ago</span>
+          </a>
+
+          <a href="academics.html" class="github-tree-row">
+            <div class="github-tree-left">
+              <span class="github-tree-icon">🎓</span>
+              <span class="github-tree-name">academics.html</span>
+              <span class="github-tree-msg">Sector 06: Academic Honors, Transcript, Coursework & Research</span>
+            </div>
+            <span class="github-tree-date">2 weeks ago</span>
+          </a>
+
+          <a href="contact.html" class="github-tree-row">
+            <div class="github-tree-left">
+              <span class="github-tree-icon">✉</span>
+              <span class="github-tree-name">contact.html</span>
+              <span class="github-tree-msg">Sector 07: Direct Telegram Dispatch, Inquiries & Opportunities</span>
+            </div>
+            <span class="github-tree-date">3 days ago</span>
+          </a>
+
+          <a href="hsc.html" class="github-tree-row">
+            <div class="github-tree-left">
+              <span class="github-tree-icon">📚</span>
+              <span class="github-tree-name">hsc.html</span>
+              <span class="github-tree-msg">Sector 08: Higher Secondary Academic Library & 620+ Volume Archive</span>
+            </div>
+            <span class="github-tree-date">yesterday</span>
+          </a>
+
+          <a href="companion.html" class="github-tree-row">
+            <div class="github-tree-left">
+              <span class="github-tree-icon">✨</span>
+              <span class="github-tree-name">companion.html</span>
+              <span class="github-tree-msg">Sector 09: Miros AI Dedicated Companion Workspace (Gemini 3.5 Flash)</span>
+            </div>
+            <span class="github-tree-date">today</span>
+          </a>
+
+          <a href="admin.html" class="github-tree-row">
+            <div class="github-tree-left">
+              <span class="github-tree-icon">⚙️</span>
+              <span class="github-tree-name">admin.html</span>
+              <span class="github-tree-msg">Sector 10: Station Master Console, Diagnostics & Companion Studio</span>
+            </div>
+            <span class="github-tree-date">today</span>
+          </a>
+
+          <!-- Modal triggers as tree rows -->
+          <div class="github-tree-row" id="openVaultTileBtn" role="button" tabindex="0" style="cursor:pointer;">
+            <div class="github-tree-left">
+              <span class="github-tree-icon">🔒</span>
+              <span class="github-tree-name">vault://drive</span>
+              <span class="github-tree-msg">Encrypted Google Drive Directory & Technical Filesystem (Password: 1234)</span>
+            </div>
+            <span class="github-tree-date">open →</span>
+          </div>
+
+          <div class="github-tree-row" id="openMusicTileBtn" role="button" tabindex="0" style="cursor:pointer;">
+            <div class="github-tree-left">
+              <span class="github-tree-icon">🎵</span>
+              <span class="github-tree-name">jukebox://audio</span>
+              <span class="github-tree-msg">Genshin Impact Atmospheric Acoustic BGM Jukebox Console</span>
+            </div>
+            <span class="github-tree-date">play →</span>
           </div>
         </div>
 
       </div>
-    </section>
-
-    <!-- DIRECTORY / SECTOR NAVIGATOR TILES -->
-    <section class="section" style="padding-top: 1rem; padding-bottom: 4rem;">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-stamp">PORTFOLIO INDEX & DIRECTORY</div>
-          <h2 class="section-title">Explore Dedicated Sectors</h2>
-          <p class="section-subtitle">Navigate to individual specialized sectors of this digital engineering station.</p>
-          <div class="section-divider">~ ❦ ~</div>
-        </div>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">
-          
-          <!-- Sector 01: About -->
-          <a href="about.html" class="parchment-paper" style="display:flex; flex-direction:column; gap:0.5rem; transition: transform 0.15s ease, box-shadow 0.15s ease;">
-            <div class="card-ticket-header">
-              <span class="ticket-no">SECTOR 01</span>
-              <span class="ticket-status">READ SPEC</span>
-            </div>
-            <h3 style="font-family:var(--font-serif); font-size:1.35rem;">📜 The Philosophy & Bio</h3>
-            <p style="font-size:0.88rem; color:var(--ink-secondary); line-height:1.6; flex:1;">
-              Detailed mechanical manifesto, engineering values, principles of low-level resource efficiency, and research pursuits.
-            </p>
-            <span class="vintage-btn btn-sm btn-outline" style="align-self:flex-start; margin-top:0.5rem;">Enter Sector 01 →</span>
-          </a>
-
-          <!-- Sector 02: Terminal -->
-          <a href="terminal.html" class="parchment-paper" style="display:flex; flex-direction:column; gap:0.5rem; transition: transform 0.15s ease, box-shadow 0.15s ease;">
-            <div class="card-ticket-header">
-              <span class="ticket-no">SECTOR 02</span>
-              <span class="ticket-status">CLI ACTIVE</span>
-            </div>
-            <h3 style="font-family:var(--font-serif); font-size:1.35rem;">📟 Teletype Terminal (REPL)</h3>
-            <p style="font-size:0.88rem; color:var(--ink-secondary); line-height:1.6; flex:1;">
-              Authentic VT-100 interactive shell. Run real system commands, inspect skills, explore system metrics, and run scripts.
-            </p>
-            <span class="vintage-btn btn-sm btn-outline" style="align-self:flex-start; margin-top:0.5rem;">Launch Console →</span>
-          </a>
-
-          <!-- Sector 03: Projects -->
-          <a href="projects.html" class="parchment-paper" style="display:flex; flex-direction:column; gap:0.5rem; transition: transform 0.15s ease, box-shadow 0.15s ease;">
-            <div class="card-ticket-header">
-              <span class="ticket-no">SECTOR 03</span>
-              <span class="ticket-status">6 BLUEPRINTS</span>
-            </div>
-            <h3 style="font-family:var(--font-serif); font-size:1.35rem;">❖ Engineered Blueprints</h3>
-            <p style="font-size:0.88rem; color:var(--ink-secondary); line-height:1.6; flex:1;">
-              Compilers, 32-bit x86 OS kernel, Raft consensus storage, neural network engines, and interactive algorithm canvases.
-            </p>
-            <span class="vintage-btn btn-sm btn-outline" style="align-self:flex-start; margin-top:0.5rem;">Browse Blueprints →</span>
-          </a>
-
-          <!-- Sector 04: Skills -->
-          <a href="skills.html" class="parchment-paper" style="display:flex; flex-direction:column; gap:0.5rem; transition: transform 0.15s ease, box-shadow 0.15s ease;">
-            <div class="card-ticket-header">
-              <span class="ticket-no">SECTOR 04</span>
-              <span class="ticket-status">12 COMPETENCIES</span>
-            </div>
-            <h3 style="font-family:var(--font-serif); font-size:1.35rem;">🧠 Technical Competencies</h3>
-            <p style="font-size:0.88rem; color:var(--ink-secondary); line-height:1.6; flex:1;">
-              Core Computer Science fundamentals, low-level systems programming languages, frameworks, and developer tooling.
-            </p>
-            <span class="vintage-btn btn-sm btn-outline" style="align-self:flex-start; margin-top:0.5rem;">Inspect Matrix →</span>
-          </a>
-
-          <!-- Sector 05: Academics -->
-          <a href="academics.html" class="parchment-paper" style="display:flex; flex-direction:column; gap:0.5rem; transition: transform 0.15s ease, box-shadow 0.15s ease;">
-            <div class="card-ticket-header">
-              <span class="ticket-no">SECTOR 05</span>
-              <span class="ticket-status">3.89 GPA</span>
-            </div>
-            <h3 style="font-family:var(--font-serif); font-size:1.35rem;">🎓 Academic Curriculum</h3>
-            <p style="font-size:0.88rem; color:var(--ink-secondary); line-height:1.6; flex:1;">
-              Degree coursework grades, Dean's honor list standings, ACM student chapter affiliations, and computational theory studies.
-            </p>
-            <span class="vintage-btn btn-sm btn-outline" style="align-self:flex-start; margin-top:0.5rem;">View Transcript →</span>
-          </a>
-
-          <!-- Sector 06: Experience -->
-          <a href="experience.html" class="parchment-paper" style="display:flex; flex-direction:column; gap:0.5rem; transition: transform 0.15s ease, box-shadow 0.15s ease;">
-            <div class="card-ticket-header">
-              <span class="ticket-no">SECTOR 06</span>
-              <span class="ticket-status">TIMELINE</span>
-            </div>
-            <h3 style="font-family:var(--font-serif); font-size:1.35rem;">🎟️ Punch-Card Experience Log</h3>
-            <p style="font-size:0.88rem; color:var(--ink-secondary); line-height:1.6; flex:1;">
-              Software engineering internships, Data Structures & Algorithms undergraduate teaching assistantships, and leadership roles.
-            </p>
-            <span class="vintage-btn btn-sm btn-outline" style="align-self:flex-start; margin-top:0.5rem;">Review History →</span>
-          </a>
-
-          <!-- Sector 07: Dispatch -->
-          <a href="contact.html" class="parchment-paper" style="display:flex; flex-direction:column; gap:0.5rem; transition: transform 0.15s ease, box-shadow 0.15s ease;">
-            <div class="card-ticket-header">
-              <span class="ticket-no">SECTOR 07</span>
-              <span class="ticket-status">OPEN LINE</span>
-            </div>
-            <h3 style="font-family:var(--font-serif); font-size:1.35rem;">✉️ Telegram Dispatch</h3>
-            <p style="font-size:0.88rem; color:var(--ink-secondary); line-height:1.6; flex:1;">
-              Transmit direct correspondence for internship opportunities, research collaborations, or technical discussions.
-            </p>
-            <span class="vintage-btn btn-sm btn-outline" style="align-self:flex-start; margin-top:0.5rem;">Transmit Telegram →</span>
-          </a>
-
-          <!-- Sector 08: Personal Directory (Google Drive Filesystem) -->
-          <div class="parchment-paper" id="openVaultTileBtn" role="button" tabindex="0" style="display:flex; flex-direction:column; gap:0.5rem; cursor:pointer; border-color:var(--accent-patina); transition: transform 0.15s ease, box-shadow 0.15s ease;">
-            <div class="card-ticket-header">
-              <span class="ticket-no">SECTOR 08</span>
-              <span class="ticket-status" style="color:var(--accent-patina);">ENCRYPTED 🔒</span>
-            </div>
-            <h3 style="font-family:var(--font-serif); font-size:1.35rem;">📁 Personal Cloud Drive & Files</h3>
-            <p style="font-size:0.88rem; color:var(--ink-secondary); line-height:1.6; flex:1;">
-              Curated engineering textbooks, compiler specifications, distributed system archives, and competitive programming cheatsheets hosted on Google Drive.
-            </p>
-            <span class="vintage-btn btn-sm btn-primary" style="align-self:flex-start; margin-top:0.5rem;">🔓 Unlock Drive Filesystem →</span>
-          </div>
-
-          <!-- Sector 09: Music Studio & Jukebox -->
-          <div class="parchment-paper" id="openMusicTileBtn" role="button" tabindex="0" style="display:flex; flex-direction:column; gap:0.5rem; cursor:pointer; border-color:var(--accent-rust); transition: transform 0.15s ease, box-shadow 0.15s ease;">
-            <div class="card-ticket-header">
-              <span class="ticket-no">SECTOR 09</span>
-              <span class="ticket-status" style="color:var(--accent-rust);">ACOUSTIC BGM 🎵</span>
-            </div>
-            <h3 style="font-family:var(--font-serif); font-size:1.35rem;">🎵 Genshin Impact Jukebox</h3>
-            <p style="font-size:0.88rem; color:var(--ink-secondary); line-height:1.6; flex:1;">
-              Atmospheric acoustic fantasy soundtrack deck with full tracklisting, live visualizer, custom playlist methods, and volume control.
-            </p>
-            <span class="vintage-btn btn-sm btn-outline" style="align-self:flex-start; margin-top:0.5rem;">▶ Expand Jukebox Console →</span>
-          </div>
-
-          <!-- Sector 10: HSC Academic Hub -->
-          <a href="hsc.html" class="parchment-paper" style="display:flex; flex-direction:column; gap:0.5rem; transition: transform 0.15s ease, box-shadow 0.15s ease; border-color:var(--accent-patina);">
-            <div class="card-ticket-header">
-              <span class="ticket-no">SECTOR 10</span>
-              <span class="ticket-status" style="color:var(--accent-patina);">OPEN ACCESS 📚</span>
-            </div>
-            <h3 style="font-family:var(--font-serif); font-size:1.35rem;">📚 HSC Academic Resource Hub</h3>
-            <p style="font-size:0.88rem; color:var(--ink-secondary); line-height:1.6; flex:1;">
-              Curated study materials for Higher Secondary Certificate — textbooks, board solution books, short tricks, memory aids, and past test papers.
-            </p>
-            <div style="display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.25rem;">
-              <span class="vintage-tag" style="font-size: 0.65rem;">📖 Books</span>
-              <span class="vintage-tag" style="font-size: 0.65rem;">📋 Board Solutions</span>
-              <span class="vintage-tag" style="font-size: 0.65rem;">⚡ Short Tricks</span>
-              <span class="vintage-tag" style="font-size: 0.65rem;">📝 Test Papers</span>
-            </div>
-            <span class="vintage-btn btn-sm btn-outline" style="align-self:flex-start; margin-top:0.5rem;">Explore HSC Hub →</span>
-          </a>
-          <!-- Card 09: AI Companion -->
-          <a href="companion.html" class="parchment-paper" style="display:flex; flex-direction:column; gap:0.5rem; transition: transform 0.15s ease, box-shadow 0.15s ease; border-color:rgba(0, 240, 255, 0.45); background:rgba(0, 240, 255, 0.04);">
-            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-              <span class="sector-tag" style="font-family:var(--font-mono); font-size:0.75rem; color:#00f0ff;">SECTOR // 09</span>
-              <span style="font-size:1.6rem;">✨</span>
-            </div>
-            <h3 style="font-size:1.25rem; font-family:var(--font-serif); margin:0; color:#00f0ff;">AI Companion</h3>
-            <p style="font-size:0.88rem; color:var(--ink-secondary); line-height:1.6; flex:1;">
-              Private intelligent companion assistant. Real-time reasoning, code debugging, systems engineering, and academic problem solving.
-            </p>
-            <div style="display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.25rem;">
-              <span class="vintage-tag" style="font-size: 0.65rem; border-color:#00f0ff; color:#00f0ff;">🔒 Passcode Guarded</span>
-              <span class="vintage-tag" style="font-size: 0.65rem;">⚡ Real-time</span>
-              <span class="vintage-tag" style="font-size: 0.65rem;">🧠 Neural Tutor</span>
-            </div>
-            <span class="vintage-btn btn-sm btn-outline" style="align-self:flex-start; margin-top:0.5rem; border-color:#00f0ff; color:#00f0ff;">Launch Companion (09) →</span>
-          </a>
-
-
-
-        </div>
-      </div>
-    </section>
-
+    </div>
   </main>
 
-  <!-- VINTAGE FOOTER -->
-  <footer class="vintage-footer">
-    <div class="container footer-content">
-      <div class="footer-left">
-        <div class="footer-seal">
-          <div class="seal-inner">
-            <span>CSE</span>
-            <span>CRAFT</span>
-          </div>
-        </div>
-        <div class="footer-text">
-          <p class="footer-title" id="footerBrand">Mir A K Sajid • Computer Science & Engineering Student</p>
-          <p class="footer-copy">Made on Scarface Lab</p>
-        </div>
+  <!-- GitHub Modern Footer -->
+  <footer class="github-footer">
+    <div class="github-footer-container">
+      <div class="github-footer-left">
+        <span style="font-size:1.25rem;">🐙</span>
+        <span id="footerBrand">© 2026 Mir A K Sajid (miros) • Computer Science & Engineering</span>
       </div>
-
-      <div class="footer-right">
-        <div class="system-telemetry">
-          <span class="telem-item">UPTIME: <strong id="telemUptime">99.98%</strong></span>
-          <span class="telem-item">MEM_LEAKS: <strong>0</strong></span>
-          <span class="telem-item">LOCAL_TIME: <strong id="telemTime">--:--:--</strong></span>
-        </div>
-        <div class="footer-quick-links">
-          <a href="index.html">Home</a>
-          <span class="sep">|</span>
-          <a href="projects.html">Projects</a>
-          <span class="sep">|</span>
-          <a href="terminal.html">Terminal</a>
-        </div>
+      <div class="github-footer-links">
+        <a href="index.html">Overview</a>
+        <a href="projects.html">Repositories</a>
+        <a href="terminal.html">Terminal</a>
+        <a href="companion.html">Miros AI</a>
+        <a href="hsc.html">Academic Vault</a>
+        <a href="contact.html">Contact</a>
+        <span style="color:#6e7681;">|</span>
+        <span style="color:#8b949e; font-family:var(--font-mono); font-size:0.75rem;">TIME: <strong id="telemTime" style="color:#f0f6fc;">--:--:--</strong></span>
       </div>
     </div>
   </footer>
@@ -512,7 +608,7 @@
       </div>
 
       <!-- Add New File Form Drawer (Collapsible) -->
-      <div id="vaultAddFileDrawer" style="display: none; background: var(--bg-subtle); padding: 1rem; border: 1px solid var(--border-color); margin-bottom: 1rem; border-radius: 12px;">
+      <div id="vaultAddFileDrawer" style="display: none; background: var(--bg-subtle); padding: 1rem; border: 1px solid var(--border-color); margin-bottom: 1rem; border-radius: 6px;">
         <h5 style="margin-bottom: 0.5rem; font-family: var(--font-serif); font-size: 1.05rem;">➕ Add Google Drive File / Resource</h5>
         <form id="vaultAddFileForm" class="form-grid-2">
           <div class="form-group" style="margin-bottom: 0.5rem;">
@@ -577,7 +673,7 @@
       </div>
       <div style="padding-top: 0.75rem; display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.75rem; color: var(--ink-muted); flex-wrap: wrap; gap: 0.5rem;">
         <span id="vaultStatsDisplay">0 files indexed</span>
-        <span>☁ Hosted on Google Drive • Vintage 2D Filesystem</span>
+        <span>☁ Hosted on Google Drive • Cloud Directory</span>
       </div>
     </div>
   </div>
@@ -593,14 +689,14 @@
       <div class="modal-body" style="overflow-y: auto; display: flex; flex-direction: column; gap: 1.25rem;">
         
         <!-- Currently Playing Hero Console -->
-        <div class="jukebox-hero-card" id="jukeboxHeroCard" style="background: var(--bg-subtle); border: 2px solid var(--border-color); padding: 1.25rem; display: flex; gap: 1.25rem; align-items: center; flex-wrap: wrap; border-radius: 12px;">
-          <div class="jukebox-disc-art" style="width: 80px; height: 80px; background: #1c1815; border-radius: 50%; border: 4px solid var(--accent-rust); display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-tactile-sm);">
+        <div class="jukebox-hero-card" id="jukeboxHeroCard" style="background: var(--bg-subtle); border: 1px solid var(--border-color); padding: 1.25rem; display: flex; gap: 1.25rem; align-items: center; flex-wrap: wrap; border-radius: 6px;">
+          <div class="jukebox-disc-art" style="width: 80px; height: 80px; background: #1c1815; border-radius: 50%; border: 4px solid var(--accent-blue); display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-tactile-sm);">
             <span style="font-size: 2rem;" id="jukeboxDiscSpin">💿</span>
           </div>
           <div style="flex: 1; min-width: 220px;">
             <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.25rem;">
               <span class="status-indicator-dot" id="jukeboxLiveDot"></span>
-              <span id="jukeboxLiveTag" style="font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; color: var(--accent-rust);">🍃 Mondstadt Winds</span>
+              <span id="jukeboxLiveTag" style="font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; color: var(--accent-blue);">🍃 Mondstadt Winds</span>
             </div>
             <h4 id="jukeboxCurrentTitle" style="font-family: var(--font-serif); font-size: 1.35rem; margin-bottom: 0.5rem;">Dawn Winery Tavern (Acoustic)</h4>
             
@@ -611,7 +707,7 @@
               <button type="button" class="vintage-btn btn-sm" id="jukeboxNextBtn">⏭ Next</button>
               <div style="display: flex; align-items: center; gap: 0.4rem; margin-left: auto; font-family: var(--font-mono); font-size: 0.75rem;">
                 <span>🔊</span>
-                <input type="range" id="jukeboxVolumeSlider" min="0" max="1" step="0.05" value="0.35" style="width: 85px; accent-color: var(--accent-rust);">
+                <input type="range" id="jukeboxVolumeSlider" min="0" max="1" step="0.05" value="0.35" style="width: 85px; accent-color: var(--accent-blue);">
                 <span id="jukeboxVolumeVal">35%</span>
               </div>
             </div>
@@ -639,7 +735,7 @@
           </div>
         </div>
 
-        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--ink-secondary); background: var(--bg-surface); padding: 0.75rem; border: 1px dashed var(--border-color); border-radius: 12px;">
+        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--ink-secondary); background: var(--bg-surface); padding: 0.75rem; border: 1px dashed var(--border-color); border-radius: 6px;">
           💡 <strong>How to Play:</strong> Tap any track in the catalog above to immediately switch and play. You can also adjust volume in real time or add new soundtrack tracks through the management portal.
         </div>
 
@@ -647,47 +743,25 @@
     </div>
   </div>
 
-  <!-- Floating 2D Retro Quick Dock HUD -->
-  
-
-  <script src="script.js"></script>
-
-  <!-- Floating AI Companion Trigger & Drawer -->
-  <button type="button" class="floating-companion-btn" id="floatingCompanionTrigger" title="Open AI Companion">
-    <span>✨</span>
-    <span class="floating-btn-text">AI Companion</span>
-  </button>
-
-  <div class="floating-companion-drawer" id="floatingCompanionDrawer" style="display:none;">
-    <div class="companion-drawer-header">
-      <div style="display:flex; align-items:center; gap:0.5rem;">
-        <img id="drawerCompanionAvatar" src="assets/images/avatar-pixel.png" alt="Companion" style="width:28px; height:28px; border-radius:50%; object-fit:cover; border:1.5px solid #00f0ff;">
-        <div>
-          <div id="drawerCompanionNickname" style="font-weight:700; font-size:0.88rem; color:#f8fafc; line-height:1.2;">Miros AI</div>
-          <div style="display:flex; align-items:center; gap:0.3rem; font-size:0.68rem; color:#94a3b8;">
-            <span class="status-green-dot"></span> Active
-          </div>
-        </div>
-      </div>
-      <div style="display:flex; align-items:center; gap:0.4rem;">
-        <a href="companion.html" class="drawer-action-link" title="Open Full-Screen Page 09" style="font-size:0.75rem; color:#00f0ff; text-decoration:none; padding:0.2rem 0.55rem; border:1px solid rgba(0,240,255,0.3); border-radius:6px; background:rgba(0,240,255,0.08);">↗ Full Page</a>
-        <button type="button" class="drawer-close-btn" id="closeCompanionDrawerBtn" style="background:none; border:none; color:#94a3b8; font-size:1.1rem; cursor:pointer; padding:0.2rem 0.4rem;">✕</button>
-      </div>
-    </div>
-
-    <!-- Drawer Chat Workspace (Zero Passwords / Always Active) -->
-    <div class="companion-drawer-body" id="drawerWorkspace" style="display:flex; flex-direction:column; flex:1; overflow:hidden;">
-      <div class="drawer-feed" id="drawerCompanionFeed" style="flex:1; overflow-y:auto; padding:0.75rem; display:flex; flex-direction:column; gap:0.75rem;"></div>
-      <div class="drawer-chatbar" style="padding:0.6rem 0.75rem; border-top:1px solid rgba(255,255,255,0.08); display:flex; gap:0.5rem; background:rgba(10,15,30,0.85); align-items:center;">
-        <textarea id="drawerCompanionInput" rows="1" placeholder="Message Miros AI..." style="flex:1; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius: 8px; color:#fff; padding:0.45rem 0.85rem; font-size:0.82rem; resize:none; outline:none; font-family:inherit;"></textarea>
-        <button type="button" id="drawerCompanionSendBtn" style="background:linear-gradient(135deg, #00f0ff, #a855f7); border:none; border-radius: 8px; width: 34px; height: 34px; display:flex; align-items:center; justify-content:center; color:#030712; cursor:pointer; flex-shrink:0;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
-        </button>
-      </div>
-    </div>
-  </div>
-
   <script src="companion-engine.js"></script>
   <script src="script.js"></script>
+  <script>
+    // GitHub Contribution Heatmap Dynamic Matrix
+    document.addEventListener('DOMContentLoaded', () => {
+      const grid = document.getElementById('githubHeatmapGrid');
+      if (!grid) return;
+      const weights = [0, 0, 0, 1, 1, 1, 2, 2, 3, 4];
+      for (let c = 0; c < 52; c++) {
+        for (let r = 0; r < 7; r++) {
+          const cell = document.createElement('div');
+          cell.className = 'heatmap-cell';
+          const isWeekend = (r === 0 || r === 6);
+          const lvl = (!isWeekend && Math.random() > 0.28) ? weights[Math.floor(Math.random() * weights.length)] : ((isWeekend && Math.random() > 0.65) ? 1 : 0);
+          cell.classList.add('lvl-' + lvl);
+          grid.appendChild(cell);
+        }
+      }
+    });
+  </script>
 </body>
 </html>
