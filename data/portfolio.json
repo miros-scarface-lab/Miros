@@ -347,7 +347,16 @@
         }
       ]
     },
-    "test": "ok"
+    "test": "ok",
+    "companion": {
+      "nickname": "Miros AI",
+      "avatar": "assets/images/avatar-pixel.png",
+      "model": "gemini-3.5-flash",
+      "personality": "You are Miros AI, an ultra-intelligent, sharp, and helpful companion. You specialize in computer science, systems engineering (C, C++, Rust, Linux), and HSC academic sciences (Physics, Chemistry, Math). Be concise, profound, and direct.",
+      "apiKey": "",
+      "password": "miros",
+      "apiKeyEnc": "QVEuQWI4Uk42SjRleFRyYzdqd3J2T2dNV2VhaVFSVGY0MDZRYndXY044ZHRMTE41MlpqUVE="
+    }
   },
   "personalDirectory": {
     "password": "1234",

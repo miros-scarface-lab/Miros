@@ -445,9 +445,13 @@ function initFloatingCompanionDrawer() {
   const trigger = document.getElementById('floatingCompanionTrigger');
   const drawer = document.getElementById('floatingCompanionDrawer');
   const closeBtn = document.getElementById('closeCompanionDrawerBtn');
+  const lockScreen = document.getElementById('drawerLockScreen');
+  const workspace = document.getElementById('drawerWorkspace');
   const feed = document.getElementById('drawerCompanionFeed');
   const input = document.getElementById('drawerCompanionInput');
   const sendBtn = document.getElementById('drawerCompanionSendBtn');
+  const avatarEl = document.getElementById('drawerCompanionAvatar');
+  const nicknameEl = document.getElementById('drawerCompanionNickname');
 
   if (!trigger || !drawer) return;
 
@@ -459,12 +463,20 @@ function initFloatingCompanionDrawer() {
       drawer.style.display = 'flex';
       if (!drawerCompanion && window.CompanionEngine && window.CompanionEngine.GeminiCompanion) {
         drawerCompanion = new window.CompanionEngine.GeminiCompanion({
+          container: drawer,
+          lockScreenEl: lockScreen,
+          workspaceEl: workspace,
           messagesContainer: feed,
           inputEl: input,
-          sendBtn: sendBtn
+          sendBtn: sendBtn,
+          avatarEl: avatarEl,
+          nicknameEl: nicknameEl
         });
+      } else if (drawerCompanion) {
+        drawerCompanion.checkLockState();
+        drawerCompanion.renderHeaderInfo();
       }
-      if (input) input.focus();
+      if (input && !drawerCompanion?.isLocked) input.focus();
     } else {
       drawer.style.display = 'none';
     }

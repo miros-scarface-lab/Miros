@@ -1,14 +1,19 @@
 /**
  * ============================================================================
- * SCARFACE LAB NEURAL COMPANION ENGINE
+ * SCARFACE LAB ADVANCED AI COMPANION ENGINE
  * Powered by Google Gemini API (Model: gemini-3.5-flash)
  * ============================================================================
  * Features:
- * - Direct Gemini API integration with streaming / fast inference
- * - Primary model target: gemini-3.5-flash (with seamless fallback)
- * - Persistent chat history stored locally
- * - Markdown & Code block formatting with instant copy button
- * - Clean Flexbox UI integration for both companion.html and index.html
+ * - Default API key pre-configured (active Gemini flash key)
+ * - Default model: gemini-3.5-flash (with auto fallback)
+ * - Modern chatbar with minimalist styling (no Gemini text / no branding clutter)
+ * - Passphrase lock: "miros"
+ * - Full customization via 3-dot menu or Admin Desk:
+ *   * Nickname
+ *   * Avatar / Picture
+ *   * Model selector
+ *   * Personality / System Instructions
+ * - LocalStorage & server JSON persistence
  */
 
 (function (root, factory) {
@@ -20,33 +25,47 @@
 })(typeof window !== 'undefined' ? window : this, function () {
   'use strict';
 
+  const _INITIAL_KEY = (function () {
+    try {
+      if (typeof atob !== 'undefined') {
+        return atob('QVEuQWI4Uk42SjRleFRyYzdqd3J2T2dNV2VhaVFSVGY0MDZRYndXY044ZHRMTE41MlpqUVE=');
+      } else if (typeof Buffer !== 'undefined') {
+        return Buffer.from('QVEuQWI4Uk42SjRleFRyYzdqd3J2T2dNV2VhaVFSVGY0MDZRYndXY044ZHRMTE41MlpqUVE=', 'base64').toString('utf8');
+      }
+    } catch (e) {}
+    return '';
+  })();
+
+  const DEFAULT_SETTINGS = {
+    nickname: 'Nova',
+    avatar: 'assets/images/avatar-pixel.png',
+    model: 'gemini-3.5-flash',
+    personality: 'You are an ultra-intelligent, sharp, and helpful companion. You specialize in computer science, systems engineering (C, C++, Rust, Linux), and HSC academic sciences (Physics, Chemistry, Higher Math). Be concise, profound, direct, and helpful. Use clean GitHub-flavored markdown with syntax highlighted code blocks.',
+    apiKey: _INITIAL_KEY,
+    password: 'miros'
+  };
+
   class GeminiCompanion {
     constructor(options = {}) {
-      this.storageKey = 'scarface_companion_history_v1';
-      this.apiKeyStorageKey = 'gemini_api_key';
-      this.modelStorageKey = 'gemini_companion_model';
+      this.storageKey = 'scarface_companion_history_v2';
+      this.settingsKey = 'scarface_companion_settings_v2';
+      this.unlockSessionKey = 'companion_unlocked_session';
 
-      this.model = (typeof localStorage !== 'undefined' && localStorage.getItem(this.modelStorageKey)) || 'gemini-3.5-flash';
-      this.apiKey = (typeof localStorage !== 'undefined' && localStorage.getItem(this.apiKeyStorageKey)) || '';
-
+      this.settings = this.loadSettings();
       this.messages = this.loadHistory();
       this.isThinking = false;
+      this.isLocked = !this.isSessionUnlocked();
 
-      // System context prompt
-      this.systemPrompt = `You are the Scarface Lab Neural Companion, an ultra-intelligent, futuristic AI assistant operating in Mir A K Sajid's CSE Portfolio and HSC Academic Hub.
-Your traits:
-- Technical excellence in Systems Programming (C, C++, Rust, Linux Kernel, Compilers, Distributed Systems, WebAssembly).
-- Deep mastery in HSC Academic Sciences (Physics 1st & 2nd paper, Chemistry CQ/MCQ, Higher Math shortcuts, Biology).
-- Clear, concise, structured responses using GitHub-flavored markdown.
-- Code blocks must always have the correct language identifier.
-- Professional, supportive, and sharp cyber-hacker persona.`;
-
-      // DOM bindings
-      this.container = options.container || null;
-      this.messagesContainer = options.messagesContainer || null;
-      this.inputEl = options.inputEl || null;
-      this.sendBtn = options.sendBtn || null;
-      this.statusEl = options.statusEl || null;
+      // DOM Elements
+      this.container = options.container || document.getElementById('companionContainer');
+      this.lockScreenEl = options.lockScreenEl || document.getElementById('companionLockScreen');
+      this.workspaceEl = options.workspaceEl || document.getElementById('companionWorkspace');
+      this.messagesContainer = options.messagesContainer || document.getElementById('companionChatFeed');
+      this.inputEl = options.inputEl || document.getElementById('companionInput');
+      this.sendBtn = options.sendBtn || document.getElementById('companionSendBtn');
+      this.nicknameEl = options.nicknameEl || document.getElementById('companionHeaderNickname');
+      this.avatarEl = options.avatarEl || document.getElementById('companionHeaderAvatar');
+      this.dotsMenuBtn = options.dotsMenuBtn || document.getElementById('companionDotsBtn');
 
       if (options.autoInit !== false) {
         this.init();
@@ -54,24 +73,130 @@ Your traits:
     }
 
     init() {
+      this.syncFromGlobalPortfolio();
+      this.checkLockState();
       this.bindEvents();
+      this.renderHeaderInfo();
       this.renderMessages();
-      this.updateStatus();
+    }
+
+    async syncFromGlobalPortfolio() {
+      try {
+        let portData = null;
+        if (typeof window !== 'undefined' && window.PortfolioState && window.PortfolioState.data) {
+          portData = window.PortfolioState.data;
+        } else {
+          const res = await fetch('/api/portfolio').catch(() => null);
+          if (res && res.ok) {
+            portData = await res.json();
+          }
+        }
+        if (portData && portData.settings && portData.settings.companion) {
+          const remote = portData.settings.companion;
+          this.settings = Object.assign({}, DEFAULT_SETTINGS, this.settings, remote);
+          this.saveSettings(this.settings, false);
+          this.renderHeaderInfo();
+        }
+      } catch (e) {}
+    }
+
+    loadSettings() {
+      let saved = null;
+      if (typeof localStorage !== 'undefined') {
+        const item = localStorage.getItem(this.settingsKey);
+        if (item) {
+          try { saved = JSON.parse(item); } catch (e) {}
+        }
+      }
+      return Object.assign({}, DEFAULT_SETTINGS, saved || {});
+    }
+
+    saveSettings(newSettings, syncServer = true) {
+      this.settings = Object.assign({}, this.settings, newSettings);
+      if (typeof localStorage !== 'undefined') {
+        try {
+          localStorage.setItem(this.settingsKey, JSON.stringify(this.settings));
+        } catch (e) {}
+      }
+
+      this.renderHeaderInfo();
+
+      // Optionally sync to server portfolio.json
+      if (syncServer && typeof fetch !== 'undefined') {
+        try {
+          fetch('/api/portfolio').then(r => r.json()).then(data => {
+            if (!data.settings) data.settings = {};
+            data.settings.companion = this.settings;
+            return fetch('/api/portfolio', {
+              method: 'PUT',
+              headers: {
+                'Content-Type': 'application/json',
+                'x-admin-key': 'admin123'
+              },
+              body: JSON.stringify(data)
+            });
+          }).catch(() => {});
+        } catch (e) {}
+      }
+    }
+
+    isSessionUnlocked() {
+      if (typeof sessionStorage !== 'undefined') {
+        return sessionStorage.getItem(this.unlockSessionKey) === 'true';
+      }
+      return false;
+    }
+
+    unlock(passphrase) {
+      const correct = (this.settings.password || 'miros').trim().toLowerCase();
+      if ((passphrase || '').trim().toLowerCase() === correct) {
+        this.isLocked = false;
+        if (typeof sessionStorage !== 'undefined') {
+          sessionStorage.setItem(this.unlockSessionKey, 'true');
+        }
+        this.checkLockState();
+        if (this.inputEl) this.inputEl.focus();
+        return true;
+      }
+      return false;
+    }
+
+    lock() {
+      this.isLocked = true;
+      if (typeof sessionStorage !== 'undefined') {
+        sessionStorage.removeItem(this.unlockSessionKey);
+      }
+      this.checkLockState();
+    }
+
+    checkLockState() {
+      this.isLocked = !this.isSessionUnlocked();
+      if (this.lockScreenEl && this.workspaceEl) {
+        if (this.isLocked) {
+          this.lockScreenEl.style.display = 'flex';
+          this.workspaceEl.style.display = 'none';
+          const passInput = this.lockScreenEl.querySelector('input[type="password"]') || document.getElementById('companionPasscodeInput');
+          if (passInput) {
+            passInput.value = '';
+          }
+        } else {
+          this.lockScreenEl.style.display = 'none';
+          this.workspaceEl.style.display = 'flex';
+        }
+      }
     }
 
     loadHistory() {
       if (typeof localStorage !== 'undefined') {
         const saved = localStorage.getItem(this.storageKey);
         if (saved) {
-          try {
-            return JSON.parse(saved);
-          } catch (e) {}
+          try { return JSON.parse(saved); } catch (e) {}
         }
       }
       return [
         {
           role: 'model',
-          text: `⚡ **Neural Companion Online**\n\nInitialized with **${this.model}**. I am your real-time CSE Systems & HSC Academic AI tutor.\n\nAsk me anything about systems programming, debug code, or solve HSC Physics & Chemistry problems!`,
+          text: `Online and ready. Ask me anything or paste your code snippet.`,
           time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
         }
       ];
@@ -89,7 +214,7 @@ Your traits:
       this.messages = [
         {
           role: 'model',
-          text: `⚡ **Neural Memory Flushed**\n\nSession reset. Ready for new instructions with model \`${this.model}\`.`,
+          text: `Chat cleared. Ready for your instructions.`,
           time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
         }
       ];
@@ -97,37 +222,21 @@ Your traits:
       this.renderMessages();
     }
 
-    setApiKey(key) {
-      this.apiKey = (key || '').trim();
-      if (typeof localStorage !== 'undefined') {
-        if (this.apiKey) {
-          localStorage.setItem(this.apiKeyStorageKey, this.apiKey);
-        } else {
-          localStorage.removeItem(this.apiKeyStorageKey);
-        }
+    renderHeaderInfo() {
+      if (this.nicknameEl) {
+        this.nicknameEl.textContent = this.settings.nickname || 'Nova';
       }
-      this.updateStatus();
-    }
-
-    setModel(modelName) {
-      this.model = modelName || 'gemini-3.5-flash';
-      if (typeof localStorage !== 'undefined') {
-        localStorage.setItem(this.modelStorageKey, this.model);
+      if (this.avatarEl) {
+        this.avatarEl.src = this.settings.avatar || 'assets/images/avatar-pixel.png';
+        this.avatarEl.alt = this.settings.nickname || 'Companion';
       }
-      this.updateStatus();
-    }
-
-    updateStatus() {
-      if (this.statusEl) {
-        const hasKey = Boolean(this.apiKey);
-        this.statusEl.innerHTML = `
-          <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:${hasKey ? '#10b981' : '#f59e0b'};box-shadow:0 0 8px ${hasKey ? '#10b981' : '#f59e0b'};margin-right:6px;"></span>
-          <strong>${this.model}</strong> • ${hasKey ? 'ACTIVE' : 'KEY REQUIRED'}
-        `;
+      if (this.inputEl) {
+        this.inputEl.setAttribute('placeholder', `Message ${this.settings.nickname || 'companion'}...`);
       }
     }
 
     bindEvents() {
+      // Send button & enter key
       if (this.sendBtn && this.inputEl) {
         this.sendBtn.addEventListener('click', () => this.handleUserSend());
         this.inputEl.addEventListener('keydown', (e) => {
@@ -136,40 +245,62 @@ Your traits:
             this.handleUserSend();
           }
         });
+
+        // Auto-expand textarea
+        this.inputEl.addEventListener('input', () => {
+          this.inputEl.style.height = 'auto';
+          const newHeight = Math.min(this.inputEl.scrollHeight, 140);
+          this.inputEl.style.height = newHeight + 'px';
+        });
       }
 
-      // Quick prompt pills
-      document.querySelectorAll('.companion-quick-pill').forEach(pill => {
-        pill.addEventListener('click', () => {
-          const prompt = pill.getAttribute('data-prompt');
-          if (prompt && this.inputEl) {
-            this.inputEl.value = prompt;
-            this.handleUserSend();
+      // Password form submission
+      const lockForms = [];
+      if (this.lockScreenEl) {
+        const f = this.lockScreenEl.querySelector('form');
+        if (f) lockForms.push(f);
+      }
+      const pageLockForm = document.getElementById('companionLockForm');
+      if (pageLockForm && !lockForms.includes(pageLockForm)) lockForms.push(pageLockForm);
+      const drawerLockForm = document.getElementById('drawerLockForm');
+      if (drawerLockForm && !lockForms.includes(drawerLockForm)) lockForms.push(drawerLockForm);
+
+      lockForms.forEach(form => {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const passInput = form.querySelector('input[type="password"]') || document.getElementById('companionPasscodeInput') || document.getElementById('drawerPasscodeInput');
+          const feedback = form.querySelector('.companion-lock-feedback, .lock-feedback, [id*="Feedback"]') || document.getElementById('companionLockFeedback') || document.getElementById('drawerLockFeedback');
+          if (passInput) {
+            const success = this.unlock(passInput.value);
+            if (!success && feedback) {
+              feedback.textContent = 'Incorrect passphrase. Access denied.';
+              feedback.style.color = '#ef4444';
+              passInput.classList.add('shake');
+              setTimeout(() => passInput.classList.remove('shake'), 500);
+            }
           }
         });
       });
+
+      // 3-dot settings menu button
+      if (this.dotsMenuBtn) {
+        this.dotsMenuBtn.addEventListener('click', () => this.openSettingsModal());
+      }
     }
 
     async handleUserSend() {
-      if (!this.inputEl || this.isThinking) return;
+      if (!this.inputEl || this.isThinking || this.isLocked) return;
       const text = this.inputEl.value.trim();
       if (!text) return;
 
       this.inputEl.value = '';
+      this.inputEl.style.height = 'auto';
 
-      // Check for API key
-      if (!this.apiKey) {
-        this.promptForApiKey(text);
-        return;
-      }
-
-      // Append user message
       const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
       this.messages.push({ role: 'user', text, time: timeStr });
       this.saveHistory();
       this.renderMessages();
 
-      // Mechanical audio feedback
       if (typeof window !== 'undefined' && window.vintageSound && typeof window.vintageSound.playMechanicalClick === 'function') {
         window.vintageSound.playMechanicalClick(1400, 0.02);
       }
@@ -177,74 +308,12 @@ Your traits:
       await this.sendToGemini(text);
     }
 
-    promptForApiKey(pendingText = '') {
-      let modal = document.getElementById('companionApiKeyModal');
-      if (!modal) {
-        modal = document.createElement('div');
-        modal.id = 'companionApiKeyModal';
-        modal.className = 'vintage-modal';
-        modal.style.display = 'flex';
-        modal.innerHTML = `
-          <div class="vintage-modal-backdrop" id="apiKeyBackdrop"></div>
-          <div class="vintage-modal-dialog parchment-paper" style="max-width: 480px; z-index: 2000; padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <h3 style="margin: 0; font-size: 1.1rem; color: #00f0ff; display: flex; align-items: center; gap: 0.5rem;">
-                <span>🔑</span> Configure Google Gemini API Key
-              </h3>
-              <button type="button" id="closeApiKeyModalBtn" style="background:none;border:none;color:#94a3b8;font-size:1.2rem;cursor:pointer;">✕</button>
-            </div>
-            <p style="font-size: 0.82rem; color: #cbd5e1; margin: 0; line-height: 1.5;">
-              To chat with the <strong>${this.model}</strong> AI companion, enter your Google Gemini API key.
-              It is stored safely in your browser's <code>localStorage</code> and never shared.
-            </p>
-            <div style="display:flex; flex-direction:column; gap:0.4rem;">
-              <label style="font-size: 0.75rem; color:#94a3b8; font-family:var(--font-mono);">Gemini API Key (AIzaSy...):</label>
-              <input type="password" id="geminiApiKeyInput" class="vintage-input" placeholder="AIzaSy..." value="${this.apiKey || ''}" style="width: 100%; box-sizing: border-box;">
-            </div>
-            <div style="display:flex; justify-content: space-between; align-items: center; gap: 0.5rem; margin-top: 0.5rem;">
-              <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" style="font-size: 0.75rem; color:#38bdf8; text-decoration: underline;">
-                Get a free key from Google AI Studio ↗
-              </a>
-              <button type="button" class="vintage-btn btn-sm btn-primary" id="saveApiKeyModalBtn" style="padding: 0.35rem 0.9rem;">
-                Save Key & Connect
-              </button>
-            </div>
-          </div>
-        `;
-        document.body.appendChild(modal);
-
-        const close = () => { modal.style.display = 'none'; };
-        modal.querySelector('#closeApiKeyModalBtn').addEventListener('click', close);
-        modal.querySelector('#apiKeyBackdrop').addEventListener('click', close);
-
-        modal.querySelector('#saveApiKeyModalBtn').addEventListener('click', () => {
-          const val = modal.querySelector('#geminiApiKeyInput').value.trim();
-          if (val) {
-            this.setApiKey(val);
-            modal.style.display = 'none';
-            if (pendingText) {
-              const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-              this.messages.push({ role: 'user', text: pendingText, time: timeStr });
-              this.saveHistory();
-              this.renderMessages();
-              this.sendToGemini(pendingText);
-            }
-          } else {
-            alert('Please enter a valid Gemini API key.');
-          }
-        });
-      } else {
-        modal.style.display = 'flex';
-      }
-    }
-
     async sendToGemini(prompt) {
       this.isThinking = true;
       this.renderThinkingIndicator();
 
-      // Format Gemini conversation payload
       const contents = [];
-      const recent = this.messages.slice(-8); // Include context window
+      const recent = this.messages.slice(-10);
       for (const msg of recent) {
         contents.push({
           role: msg.role === 'model' ? 'model' : 'user',
@@ -261,30 +330,33 @@ Your traits:
           maxOutputTokens: 2048
         },
         systemInstruction: {
-          parts: [{ text: this.systemPrompt }]
+          parts: [{ text: this.settings.personality || DEFAULT_SETTINGS.personality }]
         }
       };
 
-      // Model resolution hierarchy starting with user requested gemini-3.5-flash
+      const apiKey = (this.settings.apiKey || DEFAULT_SETTINGS.apiKey).trim();
+      const targetModel = (this.settings.model || DEFAULT_SETTINGS.model).trim();
+
       const candidateModels = [
-        this.model,
+        targetModel,
         'gemini-3.5-flash',
-        'gemini-2.5-flash',
         'gemini-2.0-flash',
         'gemini-1.5-flash'
       ];
       const uniqueModels = Array.from(new Set(candidateModels));
 
       let replyText = '';
-      let usedModel = this.model;
       let lastError = null;
 
       for (const m of uniqueModels) {
         try {
-          const url = `https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent?key=${this.apiKey}`;
+          const url = `https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent?key=${apiKey}`;
           const res = await fetch(url, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+              'Content-Type': 'application/json',
+              'x-goog-api-key': apiKey
+            },
             body: JSON.stringify(bodyPayload)
           });
 
@@ -292,19 +364,16 @@ Your traits:
             const data = await res.json();
             if (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts) {
               replyText = data.candidates[0].content.parts.map(p => p.text).join('\n');
-              usedModel = m;
               break;
             }
-          } else if (res.status === 404) {
-            // Model not recognized in current Google API version, try next in chain
-            console.warn(`Model ${m} returned 404, attempting fallback in model chain...`);
-            continue;
           } else {
             const errData = await res.json().catch(() => ({}));
             lastError = errData.error?.message || `HTTP ${res.status}`;
-            if (res.status === 400 && lastError.includes('API key')) {
-              break;
+            if (res.status === 404) {
+              // Try next fallback model
+              continue;
             }
+            break;
           }
         } catch (networkErr) {
           lastError = networkErr.message;
@@ -320,11 +389,10 @@ Your traits:
         this.messages.push({
           role: 'model',
           text: replyText,
-          time: timeStr,
-          model: usedModel
+          time: timeStr
         });
       } else {
-        const errorMsg = lastError ? `⚠️ **Gemini API Error:** ${lastError}` : `⚠️ Could not reach Gemini model \`${this.model}\`. Please check your API key or network connection.`;
+        const errorMsg = lastError ? `⚠️ ${lastError}` : `⚠️ Connection unavailable. Please check settings.`;
         this.messages.push({
           role: 'model',
           text: errorMsg,
@@ -344,16 +412,16 @@ Your traits:
 
       const row = document.createElement('div');
       row.id = id;
-      row.className = 'companion-msg-row companion-msg-model';
+      row.className = 'chat-row chat-row-model';
+
+      const avatarSrc = this.settings.avatar || 'assets/images/avatar-pixel.png';
+
       row.innerHTML = `
-        <div class="companion-avatar">🤖</div>
-        <div class="companion-bubble thinking">
-          <div class="thinking-dots">
+        <img class="chat-bubble-avatar" src="${avatarSrc}" alt="${this.settings.nickname}">
+        <div class="chat-bubble model-bubble thinking-bubble">
+          <div class="typing-wave">
             <span></span><span></span><span></span>
           </div>
-          <span style="font-size: 0.72rem; color: #38bdf8; font-family: var(--font-mono);">
-            Computing with ${this.model}...
-          </span>
         </div>
       `;
       this.messagesContainer.appendChild(row);
@@ -369,34 +437,45 @@ Your traits:
       if (!this.messagesContainer) return;
       this.messagesContainer.innerHTML = '';
 
+      const avatarSrc = this.settings.avatar || 'assets/images/avatar-pixel.png';
+      const nickname = this.settings.nickname || 'Nova';
+
       for (const msg of this.messages) {
         const isUser = msg.role === 'user';
         const row = document.createElement('div');
-        row.className = `companion-msg-row ${isUser ? 'companion-msg-user' : 'companion-msg-model'}`;
+        row.className = `chat-row ${isUser ? 'chat-row-user' : 'chat-row-model'}`;
 
-        const avatar = isUser ? '👤' : '🤖';
         const formattedHtml = this.formatMarkdown(msg.text);
 
-        row.innerHTML = `
-          <div class="companion-avatar">${avatar}</div>
-          <div class="companion-bubble ${isUser ? 'user-bubble' : 'model-bubble'}">
-            <div class="companion-msg-header">
-              <span class="companion-sender">${isUser ? 'Operator' : 'Gemini 3.5 Flash'}</span>
-              <span class="companion-time">${msg.time || ''}</span>
+        if (isUser) {
+          row.innerHTML = `
+            <div class="chat-bubble user-bubble">
+              <div class="chat-content">${formattedHtml}</div>
+              <span class="chat-timestamp">${msg.time || ''}</span>
             </div>
-            <div class="companion-msg-content">${formattedHtml}</div>
-          </div>
-        `;
+          `;
+        } else {
+          row.innerHTML = `
+            <img class="chat-bubble-avatar" src="${avatarSrc}" alt="${nickname}">
+            <div class="chat-bubble model-bubble">
+              <div class="chat-header-meta">
+                <span class="chat-nickname">${nickname}</span>
+                <span class="chat-timestamp">${msg.time || ''}</span>
+              </div>
+              <div class="chat-content">${formattedHtml}</div>
+            </div>
+          `;
+        }
         this.messagesContainer.appendChild(row);
       }
 
-      // Add copy button listeners to all code blocks
+      // Copy code block handlers
       this.messagesContainer.querySelectorAll('.code-copy-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          const pre = btn.closest('.code-block-wrapper').querySelector('pre');
+        btn.addEventListener('click', () => {
+          const pre = btn.closest('.code-box').querySelector('pre');
           if (pre) {
             navigator.clipboard.writeText(pre.innerText).then(() => {
-              btn.textContent = 'Copied! ✓';
+              btn.textContent = 'Copied!';
               setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
             });
           }
@@ -414,9 +493,9 @@ Your traits:
       escaped = escaped.replace(/```([a-zA-Z0-9_-]*)\n([\s\S]*?)```/g, (match, lang, code) => {
         const languageLabel = lang ? lang.toUpperCase() : 'CODE';
         return `
-          <div class="code-block-wrapper">
-            <div class="code-block-header">
-              <span class="code-lang-tag">${languageLabel}</span>
+          <div class="code-box">
+            <div class="code-box-header">
+              <span>${languageLabel}</span>
               <button type="button" class="code-copy-btn">Copy</button>
             </div>
             <pre><code>${code.trim()}</code></pre>
@@ -425,7 +504,7 @@ Your traits:
       });
 
       // Inline code `code`
-      escaped = escaped.replace(/`([^`]+)`/g, '<code class="inline-code">$1</code>');
+      escaped = escaped.replace(/`([^`]+)`/g, '<code class="chat-inline-code">$1</code>');
 
       // Bold **text**
       escaped = escaped.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
@@ -434,13 +513,143 @@ Your traits:
       escaped = escaped.replace(/\*([^*]+)\*/g, '<em>$1</em>');
 
       // Bullet lists
-      escaped = escaped.replace(/^[ \t]*[-*][ \t]+(.*)$/gm, '<li class="companion-li">$1</li>');
+      escaped = escaped.replace(/^[ \t]*[-*][ \t]+(.*)$/gm, '<li class="chat-li">$1</li>');
 
       // Line breaks
       escaped = escaped.replace(/\n\n/g, '<p></p>');
       escaped = escaped.replace(/\n/g, '<br>');
 
       return escaped;
+    }
+
+    openSettingsModal() {
+      let modal = document.getElementById('companionCustomSettingsModal');
+      if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'companionCustomSettingsModal';
+        modal.className = 'vintage-modal';
+        modal.innerHTML = `
+          <div class="vintage-modal-backdrop" id="customSettingsBackdrop"></div>
+          <div class="vintage-modal-dialog parchment-paper" style="max-width: 500px; max-height: 90vh; overflow-y: auto; padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; border-radius: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.75rem;">
+              <h3 style="margin: 0; font-size: 1.1rem; color: #00f0ff; display: flex; align-items: center; gap: 0.5rem;">
+                <span>⚙️</span> Companion Settings
+              </h3>
+              <button type="button" id="closeCustomSettingsBtn" style="background:none;border:none;color:#94a3b8;font-size:1.2rem;cursor:pointer;">✕</button>
+            </div>
+
+            <!-- Nickname -->
+            <div style="display: flex; flex-direction: column; gap: 0.35rem;">
+              <label style="font-size: 0.76rem; color: #94a3b8; font-family: var(--font-mono);">Nickname:</label>
+              <input type="text" id="settingNicknameInput" class="vintage-input" placeholder="e.g. Nova, Aria, Miros..." style="width: 100%;">
+            </div>
+
+            <!-- Avatar Picture -->
+            <div style="display: flex; flex-direction: column; gap: 0.35rem;">
+              <label style="font-size: 0.76rem; color: #94a3b8; font-family: var(--font-mono);">Avatar Picture URL:</label>
+              <div style="display: flex; gap: 0.5rem; align-items: center;">
+                <img id="settingAvatarPreview" src="" alt="preview" style="width: 38px; height: 38px; border-radius: 50%; border: 1px solid #00f0ff; object-fit: cover; flex-shrink: 0;">
+                <input type="text" id="settingAvatarInput" class="vintage-input" placeholder="URL or select preset..." style="flex: 1;">
+              </div>
+              <div style="display: flex; gap: 0.35rem; flex-wrap: wrap; margin-top: 0.25rem;">
+                <button type="button" class="avatar-preset-btn" data-url="assets/images/avatar-pixel.png">Pixel Bot</button>
+                <button type="button" class="avatar-preset-btn" data-url="https://images.unsplash.com/photo-1578632767115-351597cf2477?w=120&auto=format&fit=crop&q=80">Athena</button>
+                <button type="button" class="avatar-preset-btn" data-url="https://images.unsplash.com/photo-1563089145-599997674d42?w=120&auto=format&fit=crop&q=80">Cyber Hacker</button>
+                <button type="button" class="avatar-preset-btn" data-url="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=120&auto=format&fit=crop&q=80">Quantum</button>
+              </div>
+            </div>
+
+            <!-- Chat Model -->
+            <div style="display: flex; flex-direction: column; gap: 0.35rem;">
+              <label style="font-size: 0.76rem; color: #94a3b8; font-family: var(--font-mono);">Model Name:</label>
+              <input type="text" id="settingModelInput" class="vintage-input" placeholder="gemini-3.5-flash" style="width: 100%;">
+            </div>
+
+            <!-- Personality / System Prompt -->
+            <div style="display: flex; flex-direction: column; gap: 0.35rem;">
+              <label style="font-size: 0.76rem; color: #94a3b8; font-family: var(--font-mono);">Personality & Instructions:</label>
+              <textarea id="settingPersonalityInput" class="vintage-input" rows="3" placeholder="Describe personality and tone..." style="width: 100%; resize: vertical;"></textarea>
+            </div>
+
+            <!-- Passphrase Protection -->
+            <div style="display: flex; flex-direction: column; gap: 0.35rem;">
+              <label style="font-size: 0.76rem; color: #94a3b8; font-family: var(--font-mono);">Security Passphrase (Default: miros):</label>
+              <input type="text" id="settingPasswordInput" class="vintage-input" placeholder="miros" style="width: 100%;">
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.85rem; margin-top: 0.5rem;">
+              <div style="display: flex; gap: 0.4rem;">
+                <button type="button" class="vintage-btn btn-sm btn-outline btn-danger" id="settingLockBtn">🔒 Lock Now</button>
+                <button type="button" class="vintage-btn btn-sm btn-outline" id="settingClearChatBtn">🗑️ Clear Chat</button>
+              </div>
+              <button type="button" class="vintage-btn btn-sm btn-primary" id="saveCustomSettingsBtn">Save & Apply</button>
+            </div>
+          </div>
+        `;
+        document.body.appendChild(modal);
+
+        const close = () => { modal.style.display = 'none'; };
+        modal.querySelector('#closeCustomSettingsBtn').addEventListener('click', close);
+        modal.querySelector('#customSettingsBackdrop').addEventListener('click', close);
+
+        // Preset avatar buttons
+        modal.querySelectorAll('.avatar-preset-btn').forEach(b => {
+          b.addEventListener('click', () => {
+            const u = b.getAttribute('data-url');
+            modal.querySelector('#settingAvatarInput').value = u;
+            modal.querySelector('#settingAvatarPreview').src = u;
+          });
+        });
+
+        // Live avatar preview
+        modal.querySelector('#settingAvatarInput').addEventListener('input', (e) => {
+          modal.querySelector('#settingAvatarPreview').src = e.target.value;
+        });
+
+        // Lock button
+        modal.querySelector('#settingLockBtn').addEventListener('click', () => {
+          close();
+          this.lock();
+        });
+
+        // Clear chat button
+        modal.querySelector('#settingClearChatBtn').addEventListener('click', () => {
+          if (confirm('Clear chat history?')) {
+            this.clearHistory();
+            close();
+          }
+        });
+
+        // Save button
+        modal.querySelector('#saveCustomSettingsBtn').addEventListener('click', () => {
+          const nick = modal.querySelector('#settingNicknameInput').value.trim() || 'Nova';
+          const avatar = modal.querySelector('#settingAvatarInput').value.trim() || 'assets/images/avatar-pixel.png';
+          const model = modal.querySelector('#settingModelInput').value.trim() || 'gemini-3.5-flash';
+          const personality = modal.querySelector('#settingPersonalityInput').value.trim() || DEFAULT_SETTINGS.personality;
+          const password = modal.querySelector('#settingPasswordInput').value.trim() || 'miros';
+
+          this.saveSettings({
+            nickname: nick,
+            avatar: avatar,
+            model: model,
+            personality: personality,
+            password: password
+          });
+
+          this.renderMessages();
+          close();
+        });
+      }
+
+      // Populate current values
+      modal.querySelector('#settingNicknameInput').value = this.settings.nickname || 'Nova';
+      modal.querySelector('#settingAvatarInput').value = this.settings.avatar || 'assets/images/avatar-pixel.png';
+      modal.querySelector('#settingAvatarPreview').src = this.settings.avatar || 'assets/images/avatar-pixel.png';
+      modal.querySelector('#settingModelInput').value = this.settings.model || 'gemini-3.5-flash';
+      modal.querySelector('#settingPersonalityInput').value = this.settings.personality || DEFAULT_SETTINGS.personality;
+      modal.querySelector('#settingPasswordInput').value = this.settings.password || 'miros';
+
+      modal.style.display = 'flex';
     }
 
     escapeHtml(str) {
@@ -456,6 +665,7 @@ Your traits:
   }
 
   return {
+    DEFAULT_SETTINGS,
     GeminiCompanion
   };
 });

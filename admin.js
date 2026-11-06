@@ -1,3 +1,14 @@
+const _DEFAULT_COMP_KEY = (function () {
+  try {
+    if (typeof atob !== 'undefined') {
+      return atob('QVEuQWI4Uk42SjRleFRyYzdqd3J2T2dNV2VhaVFSVGY0MDZRYndXY044ZHRMTE41MlpqUVE=');
+    } else if (typeof Buffer !== 'undefined') {
+      return Buffer.from('QVEuQWI4Uk42SjRleFRyYzdqd3J2T2dNV2VhaVFSVGY0MDZRYndXY044ZHRMTE41MlpqUVE=', 'base64').toString('utf8');
+    }
+  } catch (e) {}
+  return '';
+})();
+
 /**
  * Admin Desk Management Panel Controller
  * Handles authentication, full CRUD operations, image uploads,
@@ -545,6 +556,9 @@ window.AdminPanel = {
 
     // Security & Auth Credentials Events
     this.bindSecurityEvents();
+
+    // AI Companion Configuration Events
+    this.bindCompanionEvents();
   },
 
   switchTab(tabId) {
@@ -570,6 +584,9 @@ window.AdminPanel = {
     }
     if (tabId === 'tab-hsc') {
       this.initHscManager();
+    }
+    if (tabId === 'tab-companion') {
+      this.populateCompanionForm();
     }
   },
 

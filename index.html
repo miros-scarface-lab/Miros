@@ -332,7 +332,7 @@
             </div>
             <span class="vintage-btn btn-sm btn-outline" style="align-self:flex-start; margin-top:0.5rem;">Explore HSC Hub →</span>
           </a>
-          <!-- Card 09: AI Companion (Gemini 3.5 Flash) -->
+          <!-- Card 09: AI Companion -->
           <a href="companion.html" class="parchment-paper" style="display:flex; flex-direction:column; gap:0.5rem; transition: transform 0.15s ease, box-shadow 0.15s ease; border-color:rgba(0, 240, 255, 0.45); background:rgba(0, 240, 255, 0.04);">
             <div style="display:flex; justify-content:space-between; align-items:flex-start;">
               <span class="sector-tag" style="font-family:var(--font-mono); font-size:0.75rem; color:#00f0ff;">SECTOR // 09</span>
@@ -340,12 +340,12 @@
             </div>
             <h3 style="font-size:1.25rem; font-family:var(--font-serif); margin:0; color:#00f0ff;">AI Companion</h3>
             <p style="font-size:0.88rem; color:var(--ink-secondary); line-height:1.6; flex:1;">
-              Autonomous neural intelligence running on Gemini 3.5 Flash API. Real-time reasoning, code debugging, and HSC academic problem solving.
+              Private intelligent companion assistant. Real-time reasoning, code debugging, systems engineering, and academic problem solving.
             </p>
             <div style="display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.25rem;">
-              <span class="vintage-tag" style="font-size: 0.65rem; border-color:#00f0ff; color:#00f0ff;">⚡ Gemini 3.5 Flash</span>
+              <span class="vintage-tag" style="font-size: 0.65rem; border-color:#00f0ff; color:#00f0ff;">🔒 Passcode Guarded</span>
+              <span class="vintage-tag" style="font-size: 0.65rem;">⚡ Real-time</span>
               <span class="vintage-tag" style="font-size: 0.65rem;">🧠 Neural Tutor</span>
-              <span class="vintage-tag" style="font-size: 0.65rem;">🐞 Code Debug</span>
             </div>
             <span class="vintage-btn btn-sm btn-outline" style="align-self:flex-start; margin-top:0.5rem; border-color:#00f0ff; color:#00f0ff;">Launch Companion (09) →</span>
           </a>
@@ -573,27 +573,57 @@
 
   <script src="script.js"></script>
 
-  <!-- Floating Gemini AI Companion Trigger & Drawer -->
-  <button type="button" class="floating-companion-btn" id="floatingCompanionTrigger" title="Open AI Companion (Gemini 3.5 Flash)">
+  <!-- Floating AI Companion Trigger & Drawer -->
+  <button type="button" class="floating-companion-btn" id="floatingCompanionTrigger" title="Open AI Companion">
     <span>✨</span>
     <span class="floating-btn-text">AI Companion</span>
   </button>
 
   <div class="floating-companion-drawer" id="floatingCompanionDrawer" style="display:none;">
     <div class="companion-drawer-header">
-      <div style="display:flex; align-items:center; gap:0.4rem;">
-        <span style="font-size:1.1rem;">🤖</span>
-        <strong>Gemini 3.5 Flash</strong>
+      <div style="display:flex; align-items:center; gap:0.5rem;">
+        <img id="drawerCompanionAvatar" src="assets/images/avatar-pixel.png" alt="Companion" style="width:28px; height:28px; border-radius:50%; object-fit:cover; border:1.5px solid #00f0ff;">
+        <div>
+          <div id="drawerCompanionNickname" style="font-weight:700; font-size:0.88rem; color:#f8fafc; line-height:1.2;">Nova</div>
+          <div style="display:flex; align-items:center; gap:0.3rem; font-size:0.68rem; color:#94a3b8;">
+            <span class="status-green-dot"></span> Active
+          </div>
+        </div>
       </div>
-      <div style="display:flex; align-items:center; gap:0.35rem;">
-        <a href="companion.html" class="drawer-action-link" title="Open Full-Screen Page 09">↗ Full Page</a>
-        <button type="button" class="drawer-close-btn" id="closeCompanionDrawerBtn">✕</button>
+      <div style="display:flex; align-items:center; gap:0.4rem;">
+        <a href="companion.html" class="drawer-action-link" title="Open Full-Screen Page 09" style="font-size:0.75rem; color:#00f0ff; text-decoration:none; padding:0.2rem 0.55rem; border:1px solid rgba(0,240,255,0.3); border-radius:6px; background:rgba(0,240,255,0.08);">↗ Full Page</a>
+        <button type="button" class="drawer-close-btn" id="closeCompanionDrawerBtn" style="background:none; border:none; color:#94a3b8; font-size:1.1rem; cursor:pointer; padding:0.2rem 0.4rem;">✕</button>
       </div>
     </div>
-    <div class="companion-drawer-feed" id="drawerCompanionFeed"></div>
-    <div class="companion-drawer-input-row">
-      <input type="text" class="companion-drawer-input" id="drawerCompanionInput" placeholder="Ask Gemini 3.5 Flash...">
-      <button type="button" class="companion-drawer-send-btn" id="drawerCompanionSendBtn">⚡</button>
+
+    <!-- Drawer Passcode Lock Screen -->
+    <div id="drawerLockScreen" class="drawer-lock-screen" style="display:none;">
+      <div class="drawer-lock-content">
+        <div class="lock-shield-icon" style="font-size:2.2rem; margin-bottom:0.5rem;">🔒</div>
+        <h4 style="font-family:var(--font-serif); font-size:1.1rem; color:#00f0ff; margin:0 0 0.35rem 0;">Passphrase Guarded</h4>
+        <p style="font-size:0.78rem; color:#94a3b8; margin:0 0 1rem 0;">Enter passphrase to start companion session</p>
+        <form id="drawerLockForm" style="display:flex; flex-direction:column; gap:0.5rem; width:100%;">
+          <input type="password" id="drawerPasscodeInput" class="lock-passcode-input" placeholder="Passphrase..." required autocomplete="current-password" style="font-size:0.85rem; padding:0.5rem 1rem;">
+          <button type="submit" class="lock-submit-btn" style="font-size:0.82rem; padding:0.5rem 1rem;">Unlock Session</button>
+          <div id="drawerLockFeedback" class="companion-lock-feedback"></div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Drawer Active Chat Workspace -->
+    <div id="drawerWorkspace" style="display:flex; flex-direction:column; flex:1; overflow:hidden;">
+      <div class="companion-drawer-feed" id="drawerCompanionFeed"></div>
+      <div class="companion-drawer-input-row">
+        <div class="modern-chatbar-frame" style="width:100%; border-radius:24px; padding:0.35rem 0.5rem 0.35rem 0.9rem;">
+          <textarea id="drawerCompanionInput" class="modern-chatbar-input" placeholder="Message..." rows="1" style="font-size:0.88rem;"></textarea>
+          <button type="button" id="drawerCompanionSendBtn" class="modern-chatbar-submit" aria-label="Send" style="width:32px; height:32px;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="19" x2="12" y2="5"></line>
+              <polyline points="5 12 12 5 19 12"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 

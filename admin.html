@@ -138,6 +138,9 @@
           <button class="admin-tab-btn" data-tab="tab-hsc">
             <span class="tab-icon">📚</span> HSC Academic
           </button>
+          <button class="admin-tab-btn" data-tab="tab-companion">
+            <span class="tab-icon">🤖</span> AI Companion
+          </button>
           <button class="admin-tab-btn" data-tab="tab-backup">
             <span class="tab-icon">💾</span> Backup & Export
           </button>
@@ -1078,6 +1081,68 @@
               </div>
             </div>
           </div>
+          <!-- TAB: AI COMPANION (GEMINI 3.5 FLASH) -->
+          <div class="admin-tab-pane" id="tab-companion">
+            <div class="tab-pane-header">
+              <h3 class="pane-title">AI Companion &amp; Neural Assistant</h3>
+              <p class="pane-subtitle">Configure the private AI companion: nickname, avatar, model (gemini-3.5-flash), personality prompt, and security passphrase.</p>
+            </div>
+
+            <form id="adminCompanionConfigForm" class="vintage-admin-form">
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label">Companion Nickname</label>
+                  <input type="text" id="adminCompNickname" class="vintage-input" placeholder="e.g. Nova, Miros AI" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">AI Model</label>
+                  <input type="text" id="adminCompModel" class="vintage-input" placeholder="gemini-3.5-flash" value="gemini-3.5-flash" required>
+                  <div style="font-size:0.75rem; color:#94a3b8; margin-top:0.25rem;">Default: <code>gemini-3.5-flash</code> (Fastest &amp; high quality)</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Companion Avatar Image</label>
+                <div style="display:flex; gap:0.75rem; align-items:center;">
+                  <img id="adminCompAvatarPreview" src="assets/images/avatar-pixel.png" alt="Preview" style="width:42px; height:42px; border-radius:50%; object-fit:cover; border:2px solid #00f0ff; flex-shrink:0;">
+                  <input type="text" id="adminCompAvatar" class="vintage-input" placeholder="Image URL or local asset path..." style="flex:1;">
+                </div>
+                <div class="avatar-presets-row" style="margin-top:0.4rem; display:flex; gap:0.4rem; flex-wrap:wrap;">
+                  <span style="font-size:0.75rem; color:#94a3b8; align-self:center;">Presets:</span>
+                  <button type="button" class="admin-comp-preset-btn vintage-btn btn-sm" data-url="assets/images/avatar-pixel.png">Pixel Bot</button>
+                  <button type="button" class="admin-comp-preset-btn vintage-btn btn-sm" data-url="https://images.unsplash.com/photo-1578632767115-351597cf2477?w=120&auto=format&fit=crop&q=80">Athena</button>
+                  <button type="button" class="admin-comp-preset-btn vintage-btn btn-sm" data-url="https://images.unsplash.com/photo-1563089145-599997674d42?w=120&auto=format&fit=crop&q=80">Cyber Hacker</button>
+                  <button type="button" class="admin-comp-preset-btn vintage-btn btn-sm" data-url="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=120&auto=format&fit=crop&q=80">Quantum</button>
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label">Passphrase to Protect Page (Default: <code>miros</code>)</label>
+                  <input type="text" id="adminCompPassword" class="vintage-input" placeholder="miros" value="miros" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Active Gemini API Key</label>
+                  <input type="password" id="adminCompApiKey" class="vintage-input" placeholder="Active (Pre-configured) or enter custom key...">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Companion Personality &amp; System Instructions</label>
+                <textarea id="adminCompPersonality" class="vintage-input" rows="4" placeholder="Define the AI persona, knowledge base, attitude, response style..."></textarea>
+              </div>
+
+              <div style="display:flex; gap:1rem; align-items:center; margin-top:1.25rem;">
+                <button type="submit" class="vintage-btn btn-primary" id="saveAdminCompanionBtn">
+                  <span class="btn-symbol">💾</span> Save Companion Settings
+                </button>
+                <span id="adminCompFeedback" style="font-family: var(--font-mono); font-size: 0.85rem;"></span>
+              </div>
+            </form>
+          </div>
+
           <!-- TAB 7: BACKUP & EXPORT -->
           <div class="admin-tab-pane" id="tab-backup">
             <div class="tab-pane-header">
