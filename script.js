@@ -1042,33 +1042,87 @@ function initBgmPlayer() {
   // Always mark as "should play" so it auto-resumes on page navigation too
   localStorage.setItem('cse_bgm_playing', 'true');
 
-  function attemptAutoPlay() {
-    if (!audio.paused) return; // already playing
+  const GESTURE_EVENTS = ['click', 'pointerdown', 'touchstart', 'touchend', 'keydown'];
+
+  function removeGestureListeners() {
+    GESTURE_EVENTS.forEach(ev => {
+      window.removeEventListener(ev, onUserGesture, true);
+      document.removeEventListener(ev, onUserGesture, true);
+    });
+    const prompt = document.getElementById('audioAutoplayPrompt');
+    if (prompt) {
+      prompt.style.opacity = '0';
+      prompt.style.transform = 'translateY(10px)';
+      setTimeout(() => prompt.remove(), 400);
+    }
+  }
+
+  function playWithHandling() {
+    if (!audio.paused) {
+      removeGestureListeners();
+      return;
+    }
+
     try {
       if (vintageSound && vintageSound.ctx && vintageSound.ctx.state === 'suspended') {
         vintageSound.ctx.resume().catch(() => {});
       }
     } catch(e) {}
 
-    audio.play().then(() => {
-      setPlayingState(true);
-      // Remove gesture listeners once playing
-      ['click', 'touchstart', 'pointerdown', 'keydown', 'scroll', 'mousemove'].forEach(ev => {
-        window.removeEventListener(ev, attemptAutoPlay, true);
-        document.removeEventListener(ev, attemptAutoPlay, true);
+    const playPromise = audio.play();
+    if (playPromise !== undefined) {
+      playPromise.then(() => {
+        setPlayingState(true);
+        removeGestureListeners();
+      }).catch(err => {
+        // Autoplay blocked by browser policy — keep listeners active for first gesture
+        showAutoplayHint();
       });
-    }).catch(() => {
-      // Autoplay deferred pending first user action
-    });
+    }
   }
 
-  // Try immediately
-  attemptAutoPlay();
+  function onUserGesture() {
+    playWithHandling();
+  }
 
-  // Fallback: fire on any user touch/move/key/scroll as soon as they enter
-  ['click', 'touchstart', 'pointerdown', 'keydown', 'scroll', 'mousemove'].forEach(ev => {
-    window.addEventListener(ev, attemptAutoPlay, { once: true, capture: true, passive: true });
-    document.addEventListener(ev, attemptAutoPlay, { once: true, capture: true, passive: true });
+  function showAutoplayHint() {
+    if (document.getElementById('audioAutoplayPrompt') || !audio.paused) return;
+    const prompt = document.createElement('div');
+    prompt.id = 'audioAutoplayPrompt';
+    prompt.style.cssText = `
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--bg-surface);
+      border: 2px solid var(--accent-rust);
+      box-shadow: var(--shadow-tactile);
+      padding: 8px 18px;
+      border-radius: var(--radius-badge);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--accent-rust);
+      z-index: 9999;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      animation: promptPulse 2s infinite ease-in-out;
+    `;
+    prompt.innerHTML = `<span>🎵</span> Click anywhere to start ambient BGM`;
+    prompt.addEventListener('click', () => playWithHandling());
+    document.body.appendChild(prompt);
+  }
+
+  // Try immediately on script execution
+  playWithHandling();
+
+  // Attach to user gesture events without 'once' so it stays active until it actually succeeds
+  GESTURE_EVENTS.forEach(ev => {
+    window.addEventListener(ev, onUserGesture, { capture: true, passive: true });
+    document.addEventListener(ev, onUserGesture, { capture: true, passive: true });
   });
 }
 

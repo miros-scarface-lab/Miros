@@ -737,14 +737,18 @@ app.get('*', (req, res) => {
 });
 
 // ============================================================================
-// 12. Server Boot
+// 12. Server Boot & Export
 // ============================================================================
-app.listen(PORT, () => {
-  console.log(`=======================================================`);
-  console.log(`Vintage CSE Portfolio & Hardened Security Engine Running`);
-  console.log(`Port: ${PORT}`);
-  console.log(`Public URL:  http://localhost:${PORT}`);
-  console.log(`Admin Desk:  http://localhost:${PORT}/admin`);
-  console.log(`Security:    CSP, PBKDF2 Auth, Timing-Safe Checks, Rate Limits`);
-  console.log(`=======================================================`);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`=======================================================`);
+    console.log(`Vintage CSE Portfolio & Hardened Security Engine Running`);
+    console.log(`Port: ${PORT}`);
+    console.log(`Public URL:  http://localhost:${PORT}`);
+    console.log(`Admin Desk:  http://localhost:${PORT}/admin`);
+    console.log(`Security:    CSP, PBKDF2 Auth, Timing-Safe Checks, Rate Limits`);
+    console.log(`=======================================================`);
+  });
+}
+
+module.exports = app;
