@@ -11,7 +11,7 @@
     "avatar": "assets/uploads/Mir_jpg.jpg",
     "avatarStyle": "portrait",
     "location": "San Francisco, CA / Open to Remote",
-    "email": "alex.chen.cse@example.edu",
+    "email": "mir.sajid.cse@example.edu",
     "github": "https://github.com",
     "linkedin": "https://linkedin.com",
     "leetcode": "https://leetcode.com",
@@ -307,7 +307,7 @@
     }
   ],
   "settings": {
-    "backgroundImage": "assets/uploads/dreamy-lavender-5120x2880-25840_jpg.jpg",
+    "backgroundImage": "assets/uploads/2176191_png.png",
     "backgroundOpacity": 0.9,
     "floatingBoxes": true,
     "floatingIntensity": "normal",

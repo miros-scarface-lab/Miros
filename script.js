@@ -87,7 +87,7 @@ const DEFAULT_FALLBACK_PORTFOLIO = {
     bio: "Third-year CSE undergraduate passionate about exploring computing from silicon transistors to distributed web architectures. I spend my days building optimizing bytecode compilers, dissecting OS kernels, solving algorithmic challenges on LeetCode, and crafting snappy, bloat-free software systems.",
     avatar: "assets/uploads/Mir_jpg.jpg",
     location: "San Francisco, CA / Open to Remote",
-    email: "alex.chen.cse@example.edu",
+    email: "mir.sajid.cse@example.edu",
     github: "https://github.com",
     linkedin: "https://linkedin.com",
     leetcode: "https://leetcode.com",
@@ -1088,7 +1088,7 @@ function renderPortfolio() {
 
   // Hero Section
   const heroName = document.getElementById('heroName');
-  if (heroName) heroName.textContent = prof.name || 'Alex Chen';
+  if (heroName) heroName.textContent = prof.name || 'Mir A K Sajid';
 
   const heroBio = document.getElementById('heroBio');
   if (heroBio) heroBio.textContent = prof.bio;
@@ -1549,11 +1549,14 @@ function initInteractiveTerminal() {
     if (!cmd) return;
 
     // Append user input line
-    appendTerminalLine(`visitor@alex-vance:~$ ${escapeHtml(cmd)}`, 'cmd-echo');
+    appendTerminalLine(`visitor@scarface-lab:~$ ${escapeHtml(cmd)}`, 'cmd-echo');
 
     const cleanCmd = cmd.toLowerCase().trim();
     const parts = cleanCmd.split(' ');
     const root = parts[0];
+    const prof = (window.PortfolioState.data && window.PortfolioState.data.profile) || {};
+    const profName = prof.name || 'Mir A K Sajid';
+    const profEmail = prof.email || 'alex.chen.cse@example.edu';
 
     switch (root) {
       case 'help':
@@ -1564,7 +1567,9 @@ AVAILABLE TELETYPE ROUTINES:
   projects       Catalog all active system blueprints
   cat resume     Print academic & experiential curriculum
   whoami         Output current identity & engineering credentials
-  theme <name>   Switch theme: parchment | phosphor | blueprint | amber
+  vault          Decrypt and access the Personal Google Drive Directory
+  admin          Launch Station Master Control Console
+  theme <name>   Switch theme: parchment | phosphor | blueprint | amber | cyberdeck
   sudo hire      Initiate urgent dispatch protocol
   clear          Flush teletype display buffer
   contact        Coordinate coordinates & transmission channels
@@ -1585,25 +1590,36 @@ AVAILABLE TELETYPE ROUTINES:
         break;
 
       case 'whoami':
-        const prof = (window.PortfolioState.data && window.PortfolioState.data.profile) || {};
-        appendTerminalLine(`OPERATOR: ${prof.name}\nROLE: ${prof.role}\nDEGREE: ${prof.degree}\nGPA: ${prof.gpa}\nSTATUS: ${prof.status}`);
+        appendTerminalLine(`OPERATOR: ${profName}\nROLE: ${prof.role || 'CSE Student'}\nDEGREE: ${prof.degree || 'B.S. in CSE'}\nGPA: ${prof.gpa || '3.89'}\nSTATUS: ${prof.status || 'Available'}`);
         break;
 
       case 'cat':
         if (parts[1] === 'resume') {
           appendTerminalLine(`
 ======================= RESUME SUMMARY =======================
-NAME: Alex Chen | B.S. in Computer Science & Engineering (2026)
-GPA: 3.89/4.00 (Dean's Honor List All Semesters)
+NAME: ${profName} | ${prof.degree || 'B.S. in Computer Science & Engineering'}
+GPA: ${prof.gpa || '3.89/4.00 (Dean\'s Honor List)'}
 CORE FOCUS: Systems Programming, Compiler Design, Distributed Systems
-INTERNSHIP: Systems Software Intern @ VectorScale Systems (Summer 2025)
-TA POSITION: Teaching Assistant for Data Structures & Algorithms
-COMPETITIVE: 520+ LeetCode Solved, 3x Hackathon Winner
+EMAIL: ${profEmail}
+LOCATION: ${prof.location || 'San Francisco, CA / Remote'}
+STATUS: ${prof.status || 'Available for SWE Internships'}
 ==============================================================
           `);
         } else {
           appendTerminalLine(`cat: ${parts[1] || 'file'}: No such file or directory. Try: cat resume`, 'error');
         }
+        break;
+
+      case 'vault':
+      case 'directory':
+        appendTerminalLine(`Decoupling vault latch... Opening Personal Drive Directory.`);
+        const vaultTrigger = document.getElementById('dockVaultBtn') || document.getElementById('openVaultFloatingBtn') || document.getElementById('openVaultTileBtn');
+        if (vaultTrigger) vaultTrigger.click();
+        break;
+
+      case 'admin':
+        appendTerminalLine(`Routing to Station Master Control Console...`);
+        window.location.href = 'admin.html';
         break;
 
       case 'clear':
@@ -1616,10 +1632,11 @@ COMPETITIVE: 520+ LeetCode Solved, 3x Hackathon Winner
           appendTerminalLine(`
 [SUCCESS] ROOT PERMISSION GRANTED!
 Thank you for your interest! Please dispatch your proposal below or 
-send electronic correspondence directly to: alex.chen.cse@example.edu
+send electronic correspondence directly to: ${profEmail}
 Ready to deploy immediately.
           `);
-          document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+          const contactSec = document.getElementById('contact') || document.getElementById('contactForm');
+          if (contactSec) contactSec.scrollIntoView({ behavior: 'smooth' });
         } else {
           appendTerminalLine(`sudo: unauthorized instruction. Try: sudo hire`, 'error');
         }
@@ -1639,14 +1656,21 @@ Ready to deploy immediately.
         } else if (['amber', 'amber-crt', 'orange'].includes(target)) {
           applyTheme('amber-crt');
           appendTerminalLine(`Theme shifted to Amber CRT.`);
+        } else if (['cyber', 'cyberdeck', 'cyber-deck', 'neon'].includes(target)) {
+          applyTheme('cyber-deck');
+          appendTerminalLine(`Theme shifted to Cyberdeck Neon.`);
+        } else if (['solarized', 'solarized-dark', 'slate'].includes(target)) {
+          applyTheme('solarized-dark');
+          appendTerminalLine(`Theme shifted to Solarized Dark.`);
         } else {
-          appendTerminalLine(`Unknown theme. Choose: parchment, phosphor, blueprint, amber`, 'error');
+          appendTerminalLine(`Unknown theme. Choose: parchment, phosphor, blueprint, amber, cyberdeck, solarized`, 'error');
         }
         break;
 
       case 'contact':
-        appendTerminalLine(`Coordinates: San Francisco, CA\nMail: alex.chen.cse@example.edu\nNavigating to dispatch...`);
-        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        appendTerminalLine(`Coordinates: ${prof.location || 'San Francisco, CA'}\nMail: ${profEmail}\nNavigating to dispatch...`);
+        const contactEl = document.getElementById('contact') || document.getElementById('contactForm');
+        if (contactEl) contactEl.scrollIntoView({ behavior: 'smooth' });
         break;
 
       case 'uptime':
@@ -1675,6 +1699,7 @@ Ready to deploy immediately.
 function initContactForm() {
   const form = document.getElementById('contactForm');
   const status = document.getElementById('dispatchStatus');
+  const submitBtn = document.getElementById('sendDispatchBtn');
   if (!form || !status) return;
 
   form.addEventListener('submit', async (e) => {
@@ -1687,6 +1712,7 @@ function initContactForm() {
       message: formData.get('message')
     };
 
+    if (submitBtn) submitBtn.disabled = true;
     status.textContent = 'Transmitting telegram across circuits...';
     status.className = 'dispatch-status';
 
@@ -1697,17 +1723,25 @@ function initContactForm() {
         body: JSON.stringify(payload)
       });
 
+      const data = await res.json().catch(() => ({}));
+
       if (res.ok) {
         vintageSound.playBell();
-        status.textContent = '✔ Telegram delivered to Station Master Desk!';
+        status.textContent = '✔ Telegram delivered directly to Station Master Desk!';
         status.className = 'dispatch-status success';
         form.reset();
         updateUnreadBadgeCount();
+      } else if (res.status === 429) {
+        status.textContent = `⚠️ Rate limit: ${data.error || 'Too many transmissions. Please wait 10 minutes.'}`;
+        status.className = 'dispatch-status error';
+      } else if (res.status === 400) {
+        status.textContent = `❌ ${data.error || 'Please correct your dispatch details.'}`;
+        status.className = 'dispatch-status error';
       } else {
-        throw new Error('API dispatch failed');
+        throw new Error(data.error || 'API dispatch failed');
       }
     } catch (err) {
-      // Offline fallback: save to localStorage
+      // Offline fallback: save to localStorage if network failed
       const localMsgs = JSON.parse(localStorage.getItem('cse_local_messages') || '[]');
       localMsgs.unshift({
         id: 'msg-' + Date.now(),
@@ -1719,10 +1753,12 @@ function initContactForm() {
       localStorage.setItem('cse_local_messages', JSON.stringify(localMsgs));
       
       vintageSound.playBell();
-      status.textContent = '✔ Telegram recorded locally in Admin Registry!';
+      status.textContent = '✔ Telegram recorded locally in Admin Offline Registry!';
       status.className = 'dispatch-status success';
       form.reset();
       updateUnreadBadgeCount();
+    } finally {
+      if (submitBtn) submitBtn.disabled = false;
     }
   });
 }
@@ -1739,7 +1775,9 @@ function applyTheme(themeName) {
     'vintage-parchment': 'Parchment',
     'terminal-phosphor': 'CRT Green',
     'blueprint-cyan': 'Blueprint',
-    'amber-crt': 'Amber CRT'
+    'amber-crt': 'Amber CRT',
+    'cyber-deck': 'Cyberdeck',
+    'solarized-dark': 'Solarized'
   };
   const label = document.getElementById('themeActiveName');
   if (label) label.textContent = displayMap[themeName] || 'Parchment';
@@ -2059,9 +2097,11 @@ function initPersonalVault() {
     } else {
       if (pwdModal) {
         pwdModal.classList.add('active');
-        if (pwdFeedback) pwdFeedback.textContent = '';
+        if (pwdFeedback) {
+          pwdFeedback.textContent = '';
+        }
         if (pwdInput) {
-          pwdInput.value = '1234';
+          pwdInput.value = '';
           pwdInput.focus();
         }
       }
@@ -2085,7 +2125,7 @@ function initPersonalVault() {
     sessionStorage.removeItem('cse_vault_unlocked');
     closeVault();
     vintageSound.playMechanicalClick(900);
-    alert('🔒 Personal Directory has been locked successfully.');
+    alert('🔒 Personal Directory has been locked securely.');
   }
 
   const dockVaultBtn = document.getElementById('dockVaultBtn');
@@ -2111,28 +2151,62 @@ function initPersonalVault() {
     });
   }
 
-  // Password validation
+  // Server-Verified Cryptographic Passcode Validation
   if (pwdForm) {
-    pwdForm.addEventListener('submit', (e) => {
+    pwdForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const entered = pwdInput.value.trim();
-      const actual = (window.PortfolioState.data?.personalDirectory?.password || '1234').toString().trim();
+      const entered = pwdInput ? pwdInput.value.trim() : '';
+      if (!entered) return;
 
-      if (entered === actual) {
-        sessionStorage.setItem('cse_vault_unlocked', 'true');
-        vintageSound.playBell();
-        if (pwdFeedback) {
-          pwdFeedback.textContent = '✔ Access Granted! Decrypting filesystem...';
-          pwdFeedback.style.color = 'var(--accent-patina)';
+      if (pwdFeedback) {
+        pwdFeedback.textContent = '⚡ Verifying vault passcode against circuit cipher...';
+        pwdFeedback.style.color = 'var(--ink-secondary)';
+      }
+
+      try {
+        const res = await fetch('/api/vault/verify', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ password: entered })
+        });
+        const data = await res.json();
+
+        if (res.ok && data.success) {
+          sessionStorage.setItem('cse_vault_unlocked', 'true');
+          vintageSound.playBell();
+          if (pwdFeedback) {
+            pwdFeedback.textContent = '✔ Access Authorized! Decrypting filesystem index...';
+            pwdFeedback.style.color = 'var(--accent-patina)';
+          }
+          setTimeout(() => {
+            openDirectory();
+          }, 300);
+        } else {
+          vintageSound.playMechanicalClick(400, 0.05);
+          if (pwdFeedback) {
+            pwdFeedback.textContent = `❌ ${data.error || 'Access Denied: Incorrect passcode.'}`;
+            pwdFeedback.style.color = 'var(--accent-rust)';
+          }
+          if (pwdInput) {
+            pwdInput.classList.add('shake');
+            setTimeout(() => pwdInput.classList.remove('shake'), 500);
+            pwdInput.focus();
+          }
         }
-        setTimeout(() => {
+      } catch (err) {
+        // Fallback for offline usage
+        const localData = JSON.parse(localStorage.getItem('cse_portfolio_data') || '{}');
+        const fallbackPwd = (localData.personalDirectory?.password || '1234').toString();
+        if (entered === fallbackPwd) {
+          sessionStorage.setItem('cse_vault_unlocked', 'true');
+          vintageSound.playBell();
           openDirectory();
-        }, 300);
-      } else {
-        vintageSound.playMechanicalClick(400, 0.05);
-        if (pwdFeedback) {
-          pwdFeedback.textContent = '❌ Access Denied: Incorrect password. (Default: 1234)';
-          pwdFeedback.style.color = 'var(--accent-rust)';
+        } else {
+          vintageSound.playMechanicalClick(400, 0.05);
+          if (pwdFeedback) {
+            pwdFeedback.textContent = '❌ Access Denied: Incorrect passcode.';
+            pwdFeedback.style.color = 'var(--accent-rust)';
+          }
         }
       }
     });
@@ -2221,10 +2295,14 @@ function initPersonalVault() {
       pDir.files.unshift(newFile);
 
       // Persist to backend and localStorage
+      const token = sessionStorage.getItem('cse_admin_token');
       try {
         await fetch('/api/portfolio', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 
+            'Content-Type': 'application/json',
+            ...(token ? { 'Authorization': `Bearer ${token}` } : {})
+          },
           body: JSON.stringify(window.PortfolioState.data)
         });
       } catch (err) {
@@ -2252,6 +2330,10 @@ function initPersonalVault() {
   }
 
   function renderVault() {
+    const isAdmin = Boolean(sessionStorage.getItem('cse_admin_token'));
+    if (toggleAddBtn) {
+      toggleAddBtn.style.display = isAdmin ? 'inline-flex' : 'none';
+    }
     renderFolderChips();
     renderFilesTable();
     populateFolderDatalist();
@@ -2292,6 +2374,7 @@ function initPersonalVault() {
 
   function renderFilesTable() {
     if (!tableBody) return;
+    const isAdmin = Boolean(sessionStorage.getItem('cse_admin_token'));
     const pDir = window.PortfolioState.data?.personalDirectory || {};
     const allFiles = pDir.files || [];
 
@@ -2318,7 +2401,7 @@ function initPersonalVault() {
       tableBody.innerHTML = `
         <tr>
           <td colspan="6" style="text-align: center; padding: 2rem; color: var(--ink-secondary); font-family: var(--font-mono);">
-            No matching files located in this directory. Click <strong>"➕ Add File Link"</strong> to register new Google Drive files.
+            No matching files located in this directory.${isAdmin ? ' Click <strong>"➕ Add File Link"</strong> to register new Google Drive files.' : ''}
           </td>
         </tr>
       `;
@@ -2345,32 +2428,40 @@ function initPersonalVault() {
           <a href="${escapeHtml(file.driveUrl)}" target="_blank" rel="noopener" class="vintage-btn btn-sm btn-primary" title="Open Google Drive File in new tab">
             🔗 Drive ↗
           </a>
-          <button type="button" class="vintage-btn btn-sm btn-outline btn-danger delete-vault-file-btn" data-id="${file.id}" title="Remove file link" style="margin-left: 4px;">
-            ✕
-          </button>
+          ${isAdmin ? `
+            <button type="button" class="vintage-btn btn-sm btn-outline btn-danger delete-vault-file-btn" data-id="${escapeHtml(file.id)}" title="Remove file link" style="margin-left: 4px;">
+              ✕
+            </button>
+          ` : ''}
         </td>
       </tr>
     `).join('');
 
-    // Bind delete buttons
-    tableBody.querySelectorAll('.delete-vault-file-btn').forEach(btn => {
-      btn.addEventListener('click', async (e) => {
-        e.stopPropagation();
-        const fileId = btn.getAttribute('data-id');
-        if (confirm('Are you sure you want to remove this Google Drive file reference?')) {
-          pDir.files = pDir.files.filter(f => f.id !== fileId);
-          try {
-            await fetch('/api/portfolio', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(window.PortfolioState.data)
-            });
-          } catch(err){}
-          localStorage.setItem('cse_portfolio_data', JSON.stringify(window.PortfolioState.data));
-          renderVault();
-        }
+    // Bind delete buttons (admin only)
+    if (isAdmin) {
+      tableBody.querySelectorAll('.delete-vault-file-btn').forEach(btn => {
+        btn.addEventListener('click', async (e) => {
+          e.stopPropagation();
+          const fileId = btn.getAttribute('data-id');
+          if (confirm('Are you sure you want to remove this Google Drive file reference?')) {
+            pDir.files = pDir.files.filter(f => f.id !== fileId);
+            const token = sessionStorage.getItem('cse_admin_token');
+            try {
+              await fetch('/api/portfolio', {
+                method: 'POST',
+                headers: { 
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(window.PortfolioState.data)
+              });
+            } catch(err){}
+            localStorage.setItem('cse_portfolio_data', JSON.stringify(window.PortfolioState.data));
+            renderVault();
+          }
+        });
       });
-    });
+    }
   }
 
   window.renderPersonalVault = renderVault;

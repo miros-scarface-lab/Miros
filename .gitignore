@@ -23,3 +23,9 @@ ehthumbs.db
 .idea/
 *.sublime-workspace
 .agents/
+
+# Sensitive credentials
+data/auth.json
+
+# User uploads (binary assets)
+assets/uploads/

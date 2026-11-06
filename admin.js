@@ -5,31 +5,99 @@
  */
 
 window.AdminPanel = {
-  isUnlocked: sessionStorage.getItem('cse_admin_unlocked') === 'true',
+  token: sessionStorage.getItem('cse_admin_token') || null,
+  isUnlocked: Boolean(sessionStorage.getItem('cse_admin_token')),
   activeTab: 'tab-profile',
   messages: [],
   selectedMessageId: null,
   inboxFilter: 'all',
 
-  init() {
+  async init() {
     this.bindEvents();
     this.checkHash();
+    await this.verifySession();
+  },
 
-    // Check if on standalone admin page
+  async verifySession() {
     const lockScreen = document.getElementById('adminLockScreen');
     const workspace = document.getElementById('adminWorkspace');
-    if (lockScreen && workspace && !document.getElementById('adminPanelOverlay')) {
-      if (this.isUnlocked) {
-        lockScreen.style.display = 'none';
-        workspace.style.display = 'flex';
-        this.refreshAllTabs();
-      } else {
-        lockScreen.style.display = 'flex';
-        workspace.style.display = 'none';
-        const pinInput = document.getElementById('adminPinInput');
-        if (pinInput) pinInput.focus();
+    const logoutBtn = document.getElementById('adminLogoutBtn');
+
+    if (this.token) {
+      try {
+        const res = await fetch('/api/auth/verify', {
+          headers: { 'Authorization': `Bearer ${this.token}` }
+        });
+        const data = await res.json();
+        if (data && data.authenticated) {
+          this.isUnlocked = true;
+          sessionStorage.setItem('cse_admin_unlocked', 'true');
+          this.showWorkspace();
+          this.refreshAllTabs();
+          return;
+        }
+      } catch (e) {
+        console.warn('Session verification error:', e);
       }
     }
+
+    // Token missing or invalid
+    this.token = null;
+    this.isUnlocked = false;
+    sessionStorage.removeItem('cse_admin_token');
+    sessionStorage.removeItem('cse_admin_unlocked');
+    this.showLockScreen();
+  },
+
+  showWorkspace() {
+    const lockScreen = document.getElementById('adminLockScreen');
+    const workspace = document.getElementById('adminWorkspace');
+    const logoutBtn = document.getElementById('adminLogoutBtn');
+    if (lockScreen) lockScreen.style.display = 'none';
+    if (workspace) workspace.style.display = 'flex';
+    if (logoutBtn) logoutBtn.style.display = 'inline-flex';
+  },
+
+  showLockScreen() {
+    const lockScreen = document.getElementById('adminLockScreen');
+    const workspace = document.getElementById('adminWorkspace');
+    const logoutBtn = document.getElementById('adminLogoutBtn');
+    if (lockScreen) lockScreen.style.display = 'flex';
+    if (workspace) workspace.style.display = 'none';
+    if (logoutBtn) logoutBtn.style.display = 'none';
+    const pinInput = document.getElementById('adminPinInput');
+    if (pinInput) {
+      pinInput.value = '';
+      pinInput.focus();
+    }
+  },
+
+  handleSessionExpired() {
+    this.token = null;
+    this.isUnlocked = false;
+    sessionStorage.removeItem('cse_admin_token');
+    sessionStorage.removeItem('cse_admin_unlocked');
+    this.showLockScreen();
+    const feedback = document.getElementById('lockFeedback');
+    if (feedback) {
+      feedback.textContent = '⚠️ Session expired or invalid. Please re-authenticate.';
+      feedback.style.color = 'var(--accent-rust)';
+    }
+  },
+
+  async authFetch(url, options = {}) {
+    const headers = { ...(options.headers || {}) };
+    if (this.token) {
+      headers['Authorization'] = `Bearer ${this.token}`;
+    }
+    options.headers = headers;
+
+    const res = await fetch(url, options);
+    if (res.status === 401) {
+      this.handleSessionExpired();
+      throw new Error('Unauthorized or session expired');
+    }
+    return res;
   },
 
   checkHash() {
@@ -47,12 +115,9 @@ window.AdminPanel = {
     overlay.classList.add('active');
 
     if (!this.isUnlocked) {
-      document.getElementById('adminLockScreen').style.display = 'flex';
-      document.getElementById('adminWorkspace').style.display = 'none';
-      document.getElementById('adminPinInput').focus();
+      this.showLockScreen();
     } else {
-      document.getElementById('adminLockScreen').style.display = 'none';
-      document.getElementById('adminWorkspace').style.display = 'flex';
+      this.showWorkspace();
       this.refreshAllTabs();
     }
   },
@@ -62,6 +127,83 @@ window.AdminPanel = {
     if (overlay) overlay.classList.remove('active');
     if (window.location.hash === '#admin') {
       history.pushState("", document.title, window.location.pathname + window.location.search);
+    }
+  },
+
+  async login(pin) {
+    const feedback = document.getElementById('lockFeedback');
+    const submitBtn = document.getElementById('adminLoginSubmitBtn');
+    if (submitBtn) submitBtn.disabled = true;
+    if (feedback) {
+      feedback.textContent = '⚡ Authenticating with Station Master Cluster...';
+      feedback.style.color = 'var(--accent-patina)';
+    }
+
+    try {
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: pin })
+      });
+      const data = await res.json();
+
+      if (res.ok && data.token) {
+        this.token = data.token;
+        this.isUnlocked = true;
+        sessionStorage.setItem('cse_admin_token', data.token);
+        sessionStorage.setItem('cse_admin_unlocked', 'true');
+        if (feedback) {
+          feedback.textContent = '✔ Access Authorized! Loading console...';
+          feedback.style.color = 'var(--accent-patina)';
+        }
+        setTimeout(() => {
+          this.showWorkspace();
+          this.refreshAllTabs();
+        }, 300);
+      } else {
+        const errorMsg = data.error || 'Access Denied: Invalid Access Code.';
+        if (feedback) {
+          feedback.textContent = `❌ ${errorMsg}`;
+          feedback.style.color = 'var(--accent-rust)';
+        }
+        const pinInput = document.getElementById('adminPinInput');
+        if (pinInput) {
+          pinInput.classList.add('shake');
+          setTimeout(() => pinInput.classList.remove('shake'), 500);
+          pinInput.focus();
+        }
+      }
+    } catch (err) {
+      if (feedback) {
+        feedback.textContent = '❌ Authentication server offline or unreachable.';
+        feedback.style.color = 'var(--accent-rust)';
+      }
+    } finally {
+      if (submitBtn) submitBtn.disabled = false;
+    }
+  },
+
+  async logout() {
+    try {
+      if (this.token) {
+        await fetch('/api/auth/logout', {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${this.token}` }
+        });
+      }
+    } catch (e) {}
+
+    this.token = null;
+    this.isUnlocked = false;
+    sessionStorage.removeItem('cse_admin_token');
+    sessionStorage.removeItem('cse_admin_unlocked');
+    this.showLockScreen();
+
+    const feedback = document.getElementById('lockFeedback');
+    if (feedback) {
+      feedback.textContent = '🔒 Console locked securely. Session terminated.';
+      feedback.style.color = 'var(--ink-secondary)';
+      setTimeout(() => { if (feedback) feedback.textContent = ''; }, 3500);
     }
   },
 
@@ -82,29 +224,17 @@ window.AdminPanel = {
     const viewPublicBtn = document.getElementById('viewPublicSiteBtn');
     if (viewPublicBtn) viewPublicBtn.addEventListener('click', () => this.closePanel());
 
+    const logoutBtn = document.getElementById('adminLogoutBtn');
+    if (logoutBtn) logoutBtn.addEventListener('click', () => this.logout());
+
     // Lock Screen Authentication
     const loginForm = document.getElementById('adminLoginForm');
     if (loginForm) {
       loginForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        const pin = document.getElementById('adminPinInput').value.trim();
-        const feedback = document.getElementById('lockFeedback');
-        
-        // Default PIN: admin123
-        if (pin === 'admin123' || pin === 'admin' || pin === 'cse') {
-          this.isUnlocked = true;
-          sessionStorage.setItem('cse_admin_unlocked', 'true');
-          feedback.textContent = '✔ Access Authorized!';
-          feedback.style.color = 'var(--accent-patina)';
-          setTimeout(() => {
-            document.getElementById('adminLockScreen').style.display = 'none';
-            document.getElementById('adminWorkspace').style.display = 'flex';
-            this.refreshAllTabs();
-          }, 300);
-        } else {
-          feedback.textContent = '❌ Access Denied. Hint: admin123';
-          feedback.style.color = 'var(--accent-rust)';
-        }
+        const pin = document.getElementById('adminPinInput')?.value.trim();
+        if (!pin) return;
+        this.login(pin);
       });
     }
 
@@ -349,6 +479,9 @@ window.AdminPanel = {
 
     // Personal Vault & Drive Events
     this.bindVaultEvents();
+
+    // Security & Auth Credentials Events
+    this.bindSecurityEvents();
   },
 
   switchTab(tabId) {
@@ -815,7 +948,7 @@ window.AdminPanel = {
   // ------------------------------------------------------------------------
   async loadMessages() {
     try {
-      const res = await fetch('/api/messages');
+      const res = await this.authFetch('/api/messages');
       if (res.ok) {
         this.messages = await res.json();
       } else {
@@ -876,7 +1009,7 @@ window.AdminPanel = {
     if (msg && !msg.read) {
       msg.read = true;
       try {
-        await fetch(`/api/messages/${id}`, {
+        await this.authFetch(`/api/messages/${id}`, {
           method: 'PATCH',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ read: true })
@@ -925,7 +1058,7 @@ window.AdminPanel = {
     document.getElementById('toggleStarMsgBtn').addEventListener('click', async () => {
       msg.starred = !msg.starred;
       try {
-        await fetch(`/api/messages/${id}`, {
+        await this.authFetch(`/api/messages/${id}`, {
           method: 'PATCH',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ starred: msg.starred })
@@ -940,7 +1073,7 @@ window.AdminPanel = {
       if (!confirm('Delete this dispatch permanently?')) return;
       this.messages = this.messages.filter(m => m.id !== id);
       try {
-        await fetch(`/api/messages/${id}`, { method: 'DELETE' });
+        await this.authFetch(`/api/messages/${id}`, { method: 'DELETE' });
       } catch (e) {
         localStorage.setItem('cse_local_messages', JSON.stringify(this.messages));
       }
@@ -963,7 +1096,7 @@ window.AdminPanel = {
         const base64 = event.target.result;
         let finalUrl = base64;
         try {
-          const res = await fetch('/api/upload', {
+          const res = await this.authFetch('/api/upload', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ imageBase64: base64, filename: file.name })
@@ -971,6 +1104,9 @@ window.AdminPanel = {
           if (res.ok) {
             const result = await res.json();
             finalUrl = result.url;
+          } else {
+            const err = await res.json();
+            alert(`Upload error: ${err.error || 'Failed'}`);
           }
         } catch (err) {
           console.warn('Upload API fallback to data-uri:', err);
@@ -1040,7 +1176,7 @@ window.AdminPanel = {
   async persistPortfolioData(data) {
     localStorage.setItem('cse_portfolio_data', JSON.stringify(data));
     try {
-      await fetch('/api/portfolio', {
+      await this.authFetch('/api/portfolio', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
@@ -1524,18 +1660,37 @@ window.AdminPanel = {
         if (!input) return;
 
         const newPwd = input.value.trim();
-        if (!window.PortfolioState.data) window.PortfolioState.data = {};
-        if (!window.PortfolioState.data.personalDirectory) {
-          window.PortfolioState.data.personalDirectory = { password: '1234', folders: [], files: [] };
+        if (newPwd.length < 3) {
+          if (feedback) {
+            feedback.textContent = '❌ Passcode must be at least 3 characters.';
+            feedback.style.color = 'var(--accent-rust)';
+          }
+          return;
         }
-        window.PortfolioState.data.personalDirectory.password = newPwd;
 
-        await this.persistPortfolioData(window.PortfolioState.data);
-
-        if (feedback) {
-          feedback.textContent = `✔ Directory password updated to "${newPwd}"!`;
-          feedback.style.color = 'var(--accent-patina)';
-          setTimeout(() => { feedback.textContent = ''; }, 3500);
+        try {
+          const res = await this.authFetch('/api/vault/password', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ newPassword: newPwd })
+          });
+          const result = await res.json();
+          if (res.ok) {
+            if (feedback) {
+              feedback.textContent = `✔ Directory passcode updated & cryptographically saved!`;
+              feedback.style.color = 'var(--accent-patina)';
+              setTimeout(() => { if (feedback) feedback.textContent = ''; }, 3500);
+            }
+            const quickInput = document.getElementById('adminQuickVaultPasswordInput');
+            if (quickInput) quickInput.value = newPwd;
+          } else {
+            throw new Error(result.error);
+          }
+        } catch (err) {
+          if (feedback) {
+            feedback.textContent = `❌ ${err.message || 'Failed to update passcode'}`;
+            feedback.style.color = 'var(--accent-rust)';
+          }
         }
       });
     }
@@ -1669,6 +1824,127 @@ window.AdminPanel = {
         }
       });
     });
+  },
+
+  // ------------------------------------------------------------------------
+  // Security & Authentication Management
+  // ------------------------------------------------------------------------
+  bindSecurityEvents() {
+    // Master Console PIN Update
+    const masterPwdForm = document.getElementById('adminChangeMasterPasswordForm');
+    if (masterPwdForm) {
+      masterPwdForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const currentPwd = document.getElementById('adminCurrentMasterPwd')?.value.trim();
+        const newPwd = document.getElementById('adminNewMasterPwd')?.value.trim();
+        const confirmPwd = document.getElementById('adminConfirmMasterPwd')?.value.trim();
+        const feedback = document.getElementById('adminMasterPwdFeedback');
+        const submitBtn = document.getElementById('adminUpdateMasterPwdBtn');
+
+        if (!currentPwd || !newPwd || !confirmPwd) {
+          if (feedback) {
+            feedback.textContent = '❌ All fields are required.';
+            feedback.style.color = 'var(--accent-rust)';
+          }
+          return;
+        }
+
+        if (newPwd !== confirmPwd) {
+          if (feedback) {
+            feedback.textContent = '❌ New passcodes do not match.';
+            feedback.style.color = 'var(--accent-rust)';
+          }
+          return;
+        }
+
+        if (newPwd.length < 6) {
+          if (feedback) {
+            feedback.textContent = '❌ New passcode must be at least 6 characters.';
+            feedback.style.color = 'var(--accent-rust)';
+          }
+          return;
+        }
+
+        if (submitBtn) submitBtn.disabled = true;
+        if (feedback) {
+          feedback.textContent = '⚡ Updating master credentials with salted PBKDF2 hash...';
+          feedback.style.color = 'var(--ink-secondary)';
+        }
+
+        try {
+          const res = await this.authFetch('/api/auth/change-password', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ currentPassword: currentPwd, newPassword: newPwd })
+          });
+          const result = await res.json();
+
+          if (res.ok) {
+            if (feedback) {
+              feedback.textContent = '✔ Station Master PIN successfully updated!';
+              feedback.style.color = 'var(--accent-patina)';
+            }
+            masterPwdForm.reset();
+            setTimeout(() => { if (feedback) feedback.textContent = ''; }, 4500);
+          } else {
+            throw new Error(result.error || 'Failed to update passcode');
+          }
+        } catch (err) {
+          if (feedback) {
+            feedback.textContent = `❌ ${err.message}`;
+            feedback.style.color = 'var(--accent-rust)';
+          }
+        } finally {
+          if (submitBtn) submitBtn.disabled = false;
+        }
+      });
+    }
+
+    // Quick Vault Password Update
+    const quickVaultForm = document.getElementById('adminQuickVaultPasswordForm');
+    if (quickVaultForm) {
+      quickVaultForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const input = document.getElementById('adminQuickVaultPasswordInput');
+        const feedback = document.getElementById('adminQuickVaultPasswordFeedback');
+        if (!input) return;
+
+        const newPwd = input.value.trim();
+        if (newPwd.length < 3) {
+          if (feedback) {
+            feedback.textContent = '❌ Vault passcode must be at least 3 characters.';
+            feedback.style.color = 'var(--accent-rust)';
+          }
+          return;
+        }
+
+        try {
+          const res = await this.authFetch('/api/vault/password', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ newPassword: newPwd })
+          });
+          const result = await res.json();
+
+          if (res.ok) {
+            if (feedback) {
+              feedback.textContent = '✔ Personal Directory passcode updated & active!';
+              feedback.style.color = 'var(--accent-patina)';
+              setTimeout(() => { if (feedback) feedback.textContent = ''; }, 3500);
+            }
+            const vaultInput = document.getElementById('adminVaultPasswordInput');
+            if (vaultInput) vaultInput.value = newPwd;
+          } else {
+            throw new Error(result.error || 'Failed to update passcode');
+          }
+        } catch (err) {
+          if (feedback) {
+            feedback.textContent = `❌ ${err.message}`;
+            feedback.style.color = 'var(--accent-rust)';
+          }
+        }
+      });
+    }
   },
 
   escape(str) {

@@ -79,6 +79,7 @@
           </div>
         </div>
         <div class="admin-header-actions">
+          <button type="button" class="vintage-btn btn-sm btn-outline btn-danger" id="adminLogoutBtn" style="display:none;">🔒 Lock / Sign Out</button>
           <a href="index.html" class="vintage-btn btn-sm">👁️ Public Home</a>
         </div>
       </div>
@@ -87,13 +88,18 @@
       <div class="admin-lock-screen" id="adminLockScreen">
         <div class="lock-box parchment-paper">
           <div class="lock-icon">🔒</div>
-          <h3 class="lock-title">Restricted Engineering Console</h3>
-          <p class="lock-desc">Enter access code to enter master workstation. Default pin: <code>admin123</code></p>
+          <h3 class="lock-title">Station Master Control Console</h3>
+          <p class="lock-desc">Cryptographically authenticated session required. Enter master station PIN to unlock.</p>
           <form id="adminLoginForm" class="lock-form">
-            <input type="password" id="adminPinInput" class="vintage-input" placeholder="Enter Access Code..." value="admin123" required autofocus>
-            <button type="submit" class="vintage-btn btn-primary">Authenticate Console</button>
+            <input type="password" id="adminPinInput" class="vintage-input" placeholder="Enter Station Master PIN..." required autofocus autocomplete="current-password">
+            <button type="submit" class="vintage-btn btn-primary" id="adminLoginSubmitBtn">
+              <span class="btn-symbol">⚡</span> Authenticate Console
+            </button>
           </form>
           <div class="lock-feedback" id="lockFeedback"></div>
+          <div class="lock-hint" style="font-size: 0.75rem; color: var(--ink-muted); margin-top: 1rem; font-family: var(--font-mono);">
+            Default initial key: <code>admin123</code> (Customizable under Security tab)
+          </div>
         </div>
       </div>
 
@@ -128,6 +134,9 @@
           </button>
           <button class="admin-tab-btn" data-tab="tab-backup">
             <span class="tab-icon">💾</span> Backup & Export
+          </button>
+          <button class="admin-tab-btn" data-tab="tab-security">
+            <span class="tab-icon">🔒</span> Security & Auth
           </button>
         </aside>
 
@@ -614,6 +623,26 @@
                 <p class="theme-card-desc">1980s warm amber terminal screen with neon glow and high contrast.</p>
                 <button class="vintage-btn btn-sm btn-outline select-theme-btn">Activate</button>
               </div>
+
+              <div class="theme-select-card" data-set-theme="cyber-deck">
+                <div class="theme-preview-box cyber-prev">
+                  <div class="prev-badge">⚡</div>
+                  <div class="prev-line"></div>
+                </div>
+                <h4 class="theme-card-name">💜 Cyberdeck Neon</h4>
+                <p class="theme-card-desc">1990s Cyberpunk Gibson matrix with neon magenta and cyan glow.</p>
+                <button class="vintage-btn btn-sm btn-outline select-theme-btn">Activate</button>
+              </div>
+
+              <div class="theme-select-card" data-set-theme="solarized-dark">
+                <div class="theme-preview-box solarized-prev">
+                  <div class="prev-badge">☀️</div>
+                  <div class="prev-line"></div>
+                </div>
+                <h4 class="theme-card-name">☀️ Solarized Dark</h4>
+                <p class="theme-card-desc">Legendary systems programmer oceanic slate palette with cyan accents.</p>
+                <button class="vintage-btn btn-sm btn-outline select-theme-btn">Activate</button>
+              </div>
             </div>
 
             <!-- Website Background Image Manager -->
@@ -974,6 +1003,78 @@
                 <h4>Reset to CSE Demo State</h4>
                 <p>Restore the default sample CSE undergraduate profile with all starter projects and skills.</p>
                 <button class="vintage-btn btn-outline btn-danger" id="adminResetDefaultBtn">Reset to Default Template</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 8: SECURITY & ACCESS CODES -->
+          <div class="admin-tab-pane" id="tab-security">
+            <div class="tab-pane-header">
+              <h3 class="pane-title">Station Master Security & Credentials</h3>
+              <p class="pane-subtitle">Manage administrative access keys, public vault passphrase, and review active session cryptography.</p>
+            </div>
+
+            <div class="form-grid-2" style="margin-bottom: 1.5rem;">
+              <!-- Master Console Password Change -->
+              <div class="sub-pane-card parchment-paper">
+                <div class="flex-between" style="margin-bottom: 0.75rem;">
+                  <h4 class="sub-pane-title" style="margin-bottom:0;">🔑 Update Station Master PIN</h4>
+                  <span class="vintage-tag">PBKDF2-SHA512</span>
+                </div>
+                <p style="font-size: 0.85rem; color: var(--ink-secondary); margin-bottom: 1rem;">
+                  Change the master passcode required to open this administrative workstation.
+                </p>
+                <form id="adminChangeMasterPasswordForm" class="vintage-admin-form">
+                  <div class="form-group">
+                    <label class="form-label">Current Master PIN</label>
+                    <input type="password" id="adminCurrentMasterPwd" class="vintage-input" placeholder="Current PIN (e.g. admin123)" required autocomplete="current-password">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">New Master PIN (Min 6 characters)</label>
+                    <input type="password" id="adminNewMasterPwd" class="vintage-input" placeholder="New master passcode..." minlength="6" required autocomplete="new-password">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Confirm New Master PIN</label>
+                    <input type="password" id="adminConfirmMasterPwd" class="vintage-input" placeholder="Re-type new passcode..." minlength="6" required autocomplete="new-password">
+                  </div>
+                  <button type="submit" class="vintage-btn btn-primary btn-sm" id="adminUpdateMasterPwdBtn">
+                    Update Master PIN
+                  </button>
+                  <div id="adminMasterPwdFeedback" style="font-family: var(--font-mono); font-size: 0.8rem; margin-top: 0.5rem;"></div>
+                </form>
+              </div>
+
+              <!-- Vault PIN Quick Update -->
+              <div class="sub-pane-card parchment-paper">
+                <div class="flex-between" style="margin-bottom: 0.75rem;">
+                  <h4 class="sub-pane-title" style="margin-bottom:0;">🔒 Personal Directory Vault Passcode</h4>
+                  <span class="vintage-tag">Protected</span>
+                </div>
+                <p style="font-size: 0.85rem; color: var(--ink-secondary); margin-bottom: 1rem;">
+                  Set the passcode that public visitors must provide to decrypt and browse your curated Google Drive directory.
+                </p>
+                <form id="adminQuickVaultPasswordForm" class="vintage-admin-form">
+                  <div class="form-group">
+                    <label class="form-label">Directory Vault Passcode</label>
+                    <input type="text" id="adminQuickVaultPasswordInput" class="vintage-input" placeholder="e.g. 1234 or engineering-lab" minlength="3" required>
+                  </div>
+                  <button type="submit" class="vintage-btn btn-primary btn-sm">
+                    Save Directory Passcode
+                  </button>
+                  <div id="adminQuickVaultPasswordFeedback" style="font-family: var(--font-mono); font-size: 0.8rem; margin-top: 0.5rem;"></div>
+                </form>
+
+                <hr style="border: none; border-top: 1px dashed var(--border-color); margin: 1.5rem 0;">
+
+                <!-- Active Security Posture -->
+                <h4 class="sub-pane-title" style="margin-bottom: 0.5rem;">🛡️ Circuit Protection Telemetry</h4>
+                <div style="font-family: var(--font-mono); font-size: 0.78rem; line-height: 1.6; color: var(--ink-secondary);">
+                  <div>• <strong>Session Protocol:</strong> Bearer Token (24h TTL)</div>
+                  <div>• <strong>Master Hash:</strong> Salted PBKDF2 (100,000 rounds)</div>
+                  <div>• <strong>Brute-Force Guard:</strong> Sliding-window Rate Limiting</div>
+                  <div>• <strong>MIME Engine:</strong> Deep Magic-Byte Verification</div>
+                  <div>• <strong>Headers:</strong> Strict CSP, X-Frame-Options, No-Sniff</div>
+                </div>
               </div>
             </div>
           </div>
