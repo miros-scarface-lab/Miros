@@ -7,7 +7,7 @@
   <meta name="description" content="Administrative control center to manage portfolio profile, projects, competencies, inquiries, and backup archives.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,300..800;1,300..800&family=Outfit:wght@300..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="assets/images/avatar-pixel.png">
 </head>
@@ -148,32 +148,33 @@
           </div>
         </div>
         <div class="admin-header-actions">
+          <span class="admin-status-badge" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.35rem 0.85rem;border-radius:999px;background:rgba(16,185,129,0.15);color:#10b981;font-size:0.75rem;font-weight:700;border:1px solid rgba(16,185,129,0.3);letter-spacing:0.04em;">
+            <span style="width:7px;height:7px;border-radius:50%;background:#10b981;box-shadow:0 0 8px #10b981;"></span>
+            CONSOLE ACTIVE
+          </span>
           <button type="button" class="vintage-btn btn-sm btn-outline btn-danger" id="adminLogoutBtn" style="display:none;">🔒 Lock / Sign Out</button>
           <a href="index.html" class="vintage-btn btn-sm">👁️ Public Home</a>
         </div>
       </div>
 
-      <!-- Password Lock Screen -->
-      <div class="admin-lock-screen" id="adminLockScreen">
+      <!-- Password Lock Screen (Hidden By Default) -->
+      <div class="admin-lock-screen" id="adminLockScreen" style="display: none;">
         <div class="lock-box parchment-paper">
           <div class="lock-icon">🔒</div>
           <h3 class="lock-title">Station Master Control Console</h3>
-          <p class="lock-desc">Cryptographically authenticated session required. Enter master station PIN to unlock.</p>
+          <p class="lock-desc">Enter master station PIN to unlock (default: <code>admin123</code>).</p>
           <form id="adminLoginForm" class="lock-form">
-            <input type="password" id="adminPinInput" class="vintage-input" placeholder="Enter Station Master PIN..." required autofocus autocomplete="current-password">
+            <input type="password" id="adminPinInput" class="vintage-input" placeholder="Enter Station Master PIN..." value="admin123" required autofocus autocomplete="current-password">
             <button type="submit" class="vintage-btn btn-primary" id="adminLoginSubmitBtn">
               <span class="btn-symbol">⚡</span> Authenticate Console
             </button>
           </form>
           <div class="lock-feedback" id="lockFeedback"></div>
-          <div class="lock-hint" style="font-size: 0.75rem; color: var(--ink-muted); margin-top: 1rem; font-family: var(--font-mono);">
-            Default initial key: <code>admin123</code> (Customizable under Security tab)
-          </div>
         </div>
       </div>
 
-      <!-- Admin Main Workspace -->
-      <div class="admin-workspace" id="adminWorkspace" style="display: none;">
+      <!-- Admin Main Workspace (Displayed By Default) -->
+      <div class="admin-workspace" id="adminWorkspace" style="display: flex;">
         
         <!-- Sidebar Navigation Tabs -->
         <aside class="admin-sidebar">

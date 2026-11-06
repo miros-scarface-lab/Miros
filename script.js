@@ -9,7 +9,7 @@ window.PortfolioState = {
   activeFilter: 'all',
   theme: localStorage.getItem('cse_vintage_theme') || 'vintage-parchment',
   audioEnabled: localStorage.getItem('cse_audio_fx') !== 'false',
-  scanlinesEnabled: localStorage.getItem('cse_scanlines') !== 'false'
+  scanlinesEnabled: localStorage.getItem('cse_scanlines') === 'true'
 };
 
 // Web Audio API Typewriter Click Sound Synthesizer
@@ -19,14 +19,14 @@ class VintageAudio {
   }
 
   init() {
-    if (!this.ctx && (window.AudioContext || window.webkitAudioContext)) {
+    if (!this.ctx && (typeof window !== 'undefined' && (window.AudioContext || window.webkitAudioContext))) {
       const AudioCtx = window.AudioContext || window.webkitAudioContext;
       this.ctx = new AudioCtx();
     }
   }
 
-  playMechanicalClick(freq = 1200, duration = 0.02) {
-    if (!window.PortfolioState.audioEnabled) return;
+  playMechanicalClick(freq = 880, duration = 0.035) {
+    if (!window.PortfolioState || !window.PortfolioState.audioEnabled) return;
     try {
       this.init();
       if (!this.ctx) return;
@@ -36,12 +36,14 @@ class VintageAudio {
       const osc = this.ctx.createOscillator();
       const gain = this.ctx.createGain();
       
-      osc.type = 'triangle';
+      // Clean modern cyber sine-chirp
+      osc.type = 'sine';
       osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(100, this.ctx.currentTime + duration);
+      osc.frequency.exponentialRampToValueAtTime(freq * 1.5, this.ctx.currentTime + duration * 0.4);
+      osc.frequency.exponentialRampToValueAtTime(300, this.ctx.currentTime + duration);
 
-      gain.gain.setValueAtTime(0.08, this.ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + duration);
+      gain.gain.setValueAtTime(0.04, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + duration);
 
       osc.connect(gain);
       gain.connect(this.ctx.destination);
@@ -49,25 +51,32 @@ class VintageAudio {
       osc.start();
       osc.stop(this.ctx.currentTime + duration);
     } catch (e) {
-      // Audio autoplay policy fallback
+      // Audio autoplay fallback
     }
   }
 
   playBell() {
-    if (!window.PortfolioState.audioEnabled) return;
+    if (!window.PortfolioState || !window.PortfolioState.audioEnabled) return;
     try {
       this.init();
       if (!this.ctx) return;
-      const osc = this.ctx.createOscillator();
-      const gain = this.ctx.createGain();
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(1800, this.ctx.currentTime);
-      gain.gain.setValueAtTime(0.12, this.ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.4);
-      osc.connect(gain);
-      gain.connect(this.ctx.destination);
-      osc.start();
-      osc.stop(this.ctx.currentTime + 0.4);
+      if (this.ctx.state === 'suspended') {
+        this.ctx.resume();
+      }
+      // Dual-tone harmonic crystal chime
+      const freqs = [1046.5, 1318.5]; // C6 and E6
+      freqs.forEach(f => {
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(f, this.ctx.currentTime);
+        gain.gain.setValueAtTime(0.05, this.ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.35);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start();
+        osc.stop(this.ctx.currentTime + 0.35);
+      });
     } catch (e) {}
   }
 }
@@ -1875,12 +1884,12 @@ function applyTheme(themeName) {
   localStorage.setItem('cse_vintage_theme', themeName);
 
   const displayMap = {
-    'vintage-parchment': 'Parchment',
+    'vintage-parchment': 'Quantum Dark',
+    'cyber-deck': 'Cyberdeck Neon',
+    'blueprint-cyan': 'Blueprint Cyan',
     'terminal-phosphor': 'CRT Green',
-    'blueprint-cyan': 'Blueprint',
-    'amber-crt': 'Amber CRT',
-    'cyber-deck': 'Cyberdeck',
-    'solarized-dark': 'Solarized'
+    'amber-crt': 'Amber Plasma',
+    'solarized-dark': 'Solarized Dark'
   };
   const label = document.getElementById('themeActiveName');
   if (label) label.textContent = displayMap[themeName] || 'Parchment';

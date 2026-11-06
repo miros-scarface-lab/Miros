@@ -7,46 +7,49 @@
    1. ROOT VARIABLES & THEMES
    -------------------------------------------------------------------------- */
 :root,
-[data-theme="vintage-parchment"] {
-  /* Default: Vintage Parchment & Carbon Ink */
-  --theme-name: "vintage-parchment";
-  --bg-canvas: #f4eee1;
-  --bg-canvas-translucent: rgba(244, 238, 225, 0.90);
-  --bg-surface: #fdfcf8;
-  --bg-card: #ffffff;
-  --bg-subtle: #ede4cd;
-  --bg-terminal: #181411;
+[data-theme="vintage-parchment"],
+[data-theme="cyber-futuristic"] {
+  /* Ultra-Modern Futuristic Quantum Cyber Theme */
+  --theme-name: "cyber-futuristic";
+  --bg-canvas: #060813;
+  --bg-canvas-translucent: rgba(6, 8, 19, 0.88);
+  --bg-surface: rgba(13, 19, 36, 0.78);
+  --bg-card: rgba(18, 26, 48, 0.7);
+  --bg-subtle: rgba(26, 38, 70, 0.55);
+  --bg-terminal: #070a14;
   
-  --ink-primary: #191512;
-  --ink-secondary: #483e35;
-  --ink-muted: #756758;
-  --ink-terminal: #f6f0e2;
+  --ink-primary: #f8fafc;
+  --ink-secondary: #cbd5e1;
+  --ink-muted: #64748b;
+  --ink-terminal: #00f0ff;
   
-  --accent-rust: #b94b2f;
-  --accent-rust-hover: #9c3d23;
-  --accent-patina: #255a43;
-  --accent-amber: #c5832b;
-  --accent-blueprint: #245580;
+  --accent-rust: #00f0ff;          /* Electric Cyan */
+  --accent-rust-hover: #38bdf8;
+  --accent-patina: #10b981;        /* Matrix Emerald */
+  --accent-amber: #f59e0b;         /* Solar Amber */
+  --accent-blueprint: #6366f1;     /* Electric Indigo */
+  --accent-violet: #a855f7;        /* Ultraviolet */
+  --accent-pink: #ec4899;          /* Cyber Pink */
   
-  --border-color: #2a231d;
-  --border-width: 2px;
-  --border-dashed: 2px dashed #40362d;
-  --shadow-tactile: 4px 4px 0px var(--border-color);
-  --shadow-tactile-lg: 6px 6px 0px var(--border-color);
-  --shadow-tactile-sm: 2px 2px 0px var(--border-color);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --border-width: 1px;
+  --border-dashed: 1px dashed rgba(0, 240, 255, 0.35);
+  --shadow-tactile: 0 10px 30px -5px rgba(0, 0, 0, 0.6), 0 0 1px 1px rgba(255, 255, 255, 0.08);
+  --shadow-tactile-lg: 0 20px 45px -10px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 240, 255, 0.2);
+  --shadow-tactile-sm: 0 4px 14px rgba(0, 0, 0, 0.4);
   
-  --font-serif: 'Playfair Display', Georgia, serif;
-  --font-mono: 'JetBrains Mono', 'Courier Prime', monospace;
-  --font-body: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'Outfit', 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Hind Siliguri', sans-serif;
   
-  --transition-quick: 0.15s ease;
-  --radius-badge: 3px;
-  --stamp-rotation: -3deg;
+  --transition-quick: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --radius-badge: 9999px;
+  --stamp-rotation: 0deg;
 
-  --theme-glow: 0 0 0px transparent;
-  --theme-glow-accent: 0 0 0px transparent;
-  --bg-pattern: radial-gradient(#d6cbaf 0.75px, transparent 0.75px);
-  --bg-pattern-size: 20px 20px;
+  --theme-glow: 0 0 25px rgba(0, 240, 255, 0.35);
+  --theme-glow-accent: 0 0 25px rgba(168, 85, 247, 0.35);
+  --bg-pattern: radial-gradient(rgba(56, 189, 248, 0.12) 1px, transparent 1px);
+  --bg-pattern-size: 26px 26px;
 }
 
 /* Theme 2: Terminal CRT Green Phosphor (Upgraded Electric VT-100 P1) */
@@ -285,8 +288,8 @@ body.no-custom-bg #siteBackgroundLayer {
 
 /* Theme-Aware Background Artwork Filters - Seamless Aesthetic Harmony */
 [data-theme="vintage-parchment"] #siteBackgroundLayer {
-  filter: sepia(0.65) contrast(1.1) brightness(0.9) !important;
-  opacity: 0.36 !important;
+  filter: brightness(0.28) contrast(1.2) hue-rotate(190deg) saturate(1.8) !important;
+  opacity: 0.25 !important;
 }
 
 [data-theme="terminal-phosphor"] #siteBackgroundLayer {
@@ -417,31 +420,31 @@ body.no-custom-bg #siteBackgroundLayer {
 /* Floating Keyframes */
 @keyframes retroCardFloat {
   0% {
-    transform: translateY(0px) rotate(0deg);
+    transform: translateY(0px);
     box-shadow: var(--shadow-tactile);
   }
   50% {
-    transform: translateY(-6px) rotate(0.3deg);
+    transform: translateY(-5px);
     box-shadow: var(--shadow-tactile-lg);
   }
   100% {
-    transform: translateY(-2px) rotate(-0.2deg);
+    transform: translateY(0px);
     box-shadow: var(--shadow-tactile);
   }
 }
 
 @keyframes retroCardFloatAlt {
   0% {
-    transform: translateY(-4px) rotate(-0.3deg);
+    transform: translateY(-3px);
     box-shadow: var(--shadow-tactile);
   }
   50% {
-    transform: translateY(0px) rotate(0.2deg);
+    transform: translateY(2px);
     box-shadow: var(--shadow-tactile-sm);
   }
   100% {
-    transform: translateY(-5px) rotate(0.3deg);
-    box-shadow: var(--shadow-tactile-lg);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-tactile);
   }
 }
 
@@ -614,8 +617,8 @@ body.floating-dynamic .terminal-preview-window {
   border-radius: var(--radius-badge);
   z-index: 9500;
   animation: floatBob 6s ease-in-out infinite;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
   user-select: none;
   opacity: 1 !important;
 }
@@ -4744,3 +4747,417 @@ textarea.vintage-input {
   }
 }
 
+
+
+/* ==========================================================================
+   ULTRA-MODERN DYNAMIC FUTURISTIC ENGINE (2026 EDITION)
+   High-Tech Cyber Aesthetics, Frosted Glassmorphism & Neon Glow System
+   ========================================================================== */
+
+/* Universal Body & Smooth Viewport */
+html, body {
+  font-family: var(--font-body);
+  color: var(--ink-primary);
+  background-color: var(--bg-canvas);
+  background-image: 
+    radial-gradient(circle at 15% 10%, rgba(0, 240, 255, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 85% 20%, rgba(168, 85, 247, 0.07) 0%, transparent 45%),
+    radial-gradient(circle at 50% 85%, rgba(16, 185, 129, 0.05) 0%, transparent 50%),
+    var(--bg-pattern);
+  background-size: 100% 100%, 100% 100%, 100% 100%, var(--bg-pattern-size);
+  background-attachment: fixed;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Dynamic Gradient Headings across all pages */
+h1, h2, h3, h4,
+.hero-name,
+.section-title,
+.page-title,
+.sub-pane-title,
+.lock-title {
+  font-family: var(--font-serif) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.025em !important;
+  background: linear-gradient(135deg, #ffffff 30%, #38bdf8 70%, #c084fc 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* Futuristic Floating Glass Navbar */
+.vintage-header {
+  background: rgba(6, 10, 24, 0.82) !important;
+  backdrop-filter: blur(24px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5) !important;
+  transition: all 0.3s ease;
+}
+
+.brand-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.brand-link {
+  font-family: var(--font-mono);
+  font-weight: 800;
+  color: #00f0ff !important;
+  text-decoration: none;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 12px rgba(0, 240, 255, 0.5);
+  transition: all 0.2s ease;
+}
+.brand-link:hover {
+  text-shadow: 0 0 20px rgba(0, 240, 255, 0.85);
+  transform: translateY(-1px);
+}
+
+.brand-bracket {
+  color: #a855f7 !important;
+}
+
+/* Nav Item Modern Hover */
+.nav-links .nav-item {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #94a3b8 !important;
+  padding: 0.45rem 0.85rem;
+  border-radius: 9999px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+.nav-links .nav-item span {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #00f0ff;
+  margin-right: 0.2rem;
+}
+.nav-links .nav-item:hover {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+  transform: translateY(-1px);
+}
+.nav-links .nav-item.active {
+  color: #ffffff !important;
+  background: rgba(0, 240, 255, 0.12) !important;
+  border-color: rgba(0, 240, 255, 0.35) !important;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+}
+
+/* Modern Pill Buttons */
+.vintage-btn {
+  border-radius: 9999px !important;
+  font-family: var(--font-body) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em !important;
+  text-transform: none !important;
+  font-size: 0.85rem !important;
+  padding: 0.55rem 1.25rem !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  color: #f1f5f9 !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.vintage-btn:hover {
+  transform: translateY(-2px) !important;
+  border-color: rgba(0, 240, 255, 0.5) !important;
+  box-shadow: 0 6px 20px rgba(0, 240, 255, 0.25) !important;
+  color: #00f0ff !important;
+}
+
+.vintage-btn:active {
+  transform: translateY(1px) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
+}
+
+.vintage-btn.btn-primary {
+  background: linear-gradient(135deg, #00f0ff 0%, #6366f1 100%) !important;
+  color: #040814 !important;
+  font-weight: 700 !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 0 4px 20px rgba(0, 240, 255, 0.4) !important;
+}
+.vintage-btn.btn-primary:hover {
+  background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%) !important;
+  box-shadow: 0 6px 28px rgba(0, 240, 255, 0.6) !important;
+  color: #040814 !important;
+}
+
+.vintage-btn.btn-secondary {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(16, 185, 129, 0.4) !important;
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3) !important;
+}
+.vintage-btn.btn-secondary:hover {
+  box-shadow: 0 6px 24px rgba(16, 185, 129, 0.5) !important;
+}
+
+.vintage-btn.btn-outline {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  color: #f1f5f9 !important;
+}
+.vintage-btn.btn-outline:hover {
+  background: rgba(0, 240, 255, 0.1) !important;
+  border-color: #00f0ff !important;
+  color: #00f0ff !important;
+}
+
+.vintage-btn.btn-admin {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important;
+  color: #000000 !important;
+  border: 1px solid rgba(245, 158, 11, 0.4) !important;
+}
+
+.vintage-btn.btn-danger {
+  background: rgba(239, 68, 68, 0.12) !important;
+  color: #f87171 !important;
+  border: 1px solid rgba(239, 68, 68, 0.3) !important;
+}
+.vintage-btn.btn-danger:hover {
+  background: #ef4444 !important;
+  color: #ffffff !important;
+}
+
+/* Modern Frosted Cards */
+.parchment-paper,
+.vintage-card,
+.polaroid-frame,
+.project-card,
+.manifesto-card,
+.arch-principle-card,
+.timeline-card,
+.academic-card,
+.skill-card,
+.skill-category-card,
+.experience-card,
+.coursework-box,
+.terminal-window,
+.contact-card,
+.sub-pane-card,
+.admin-container {
+  background: rgba(13, 19, 36, 0.72) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.09) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.55), 0 0 1px 1px rgba(255, 255, 255, 0.08) !important;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.2s ease !important;
+}
+
+.parchment-paper:hover,
+.vintage-card:hover,
+.project-card:hover,
+.manifesto-card:hover,
+.arch-principle-card:hover,
+.timeline-card:hover,
+.academic-card:hover,
+.skill-card:hover,
+.experience-card:hover {
+  transform: translateY(-4px) !important;
+  border-color: rgba(0, 240, 255, 0.35) !important;
+  box-shadow: 0 18px 40px -10px rgba(0, 0, 0, 0.7), 0 0 25px rgba(0, 240, 255, 0.18) !important;
+}
+
+/* Modern High-Tech Badges & Status Chips */
+.vintage-stamp-badge,
+.status-pill,
+.vintage-tag,
+.scarface-badge,
+.hero-badge {
+  transform: none !important;
+  border-radius: 9999px !important;
+  font-family: var(--font-mono) !important;
+  font-weight: 600 !important;
+  font-size: 0.74rem !important;
+  padding: 0.25rem 0.75rem !important;
+  letter-spacing: 0.04em !important;
+}
+
+.vintage-stamp-badge {
+  background: rgba(0, 240, 255, 0.08) !important;
+  color: #00f0ff !important;
+  border: 1px solid rgba(0, 240, 255, 0.35) !important;
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.2) !important;
+}
+
+.status-pill {
+  background: rgba(16, 185, 129, 0.1) !important;
+  border: 1px solid rgba(16, 185, 129, 0.3) !important;
+  color: #34d399 !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.status-indicator {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  animation: pulseNeon 2s infinite;
+}
+
+@keyframes pulseNeon {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.vintage-tag {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: #94a3b8 !important;
+}
+
+/* Typewriter Console / Terminal Bar */
+.typewriter-console {
+  background: rgba(7, 10, 20, 0.9) !important;
+  border: 1px solid rgba(0, 240, 255, 0.25) !important;
+  border-radius: 12px !important;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.6), 0 0 15px rgba(0, 240, 255, 0.1) !important;
+  padding: 0.85rem 1.25rem !important;
+  font-family: var(--font-mono) !important;
+}
+.prompt-prefix {
+  color: #a855f7 !important;
+  font-weight: 700;
+}
+.typewriter-text {
+  color: #00f0ff !important;
+  font-weight: 600;
+}
+.typewriter-cursor {
+  color: #00f0ff !important;
+  animation: blinkCursor 1s step-end infinite;
+}
+
+/* Modern Form Controls */
+.vintage-input,
+.vintage-select,
+.vintage-textarea {
+  background: rgba(9, 13, 28, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 10px !important;
+  color: #f8fafc !important;
+  font-family: var(--font-body) !important;
+  font-size: 0.88rem !important;
+  padding: 0.6rem 0.9rem !important;
+  transition: all 0.2s ease !important;
+}
+.vintage-input:focus,
+.vintage-select:focus,
+.vintage-textarea:focus {
+  border-color: #00f0ff !important;
+  box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.2), 0 0 15px rgba(0, 240, 255, 0.2) !important;
+  outline: none !important;
+}
+
+/* Dropdown Menus */
+.dropdown-menu {
+  background: rgba(10, 15, 32, 0.94) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 240, 255, 0.1) !important;
+  padding: 0.5rem !important;
+}
+.dots-menu-item,
+.theme-option,
+.dots-menu-subitem {
+  border-radius: 8px !important;
+  color: #cbd5e1 !important;
+  font-family: var(--font-body) !important;
+  transition: all 0.15s ease !important;
+}
+.dots-menu-item:hover,
+.theme-option:hover,
+.dots-menu-subitem:hover {
+  background: rgba(0, 240, 255, 0.12) !important;
+  color: #00f0ff !important;
+  transform: translateX(3px) !important;
+}
+
+/* HSC Academic Explorer Styling */
+.hsc-item-row,
+.hsc-table tbody tr {
+  transition: all 0.18s ease;
+  border-radius: 8px;
+}
+.hsc-item-row:hover,
+.hsc-table tbody tr:hover {
+  background: rgba(0, 240, 255, 0.08) !important;
+}
+.hsc-download-btn,
+.hsc-item-download-btn {
+  background: linear-gradient(135deg, #10b981, #059669) !important;
+  color: #ffffff !important;
+  border-radius: 9999px !important;
+  padding: 0.35rem 0.85rem !important;
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  border: none !important;
+  box-shadow: 0 2px 10px rgba(16, 185, 129, 0.3) !important;
+  transition: all 0.2s ease !important;
+}
+.hsc-download-btn:hover,
+.hsc-item-download-btn:hover {
+  box-shadow: 0 4px 18px rgba(16, 185, 129, 0.5) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Modern Admin Sidebar & Workspace */
+.admin-sidebar {
+  background: rgba(8, 12, 26, 0.75) !important;
+  border-radius: 14px !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  padding: 0.5rem !important;
+}
+.admin-tab-btn {
+  border-radius: 10px !important;
+  color: #94a3b8 !important;
+  font-family: var(--font-body) !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+  border: 1px solid transparent !important;
+}
+.admin-tab-btn:hover {
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: #ffffff !important;
+}
+.admin-tab-btn.active {
+  background: rgba(0, 240, 255, 0.12) !important;
+  color: #00f0ff !important;
+  border-color: rgba(0, 240, 255, 0.35) !important;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.15) !important;
+}
+
+/* Custom Cyber Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #060814;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(56, 189, 248, 0.25);
+  border-radius: 9999px;
+  border: 2px solid #060814;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 240, 255, 0.5);
+}
