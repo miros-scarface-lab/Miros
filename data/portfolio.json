@@ -678,6 +678,196 @@
             "year": "2023",
             "downloadUrl": "https://drive.google.com/file/d/example_phys2_dhaka/view",
             "desc": "High-scoring solution guide with clean circuit diagrams and formula explanations."
+          },
+          {
+            "id": "board-physics-1st-paper-0",
+            "paper": "1st Paper",
+            "name": "P-1.0 কাভার-সূচীপত্র",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1HnAkh7UJip1IyJngCsu0sjSanuKaF9WU/view?usp=drivesdk",
+            "desc": "P-1.0 কাভার-সূচীপত্র — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-physics-1st-paper-1",
+            "paper": "1st Paper",
+            "name": "P-1.1 ভৌত জগৎ ও পরিমাপ",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1HiqVKMP3ONeTyrWyVGhJh5m6t1bCc8DT/view?usp=drivesdk",
+            "desc": "P-1.1 ভৌত জগৎ ও পরিমাপ — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-physics-1st-paper-2",
+            "paper": "1st Paper",
+            "name": "P-1.10 আদর্শ গ্যাস ও গ্যাসের গতিতত্ত্ব",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1HVsiYmHyDSS6OhrpI6MDvOqmle3ofFp0/view?usp=drivesdk",
+            "desc": "P-1.10 আদর্শ গ্যাস ও গ্যাসের গতিতত্ত্ব — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-physics-1st-paper-3",
+            "paper": "1st Paper",
+            "name": "P-1.2 ভেক্টর",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1HPq5QhjJ-cS9rgPPt7QFbJg2qa-ujvKF/view?usp=drivesdk",
+            "desc": "P-1.2 ভেক্টর — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-physics-1st-paper-4",
+            "paper": "1st Paper",
+            "name": "P-1.4 নিউটনিয়ান বলবিদ্যা",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1HXiTBXztkbh8-HySQL-91uLx8bO9hX8A/view?usp=drivesdk",
+            "desc": "P-1.4 নিউটনিয়ান বলবিদ্যা — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-physics-1st-paper-5",
+            "paper": "1st Paper",
+            "name": "P-1.5 কাজ শক্তি ও ক্ষমতা",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1HmtuHX9KUY5X7RD5RTXCxU3s4Zy-VD0r/view?usp=drivesdk",
+            "desc": "P-1.5 কাজ শক্তি ও ক্ষমতা — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-physics-1st-paper-6",
+            "paper": "1st Paper",
+            "name": "P-1.6 মহকর্ষ ও অভিকর্ষ",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1HZQV_pdUO8xo2Hkd4nfe1X-JVlPajfIW/view?usp=drivesdk",
+            "desc": "P-1.6 মহকর্ষ ও অভিকর্ষ — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-physics-1st-paper-7",
+            "paper": "1st Paper",
+            "name": "P-1.7 পদার্থের গাঠনিক ধর্ম",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1HMyZeRXM_syz82PPiqCVBynfVfipPcZs/view?usp=drivesdk",
+            "desc": "P-1.7 পদার্থের গাঠনিক ধর্ম — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-physics-1st-paper-8",
+            "paper": "1st Paper",
+            "name": "P-1.8 পর্যাবৃত্ত গতি",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1HRksJA-3LDAqmT5Aew5YLGDHyTQS-fFw/view?usp=drivesdk",
+            "desc": "P-1.8 পর্যাবৃত্ত গতি — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-physics-2nd-paper-0",
+            "paper": "2nd Paper",
+            "name": "P-2.0 কাভার-সূচীপত্র",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1GskXiEoB_bVtUo7gobmJjYlBS8bTmQ7A/view?usp=drivesdk",
+            "desc": "P-2.0 কাভার-সূচীপত্র — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-physics-2nd-paper-1",
+            "paper": "2nd Paper",
+            "name": "P-2.1 তাপগতিবিদ্যা",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1UDR7eCOPusiT2Dc6mneaR2A11NGrvTk9/view?usp=drivesdk",
+            "desc": "P-2.1 তাপগতিবিদ্যা — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-physics-2nd-paper-2",
+            "paper": "2nd Paper",
+            "name": "P-2.10 সেমিকন্ডাক্টর ও ইলেক্ট্রনিক্স",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1UWz0vnfMUkDCUjmwdyO0dIORgz4TdpLJ/view?usp=drivesdk",
+            "desc": "P-2.10 সেমিকন্ডাক্টর ও ইলেক্ট্রনিক্স — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-physics-2nd-paper-3",
+            "paper": "2nd Paper",
+            "name": "P-2.2 স্থির তড়িৎ",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1UJIA7i9MU_BkXIQMLLgk6E1trDcoda26/view?usp=drivesdk",
+            "desc": "P-2.2 স্থির তড়িৎ — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-physics-2nd-paper-4",
+            "paper": "2nd Paper",
+            "name": "P-2.3 চলতড়িৎ",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1Uf0hsReqDkKDhcf2ozl1zoDo-7w3hbvp/view?usp=drivesdk",
+            "desc": "P-2.3 চলতড়িৎ — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-physics-2nd-paper-5",
+            "paper": "2nd Paper",
+            "name": "P-2.7 ভৌত আলোকবিজ্ঞান",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1UPeXrti2TvfcoQSa1b9HIAyRhMmb8MYJ/view?usp=drivesdk",
+            "desc": "P-2.7 ভৌত আলোকবিজ্ঞান — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-physics-2nd-paper-6",
+            "paper": "2nd Paper",
+            "name": "P-2.8 আধুনিক পদার্থবিজ্ঞানের সুচনা",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1USoz7OH9dmyyyehg3wrQ9ZO4yH0YDpPD/view?usp=drivesdk",
+            "desc": "P-2.8 আধুনিক পদার্থবিজ্ঞানের সুচনা — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-physics-2nd-paper-7",
+            "paper": "2nd Paper",
+            "name": "P-2.9 পরমানুর মডেল ও নিউক্লিয়ার পদার্থবিজ্ঞান",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1UWOuvUg3tnOKoNPYytk1tGeXPjmOAnuC/view?usp=drivesdk",
+            "desc": "P-2.9 পরমানুর মডেল ও নিউক্লিয়ার পদার্থবিজ্ঞান — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-solved22-physics-11",
+            "paper": "1st Paper",
+            "name": "Physics 1st Paper (উদ্ভাস সলভ)",
+            "board": "HSC 2022 Board Solved",
+            "year": "2022",
+            "downloadUrl": "https://drive.google.com/file/d/1UzaOOUL9wFtlYDA7qKuB-hOrrx8BOHDp/view?usp=drivesdk",
+            "desc": "HSC 2022 Board Exam All Boards Question & Answer Key Solved by উদ্ভাস.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-solved22-physics-12",
+            "paper": "2nd Paper",
+            "name": "Physics 2nd Paper (উদ্ভাস সলভ)",
+            "board": "HSC 2022 Board Solved",
+            "year": "2022",
+            "downloadUrl": "https://drive.google.com/file/d/1V1vyckLfHJpy860fI5TdCzrZMB5rbSXp/view?usp=drivesdk",
+            "desc": "HSC 2022 Board Exam All Boards Question & Answer Key Solved by উদ্ভাস.",
+            "source": "AAPathshala Library"
           }
         ]
       },
@@ -723,6 +913,96 @@
             "year": "2023",
             "downloadUrl": "https://drive.google.com/file/d/example_chem2_dhaka/view",
             "desc": "Organic compound identification pathways, acid-base balance, and environmental chemistry answers."
+          },
+          {
+            "id": "board-chemistry-1st-paper-0",
+            "paper": "1st Paper",
+            "name": "C-1.0 কাভার-সূচীপত্র",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1GlVqpchfC4pUFu_9eO4WXeRZH0Y6kE67/view?usp=drivesdk",
+            "desc": "C-1.0 কাভার-সূচীপত্র — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-chemistry-1st-paper-1",
+            "paper": "1st Paper",
+            "name": "C-1.2 গুনগত রসায়ন",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1BJLytcF4YSLmeMSzdi3My3crOc3n6ZXY/view?usp=drivesdk",
+            "desc": "C-1.2 গুনগত রসায়ন — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-chemistry-1st-paper-2",
+            "paper": "1st Paper",
+            "name": "C-1.4 রাসায়নিক পরিবর্তন",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1Gw5K-Qq4SqgLxZLcoqVoZlLnwdu5BxZx/view?usp=drivesdk",
+            "desc": "C-1.4 রাসায়নিক পরিবর্তন — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-chemistry-2nd-paper-0",
+            "paper": "2nd Paper",
+            "name": "C-2.0 কাভার-সূচীপত্র",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1GZBw1H_k7ezRxnsLcGSg0lLLfYXjQd-Y/view?usp=drivesdk",
+            "desc": "C-2.0 কাভার-সূচীপত্র — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-chemistry-2nd-paper-1",
+            "paper": "2nd Paper",
+            "name": "C-2.1 : পরিবেশ রসায়ন",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1hPIYgIGEaMJ1yBk_5zUH07WTOGepPg3c/view?usp=drivesdk",
+            "desc": "C-2.1 : পরিবেশ রসায়ন — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-chemistry-2nd-paper-2",
+            "paper": "2nd Paper",
+            "name": "C-2.3 পরিমানগত রসায়ন",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1GZ21yykF0nsg_75cAUFJLKtVFNz-crXf/view?usp=drivesdk",
+            "desc": "C-2.3 পরিমানগত রসায়ন — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-chemistry-2nd-paper-3",
+            "paper": "2nd Paper",
+            "name": "C-2.4 তড়িৎ রসায়ন",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1GYOi8Zqq5QhLpnislinF_BjYiqR2aKaa/view?usp=drivesdk",
+            "desc": "C-2.4 তড়িৎ রসায়ন — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-solved22-chemistry-4",
+            "paper": "1st Paper",
+            "name": "Chemistry 1st Paper (উদ্ভাস সলভ)",
+            "board": "HSC 2022 Board Solved",
+            "year": "2022",
+            "downloadUrl": "https://drive.google.com/file/d/1UKKwm4Cft3bMvT7ptXeeG8WMvkfc06O0/view?usp=drivesdk",
+            "desc": "HSC 2022 Board Exam All Boards Question & Answer Key Solved by উদ্ভাস.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-solved22-chemistry-5",
+            "paper": "2nd Paper",
+            "name": "Chemistry 2nd Paper (উদ্ভাস সলভ)",
+            "board": "HSC 2022 Board Solved",
+            "year": "2022",
+            "downloadUrl": "https://drive.google.com/file/d/1UPpX4xo7LRJwJi5y4ag1l5GgMo2hKbJQ/view?usp=drivesdk",
+            "desc": "HSC 2022 Board Exam All Boards Question & Answer Key Solved by উদ্ভাস.",
+            "source": "AAPathshala Library"
           }
         ]
       },
@@ -750,6 +1030,146 @@
             "year": "2018–2023",
             "downloadUrl": "https://drive.google.com/file/d/example_math2_allboard/view",
             "desc": "Conics, Complex Numbers, Polynomials, and Statics/Dynamics full mathematical solutions."
+          },
+          {
+            "id": "board-higher mathematics-1st-paper-0",
+            "paper": "1st Paper",
+            "name": "M-1.10 যোগজীকরণ",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1Ghli2WiKM5kKDm9iDULc8-tPEQj_vdBl/view?usp=drivesdk",
+            "desc": "M-1.10 যোগজীকরণ — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-higher mathematics-1st-paper-1",
+            "paper": "1st Paper",
+            "name": "M-1.3 সরলরেখা",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1UpqY3PEtVJDlifUScAOmy6n6FYNS19Ht/view?usp=drivesdk",
+            "desc": "M-1.3 সরলরেখা — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-higher mathematics-1st-paper-2",
+            "paper": "1st Paper",
+            "name": "M-1.4 বৃত্ত",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1V5BavptHX3e4Mvs7rnBqFvqj4Si1IbJD/view?usp=drivesdk",
+            "desc": "M-1.4 বৃত্ত — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-higher mathematics-1st-paper-3",
+            "paper": "1st Paper",
+            "name": "M-1.7 সংযুক্ত ও যৌগিক কোণের ত্রিকোনমিতিক অনুপাত",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1GaU63pajYrx86kaHALLIh-li7SQHCD0b/view?usp=drivesdk",
+            "desc": "M-1.7 সংযুক্ত ও যৌগিক কোণের ত্রিকোনমিতিক অনুপাত — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-higher mathematics-1st-paper-4",
+            "paper": "1st Paper",
+            "name": "M-1.9 অন্তরীকরণ",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1GeTQCpo-W8FuV_EaBQ6rmxYgKjUfDcgJ/view?usp=drivesdk",
+            "desc": "M-1.9 অন্তরীকরণ — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-higher mathematics-2nd-paper-0",
+            "paper": "2nd Paper",
+            "name": "M-2.0 কাভার-সূচীপত্র",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1Gls2Gh1Mhoff2FVVK9ptCuUoIDVKiX0r/view?usp=drivesdk",
+            "desc": "M-2.0 কাভার-সূচীপত্র — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-higher mathematics-2nd-paper-1",
+            "paper": "2nd Paper",
+            "name": "M-2.3 : জটিল সংখ্যা",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1h3FUnNgxXYu0u6kXPRIoRz-9OtKkOwaW/view?usp=drivesdk",
+            "desc": "M-2.3 : জটিল সংখ্যা — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-higher mathematics-2nd-paper-2",
+            "paper": "2nd Paper",
+            "name": "M-2.4 : বহুপদী ও বহুপদী সমীকরণ",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1mfU7Wfa4H1MjH71eUYA5yJxpBxnSTSMs/view?usp=drivesdk",
+            "desc": "M-2.4 : বহুপদী ও বহুপদী সমীকরণ — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-higher mathematics-2nd-paper-3",
+            "paper": "2nd Paper",
+            "name": "M-2.6 : কনিক",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1J2h875bhEaJlHY4Eia8fWrG6OtCdTXUm/view?usp=drivesdk",
+            "desc": "M-2.6 : কনিক — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-higher mathematics-2nd-paper-4",
+            "paper": "2nd Paper",
+            "name": "M-2.7 : বিপরীত ত্রিকোনোমিতি ফাংশন ও ত্রিকোণমিতি সমীকরণ",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/12MAMsPesC0hjwpu4ydjDR3GLNGcQgs3P/view?usp=drivesdk",
+            "desc": "M-2.7 : বিপরীত ত্রিকোনোমিতি ফাংশন ও ত্রিকোণমিতি সমীকরণ — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-higher mathematics-2nd-paper-5",
+            "paper": "2nd Paper",
+            "name": "M-2.9 : সমতলে বস্তুকণার গতি",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1yZBgRBqbwG4cuJZlU8RxIhvjUscnURXN/view?usp=drivesdk",
+            "desc": "M-2.9 : সমতলে বস্তুকণার গতি — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-higher mathematics-2nd-paper-6",
+            "paper": "2nd Paper",
+            "name": "M-2.9 : স্থিতিবিদ্যা",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1lWil6qFJvnbW9vV98ERPca3jf83eMiRa/view?usp=drivesdk",
+            "desc": "M-2.9 : স্থিতিবিদ্যা — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-solved22-higher mathematics-8",
+            "paper": "1st Paper",
+            "name": "Higher Math 1st Paper (উদ্ভাস সলভ)",
+            "board": "HSC 2022 Board Solved",
+            "year": "2022",
+            "downloadUrl": "https://drive.google.com/file/d/1U_5hsizPvB_ML0y4c9RV-xG5BshKCXef/view?usp=drivesdk",
+            "desc": "HSC 2022 Board Exam All Boards Question & Answer Key Solved by উদ্ভাস.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-solved22-higher mathematics-9",
+            "paper": "2nd Paper",
+            "name": "Higher Math 2nd Paper (উদ্ভাস সলভ)",
+            "board": "HSC 2022 Board Solved",
+            "year": "2022",
+            "downloadUrl": "https://drive.google.com/file/d/1UoMUNIbNAz3NT4zrijb_-4yHf6cOE7jz/view?usp=drivesdk",
+            "desc": "HSC 2022 Board Exam All Boards Question & Answer Key Solved by উদ্ভাস.",
+            "source": "AAPathshala Library"
           }
         ]
       },
@@ -777,6 +1197,192 @@
             "year": "2018–2023",
             "downloadUrl": "https://drive.google.com/file/d/example_bio2_allboard/view",
             "desc": "Human physiology systems, genetics cross problems, and heart/brain/kidney diagram solutions."
+          },
+          {
+            "id": "board-biology-1st-paper--botany--0",
+            "paper": "1st Paper (Botany)",
+            "name": "1.0 Biology 1st(কাভার-সূচী)",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1JVGfeIwshqXeiCosbgrH2KQuE6r5d-a4/view?usp=drivesdk",
+            "desc": "1.0 Biology 1st(কাভার-সূচী) — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-biology-1st-paper--botany--1",
+            "paper": "1st Paper (Botany)",
+            "name": "1.1 Biology 1st(শর্ট সিলেবাস)",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1JQWCmbHEuOi9mWQ4DCjhpYIdFA6zGmlY/view?usp=drivesdk",
+            "desc": "1.1 Biology 1st(শর্ট সিলেবাস) — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-biology-1st-paper--botany--2",
+            "paper": "1st Paper (Botany)",
+            "name": "1.2 Biology 1st(এক্সট্রা সিলেবাস)",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1JQhfsLGBi9_SEx5KXhgeUsTN0UjNqeHo/view?usp=drivesdk",
+            "desc": "1.2 Biology 1st(এক্সট্রা সিলেবাস) — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-biology-2nd-paper--zoology--0",
+            "paper": "2nd Paper (Zoology)",
+            "name": "2.0 Biology 2nd(কাভার-সূচী)",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1JZsc_5gSP1BQr2pcCpWcjw-t2Ee-54MZ/view?usp=drivesdk",
+            "desc": "2.0 Biology 2nd(কাভার-সূচী) — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-biology-2nd-paper--zoology--1",
+            "paper": "2nd Paper (Zoology)",
+            "name": "2.1 Biology 2nd(শর্ট সিলেবাস)",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1JQFBxjuTMvT-0nkVsi9vx0BmNr5APDzC/view?usp=drivesdk",
+            "desc": "2.1 Biology 2nd(শর্ট সিলেবাস) — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-biology-2nd-paper--zoology--2",
+            "paper": "2nd Paper (Zoology)",
+            "name": "2.2 Biology 2nd(এক্সট্রা সিলেবাস)",
+            "board": "All Education Boards",
+            "year": "Board Solution Series",
+            "downloadUrl": "https://drive.google.com/file/d/1JGfj0QOq-ScCCrMAhCU73GDIeMvodQ1M/view?usp=drivesdk",
+            "desc": "2.2 Biology 2nd(এক্সট্রা সিলেবাস) — Chapterwise Board Creative Question (CQ) & MCQ Solved Guide.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-solved22-biology-2",
+            "paper": "1st Paper",
+            "name": "Biology 1st Paper (উদ্ভাস সলভ)",
+            "board": "HSC 2022 Board Solved",
+            "year": "2022",
+            "downloadUrl": "https://drive.google.com/file/d/1UJLO8aCWmPuri2OvHTxw8bm1qCuTXRbF/view?usp=drivesdk",
+            "desc": "HSC 2022 Board Exam All Boards Question & Answer Key Solved by উদ্ভাস.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-solved22-biology-3",
+            "paper": "2nd Paper",
+            "name": "Biology 2nd Paper (উদ্ভাস সলভ)",
+            "board": "HSC 2022 Board Solved",
+            "year": "2022",
+            "downloadUrl": "https://drive.google.com/file/d/1UJ_0_PsvJ3tDpRmXNfG0hV5v3Cw8-n0R/view?usp=drivesdk",
+            "desc": "HSC 2022 Board Exam All Boards Question & Answer Key Solved by উদ্ভাস.",
+            "source": "AAPathshala Library"
+          }
+        ]
+      },
+      {
+        "id": "board-bangla",
+        "subject": "Bangla",
+        "banglaName": "Bangla বোর্ড সমাধান",
+        "icon": "📋",
+        "desc": "HSC Bangla Board Questions and Model Solutions.",
+        "papers": [
+          {
+            "id": "board-solved22-bangla-0",
+            "paper": "1st Paper",
+            "name": "Bangla 1st Paper (উদ্ভাস সলভ)",
+            "board": "HSC 2022 Board Solved",
+            "year": "2022",
+            "downloadUrl": "https://drive.google.com/file/d/1U9KNIGLO4OY1YfEeIeyk9Vo6LIbt2hT6/view?usp=drivesdk",
+            "desc": "HSC 2022 Board Exam All Boards Question & Answer Key Solved by উদ্ভাস.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-solved22-bangla-1",
+            "paper": "2nd Paper",
+            "name": "Bangla 2nd Paper (উদ্ভাস সলভ)",
+            "board": "HSC 2022 Board Solved",
+            "year": "2022",
+            "downloadUrl": "https://drive.google.com/file/d/1UJA_zCOsQMY8RtiwsajTz1opeQ7Y_uxC/view?usp=drivesdk",
+            "desc": "HSC 2022 Board Exam All Boards Question & Answer Key Solved by উদ্ভাস.",
+            "source": "AAPathshala Library"
+          }
+        ]
+      },
+      {
+        "id": "board-english",
+        "subject": "English",
+        "banglaName": "English বোর্ড সমাধান",
+        "icon": "📋",
+        "desc": "HSC English Board Questions and Model Solutions.",
+        "papers": [
+          {
+            "id": "board-solved22-english-6",
+            "paper": "1st Paper",
+            "name": "English 1st Paper (উদ্ভাস সলভ)",
+            "board": "HSC 2022 Board Solved",
+            "year": "2022",
+            "downloadUrl": "https://drive.google.com/file/d/1UTETIsX2W44ERfxG8kZoBO9u6rqBQGFR/view?usp=drivesdk",
+            "desc": "HSC 2022 Board Exam All Boards Question & Answer Key Solved by উদ্ভাস.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-solved22-english-7",
+            "paper": "2nd Paper",
+            "name": "English 2nd Paper (উদ্ভাস সলভ)",
+            "board": "HSC 2022 Board Solved",
+            "year": "2022",
+            "downloadUrl": "https://drive.google.com/file/d/1UZMh9LH5PqacVRroaxM_M1jMilsOz0-i/view?usp=drivesdk",
+            "desc": "HSC 2022 Board Exam All Boards Question & Answer Key Solved by উদ্ভাস.",
+            "source": "AAPathshala Library"
+          }
+        ]
+      },
+      {
+        "id": "board-information---comm--technology",
+        "subject": "Information & Comm. Technology",
+        "banglaName": "Information & Comm. Technology বোর্ড সমাধান",
+        "icon": "📋",
+        "desc": "HSC Information & Comm. Technology Board Questions and Model Solutions.",
+        "papers": [
+          {
+            "id": "board-solved22-information & comm. technology-10",
+            "paper": "Full Paper",
+            "name": "ICT (উদ্ভাস সলভ)",
+            "board": "HSC 2022 Board Solved",
+            "year": "2022",
+            "downloadUrl": "https://drive.google.com/file/d/1UwUtradqLNlIc_taBoTBw-V3B59Wj14z/view?usp=drivesdk",
+            "desc": "HSC 2022 Board Exam All Boards Question & Answer Key Solved by উদ্ভাস.",
+            "source": "AAPathshala Library"
+          }
+        ]
+      },
+      {
+        "id": "board-general",
+        "subject": "General",
+        "banglaName": "General বোর্ড সমাধান",
+        "icon": "📋",
+        "desc": "HSC General Board Questions and Model Solutions.",
+        "papers": [
+          {
+            "id": "board-solved22-general-0",
+            "paper": "Full Paper",
+            "name": "HSC-22 Board Exam Solution(CQ) (রয়েল সলভ)",
+            "board": "HSC 2022 Board Solved",
+            "year": "2022",
+            "downloadUrl": "https://drive.google.com/drive/folders/1YKuBKPlHT4Zxx2qrMw9mWFjlF9M48U0o",
+            "desc": "HSC 2022 Board Exam All Boards Question & Answer Key Solved by রয়েল.",
+            "source": "AAPathshala Library"
+          },
+          {
+            "id": "board-solved22-general-1",
+            "paper": "Full Paper",
+            "name": "HSC-22 Board Exam Solution(MCQ) (রয়েল সলভ)",
+            "board": "HSC 2022 Board Solved",
+            "year": "2022",
+            "downloadUrl": "https://drive.google.com/drive/folders/1HoHgrewp0Nr8ZU3emZddqFSuVyhur58S",
+            "desc": "HSC 2022 Board Exam All Boards Question & Answer Key Solved by রয়েল.",
+            "source": "AAPathshala Library"
           }
         ]
       }
@@ -813,6 +1419,1284 @@
         "year": "HSC Quick Sheet",
         "downloadUrl": "https://drive.google.com/file/d/example_chem_periodic_tricks/view",
         "desc": "Quick rules for ionization energy, electronegativity, flame test colors, and coordination numbers."
+      },
+      {
+        "id": "qb-0-0",
+        "name": "B-1 Board Question Solve (Bangla 1st Paper)",
+        "subject": "Bangla 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1cjsFdF5HiB6OOKMZUH8UHdF3wu_0VwHA/view?usp=drivesdk",
+        "desc": "HSC Bangla 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-0-1",
+        "name": "B-1 Model Test (Bangla 1st Paper)",
+        "subject": "Bangla 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1ogDO337jbAmZwgvB84b9buhmPf34QetK/view?usp=drivesdk",
+        "desc": "HSC Bangla 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-0-2",
+        "name": "B-1.0 কাভার-সূচীপত্র (Bangla 1st Paper)",
+        "subject": "Bangla 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/13dJTNz639dsf3JVinQez0KTP9fdpMZyy/view?usp=drivesdk",
+        "desc": "HSC Bangla 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-0-3",
+        "name": "B-1.1 অপরিচিতা (Bangla 1st Paper)",
+        "subject": "Bangla 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1n2NEC_paoa7PzWPHtDlDbGwKyxQtymKK/view?usp=drivesdk",
+        "desc": "HSC Bangla 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-0-4",
+        "name": "B-1.10 প্রতিদান (Bangla 1st Paper)",
+        "subject": "Bangla 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1lPyI6ft0aeBvbQearSVp9IugECMmr-kc/view?usp=drivesdk",
+        "desc": "HSC Bangla 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-0-5",
+        "name": "B-1.11 তাহারেই পড়ে মনে (Bangla 1st Paper)",
+        "subject": "Bangla 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1k5t_Cha_6axw4CQjh2pvf5qjPqTtKpyo/view?usp=drivesdk",
+        "desc": "HSC Bangla 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-0-6",
+        "name": "B-1.12 আঠারো বছর বয়স (Bangla 1st Paper)",
+        "subject": "Bangla 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1l14_vjbRx0XBm2t2Nk8-upqBJXjYDJzd/view?usp=drivesdk",
+        "desc": "HSC Bangla 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-0-7",
+        "name": "B-1.13 ফেব্রুয়ারি ১৯৬৯ (Bangla 1st Paper)",
+        "subject": "Bangla 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1PfY65Wrs0dN_cIrYdbm1I0yes7ArcOs0/view?usp=drivesdk",
+        "desc": "HSC Bangla 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-0-8",
+        "name": "B-1.14 আমি কিংবদন্তির কথা বলছি (Bangla 1st Paper)",
+        "subject": "Bangla 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1pFX_dgZyIjLHfLiC3CP-F-QctD1BCff2/view?usp=drivesdk",
+        "desc": "HSC Bangla 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-0-9",
+        "name": "B-1.15 লালসালু (Bangla 1st Paper)",
+        "subject": "Bangla 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1tzzqPvYQwN0b4GekyZeS_fprju2AM07p/view?usp=drivesdk",
+        "desc": "HSC Bangla 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-0-10",
+        "name": "B-1.16 সিরাজউদ্দৌলা (Bangla 1st Paper)",
+        "subject": "Bangla 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1HXN7fEsgn4ANz_CtoLqmbCLcyrajUX2C/view?usp=drivesdk",
+        "desc": "HSC Bangla 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-0-11",
+        "name": "B-1.2 বিলাসী (Bangla 1st Paper)",
+        "subject": "Bangla 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1_3RabS8dIPCp8lU9br6AAOjpDl7r83sW/view?usp=drivesdk",
+        "desc": "HSC Bangla 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-0-12",
+        "name": "B-1.3 আমার পথ (Bangla 1st Paper)",
+        "subject": "Bangla 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1coO4ziBYnrINMcNILjZVEiG41QTkFmaI/view?usp=drivesdk",
+        "desc": "HSC Bangla 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-0-13",
+        "name": "B-1.4 মানব-কল্যাণ (Bangla 1st Paper)",
+        "subject": "Bangla 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1L1QZnBDL--x1pt6T4LBrppwTAqJ_Njcq/view?usp=drivesdk",
+        "desc": "HSC Bangla 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-0-14",
+        "name": "B-1.5 মাসি-পিসি (Bangla 1st Paper)",
+        "subject": "Bangla 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1f3vYtsDf2fW0_ceRHxhwkORVg0NmMIeY/view?usp=drivesdk",
+        "desc": "HSC Bangla 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-0-15",
+        "name": "B-1.6 বায়ান্নর দিনগুলো (Bangla 1st Paper)",
+        "subject": "Bangla 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1PdqwmW5lLmmuYj9WxzPWm-z_bqwDWFWe/view?usp=drivesdk",
+        "desc": "HSC Bangla 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-0-16",
+        "name": "B-1.7 রেইনকোট (Bangla 1st Paper)",
+        "subject": "Bangla 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1SG1zUCxkJOiTJCB3zrt4_z4WeWk522vo/view?usp=drivesdk",
+        "desc": "HSC Bangla 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-0-17",
+        "name": "B-1.8 সোনার তরী (Bangla 1st Paper)",
+        "subject": "Bangla 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1qmHpU4Lf1XK0asY7_AgEkEeFq_1wAiEX/view?usp=drivesdk",
+        "desc": "HSC Bangla 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-0-18",
+        "name": "B-1.9 বিদ্রোহী (Bangla 1st Paper)",
+        "subject": "Bangla 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1rpZIGAH85g88TqRZxnCsvpaS055ISM3O/view?usp=drivesdk",
+        "desc": "HSC Bangla 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-1-0",
+        "name": "B-2 Board Question Solve (Bangla 2nd Paper)",
+        "subject": "Bangla 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/135lJV00nP6c8090uwNZlBmH8MF6CmhwI/view?usp=drivesdk",
+        "desc": "HSC Bangla 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-1-1",
+        "name": "B-2 Model Test (Bangla 2nd Paper)",
+        "subject": "Bangla 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1F8mfLUpWfAOBTzgQWwe0QRBYU04y16GP/view?usp=drivesdk",
+        "desc": "HSC Bangla 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-1-2",
+        "name": "B-2.0 কাভার-সূচীপত্র (Bangla 2nd Paper)",
+        "subject": "Bangla 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/19GTChm317_bRsEg70AQRpQqQb24jK00d/view?usp=drivesdk",
+        "desc": "HSC Bangla 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-1-3",
+        "name": "B-2.1 বাংলা উচ্চারণের নিয়ম (Bangla 2nd Paper)",
+        "subject": "Bangla 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1nRG7DKu0Ipg5hssKNfZ-TxYXI2Z-fNvj/view?usp=drivesdk",
+        "desc": "HSC Bangla 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-1-4",
+        "name": "B-2.10 সারাংশ ও সারমর্ম অথবা ভাব-সম্প্রসারণ (Bangla 2nd Paper)",
+        "subject": "Bangla 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1QsFL9Q0ek_l8dlUPkaHo50HdO1zhCXcN/view?usp=drivesdk",
+        "desc": "HSC Bangla 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-1-5",
+        "name": "B-2.11 সংলাপ অথবা খুদে গল্প লিখন (Bangla 2nd Paper)",
+        "subject": "Bangla 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1G8UG1x4zNWw7lbhjgzBtPfAzhmo2Ab19/view?usp=drivesdk",
+        "desc": "HSC Bangla 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-1-6",
+        "name": "B-2.12 প্রবন্ধ রচনা (Bangla 2nd Paper)",
+        "subject": "Bangla 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1WIDXh9dYnzgPVekzCjqta87NMSVsgCYD/view?usp=drivesdk",
+        "desc": "HSC Bangla 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-1-7",
+        "name": "B-2.2 বাংলা বানানের নিয়ম (Bangla 2nd Paper)",
+        "subject": "Bangla 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/18nHvxbsc_eM3UDjIRxgraT-aIiF8C9T6/view?usp=drivesdk",
+        "desc": "HSC Bangla 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-1-8",
+        "name": "B-2.3 বাংলা ভাষার ব্যাকরণিক শব্দশ্রেণি (Bangla 2nd Paper)",
+        "subject": "Bangla 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1BX0fq6BhOa1StNtqHjCjihgD2umG5QUv/view?usp=drivesdk",
+        "desc": "HSC Bangla 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-1-9",
+        "name": "B-2.4 বাংলা শব্দ গঠনঃ উপসর্গ ও সমাস (Bangla 2nd Paper)",
+        "subject": "Bangla 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1kNHqVOBKfDkv2Z4CzdnUP3hV-lKVaHrE/view?usp=drivesdk",
+        "desc": "HSC Bangla 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-1-10",
+        "name": "B-2.5 বাক্যতত্ত্ব (Bangla 2nd Paper)",
+        "subject": "Bangla 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1qcxVjE6l9BG85-_mcubeoEOEAW_mqW_O/view?usp=drivesdk",
+        "desc": "HSC Bangla 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-1-11",
+        "name": "B-2.6 বাংলা ভাষার অপপ্রয়োগ ও শুদ্ধ প্রয়োগ (Bangla 2nd Paper)",
+        "subject": "Bangla 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1zzJL8aq5-GJJozqhpNckw8FSqVMi5w1g/view?usp=drivesdk",
+        "desc": "HSC Bangla 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-1-12",
+        "name": "B-2.7 পারিভাষিক শব্দ ও অনুবাদ (Bangla 2nd Paper)",
+        "subject": "Bangla 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1gl-s2FEbRA5RZB_MaMMU80ZAsr6KKNK7/view?usp=drivesdk",
+        "desc": "HSC Bangla 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-1-13",
+        "name": "B-2.8 দিনলিপি লিখন ও প্রতিবেদন রচনা (Bangla 2nd Paper)",
+        "subject": "Bangla 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1YweFlpgG4yUIcFwZx4zJEA47svNY_sh7/view?usp=drivesdk",
+        "desc": "HSC Bangla 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-1-14",
+        "name": "B-2.9 বৈদ্যুতিন চিঠি ও আবেদন পত্র (Bangla 2nd Paper)",
+        "subject": "Bangla 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1DCDqs-9dczQERP166-ctEmUaYqYBmZGa/view?usp=drivesdk",
+        "desc": "HSC Bangla 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-2-0",
+        "name": "B-1 Board Exam Solution (Biology 1st Paper)",
+        "subject": "Biology 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1aSGCCDY1km287rwY545iLrYa_zxw9lp2/view?usp=drivesdk",
+        "desc": "HSC Biology 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-2-1",
+        "name": "B-1 Model Test (Biology 1st Paper)",
+        "subject": "Biology 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1aU3LjxwWUs9nQWu1Tf9vLvS-cYm8vd1n/view?usp=drivesdk",
+        "desc": "HSC Biology 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-2-2",
+        "name": "B-1.0 কাভার-সূচীপত্র (Biology 1st Paper)",
+        "subject": "Biology 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1_zfOM91xyq9tkaL2if7TuP3eDBN0i-i-/view?usp=drivesdk",
+        "desc": "HSC Biology 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-2-3",
+        "name": "B-1.1 কোষ ও এর গঠন (Biology 1st Paper)",
+        "subject": "Biology 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1_zyJZFU7euibgnzYQW6s69R0yG6TQsLH/view?usp=drivesdk",
+        "desc": "HSC Biology 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-2-4",
+        "name": "B-1.1 জীবপ্রযুক্তি (Biology 1st Paper)",
+        "subject": "Biology 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1aPKXH-ViQtbCebLKL9Or-AAnTz3VEBW7/view?usp=drivesdk",
+        "desc": "HSC Biology 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-2-5",
+        "name": "B-1.2 কোষ বিভাজন (Biology 1st Paper)",
+        "subject": "Biology 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1a4K__PIStQH-08y9WmF9M6GU7s8HQX2l/view?usp=drivesdk",
+        "desc": "HSC Biology 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-2-6",
+        "name": "B-1.4 অণুজীব (Biology 1st Paper)",
+        "subject": "Biology 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1a5hAWCTa_QT48WAqEhp6WBy4V4-50lFc/view?usp=drivesdk",
+        "desc": "HSC Biology 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-2-7",
+        "name": "B-1.7 নগ্নবীজী ও আবৃতবীজী উদ্ভিদ (Biology 1st Paper)",
+        "subject": "Biology 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1aCD9lk1njz-XVikW-V4MMVLF7LM6yffd/view?usp=drivesdk",
+        "desc": "HSC Biology 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-2-8",
+        "name": "B-1.8 টিস্যু ও টিস্যুতন্ত্র (Biology 1st Paper)",
+        "subject": "Biology 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1aCiYBW4-U2JYqxUbG6uu1oeZZl5LsHHu/view?usp=drivesdk",
+        "desc": "HSC Biology 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-2-9",
+        "name": "B-1.9 উদ্ভিদ শারীরতত্ত্ব (Biology 1st Paper)",
+        "subject": "Biology 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1aD9pGtB-NvgaukxxmE6M5quOQD1uu2Gy/view?usp=drivesdk",
+        "desc": "HSC Biology 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-3-0",
+        "name": "B-2 Board Question Solution (Biology 2nd Paper)",
+        "subject": "Biology 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1b1KdBn1FKmA6s0xB5rcgpb5QuwmgKVow/view?usp=drivesdk",
+        "desc": "HSC Biology 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-3-1",
+        "name": "B-2 Model Test (Biology 2nd Paper)",
+        "subject": "Biology 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1b5K-YX2KvNfrSinzQJutJJ9QxSakwELL/view?usp=drivesdk",
+        "desc": "HSC Biology 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-3-2",
+        "name": "B-2.0 কাভার-সূচীপত্র (Biology 2nd Paper)",
+        "subject": "Biology 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1adNDd4drSy7PT63owCdD-ej8ExbzYFrP/view?usp=drivesdk",
+        "desc": "HSC Biology 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-3-3",
+        "name": "B-2.1 প্রাণির বিভিন্নতা ও শ্রেণিবিন্যাস (Biology 2nd Paper)",
+        "subject": "Biology 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1aa7o6bQY9bHy020dfYB0J80IaGveSJF7/view?usp=drivesdk",
+        "desc": "HSC Biology 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-3-4",
+        "name": "B-2.11 জিনতত্ত্ব ও বিবর্তন (Biology 2nd Paper)",
+        "subject": "Biology 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1b0RuOxKx597mVGhvr3DoHtLbQSbFoOAf/view?usp=drivesdk",
+        "desc": "HSC Biology 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-3-5",
+        "name": "B-2.2 প্রাণীর পরিচিতি (Biology 2nd Paper)",
+        "subject": "Biology 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1adXAXZdje8Ef1AIxsXY-xzRrJnwqfGXM/view?usp=drivesdk",
+        "desc": "HSC Biology 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-3-6",
+        "name": "B-2.3 পরিপাক ও শোষণ (Biology 2nd Paper)",
+        "subject": "Biology 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1atO3O_5X-CJQYLPHLn4onemZz_i_I-_x/view?usp=drivesdk",
+        "desc": "HSC Biology 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-3-7",
+        "name": "B-2.4 রক্ত ও সঞ্চালন (Biology 2nd Paper)",
+        "subject": "Biology 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1auxogQONHkf-kjCzk7cf3NucWmpwN7AT/view?usp=drivesdk",
+        "desc": "HSC Biology 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-3-8",
+        "name": "B-2.5 শ্বসণ ও শ্বাসক্রিয়া (Biology 2nd Paper)",
+        "subject": "Biology 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1bFG0XrRAD0goDbQlWEwq5W09p6PbUfYe/view?usp=drivesdk",
+        "desc": "HSC Biology 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-3-9",
+        "name": "B-2.7 চলন ও অঙ্গচালনা (Biology 2nd Paper)",
+        "subject": "Biology 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1ayDhEOrSZpNRUgqAgsRqPdVC25lFwdYE/view?usp=drivesdk",
+        "desc": "HSC Biology 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-4-0",
+        "name": "C-1 Board Question Solution (Chemistry 1st Paper)",
+        "subject": "Chemistry 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1_9-gPv7VRtbB9x2C0X84zdn2gNwstReM/view?usp=drivesdk",
+        "desc": "HSC Chemistry 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-4-1",
+        "name": "C-1 Model Test (Chemistry 1st Paper)",
+        "subject": "Chemistry 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1_A-Bf3ttTrw5hfccwhqSbJOCfpUp4li-/view?usp=drivesdk",
+        "desc": "HSC Chemistry 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-4-2",
+        "name": "C-1 কাভার-সূচীপত্র (Chemistry 1st Paper)",
+        "subject": "Chemistry 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1Zztn_BUKtBt9vVq0IAf44sdLccUGwFv5/view?usp=drivesdk",
+        "desc": "HSC Chemistry 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-4-3",
+        "name": "C-1.2 গুণগত রসায়ন (Chemistry 1st Paper)",
+        "subject": "Chemistry 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1_1-e78dD96T2DojTfP9QSqzyIC66Xiyl/view?usp=drivesdk",
+        "desc": "HSC Chemistry 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-4-4",
+        "name": "C-1.3 মৌলের পর্যায়বৃত্ত ধর্ম ও রাসায়নিক বন্ধন (Chemistry 1st Paper)",
+        "subject": "Chemistry 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1_2GRYx9-nXIN0GNT0yBr7GnXfe7kvQxi/view?usp=drivesdk",
+        "desc": "HSC Chemistry 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-4-5",
+        "name": "C-1.4 রাসায়নিক পরিবর্তন (Chemistry 1st Paper)",
+        "subject": "Chemistry 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1_5E4Hn24SR8-F6NrMB-HV5KglNWl-Gmd/view?usp=drivesdk",
+        "desc": "HSC Chemistry 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-4-6",
+        "name": "C-1.5 কর্মমুখী রসায়ন (Chemistry 1st Paper)",
+        "subject": "Chemistry 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1_7p4XthC921seuAeuhAvx0j3NtUtz_X9/view?usp=drivesdk",
+        "desc": "HSC Chemistry 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-5-0",
+        "name": "C-2 Board Question Solution (Chemistry 2nd Paper)",
+        "subject": "Chemistry 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1_eXfSWiYBxYxud7TWIVUCPWLnG8LeoeM/view?usp=drivesdk",
+        "desc": "HSC Chemistry 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-5-1",
+        "name": "C-2 Model Test (Chemistry 2nd Paper)",
+        "subject": "Chemistry 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1_oWWvJaAeqLV9sIqj6EssZAJ0J_UksNP/view?usp=drivesdk",
+        "desc": "HSC Chemistry 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-5-2",
+        "name": "C-2.0 কাভার-সূচীপত্র (Chemistry 2nd Paper)",
+        "subject": "Chemistry 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1_F5Gbj29b7pXu8pwX08LvJ_I9MGi-LTK/view?usp=drivesdk",
+        "desc": "HSC Chemistry 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-5-3",
+        "name": "C-2.1 পরিবেশ রসায়ন (Chemistry 2nd Paper)",
+        "subject": "Chemistry 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1_Ldyo4GHldtZ_Fe_22xs8S3U8qiQUAmZ/view?usp=drivesdk",
+        "desc": "HSC Chemistry 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-5-4",
+        "name": "C-2.2 জৈব রসায়ন (Chemistry 2nd Paper)",
+        "subject": "Chemistry 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1_OkBlG3OCvdowxwK6Evm4JHFgFSYqzYf/view?usp=drivesdk",
+        "desc": "HSC Chemistry 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-5-5",
+        "name": "C-2.3 পরিমানগত রসায়ন (Chemistry 2nd Paper)",
+        "subject": "Chemistry 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1_Y-FaAVxxSRh4MhG4hjFG22bzL-UmjXR/view?usp=drivesdk",
+        "desc": "HSC Chemistry 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-5-6",
+        "name": "C-2.4 তড়িৎ রসায়ন (Chemistry 2nd Paper)",
+        "subject": "Chemistry 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1_ZB73mGLmQdwEEb-rgOz-SNvPo9c5I1f/view?usp=drivesdk",
+        "desc": "HSC Chemistry 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-6-0",
+        "name": "E-1 Board Question Solution (English 1st Paper)",
+        "subject": "English 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1cj25CE01wm_bSIoIswDvl26qt2zAGkr9/view?usp=drivesdk",
+        "desc": "HSC English 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-6-1",
+        "name": "E-1 Cover-Inner (English 1st Paper)",
+        "subject": "English 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1c393PGnGEZ2PNQpGl1BHUWeQyvlf7aTn/view?usp=drivesdk",
+        "desc": "HSC English 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-6-2",
+        "name": "E-1 Model Test (English 1st Paper)",
+        "subject": "English 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1cmj2emgazLefb9s3OF_T1dEEm9nYprxE/view?usp=drivesdk",
+        "desc": "HSC English 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-6-3",
+        "name": "E-1.1 Multiple Choice & Short Questions (English 1st Paper)",
+        "subject": "English 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1cEazkkxji-5ViFLk9mN6lGGQOxYvwoZX/view?usp=drivesdk",
+        "desc": "HSC English 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-6-4",
+        "name": "E-1.2 Information Transfer Or Flow Chart (English 1st Paper)",
+        "subject": "English 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1cG-Nwgci53wVUa8-s_ZnWdZBC5nyQrMV/view?usp=drivesdk",
+        "desc": "HSC English 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-6-5",
+        "name": "E-1.3 Summary Writing (English 1st Paper)",
+        "subject": "English 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1cQ2LYjGl1sYfg6SvRarTbepRJaNUQIGC/view?usp=drivesdk",
+        "desc": "HSC English 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-6-6",
+        "name": "E-1.4 Cloze Test With Clues (English 1st Paper)",
+        "subject": "English 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1cTr1eSL_OpEZLRMAZCXSE1g1oYjRnm2O/view?usp=drivesdk",
+        "desc": "HSC English 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-6-7",
+        "name": "E-1.5 Cloze Test Without Clues (English 1st Paper)",
+        "subject": "English 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1cWeQMj56UWJMZu-iZTsZWddAaPd_wZQ9/view?usp=drivesdk",
+        "desc": "HSC English 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-6-8",
+        "name": "E-1.6 Rearranging (English 1st Paper)",
+        "subject": "English 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1cc2gipFyYS5tx8vMvdoODdLiIgrQXfQK/view?usp=drivesdk",
+        "desc": "HSC English 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-6-9",
+        "name": "E-1.7 Interpreting Graph Or Chart (English 1st Paper)",
+        "subject": "English 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1cetvbG-rOkinoYjU4c6ZwMKZd-7fT1tH/view?usp=drivesdk",
+        "desc": "HSC English 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-6-10",
+        "name": "E-1.8 Story Writing (English 1st Paper)",
+        "subject": "English 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1chDXMbOOKAzv9JmYgUocEU86DDYvBV41/view?usp=drivesdk",
+        "desc": "HSC English 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-6-11",
+        "name": "E-1.9 Informal Letter (English 1st Paper)",
+        "subject": "English 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1chXMUwhPk2P_91dy2vNkIzTupWHr1vBK/view?usp=drivesdk",
+        "desc": "HSC English 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-7-0",
+        "name": "E-2 Board Question Solution (English 2nd Paper)",
+        "subject": "English 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1dfiIxmdDQL8a-nYk2FsNZHJ2F9hbhD4Q/view?usp=drivesdk",
+        "desc": "HSC English 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-7-1",
+        "name": "E-2 Model Test (English 2nd Paper)",
+        "subject": "English 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1dlxDebSgpEFCcfD-_D5-BDmD71AnFJJz/view?usp=drivesdk",
+        "desc": "HSC English 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-7-2",
+        "name": "E-2.0 Cover-Inner (English 2nd Paper)",
+        "subject": "English 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1crSIo4M9g6bfgghkCShYqL168DOlpQER/view?usp=drivesdk",
+        "desc": "HSC English 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-7-3",
+        "name": "E-2.1 Preposition (English 2nd Paper)",
+        "subject": "English 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1crl06QXERc5G0p3-DD4HDXfLwnJ-kIEY/view?usp=drivesdk",
+        "desc": "HSC English 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-7-4",
+        "name": "E-2.10 Formal Letter Or E-Mail (English 2nd Paper)",
+        "subject": "English 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1dMA7YnTx1NwAOUCciP2ItowwQAgVBjdx/view?usp=drivesdk",
+        "desc": "HSC English 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-7-5",
+        "name": "E-2.11 Writing Paragraph(Listing Or Description) (English 2nd Paper)",
+        "subject": "English 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1dchCNAaY-Yz7wVyuJpajhoVGkl6kImXF/view?usp=drivesdk",
+        "desc": "HSC English 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-7-6",
+        "name": "E-2.12 Writing Paragraph(Comparison and Contrast) (English 2nd Paper)",
+        "subject": "English 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1dcEwFiYvkYF-xD-T5eOhL5v9yCGRQncQ/view?usp=drivesdk",
+        "desc": "HSC English 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-7-7",
+        "name": "E-2.2 Special Uses Of Words & Phrases (English 2nd Paper)",
+        "subject": "English 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1d0nZ-qE-m3ZKDPeU_smUrpjI5ClLkjgq/view?usp=drivesdk",
+        "desc": "HSC English 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-7-8",
+        "name": "E-2.3 Completing Sentences (English 2nd Paper)",
+        "subject": "English 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1d1pb8ZJh59Tjl-3H-lwgp76yBoXiCMy0/view?usp=drivesdk",
+        "desc": "HSC English 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-7-9",
+        "name": "E-2.4 Use Of Verbs (English 2nd Paper)",
+        "subject": "English 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1d2McNyAlBZB4PnZj7mXU_IvcccWUiGSu/view?usp=drivesdk",
+        "desc": "HSC English 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-7-10",
+        "name": "E-2.5 Narrative Style (English 2nd Paper)",
+        "subject": "English 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1d4GzcFbgX60fhZHtDTOk6mq9pNEaSO5l/view?usp=drivesdk",
+        "desc": "HSC English 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-7-11",
+        "name": "E-2.6 Use Of Modifiers (English 2nd Paper)",
+        "subject": "English 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1d4ni4JYa1oCokIGdbDoXXLTt59_Mxelv/view?usp=drivesdk",
+        "desc": "HSC English 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-7-12",
+        "name": "E-2.7 Use Of Sentence Connectors (English 2nd Paper)",
+        "subject": "English 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1d79z3aXB-iWSGOtvzeRLNc7b4i2SZD1B/view?usp=drivesdk",
+        "desc": "HSC English 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-7-13",
+        "name": "E-2.8 Use Of Synonym and Antonym (English 2nd Paper)",
+        "subject": "English 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1d9X0SShYDBS4v8yTnDNgp-5jYMKH9KFx/view?usp=drivesdk",
+        "desc": "HSC English 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-7-14",
+        "name": "E-2.9 Punctuation (English 2nd Paper)",
+        "subject": "English 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1dAvPuyWkQNbqEktd5MxOa45BHQc6XKfP/view?usp=drivesdk",
+        "desc": "HSC English 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-8-0",
+        "name": "M-1 Board Solution (H.Math 1st Paper)",
+        "subject": "H.Math 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1Z7jmiJPU2vL3kamnj-XnxbsBDtTVhrOY/view?usp=drivesdk",
+        "desc": "HSC H.Math 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-8-1",
+        "name": "M-1 Model Test (H.Math 1st Paper)",
+        "subject": "H.Math 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1Z97sfV0ggSGuRLqVCVu-TJJ2O96UWwY1/view?usp=drivesdk",
+        "desc": "HSC H.Math 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-8-2",
+        "name": "M-1.0 কাভার-সূচীপত্র (H.Math 1st Paper)",
+        "subject": "H.Math 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1YwqrlL-8RPMnCy7eEsk2PoGAMs2AzkQx/view?usp=drivesdk",
+        "desc": "HSC H.Math 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-8-3",
+        "name": "M-1.1 ম্যাট্রিক্স ও নির্ণায়ক (H.Math 1st Paper)",
+        "subject": "H.Math 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1Yxfv8Rl4Pb6TQv6jiTj7WuloRpDha_na/view?usp=drivesdk",
+        "desc": "HSC H.Math 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-8-4",
+        "name": "M-1.10 যোগজীকরণ (H.Math 1st Paper)",
+        "subject": "H.Math 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1Z7AfohNOAGkAiD-hwV7pl_xuui7XUBin/view?usp=drivesdk",
+        "desc": "HSC H.Math 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-8-5",
+        "name": "M-1.3 সরলরেখা (H.Math 1st Paper)",
+        "subject": "H.Math 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1YxypX67CULIz8rJ-V0MNPwlkyE_g7FPZ/view?usp=drivesdk",
+        "desc": "HSC H.Math 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-8-6",
+        "name": "M-1.4 বৃত্ত (H.Math 1st Paper)",
+        "subject": "H.Math 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1Z0l9c9FYO4bT10h6uz0n4iOIhhD2p90T/view?usp=drivesdk",
+        "desc": "HSC H.Math 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-8-7",
+        "name": "M-1.7 সংযুক্ত ও যৌগিক কোণের ত্রিকোনমিতিক অনুপাত (H.Math 1st Paper)",
+        "subject": "H.Math 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1Z2AU15CUui1aW7xmQz_Oox6SfFRAHvlL/view?usp=drivesdk",
+        "desc": "HSC H.Math 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-8-8",
+        "name": "M-1.9 অন্তরীকরণ (H.Math 1st Paper)",
+        "subject": "H.Math 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1Z54CJsD0vqw4FgtypA9Amna9Yl55qsR5/view?usp=drivesdk",
+        "desc": "HSC H.Math 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-9-0",
+        "name": "M-2 Board Question Solve (H.Math 2nd Paper)",
+        "subject": "H.Math 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1YdO3UddxZzy1vUOCFLYgs-j4c61Xdg0m/view?usp=drivesdk",
+        "desc": "HSC H.Math 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-9-1",
+        "name": "M-2 Model Test (H.Math 2nd Paper)",
+        "subject": "H.Math 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1YkJZijEeM2Q1y6ocqUb3s_N-DSi__KhL/view?usp=drivesdk",
+        "desc": "HSC H.Math 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-9-2",
+        "name": "M-2.0 কাভার-সূচীপত্র (H.Math 2nd Paper)",
+        "subject": "H.Math 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1XsrOUKyEJxAJ2CR2_EfmJI2LRZyVk3_m/view?usp=drivesdk",
+        "desc": "HSC H.Math 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-9-3",
+        "name": "M-2.3 জটিল সংখ্যা (H.Math 2nd Paper)",
+        "subject": "H.Math 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1XwxIWVx27dCGounayiKnXzQgwG5drcgc/view?usp=drivesdk",
+        "desc": "HSC H.Math 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-9-4",
+        "name": "M-2.4 বহুপদী ও বহুপদী সমীকরণ (H.Math 2nd Paper)",
+        "subject": "H.Math 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1YBMiwlWqbJj5Hzjvyn5Xib_Qk_auUO4t/view?usp=drivesdk",
+        "desc": "HSC H.Math 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-9-5",
+        "name": "M-2.6 কনিক (H.Math 2nd Paper)",
+        "subject": "H.Math 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1YKIjZFOIhmk3pqcnf6KH1LOo_Aen7YjN/view?usp=drivesdk",
+        "desc": "HSC H.Math 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-9-6",
+        "name": "M-2.7 বিপরীত ত্রিকোণমিতিক ফাংশন ও ত্রিকোণমিতিক সমীকরণ (H.Math 2nd Paper)",
+        "subject": "H.Math 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1YORLAlJwZHqvp-vKQu8y1pIpwUdcmZt0/view?usp=drivesdk",
+        "desc": "HSC H.Math 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-9-7",
+        "name": "M-2.8 স্থিতিবিদ্যা (H.Math 2nd Paper)",
+        "subject": "H.Math 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1YSH6F10ET4os6etbyHThv1UkyQiRC17a/view?usp=drivesdk",
+        "desc": "HSC H.Math 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-9-8",
+        "name": "M-2.9 সমতলে বস্তুকনার গতি (H.Math 2nd Paper)",
+        "subject": "H.Math 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1YViMG_cJCL13DPHDdlMN6dS92j4POToQ/view?usp=drivesdk",
+        "desc": "HSC H.Math 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-10-0",
+        "name": "ICT Board Question Solve (ICT)",
+        "subject": "ICT",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1Xi69Ny8ESSn1vnFQUaoREn7opUPl-33L/view?usp=drivesdk",
+        "desc": "HSC ICT - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-10-1",
+        "name": "ICT Model Test (ICT)",
+        "subject": "ICT",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1XljFFshwA5BXpI89dFA72PW6j__udiwt/view?usp=drivesdk",
+        "desc": "HSC ICT - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-10-2",
+        "name": "ICT-0 কাভার-সূচীপত্র (ICT)",
+        "subject": "ICT",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1XBRk4Q5Og8nKZd3TvzDK6uE3w6YArp_h/view?usp=drivesdk",
+        "desc": "HSC ICT - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-10-3",
+        "name": "ICT-1 বিশ্ব  ও বাংলাদেশ প্রেক্ষিত (ICT)",
+        "subject": "ICT",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1XHpeEvsg6HYOc4QRl9HJmCBpIN1x1M07/view?usp=drivesdk",
+        "desc": "HSC ICT - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-10-4",
+        "name": "ICT-2 কমিউনিকেশন সিস্টেম ও নেটওয়ার্কিং (ICT)",
+        "subject": "ICT",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1XK3n_bHirNgOT193S1oCjA-_SzCYvYCt/view?usp=drivesdk",
+        "desc": "HSC ICT - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-10-5",
+        "name": "ICT-3 সংখ্যা পদ্ধতি ও ডিজিটাল ডিভাইস (ICT)",
+        "subject": "ICT",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1XO0s71CMrckQ6ohFnkEALKPayqwQgWtc/view?usp=drivesdk",
+        "desc": "HSC ICT - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-10-6",
+        "name": "ICT-4 ওয়েভ ডিজাইন ও HTML (ICT)",
+        "subject": "ICT",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1Xfpr5aCAb0JPKadQLoObvF89cvkaKyFy/view?usp=drivesdk",
+        "desc": "HSC ICT - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-10-7",
+        "name": "ICT-5 প্রোগ্রামিং ভাষা (ICT)",
+        "subject": "ICT",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1Xgr43R-7kwo2zm8KdylnkMf8qOTQLzo8/view?usp=drivesdk",
+        "desc": "HSC ICT - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-11-0",
+        "name": "P-1 Board Question Solution (Physics 1st Paper)",
+        "subject": "Physics 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1ZoJR_ivII0GSw0bk_zVN6bUf0eKNXZRb/view?usp=drivesdk",
+        "desc": "HSC Physics 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-11-1",
+        "name": "P-1 Model Test (Physics 1st Paper)",
+        "subject": "Physics 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1Zpm0aiSbjQWG42Y3cNiSxyW3z1IPnukq/view?usp=drivesdk",
+        "desc": "HSC Physics 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-11-2",
+        "name": "P-1.0 কাভার-সূচীপত্র (Physics 1st Paper)",
+        "subject": "Physics 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1ZG0QRQ0D4_c5Pt_V-Fzse3fUyGomzctW/view?usp=drivesdk",
+        "desc": "HSC Physics 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-11-3",
+        "name": "P-1.1  ভৌত জগৎ ও পরিমাপ (Physics 1st Paper)",
+        "subject": "Physics 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1ZJ8tjXKVWfrsq9IBTjqqZFtkrT4cH44I/view?usp=drivesdk",
+        "desc": "HSC Physics 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-11-4",
+        "name": "P-1.10 আদর্শ গ্যাস ও গ্যাসের গতিতত্ত্ব (Physics 1st Paper)",
+        "subject": "Physics 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1Zo16PfD14zGs7PRqNgHSaZyMJDvYcJkK/view?usp=drivesdk",
+        "desc": "HSC Physics 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-11-5",
+        "name": "P-1.2 ভেক্টর (Physics 1st Paper)",
+        "subject": "Physics 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1ZLPNlMTfkfyIJgmrKjIl56v-UGlwI5Yw/view?usp=drivesdk",
+        "desc": "HSC Physics 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-11-6",
+        "name": "P-1.4 নিউটনিয়ান বলবিদ্যা (Physics 1st Paper)",
+        "subject": "Physics 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1ZRuYVY-Enl4RbHNej__lqnPD5IJa2Ncz/view?usp=drivesdk",
+        "desc": "HSC Physics 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-11-7",
+        "name": "P-1.5 কাজ, শক্তি ও  ক্ষমতা (Physics 1st Paper)",
+        "subject": "Physics 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1ZS1U8BqkB_1zDry1aYxfFSmXPlkLTW1U/view?usp=drivesdk",
+        "desc": "HSC Physics 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-11-8",
+        "name": "P-1.6 মহাকর্ষ ও অভিকর্ষ (Physics 1st Paper)",
+        "subject": "Physics 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1ZUMcMdK8JkPsq7WNPaz74fCOIEGOATOH/view?usp=drivesdk",
+        "desc": "HSC Physics 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-11-9",
+        "name": "P-1.7 পদার্থের গাঠনিক ধর্ম (Physics 1st Paper)",
+        "subject": "Physics 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1Za1sd0r0QxeTX9D6cOoKCAFaUnsoTv08/view?usp=drivesdk",
+        "desc": "HSC Physics 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-11-10",
+        "name": "P-1.8 পর্যাবৃত্ত গতি (Physics 1st Paper)",
+        "subject": "Physics 1st",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1ZgSz5KINVpcn3QnAMuxLhz2gpA33TIoZ/view?usp=drivesdk",
+        "desc": "HSC Physics 1st Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-12-0",
+        "name": "P-2 Board Question Solution (Physics 2nd Paper)",
+        "subject": "Physics 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1bzc2n8OacwDG0esKgttvN4H102jfpjSO/view?usp=drivesdk",
+        "desc": "HSC Physics 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-12-1",
+        "name": "P-2 Model Test (Physics 2nd Paper)",
+        "subject": "Physics 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1c0gvvLf9hzpes4Y71vvFzntUnG3jSojB/view?usp=drivesdk",
+        "desc": "HSC Physics 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-12-2",
+        "name": "P-2.0 কাভার-সূচীপত্র (Physics 2nd Paper)",
+        "subject": "Physics 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1bGKGVzoqp2QjH2JcLIHhMAgHNu7Z9SPK/view?usp=drivesdk",
+        "desc": "HSC Physics 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-12-3",
+        "name": "P-2.1 তাপগতিবিদ্যা (Physics 2nd Paper)",
+        "subject": "Physics 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1bIlN6Tir2nisVpr7_zWMwj2ODsFIjZ6g/view?usp=drivesdk",
+        "desc": "HSC Physics 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-12-4",
+        "name": "P-2.1 স্থির তড়িৎ (Physics 2nd Paper)",
+        "subject": "Physics 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1bJqLC-0v5vE16NCcm6JEG6EG8I0UneLd/view?usp=drivesdk",
+        "desc": "HSC Physics 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-12-5",
+        "name": "P-2.10 সেমিকন্ডাক্টর ও ইলেক্ট্রনিক্স (Physics 2nd Paper)",
+        "subject": "Physics 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1byJq-mbYkGYSb5Wlx8X1WJW62dck2QJ5/view?usp=drivesdk",
+        "desc": "HSC Physics 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-12-6",
+        "name": "P-2.2 চল তড়িৎ (Physics 2nd Paper)",
+        "subject": "Physics 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1bXUDGI6P9b98H4AQrhDk-pM1lBJNN5eW/view?usp=drivesdk",
+        "desc": "HSC Physics 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-12-7",
+        "name": "P-2.7 ভৌত আলোকবিজ্ঞান (Physics 2nd Paper)",
+        "subject": "Physics 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1bavna3SjQAbRa0hEYmZjZ83MD_itvl6R/view?usp=drivesdk",
+        "desc": "HSC Physics 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-12-8",
+        "name": "P-2.8 আধুনিক পদার্থবিজ্ঞানের সূচনা (Physics 2nd Paper)",
+        "subject": "Physics 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1beW0HP1z2DJZHYiMADvxtZ3zpnhkSBEf/view?usp=drivesdk",
+        "desc": "HSC Physics 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "qb-12-9",
+        "name": "P-2.9 পরমাণুর মডেল ও নিউক্লিয়ার পদার্থবিজ্ঞান (Physics 2nd Paper)",
+        "subject": "Physics 2nd",
+        "year": "Question Bank",
+        "downloadUrl": "https://drive.google.com/file/d/1blp_vuHJPNrsjuBz2_VODWHOHFV3jjTL/view?usp=drivesdk",
+        "desc": "HSC Physics 2nd Paper - Chapterwise Question Bank, Board Question Solved & Model Test Paper.",
+        "source": "AAPathshala Library"
       }
     ],
     "tests": [
@@ -847,6 +2731,681 @@
         "year": "Test Exam 2023",
         "downloadUrl": "https://drive.google.com/file/d/example_vnc_test/view",
         "desc": "Model exam papers with creative questions and detailed answer key solutions."
+      },
+      {
+        "id": "test-paper-edition-2018-0",
+        "name": "Biology test Paper-18 (Edition-2018)",
+        "subject": "Biology -18",
+        "year": "2018",
+        "downloadUrl": "https://drive.google.com/drive/folders/129ufH6bGo_p221LYNJCVKu6zlvCg_dJg",
+        "desc": "HSC Edition-2018 Test Examination Papers from top cadet colleges and government colleges (Panjeri / Made Easy).",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "test-paper-edition-2018-1",
+        "name": "HigherMath Test Paper-18 (Edition-2018)",
+        "subject": "HigherMath -18",
+        "year": "2018",
+        "downloadUrl": "https://drive.google.com/drive/folders/10XXOzevc42mdL6WSGknEUhOl29duEGmQ",
+        "desc": "HSC Edition-2018 Test Examination Papers from top cadet colleges and government colleges (Panjeri / Made Easy).",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "test-paper-edition-2018-2",
+        "name": "HSC Chemistry Test Paper-18 (Edition-2018)",
+        "subject": "HSC Chemistry -18",
+        "year": "2018",
+        "downloadUrl": "https://drive.google.com/drive/folders/14DpBt4TcXQDtTLceRvzscrzwHwwYL0Mz",
+        "desc": "HSC Edition-2018 Test Examination Papers from top cadet colleges and government colleges (Panjeri / Made Easy).",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "test-paper-edition-2018-3",
+        "name": "ICT Tets Paper-18 (Edition-2018)",
+        "subject": "ICT Tets Paper-18",
+        "year": "2018",
+        "downloadUrl": "https://drive.google.com/drive/folders/15LTt3QdEcm-gHhu5Jc97jT_8H_Cw2xcH",
+        "desc": "HSC Edition-2018 Test Examination Papers from top cadet colleges and government colleges (Panjeri / Made Easy).",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "test-paper-edition-2018-4",
+        "name": "Physics Test Paper-18 (Edition-2018)",
+        "subject": "Physics -18",
+        "year": "2018",
+        "downloadUrl": "https://drive.google.com/drive/folders/15c8kfWmjlyMQ6EhUWADoldJfyBsPsw_K",
+        "desc": "HSC Edition-2018 Test Examination Papers from top cadet colleges and government colleges (Panjeri / Made Easy).",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "test-paper-edition-2019-0",
+        "name": "ICT Test Paper-19 (Edition-2019)",
+        "subject": "ICT -19",
+        "year": "2019",
+        "downloadUrl": "https://drive.google.com/drive/folders/10Mcolr_Oa_qlq7wLpFxV9EDkLbDEC4NQ",
+        "desc": "HSC Edition-2019 Test Examination Papers from top cadet colleges and government colleges (Panjeri / Made Easy).",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "test-paper-edition-2019-1",
+        "name": "Physics Test Paper-19 (Edition-2019)",
+        "subject": "Physics -19",
+        "year": "2019",
+        "downloadUrl": "https://drive.google.com/drive/folders/10To0nMJn2ewb9dx0gxVAXJn5BtRFDG3Q",
+        "desc": "HSC Edition-2019 Test Examination Papers from top cadet colleges and government colleges (Panjeri / Made Easy).",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "test-paper-edition-2021-0",
+        "name": "# Panjeri Test Paper (Edition-2021)",
+        "subject": "# Panjeri",
+        "year": "2021",
+        "downloadUrl": "https://drive.google.com/drive/folders/190x1kXA7f5g_8bYd-q7IAFiMgOqTUvxF",
+        "desc": "HSC Edition-2021 Test Examination Papers from top cadet colleges and government colleges (Panjeri / Made Easy).",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "test-paper-edition-2021-1",
+        "name": "Bangla 2nd Test Paper (Edition-2021)",
+        "subject": "Bangla 2nd",
+        "year": "2021",
+        "downloadUrl": "https://drive.google.com/file/d/109SXpBP20MfS3KtoHUpJzJf8TQ9x6odA/view?usp=drivesdk",
+        "desc": "HSC Edition-2021 Test Examination Papers from top cadet colleges and government colleges (Panjeri / Made Easy).",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "test-paper-edition-2021-2",
+        "name": "Biology Test Paper (Edition-2021)",
+        "subject": "Biology",
+        "year": "2021",
+        "downloadUrl": "https://drive.google.com/drive/folders/10KE5cXYLEu_fSWxL9hTnP1MG0Md21hkr",
+        "desc": "HSC Edition-2021 Test Examination Papers from top cadet colleges and government colleges (Panjeri / Made Easy).",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "test-paper-edition-2021-3",
+        "name": "Chemistry Test Paper (Edition-2021)",
+        "subject": "Chemistry",
+        "year": "2021",
+        "downloadUrl": "https://drive.google.com/drive/folders/1-PxVhY2HRywWsN7W5IJ0qRAqpHvi4x_N",
+        "desc": "HSC Edition-2021 Test Examination Papers from top cadet colleges and government colleges (Panjeri / Made Easy).",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "test-paper-edition-2021-4",
+        "name": "English Test Paper (Edition-2021)",
+        "subject": "English",
+        "year": "2021",
+        "downloadUrl": "https://drive.google.com/drive/folders/10Ls6Da_ePYwEpiFBZMHfr0ZAoU7oj8Ys",
+        "desc": "HSC Edition-2021 Test Examination Papers from top cadet colleges and government colleges (Panjeri / Made Easy).",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "test-paper-edition-2021-5",
+        "name": "Hsc 2019 Question(All Board) (Edition-2021)",
+        "subject": "Hsc 2019 Question(All Board)",
+        "year": "2021",
+        "downloadUrl": "https://drive.google.com/file/d/1-00YaYAi4g620Mm0htxqLxh9B8X9VWI0/view?usp=drivesdk",
+        "desc": "HSC Edition-2021 Test Examination Papers from top cadet colleges and government colleges (Panjeri / Made Easy).",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "test-paper-edition-2021-6",
+        "name": "HSC English Test Paper (Edition-2021)",
+        "subject": "HSC English",
+        "year": "2021",
+        "downloadUrl": "https://drive.google.com/file/d/10OrwZKuzG1dE5Nw-ng_AdLRyNGh5DrWt/view?usp=drivesdk",
+        "desc": "HSC Edition-2021 Test Examination Papers from top cadet colleges and government colleges (Panjeri / Made Easy).",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "test-paper-edition-2021-7",
+        "name": "Physics Test Paper (Edition-2021)",
+        "subject": "Physics",
+        "year": "2021",
+        "downloadUrl": "https://drive.google.com/drive/folders/1-91vWpjbukvfw0pddCkDvlmIDA45LuCm",
+        "desc": "HSC Edition-2021 Test Examination Papers from top cadet colleges and government colleges (Panjeri / Made Easy).",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "test-paper-edition-2022-0",
+        "name": "# HSC-21 Board Question Solution(MCQ) (Edition-2022)",
+        "subject": "# HSC-21 Board Question Solution(MCQ)",
+        "year": "2022",
+        "downloadUrl": "https://drive.google.com/drive/folders/1HpyZUkGTP9-j0ZrPK0BxfP_FAkpNsQzK",
+        "desc": "HSC Edition-2022 Test Examination Papers from top cadet colleges and government colleges (Panjeri / Made Easy).",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "test-paper-edition-2022-1",
+        "name": "Bangla (Edition-2022)",
+        "subject": "Bangla",
+        "year": "2022",
+        "downloadUrl": "https://drive.google.com/drive/folders/1B_NJiGXotojPoTT3THEUPFTbLi44-0rp",
+        "desc": "HSC Edition-2022 Test Examination Papers from top cadet colleges and government colleges (Panjeri / Made Easy).",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "test-paper-edition-2022-2",
+        "name": "Biology (Edition-2022)",
+        "subject": "Biology",
+        "year": "2022",
+        "downloadUrl": "https://drive.google.com/drive/folders/1BZyT_RREXGjqAjMhY3Kvd4XIMboR-8PM",
+        "desc": "HSC Edition-2022 Test Examination Papers from top cadet colleges and government colleges (Panjeri / Made Easy).",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "test-paper-edition-2022-3",
+        "name": "Chemistry (Edition-2022)",
+        "subject": "Chemistry",
+        "year": "2022",
+        "downloadUrl": "https://drive.google.com/drive/folders/1BYEHKS13f8FwWKUzWnuLEuf9jWHVXFrA",
+        "desc": "HSC Edition-2022 Test Examination Papers from top cadet colleges and government colleges (Panjeri / Made Easy).",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "test-paper-edition-2022-4",
+        "name": "English (Edition-2022)",
+        "subject": "English",
+        "year": "2022",
+        "downloadUrl": "https://drive.google.com/drive/folders/1BQp4xZqTKG8j_CbjsWloJNRFE8e9UL2I",
+        "desc": "HSC Edition-2022 Test Examination Papers from top cadet colleges and government colleges (Panjeri / Made Easy).",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "test-paper-edition-2022-5",
+        "name": "ICT (Edition-2022)",
+        "subject": "ICT",
+        "year": "2022",
+        "downloadUrl": "https://drive.google.com/drive/folders/1BMmW7i1JwBEKDCzfa162HW5w0Qcx8SmS",
+        "desc": "HSC Edition-2022 Test Examination Papers from top cadet colleges and government colleges (Panjeri / Made Easy).",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "test-paper-edition-2022-6",
+        "name": "Math (Edition-2022)",
+        "subject": "Math",
+        "year": "2022",
+        "downloadUrl": "https://drive.google.com/drive/folders/1BTLQ6JsX_flSL5Cc4y6tXuJQq9hMCy7k",
+        "desc": "HSC Edition-2022 Test Examination Papers from top cadet colleges and government colleges (Panjeri / Made Easy).",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "test-paper-edition-2022-7",
+        "name": "Physics (Edition-2022)",
+        "subject": "Physics",
+        "year": "2022",
+        "downloadUrl": "https://drive.google.com/drive/folders/1B_x3_xBDgQKeV__87tUz2SD0S880Kfph",
+        "desc": "HSC Edition-2022 Test Examination Papers from top cadet colleges and government colleges (Panjeri / Made Easy).",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "test-paper-edition-2023-0",
+        "name": "*HSC-2023 Test Paper(Panjeri-Lecture) (Edition-2023)",
+        "subject": "*HSC-2023 (Panjeri-Lecture)",
+        "year": "2023",
+        "downloadUrl": "https://drive.google.com/drive/folders/1InDf8S15wb1dkbZr5Ya8Z3NAbFiPBo4l",
+        "desc": "HSC Edition-2023 Test Examination Papers from top cadet colleges and government colleges (Panjeri / Made Easy).",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "final-model-test-0",
+        "name": "(Routine)HSC 23 Final Model Test",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1WWBTJVF4dCN8wEscD91DBsdk7By1TUVT/view?usp=drivesdk",
+        "desc": "HSC Final Model Test Exam Paper & Routine curated by AAPathshala.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "final-model-test-1",
+        "name": "(Routine)HSC 23 Model Test",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1WVuI_QAW0TadqJM9eaOR0F2P2kphqewT/view?usp=drivesdk",
+        "desc": "HSC Final Model Test Exam Paper & Routine curated by AAPathshala.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "final-model-test-2",
+        "name": "Chapterwise Model Test",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/drive/folders/1VQ8X3a-V4GBnZSxb5jFYHiZNUDZnTQuo",
+        "desc": "HSC Final Model Test Exam Paper & Routine curated by AAPathshala.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-2-0",
+        "name": "Bangla 1st Paper-1",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1e0DmmIuJCV10CzgJ9CT9KkEpRZL7Q5F8/view?usp=drivesdk",
+        "desc": "Bangla 1st Paper-1 - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-2-1",
+        "name": "Bangla 1st Paper-2",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1VT2KpPhw9E0kFuGErEuZhwxiPHF6hgNa/view?usp=drivesdk",
+        "desc": "Bangla 1st Paper-2 - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-2-2",
+        "name": "Bangla 2nd Paper-1",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1VTeCaNpKlkCOLDRz3TytBhloXRg7vmDS/view?usp=drivesdk",
+        "desc": "Bangla 2nd Paper-1 - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-2-3",
+        "name": "Bangla 2nd Paper-2",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1VZJgbvOzynZucoC81u39dEGpWQtLWofz/view?usp=drivesdk",
+        "desc": "Bangla 2nd Paper-2 - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-2-4",
+        "name": "Biology 1st Paper-1",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1Vi8QgqEItdJL7q3465YQ1yfMjqGdcGKP/view?usp=drivesdk",
+        "desc": "Biology 1st Paper-1 - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-2-5",
+        "name": "Biology 1st Paper-2",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1VkiOl3NF0EBDVXsQtvglXr9hZy8275Vl/view?usp=drivesdk",
+        "desc": "Biology 1st Paper-2 - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-2-6",
+        "name": "Biology 2nd Paper-1",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1Vmkx-qLWwLs7obA5IO47tobNXTXvVKve/view?usp=drivesdk",
+        "desc": "Biology 2nd Paper-1 - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-2-7",
+        "name": "Biology 2nd Paper-2",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1Vp3up34s1Yz1ZbIqpFTnLwBiRrsPooX4/view?usp=drivesdk",
+        "desc": "Biology 2nd Paper-2 - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-2-8",
+        "name": "Chemistry 1st Paper-1",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1VvgBjZZChRHuAcDoTu0GKfmeqNvBlbBn/view?usp=drivesdk",
+        "desc": "Chemistry 1st Paper-1 - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-2-9",
+        "name": "Chemistry 1st Paper-2",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1VrR9ZrFi8GTHqMuMhFgzGzm7aPfRAhnP/view?usp=drivesdk",
+        "desc": "Chemistry 1st Paper-2 - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-2-10",
+        "name": "Chemistry 2nd Paper-1",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1Vx178GtG6m6eEQReA-R3F1nYv9iDvFxr/view?usp=drivesdk",
+        "desc": "Chemistry 2nd Paper-1 - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-2-11",
+        "name": "Chemistry 2nd Paper-2",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1VxtglKPwvWJpTf_TdhWaM90CwpkyR2wI/view?usp=drivesdk",
+        "desc": "Chemistry 2nd Paper-2 - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-2-12",
+        "name": "English 1st Paper-1",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1W4124fsjV0NxCinxZSPQ8-s54vBpds9E/view?usp=drivesdk",
+        "desc": "English 1st Paper-1 - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-2-13",
+        "name": "English 1st Paper-2",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1WALRiQVpaBl0uUZpS3iw76pZASMuTCB9/view?usp=drivesdk",
+        "desc": "English 1st Paper-2 - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-2-14",
+        "name": "English 2nd Paper-1",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1WETeK9jgo0XpkpFSakT2z2sPeGsEAsp3/view?usp=drivesdk",
+        "desc": "English 2nd Paper-1 - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-2-15",
+        "name": "English 2nd Paper-2",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1WBeGssyUBWtAA8S-BL2cgy-o-iCIK5Ji/view?usp=drivesdk",
+        "desc": "English 2nd Paper-2 - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-2-16",
+        "name": "Higher Math 1st Paper-1",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1WF9glbbRBs0MGUQwqhgY8mMFgIk_1Vvq/view?usp=drivesdk",
+        "desc": "Higher Math 1st Paper-1 - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-2-17",
+        "name": "Higher Math 1st Paper-2",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1WHMOffTiophkFOZFllf9tD1S3lXbveZq/view?usp=drivesdk",
+        "desc": "Higher Math 1st Paper-2 - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-2-18",
+        "name": "Higher Math 2nd Paper-1",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1WU0Uphk4EiPVRt0hMoUwukFfaOjbGNDn/view?usp=drivesdk",
+        "desc": "Higher Math 2nd Paper-1 - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-2-19",
+        "name": "Higher Math 2nd Paper-2",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1WaWul1zspZlWtMcsozWGi2RrNDtCN4XW/view?usp=drivesdk",
+        "desc": "Higher Math 2nd Paper-2 - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-2-20",
+        "name": "ICT-1",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1WbVJge2H2ORr44SMKz7O-d321okKXRym/view?usp=drivesdk",
+        "desc": "ICT-1 - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-2-21",
+        "name": "ICT-2",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1Wb64qaY2kPophK-8XDCTII5hutJlc2Ye/view?usp=drivesdk",
+        "desc": "ICT-2 - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-2-22",
+        "name": "Physics 1st Paper-1",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1Wc8oJMy8UtjqezqzrwxDXXIoJ6Ke_JHX/view?usp=drivesdk",
+        "desc": "Physics 1st Paper-1 - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-2-23",
+        "name": "Physics 1st Paper-2",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1We6AVkfqpIpMJvW7YO3kOfuVFLxVfFzf/view?usp=drivesdk",
+        "desc": "Physics 1st Paper-2 - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-2-24",
+        "name": "Physics 2nd Paper-1",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1WhIJGBg1W-BKkceZ64D1YQaQbQtAVTaE/view?usp=drivesdk",
+        "desc": "Physics 2nd Paper-1 - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-2-25",
+        "name": "Physics 2nd Paper-2",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1Wj3iozfMqRk2F5ylvtKNYM6p2An9X0hC/view?usp=drivesdk",
+        "desc": "Physics 2nd Paper-2 - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-2-26",
+        "name": "Statistics 1st Paper-1",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1Wlhihdp9255rEU1IHKo2iEtcL3bBoxzh/view?usp=drivesdk",
+        "desc": "Statistics 1st Paper-1 - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-2-27",
+        "name": "Statistics 1st Paper-2",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1WqoKF6bR4YqO30K9vABqh4Sx2C_MGMjY/view?usp=drivesdk",
+        "desc": "Statistics 1st Paper-2 - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-2-28",
+        "name": "Statistics 2nd Paper-1",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1WvFyoo0VU4NPGjVu8p4Ab4fZqkVNL7lh/view?usp=drivesdk",
+        "desc": "Statistics 2nd Paper-1 - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-2-29",
+        "name": "Statistics 2nd Paper-2",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1X0qyBy3YImCSHTVzPeWVIgX4ckyG1TTL/view?usp=drivesdk",
+        "desc": "Statistics 2nd Paper-2 - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "final-model-test-3",
+        "name": "Final Model Test",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/drive/folders/1V48Bg9kpB6_HepGdYTTPDXKAPTh6wnsD",
+        "desc": "HSC Final Model Test Exam Paper & Routine curated by AAPathshala.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-3-0",
+        "name": "Bangla 1st Paper",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1e4FZKvrZSWMguf9elgRWyruTPVNR-FOR/view?usp=drivesdk",
+        "desc": "Bangla 1st Paper - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-3-1",
+        "name": "Bangla 2nd Paper",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1e64xBYn7NnzHJCtfDeLUnTr74c0bAbRL/view?usp=drivesdk",
+        "desc": "Bangla 2nd Paper - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-3-2",
+        "name": "Biology 1st Paper",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1eFnxLkAqd1fudHVYxWa6SZk7octMKVC2/view?usp=drivesdk",
+        "desc": "Biology 1st Paper - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-3-3",
+        "name": "Biology 2nd Paper",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1eCwXWXanTjiKge1v0RQFeEYfnuDgUSa7/view?usp=drivesdk",
+        "desc": "Biology 2nd Paper - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-3-4",
+        "name": "Chemistry 1st Paper",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1eFXwxVP1CQ9u63Td2mUDjahjXoIQsj2X/view?usp=drivesdk",
+        "desc": "Chemistry 1st Paper - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-3-5",
+        "name": "Chemistry 2nd Paper",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1egbrmr0X6Ci25lP_WCIoDUPq6MsiA20i/view?usp=drivesdk",
+        "desc": "Chemistry 2nd Paper - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-3-6",
+        "name": "Engineering Drawing 1st Paper",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1ecYuc1jNxjNlhwsmJYoOHrW4hQkFEOmh/view?usp=drivesdk",
+        "desc": "Engineering Drawing 1st Paper - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-3-7",
+        "name": "Engineering Drawing 2nd Paper",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1eOTUESGE0mJXsDTXD7td6yxst6m3uVsa/view?usp=drivesdk",
+        "desc": "Engineering Drawing 2nd Paper - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-3-8",
+        "name": "English 1st Paper",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1ebvjUjbaTm8GRrgP6_j9WSNK16s1Nyts/view?usp=drivesdk",
+        "desc": "English 1st Paper - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-3-9",
+        "name": "English 2nd Paper",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1eT_y0pzz2IKj2jsXr30LqM2CmF9smIJS/view?usp=drivesdk",
+        "desc": "English 2nd Paper - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-3-10",
+        "name": "Higher Math 1st Paper",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1eSnmRXco6xY6qXOQ0GOwquvHHySEjt05/view?usp=drivesdk",
+        "desc": "Higher Math 1st Paper - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-3-11",
+        "name": "Higher Math 2nd Paper",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1eJQhIFCHNSwQTniOaqrvPh3u9lS8JWD_/view?usp=drivesdk",
+        "desc": "Higher Math 2nd Paper - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-3-12",
+        "name": "ICT",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1egpQnVPsmnIut_iIc9m44uW1OMdzI1Vn/view?usp=drivesdk",
+        "desc": "ICT - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-3-13",
+        "name": "Physics 1st Paper",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1eolTzRXID_yHMyQNFnJW_vcDcEw-Xwd4/view?usp=drivesdk",
+        "desc": "Physics 1st Paper - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-3-14",
+        "name": "Physics 2nd Paper",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1eo6E2iFis97BZ9JXuVCjIKw4faacAT8H/view?usp=drivesdk",
+        "desc": "Physics 2nd Paper - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-3-15",
+        "name": "Statistics 1st Paper",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1en8km0JxlYmTifJNHuU_TZ8lGxOJ8yF-/view?usp=drivesdk",
+        "desc": "Statistics 1st Paper - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
+      },
+      {
+        "id": "fmt-sub-3-16",
+        "name": "Statistics 2nd Paper",
+        "subject": "Model Test",
+        "year": "2023–2024",
+        "downloadUrl": "https://drive.google.com/file/d/1egxyTRK91r-Kj9Lk8jPkJt91ex5Tq2Lg/view?usp=drivesdk",
+        "desc": "Statistics 2nd Paper - HSC Chapterwise & Final Model Test Exam paper with solution key.",
+        "source": "AAPathshala Library"
       }
     ]
   }

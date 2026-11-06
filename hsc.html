@@ -326,8 +326,8 @@
             <div class="dots-divider"></div>
             <a href="hsc.html?tab=books" class="dots-menu-subitem">📖 Books</a>
             <a href="hsc.html?tab=board" class="dots-menu-subitem">📋 Board Solution Book</a>
-            <a href="hsc.html?tab=tricks" class="dots-menu-subitem">⚡ Short Tricks</a>
-            <a href="hsc.html?tab=tests" class="dots-menu-subitem">📝 Test Papers</a>
+            <a href="hsc.html?tab=tricks" class="dots-menu-subitem">⚡ Question Banks &amp; Tricks</a>
+            <a href="hsc.html?tab=tests" class="dots-menu-subitem">📝 Test Papers &amp; Model Tests</a>
             <div class="dots-divider"></div>
             <a href="admin.html#tab-hsc" class="dots-menu-subitem">⚙️ Manage HSC (Admin)</a>
           </div>
@@ -372,8 +372,8 @@
       <div class="hsc-tabs" id="hscTabs">
         <button class="hsc-tab-btn active" data-pane="pane-books">📖 Books</button>
         <button class="hsc-tab-btn" data-pane="pane-board">📋 Board Solution Books</button>
-        <button class="hsc-tab-btn" data-pane="pane-tricks">⚡ Short Tricks</button>
-        <button class="hsc-tab-btn" data-pane="pane-tests">📝 Test Papers</button>
+        <button class="hsc-tab-btn" data-pane="pane-tricks">⚡ Question Banks &amp; Tricks</button>
+        <button class="hsc-tab-btn" data-pane="pane-tests">📝 Test Papers &amp; Model Tests</button>
       </div>
 
       <!-- PANE: Books -->
@@ -420,46 +420,46 @@
         </div>
       </div>
 
-      <!-- PANE: Short Tricks -->
+      <!-- PANE: Short Tricks & Question Banks -->
       <div class="hsc-pane" id="pane-tricks">
         <div class="hsc-pane-header">
           <div class="hsc-pane-icon">⚡</div>
           <div>
-            <h2>Short Tricks &amp; Memory Aids</h2>
-            <p>Quick formulas, mnemonics, rapid revision sheets, and memory tricks for scoring high in HSC examinations.</p>
+            <h2>Question Banks &amp; Short Tricks</h2>
+            <p>Chapterwise question banks (Udvash, AAPathshala), formula cheatsheets, and rapid revision aids covering all major HSC subjects.</p>
           </div>
         </div>
         <div class="hsc-search-bar">
-          <input type="text" class="vintage-input hsc-search-input" placeholder="🔍 Search tricks by subject or topic..." data-target="pane-tricks" id="searchTricks">
-          <span class="hsc-count-badge" id="countTricks">0 tricks</span>
+          <input type="text" class="vintage-input hsc-search-input" placeholder="🔍 Search question banks & tricks by subject (Physics, Chemistry, Math...) or chapter..." data-target="pane-tricks" id="searchTricks">
+          <span class="hsc-count-badge" id="countTricks">0 items</span>
         </div>
         <div class="hsc-resource-grid" id="gridTricks">
           <div class="hsc-empty-state">
             <div class="empty-icon">⚡</div>
-            <h3>No Short Tricks Added Yet</h3>
-            <p>Admin can add short trick sheets with download links from the Admin Panel → HSC Academic tab.</p>
+            <h3>Loading Question Banks &amp; Tricks...</h3>
+            <p>Fetching curated chapterwise question banks and formula sheets.</p>
           </div>
         </div>
       </div>
 
-      <!-- PANE: Test Papers -->
+      <!-- PANE: Test Papers & Model Tests -->
       <div class="hsc-pane" id="pane-tests">
         <div class="hsc-pane-header">
           <div class="hsc-pane-icon">📝</div>
           <div>
-            <h2>Test Papers &amp; Past College Exams</h2>
-            <p>Previous HSC board question papers, top college model test sets (NDC, DRMC, Rajuk), and practice exams organized by subject.</p>
+            <h2>Test Papers &amp; Final Model Tests</h2>
+            <p>HSC Panjeri Test Papers (Edition 2018–2023), cadet college test sets, and Final Model Test examination papers with solutions.</p>
           </div>
         </div>
         <div class="hsc-search-bar">
-          <input type="text" class="vintage-input hsc-search-input" placeholder="🔍 Search papers by college, subject, or year..." data-target="pane-tests" id="searchTests">
+          <input type="text" class="vintage-input hsc-search-input" placeholder="🔍 Search test papers by edition (2023, 2022, 2021...), subject, or college..." data-target="pane-tests" id="searchTests">
           <span class="hsc-count-badge" id="countTests">0 papers</span>
         </div>
         <div class="hsc-resource-grid" id="gridTests">
           <div class="hsc-empty-state">
             <div class="empty-icon">📝</div>
-            <h3>No Test Papers Added Yet</h3>
-            <p>Admin can add test papers with download links from the Admin Panel → HSC Academic tab.</p>
+            <h3>Loading Test Papers &amp; Model Tests...</h3>
+            <p>Fetching Panjeri test papers and final model test sets.</p>
           </div>
         </div>
       </div>
