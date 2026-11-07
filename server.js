@@ -1055,6 +1055,21 @@ app.get('/terminal-engine.js', (req, res) => {
   res.sendFile(path.join(__dirname, 'terminal-engine.js'));
 });
 
+app.get('/googlea85682d0c3e46a85.html', (req, res) => {
+  res.setHeader('Content-Type', 'text/html; charset=UTF-8');
+  res.sendFile(path.join(__dirname, 'googlea85682d0c3e46a85.html'));
+});
+
+app.get('/robots.txt', (req, res) => {
+  res.setHeader('Content-Type', 'text/plain; charset=UTF-8');
+  res.sendFile(path.join(__dirname, 'robots.txt'));
+});
+
+app.get('/sitemap.xml', (req, res) => {
+  res.setHeader('Content-Type', 'application/xml; charset=UTF-8');
+  res.sendFile(path.join(__dirname, 'sitemap.xml'));
+});
+
 app.use('/assets', express.static(path.join(__dirname, 'assets'), {
   maxAge: '1d',
   setHeaders: (res, filePath) => {
